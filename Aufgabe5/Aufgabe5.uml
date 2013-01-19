@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_DBKQgGJdEeKqAKoKgm44IQ" name="Aufgabe5">
+    <eAnnotations xmi:id="_DIbWIGJdEeKqAKoKgm44IQ" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_DIbWIWJdEeKqAKoKgm44IQ" source="codegen">
+        <details xmi:id="_DIb9MGJdEeKqAKoKgm44IQ" key="codegenDirectory" value="/Aufgabe5/src"/>
+        <details xmi:id="_DJK9AGJdEeKqAKoKgm44IQ" key="observedFolders" value="/Aufgabe5/src"/>
+        <details xmi:id="_eCFgMGJdEeKqAKoKgm44IQ" key="AssociatedSourceCode" value="/Aufgabe5/src/malcjohn/Account.java;3402962270/1;/Aufgabe5/src/malcjohn/List.java;594826609/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_QvUpoGJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_QvVQsGJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_QvVQsWJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_QvVQsmJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_QvV3wGJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_QvV3wWJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_QvWe0GJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_QvWe0WJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_QvXs8GJdEeKqAKoKgm44IQ">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="__vAGwGJdEeKqAKoKgm44IQ" name="malcjohn">
+      <packagedElement xmi:type="uml:Class" xmi:id="_tmQ_wGJdEeKqAKoKgm44IQ" name="Account"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_L6khMGJdEeKqAKoKgm44IQ" name="List">
+        <ownedOperation xmi:id="_OoT50GJdEeKqAKoKgm44IQ" name="toString" visibility="public">
+          <ownedParameter xmi:id="_OoT50WJdEeKqAKoKgm44IQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_O7QrAGJdEeKqAKoKgm44IQ" name="isEmpty" visibility="public">
+          <ownedParameter xmi:id="_O7QrAWJdEeKqAKoKgm44IQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_gtsx4GJdEeKqAKoKgm44IQ" name="size" visibility="public">
+          <ownedParameter xmi:id="_gtsx4WJdEeKqAKoKgm44IQ" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_DIdLUGJdEeKqAKoKgm44IQ">
+      <eAnnotations xmi:id="_DIdLUWJdEeKqAKoKgm44IQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_DIdLUmJdEeKqAKoKgm44IQ" base_Package="_DBKQgGJdEeKqAKoKgm44IQ">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+</xmi:XMI>
