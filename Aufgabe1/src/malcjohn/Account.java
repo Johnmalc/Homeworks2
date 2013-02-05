@@ -1,32 +1,31 @@
 package malcjohn;
 
 public class Account {
-	/*******************************************
+	/***********************
 	 * 
 	 * Attributes
 	 * 
-	 * 
-	 *******************************************/
-	private int accountNumber;
-	private double overdraft;
-	private double bankDeposit;
-	private int pin;
-	
-	/*
+	 ***********************/
+	public int accountNumber;
+	public double overdraft;
+	public double bankDeposit;
+	public int pin;
+
+	/**
 	 * Constructor for this class
 	 */
-	public Account (){
-		
-	}
-	/*******************************************
-	 * 
-	 * Methods for AccountNumber,BankDeposit,Overdraft and Pin
-	 * Always both, set and get methods.
-	 * 
-	 * 
-	 *******************************************/
-	
+	public Account() {
 
+	}
+
+	// Methods for AccountNumber, BankDeposit, Overdraft and 
+	// Pin Always both, set and get methods.
+	
+	/**
+	 * Speicherung der Kontonummer
+	 * 
+	 * @param value
+	 */
 	public void setAccountNumber(int value) {
 		this.accountNumber = value;
 	}
@@ -35,24 +34,37 @@ public class Account {
 		return this.accountNumber;
 	}
 
-	public void setOverdraft(double value) {
-		this.overdraft = value;
+	/**
+	 * Dispokredit des Kontos
+	 * 
+	 * @param value
+	 */
+	public void setOverdraft(double value2) {
+		this.overdraft = value2;
 	}
 
 	public double getOverdraft() {
 		return this.overdraft;
 	}
 
-	public void setBankDeposit(double value) {
-		this.bankDeposit = value;
+	/**
+	 * die Höhe des Kontoguthabens
+	 * 
+	 * @param value3
+	 */
+	public void setBankDeposit(double value3) {
+		this.bankDeposit = value3;
 	}
 
 	public double getBankDeposit() {
 		return this.bankDeposit;
 	}
-
-	public void setPin(int value) {
-		this.pin = value;
+	/**
+	 * Set pin for Account class
+	 * @param value4
+	 */
+	public void setPin(int value4) {
+		this.pin = value4;
 	}
 
 	public int getPin() {
