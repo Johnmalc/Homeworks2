@@ -1,27 +1,15 @@
 package malcjohn;
 
 public class CashCard extends Account {
-	/**********************
-	 * 
-	 * Attribute
-	 * 
-	 **********************/
-	public int accountNumber;
+	// attributes
+	private int accountNumber;
 
-	/**********************
-	 * 
-	 * Constructor
-	 * 
-	 **********************/
+	// constructor
 	public CashCard(int accountNumberX) {
 		this.accountNumber = accountNumberX;
 	}
 
-	/**********************
-	 * 
-	 * Methods
-	 * 
-	 **********************/
+    // Methods
 	public void setAccountNumber(int value) {
 		this.accountNumber = value;
 	}

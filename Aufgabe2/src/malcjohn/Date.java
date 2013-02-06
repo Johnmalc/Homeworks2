@@ -1,30 +1,22 @@
 package malcjohn;
 
 public class Date {
-	/****************
-	* Attributes for Day, Month and Year
-	* 
-	****************/
-   
+	// Attributes for Day, Month and Year
+
 	private int Tag;
 	private int Monat;
 	private int Jahr;
-	
-	/*
-	 * Constructor
-	 */
-	
-	public Date (int TagX, int MonatX, int JahrX) {
+
+	// Constructor
+
+	public Date(int TagX, int MonatX, int JahrX) {
 		this.Jahr = JahrX;
 		this.Monat = MonatX;
 		this.Tag = TagX;
 	}
 
-	/****************************
-	 *  
-	 * Methods for Day, Month and Year
-	 ****************************/
-	
+	// Methods for Day, Month and Year
+
 	public void setTag(int value) {
 		this.Tag = value;
 	}
@@ -50,7 +42,6 @@ public class Date {
 	}
 
 	public Date getNextDay() {
-		throw new UnsupportedOperationException("not implemented");
+		return new Date(Tag, Monat, Jahr);
 	}
-
 }

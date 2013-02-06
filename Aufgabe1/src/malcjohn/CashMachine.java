@@ -5,10 +5,7 @@ public class CashMachine extends Account {
 	public CashCard cashCard;
 	public Account[] accounts;
 
-	/**
-	 * Constructor
-	 */
-
+	// constructor
 	public CashMachine(CashCard cashCard) {
 		this.cashCard = cashCard;
 	}
@@ -22,9 +19,7 @@ public class CashMachine extends Account {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
 	}
 
-	/**
-	 * Methods
-	 */
+	// methods
 	public void setCashCard(CashCard value) {
 		this.cashCard = value;
 	}

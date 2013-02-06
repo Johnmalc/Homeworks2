@@ -1,19 +1,13 @@
 package malcjohn;
 
 public class Account {
-	/***********************
-	 * 
-	 * Attributes
-	 * 
-	 ***********************/
+	// attributes
 	public int accountNumber;
 	public double overdraft;
 	public double bankDeposit;
 	public int pin;
 
-	/**
-	 * Constructor for this class
-	 */
+	// Constructor for this class
 	public Account() {
 
 	}
@@ -37,7 +31,7 @@ public class Account {
 	/**
 	 * Dispokredit des Kontos
 	 * 
-	 * @param value
+	 * @param value2
 	 */
 	public void setOverdraft(double value2) {
 		this.overdraft = value2;
@@ -48,7 +42,7 @@ public class Account {
 	}
 
 	/**
-	 * die Höhe des Kontoguthabens
+	 * die Hohe des Kontoguthabens
 	 * 
 	 * @param value3
 	 */
