@@ -17,6 +17,7 @@ public class CashMachine extends Account {
 	 */
 	public enum Karte {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
+
 	}
 
 	// methods
@@ -71,8 +72,7 @@ public class CashMachine extends Account {
 	}
 
 	/**
-	 * <h2>Kartenauswurf</h2> 
-	 * Der Geldautomat wird auf den Status READY gesetzt,
+	 * <h2>Kartenauswurf</h2> Der Geldautomat wird auf den Status READY gesetzt,
 	 * das Attribute cashCard wird zur Nullreferenz. Das ist nur möglich im
 	 * Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole
 	 * protokolliert werden.
