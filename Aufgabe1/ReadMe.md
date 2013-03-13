@@ -1,6 +1,4 @@
-This is an ReadMe file for Aufgabe 1
-
-Holidays: some updates done. 
+This is an ReadMe file for Aufgabe 1. This was done in the group of 3 people.
 
 The task was (in germany):
 
@@ -81,5 +79,42 @@ The task was (in germany):
 > 
 > Befindet sich der Geldautomat in einem Zustand in dem eine Methode nicht korrekt ausgeführt werden kann, ist eine Exception zu werfen. Hierfür schreiben und verwenden Sie ihre eigene Exception-Klasse die von der Exception IllegalStateException abgeleitet wird (es handelt sichhier um eine RuntimeException!). Mit Hilfe Ihrer Exception soll ein kleiner Infotext über den Ausfallgrund in der Konsole ausgegeben.
 > 
-> 
 > Viel Spass! :-)
+
+
+Also:
+Hier was alles passiert in der Zeit des Process:
+
+1.  Automat: Ready oder CARD_INSERTED ?
+2.  Wenn **ready** -  karte eingeben und speichern
+3.  Wenn nicht ready - Exception: Card_Already_Inserted
+
+	
+	**Hier ist die Karteneingabe methode**
+
+
+4.  Wenn karte im Automat > karte speichern.
+5.  Karte mit dem Account uberprufen und verbindet
+
+ 	**Jetzt hat man mehrere Sache zum wahlen: (ohne pint noch)** 
+
+6. 	Kontoinformationen, Abheben, Kartenauswurf
+
+	(in main: choose mit swich) 
+	
+	1) Kontoinformationen : muss sicher sein, dass karte im Automaten ist ansonsten Card_Not_Inserted
+
+	2) Abheben : ?Card_Not_Inserted? > wie viel zum abheben ? (nicht mehr als xxx kredit) > neue Guthaben berechenet > Pin correct 
+
+	3) Kartenauswurf: nur bei card-inserted und pin correct > automatauf ready gesetzt und karte: null
+__________________
+7.  Entscheidung ob wir pin sofot einbeziehen oder erst spater (a,b,und dann c, oder a,c,b)
+
+8.  Pin: Wenn (abgleichung pins mit dem accounts one) richtig > Pin correct (und nur dann kann man abheben), else pin wrong 
+
+Account muss pin haben !!!! damit pin carte verglichen werden kann
+Eigene Exception klasse 
+
+
+
+

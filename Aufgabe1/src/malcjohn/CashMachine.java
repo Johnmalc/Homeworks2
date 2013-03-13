@@ -17,7 +17,6 @@ public class CashMachine extends Account {
 	 */
 	public enum Karte {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
-
 	}
 
 	// methods

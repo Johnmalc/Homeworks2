@@ -7,8 +7,12 @@ public class Main {
 	public static void main(String[] args) {
 		CashMachine [] a = new CashMachine[5];
 		
-		
-		
+//	try {
+//		throw new Exception();
+//	}catch (){
+//		
+//	}
+//
 //		Account info1 = new Account();
 //		info1.setAccountNumber(54894651);
 //		info1.setPin(4587);
@@ -24,8 +28,8 @@ public class Main {
 //		ArrayList<Account> ac = new ArrayList<Account>();
 //		ac.add(info1);
 //		ac.add(info2);
-		
-		
+//		
+//		
 //		System.out.println(info1.toString());
 //		CashCard d = new CashCard(569788);
 //
