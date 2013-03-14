@@ -116,5 +116,5 @@ Account muss pin haben !!!! damit pin carte verglichen werden kann
 Eigene Exception klasse 
 
 
-
+Need to use static atributes
 

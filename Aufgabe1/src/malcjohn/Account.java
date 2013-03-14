@@ -1,33 +1,36 @@
 package malcjohn;
 
-public class Account implements AccountInterface {
-	public int accountNumber;
-	public double overdraft;
-	public double bankDeposit;
-	public int pin;
-	
-	
+public class Account {
+	public static int accountNumber;
+	public static double overdraft;
+	public static double bankDeposit;
+	public static int pin;
+
 	// Constructor for this class
-	public Account(int accountNumberX,double bankDepostiX, int pinX) {
-		this.accountNumber = accountNumberX;
-		this.bankDeposit = bankDepostiX;
-		this.pin = pinX;
+	public Account(int accountNumberX, double bankDepostiX, int pinX) {
+		Account.accountNumber = accountNumberX;
+		Account.bankDeposit = bankDepostiX;
+		Account.pin = pinX;
 	}
 
-	// Methods for AccountNumber, BankDeposit, Overdraft and 
+	public Account() {
+
+	}
+
+	// Methods for AccountNumber, BankDeposit, Overdraft and
 	// Pin Always both, set and get methods.
-	
+
 	/**
 	 * Speicherung der Kontonummer
 	 * 
 	 * @param value
 	 */
 	public void setAccountNumber(int value) {
-		this.accountNumber = value;
+		Account.accountNumber = value;
 	}
 
 	public int getAccountNumber() {
-		return this.accountNumber;
+		return Account.accountNumber;
 	}
 
 	/**
@@ -36,11 +39,11 @@ public class Account implements AccountInterface {
 	 * @param value2
 	 */
 	public void setOverdraft(double value2) {
-		this.overdraft = value2;
+		Account.overdraft = value2;
 	}
 
 	public double getOverdraft() {
-		return this.overdraft;
+		return Account.overdraft;
 	}
 
 	/**
@@ -49,22 +52,23 @@ public class Account implements AccountInterface {
 	 * @param value3
 	 */
 	public void setBankDeposit(double value3) {
-		this.bankDeposit = value3;
+		Account.bankDeposit = value3;
 	}
 
 	public double getBankDeposit() {
-		return this.bankDeposit;
+		return Account.bankDeposit;
 	}
+
 	/**
 	 * Set pin for Account class
+	 * 
 	 * @param value4
 	 */
 	public void setPin(int value4) {
-		this.pin = value4;
+		Account.pin = value4;
 	}
 
 	public int getPin() {
-		return this.pin;
+		return Account.pin;
 	}
-
 }

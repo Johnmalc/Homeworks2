@@ -1,22 +1,15 @@
 package malcjohn;
 
-public class CashMachine extends Account  {
-	
-	
-	public CashMachine(int accountNumberX, double bankDepostiX, int pinX) {
-		super(accountNumberX, bankDepostiX, pinX);
-		// TODO Auto-generated constructor stub
-	}
+public class CashMachine {
+	// methoda co je nekde > abuych tady volal methodu do informaci o karte
 
+	public CashMachine() {
 
-	public CashMachine(Account account) {
-		Account aw = new Account();
 	}
 
 	public CashCard cashCard;
 	public Account[] accounts;
 
-	
 	/**
 	 * Enumeration
 	 * http://javarevisited.blogspot.cz/2011/08/enum-in-java-example-
@@ -73,9 +66,11 @@ public class CashMachine extends Account  {
 	 */
 	public void accountStatement() {
 		if (Karte.CARD_INSERTED != null) {
-			System.out.println("Your account number is " + accountNumber + ".");
-			System.out.println("Your pin is " + pin + ".");
-			System.out.println("Your bank deposit is " + bankDeposit + ".");
+			System.out.println("Your account number is "
+					+ Account.accountNumber + ".");
+			System.out.println("Your pin is " + Account.pin + ".");
+			System.out.println("Your bank deposit is " + Account.bankDeposit
+					+ ".");
 		}
 	}
 
@@ -94,9 +89,13 @@ public class CashMachine extends Account  {
 	 * verwendeten Accounts ab. Bei korrekter Eingabe wechselt der Zustand des
 	 * Geldautomaten in PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der Status
 	 * des Automaten soll auf der Konsole protokolliert werden.
+	 * 
+	 * @param pininserted
 	 */
-	public void enterPin(int pind) {
-		this.pin = pind;
-	}
+	public void enterPin(int pind, int pininserted) {
+		if (pind != pininserted) {
 
+		}
+
+	}
 }

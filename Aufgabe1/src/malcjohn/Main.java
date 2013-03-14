@@ -7,13 +7,12 @@ public class Main {
 				
 		Account acount1 = new Account(516516,5616.61,1321);
 		
-		CashMachine cm = new CashMachine(new Account(516516,5616.61,1321));
+		CashMachine sc= new CashMachine();
 		
-		System.out.println(acount1.getAccountNumber());
 		System.out.println(acount1.getBankDeposit());
 		System.out.println(acount1.getPin());
 		System.out.println("You are now in the account");
-		
+		sc.accountStatement();
 	
 		
 		// try {
