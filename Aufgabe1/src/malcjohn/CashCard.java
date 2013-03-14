@@ -1,13 +1,17 @@
 package malcjohn;
 
-public class CashCard extends Account {
+public class CashCard {
+	public CashCard() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// attributes
 	private int accountNumber;
 
 	// constructor
-	public CashCard(int accountNumberX) {
-		this.accountNumber = accountNumberX;
-	}
+//	public CashCard(int accountNumberX) {
+//		this.accountNumber = accountNumberX;
+//	}
 
     // Methods
 	public void setAccountNumber(int value) {

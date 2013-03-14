@@ -1,15 +1,22 @@
 package malcjohn;
 
-public class CashMachine extends Account {
+public class CashMachine extends Account  {
+	
+	
+	public CashMachine(int accountNumberX, double bankDepostiX, int pinX) {
+		super(accountNumberX, bankDepostiX, pinX);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public CashMachine(Account account) {
+		Account aw = new Account();
+	}
 
 	public CashCard cashCard;
 	public Account[] accounts;
 
-	// constructor
-	public CashMachine(CashCard cashCard) {
-		this.cashCard = cashCard;
-	}
-
+	
 	/**
 	 * Enumeration
 	 * http://javarevisited.blogspot.cz/2011/08/enum-in-java-example-
@@ -66,7 +73,9 @@ public class CashMachine extends Account {
 	 */
 	public void accountStatement() {
 		if (Karte.CARD_INSERTED != null) {
-
+			System.out.println("Your account number is " + accountNumber + ".");
+			System.out.println("Your pin is " + pin + ".");
+			System.out.println("Your bank deposit is " + bankDeposit + ".");
 		}
 	}
 
@@ -86,8 +95,8 @@ public class CashMachine extends Account {
 	 * Geldautomaten in PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der Status
 	 * des Automaten soll auf der Konsole protokolliert werden.
 	 */
-	public void enterPin(int pinX) {
-		this.pin = pinX;
+	public void enterPin(int pind) {
+		this.pin = pind;
 	}
 
 }

@@ -1,15 +1,17 @@
 package malcjohn;
 
-public class Account {
-	// attributes
+public class Account implements AccountInterface {
 	public int accountNumber;
 	public double overdraft;
 	public double bankDeposit;
 	public int pin;
-
+	
+	
 	// Constructor for this class
-	public Account() {
-
+	public Account(int accountNumberX,double bankDepostiX, int pinX) {
+		this.accountNumber = accountNumberX;
+		this.bankDeposit = bankDepostiX;
+		this.pin = pinX;
 	}
 
 	// Methods for AccountNumber, BankDeposit, Overdraft and 
