@@ -1,12 +1,17 @@
 package malcjohn;
 
 public class CashCard {
-	public CashCard() {
-		// TODO Auto-generated constructor stub
+	public int accountNumber;
+	public int pin;
+
+	public CashCard(int accountNumberX, int pinX) {
+		this.accountNumber = accountNumberX;
+		this.pin = pinX;
 	}
 
-	// attributes
-	private int accountNumber;
+	public CashCard() {
+
+	}
 
 	// Methods
 	public void setAccountNumber(int value) {
@@ -14,7 +19,7 @@ public class CashCard {
 	}
 
 	public int getAccountNumber() {
-		return this.accountNumber;
+		return accountNumber;
 	}
 
 }

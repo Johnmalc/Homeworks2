@@ -10,7 +10,7 @@ public class Account {
 	public Account(int accountNumberX, double bankDepostiX, int pinX) {
 		Account.accountNumber = accountNumberX;
 		Account.bankDeposit = bankDepostiX;
-		Account.pin = pinX;
+		this.pin = pinX;
 	}
 
 	public Account() {

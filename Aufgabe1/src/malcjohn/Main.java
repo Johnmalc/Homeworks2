@@ -4,17 +4,21 @@ public class Main {
 
 	public static void main(String[] args) {
 		// Testing one account
-				
-		Account acount1 = new Account(516516,5616.61,1321);
-		
-		CashMachine sc= new CashMachine();
-		
+
+		Account acount1 = new Account(516516, 5616.61, 1321);
+		CashCard card = new CashCard(123456, 123);
+
+		CashMachine sc = new CashMachine();
+
+		sc.setAccounts(acount1);
+
+		sc.insertCashCard(card);
+
 		System.out.println(acount1.getBankDeposit());
 		System.out.println(acount1.getPin());
 		System.out.println("You are now in the account");
 		sc.accountStatement();
-	
-		
+
 		// try {
 		// throw new Exception();
 		// }catch (){

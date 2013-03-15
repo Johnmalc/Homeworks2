@@ -1,14 +1,14 @@
 package malcjohn;
 
 public class CashMachine {
-	// methoda co je nekde > abuych tady volal methodu do informaci o karte
+	int r = 0;
 
 	public CashMachine() {
 
 	}
 
-	public CashCard cashCard;
-	public Account[] accounts;
+	CashCard cashCard;
+	Account[] accounts = new Account[5];
 
 	/**
 	 * Enumeration
@@ -19,37 +19,48 @@ public class CashMachine {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
 	}
 
-	// methods
-	public void setCashCard(CashCard value) {
-		this.cashCard = value;
+	private Karte status = Karte.READY;
+	@SuppressWarnings("unused")
+	private Karte status3 = Karte.CARD_INSERTED;
+	private Karte status2 = Karte.PIN_CORRECT;
+
+	public Karte getStatus() {
+		return status;
 	}
 
-	public CashCard getCashCard() {
-		return this.cashCard;
-	}
-
-	public void setAccounts(Account[] value) {
-		this.accounts = value;
-	}
-
-	public Account[] getAccounts() {
-		return this.accounts;
+	public void setAccounts(Account accountX) {
+		accounts[r] = accountX;
 	}
 
 	/**
-	 * <h2>Karteneingabe</h2> Nur im Zustand READY können die Informationen der
+	 * <h2>Karteneingabe</h2> Nur im Zustand READY konnen die Informationen der
 	 * eingegebenen Cashcard im Attribute cashCard abgespeichert werden. Bei
 	 * erfolgreicher Eingabe wechselt der Zustand von READY auf CARD_INSERTED.
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
 	 */
 	public void insertCashCard(CashCard cashCard) {
+		if (status != null) {
 
+			int zu = cashCard.getAccountNumber();
+			// int zea = accounts[0].getAccountNumber();
+			for (int b = 0; b < accounts.length; b++) {
+				if (zu == accounts[0].getAccountNumber()) {
+					System.out.println("Sind gleich ");
+				} else {
+					System.out.println("nicht ");
+				}
+			}
+			setStatus(status2);
+			System.out.println("Sie haben carte in dem Automat");
+		}else {
+			System.out.println("ihre karte ist schon im Automat");
+		}
 	}
 
 	/**
 	 * <h2>Abheben</h2> Das Abheben kann nur erfolgen wenn der Geldautomat im
 	 * Zustand CARD_INSERTED ist. Der angegebene Betrag kann vom Konto abgehoben
-	 * werden, solange es den Dispokredit nicht überschreitet. Außerdem muss das
+	 * werden, solange es den Dispokredit nicht �berschreitet.Ausserdem muss das
 	 * Kontoguthaben neu berechnet und auf der Konsole ausgegeben werden.
 	 * 
 	 * Beachten Sie, dass Geld nur noch abgehoben werden kann, wenn der Pin
@@ -62,7 +73,7 @@ public class CashMachine {
 
 	/**
 	 * <h2>Kontoinformationen</h2> Ausgabe der aktuellen Kontoinformationen auf
-	 * der Konsole, nur möglich im Zustand CARD_INSERTED.
+	 * der Konsole, nur moglich im Zustand CARD_INSERTED.
 	 */
 	public void accountStatement() {
 		if (Karte.CARD_INSERTED != null) {
@@ -71,12 +82,14 @@ public class CashMachine {
 			System.out.println("Your pin is " + Account.pin + ".");
 			System.out.println("Your bank deposit is " + Account.bankDeposit
 					+ ".");
+		} else {
+			System.out.println("Sie konnen nicht die einformationnen kriegen.");
 		}
 	}
 
 	/**
 	 * <h2>Kartenauswurf</h2> Der Geldautomat wird auf den Status READY gesetzt,
-	 * das Attribute cashCard wird zur Nullreferenz. Das ist nur möglich im
+	 * das Attribute cashCard wird zur Nullreferenz. Das ist nur moglich im
 	 * Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole
 	 * protokolliert werden.
 	 */
@@ -94,8 +107,21 @@ public class CashMachine {
 	 */
 	public void enterPin(int pind, int pininserted) {
 		if (pind != pininserted) {
-
+			setStatus(status2);
+		}else {
+			setStatus(status);
 		}
+	}
 
+	/**
+	 * http://www.java-forum.org/java-basics-anfaenger-themen/87727-enum-dann-
+	 * setter -setzen.html
+	 */
+	public void setStatus(Karte status) {
+		if (status != null) {
+			this.status = status;
+		} else {
+			throw new NullPointerException("status darf nicht null sein");
+		}
 	}
 }
