@@ -21,5 +21,7 @@ public class CashCard {
 	public int getAccountNumber() {
 		return accountNumber;
 	}
-
+	public int getPin () {
+		return pin;
+	}
 }

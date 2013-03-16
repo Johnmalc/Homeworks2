@@ -1,23 +1,51 @@
 package malcjohn;
 
+import java.util.*;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// Testing one account
+		List<Account> acounts = new ArrayList<Account>();
+				
+		
+		Account account1 = new Account(123159147, 5616.61);
+		Account account2 = new Account(123456789, 5616.67);
+		
+		account1.setPin(1234);
+		account2.setPin(5678);
+		CashCard card1 = new CashCard(123159147, 1234);
+		CashCard card2 = new CashCard(123456789, 5678);
+		
+		CashMachine a = new CashMachine(account1);
+		a.insertCashCard(card2);
+		
+		a.enterPin(1234);
+		a.accountStatement();
+		
 
-		Account acount1 = new Account(516516, 5616.61, 1321);
-		CashCard card = new CashCard(123456, 123);
+		acounts.add(account1);
+		acounts.add(account2);		
 
-		CashMachine sc = new CashMachine();
+		account1.setOverdraft(35000);
+		account2.setOverdraft(35000);
+		
+		System.out.println(acounts.add(account1));
+		
+		
+		/**
+		 * leeres Object fur Automat indem man alle accounts gespeicher werden
+		 * und mit jeweilige card abgeglichen werden (auch dort gespeichert)
+		 */
 
-		sc.setAccounts(acount1);
-
-		sc.insertCashCard(card);
-
-		System.out.println(acount1.getBankDeposit());
-		System.out.println(acount1.getPin());
-		System.out.println("You are now in the account");
-		sc.accountStatement();
+		//CashMachine sc = new CashMachine();
+		
+		/**
+		 * Speicherung account und eckarte im Automat (CM)
+		 */
+//		sc.setAccounts(account1);
+//		sc.insertCashCard(card1);
+//		sc.accountStatement();
 
 		// try {
 		// throw new Exception();

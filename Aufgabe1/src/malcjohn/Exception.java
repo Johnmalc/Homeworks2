@@ -6,10 +6,11 @@ package malcjohn;
  * @author thomas
  * 
  */
+@SuppressWarnings("serial")
 public class Exception extends IllegalStateException {
 
-	public Exception(){
-		
+	public Exception(String message){
+		super(message);
 	}
 	
 }

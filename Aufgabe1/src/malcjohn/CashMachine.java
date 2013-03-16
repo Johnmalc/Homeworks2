@@ -1,14 +1,23 @@
 package malcjohn;
 
-public class CashMachine {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CashMachine<K> {
+	List<Account> account;
+
 	int r = 0;
 
-	public CashMachine() {
+	public CashMachine(List<Account> accountX) {
+		this.account = accountX;
+	}
 
+	public CashMachine() {
+		// TODO Auto-generated constructor stub
 	}
 
 	CashCard cashCard;
-	Account[] accounts = new Account[5];
+	//Account[] accounts = new Account[5];
 
 	/**
 	 * Enumeration
@@ -20,16 +29,15 @@ public class CashMachine {
 	}
 
 	private Karte status = Karte.READY;
-	@SuppressWarnings("unused")
-	private Karte status3 = Karte.CARD_INSERTED;
 	private Karte status2 = Karte.PIN_CORRECT;
+	private Karte status3 = Karte.CARD_INSERTED;
 
 	public Karte getStatus() {
 		return status;
 	}
 
-	public void setAccounts(Account accountX) {
-		accounts[r] = accountX;
+	public void setAccounts(List<Account> accountX) {
+		this.account = accountX;
 	}
 
 	/**
@@ -39,21 +47,32 @@ public class CashMachine {
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
 	 */
 	public void insertCashCard(CashCard cashCard) {
-		if (status != null) {
+		if (status.equals(Karte.READY)) {
+			setStatus(status);
+			System.out
+					.println("Sie haben jetzt ihre Karte im Automat. Status ist auf "
+							+ status + " gesetzt.");
 
-			int zu = cashCard.getAccountNumber();
+			int accountZumUberprufen = cashCard.getAccountNumber();
+			int pinZumUberprufen = cashCard.getPin();
+			System.out.println(pinZumUberprufen);
 			// int zea = accounts[0].getAccountNumber();
-			for (int b = 0; b < accounts.length; b++) {
-				if (zu == accounts[0].getAccountNumber()) {
-					System.out.println("Sind gleich ");
+			// oder accounts.lenght
+			for (int b = 0; b < account.size(); b++) {
+				if (accountZumUberprufen == ((Account) account).getAccountNumber()
+						&& ((Account) account).getPin() == pinZumUberprufen) {
+					// Zum uberprufung welches nummer man zeigt
+					// System.out.println(accounts[0].getAccountNumber());
+					System.out.println("Account nummer und Pin SIND gleich ");
 				} else {
-					System.out.println("nicht ");
+					System.out.println("Account nummer sind und pin NICHT gleich ");
 				}
 			}
+
+		} else {
 			setStatus(status2);
-			System.out.println("Sie haben carte in dem Automat");
-		}else {
-			System.out.println("ihre karte ist schon im Automat");
+			System.out.println("Ihre karte ist schon im Automat. Status ist"
+					+ status2 + " gesetzt.");
 		}
 	}
 
@@ -103,13 +122,15 @@ public class CashMachine {
 	 * Geldautomaten in PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der Status
 	 * des Automaten soll auf der Konsole protokolliert werden.
 	 * 
-	 * @param pininserted
+	 * @param pin
 	 */
-	public void enterPin(int pind, int pininserted) {
-		if (pind != pininserted) {
+	public void enterPin(int pin) {
+		if (((Account) account).getPin() == pin) {
 			setStatus(status2);
-		}else {
-			setStatus(status);
+			System.out.println("Sie haben RICHTIGEN pin eingegen. Status wird auf " + status2 + " gesetzt.");
+		} else {
+			setStatus(status3);
+			System.out.println("Sie haben Falschen pin eingegen. Status wird auf " + status3 + " gesetzt.");
 		}
 	}
 
