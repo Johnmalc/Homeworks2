@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.1" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="malcjohn.Account" project="Aufgabe1" file="/Aufgabe1/src/malcjohn/Account.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="164" x="65" y="4"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="malcjohn.CashCard" project="Aufgabe1" file="/Aufgabe1/src/malcjohn/CashCard.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="692" y="68"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="3" language="java" name="malcjohn.CashMachine.Karte" project="Aufgabe1" 
+    file="/Aufgabe1/src/malcjohn/CashMachine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="170" width="508" x="293" y="381"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="4" language="java" name="malcjohn.CashMachine" project="Aufgabe1" 
+    file="/Aufgabe1/src/malcjohn/CashMachine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="453" y="142"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="malcjohn.Exception" project="Aufgabe1" 
+    file="/Aufgabe1/src/malcjohn/Exception.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="109" x="843" y="206"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="malcjohn.Main" project="Aufgabe1" file="/Aufgabe1/src/malcjohn/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="643" y="224"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <dependency id="7">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="8">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="9" name="statusReady">        
+        <position height="18" width="69" x="505" y="322"/>      
+      </attribute>      
+      <multiplicity id="10" minimum="0" maximum="1">        
+        <position height="16" width="23" x="651" y="339"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="12" name="status">        
+        <position height="18" width="40" x="358" y="362"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="16" width="23" x="350" y="330"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="15" name="account"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="18" name="accounts"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="21" name="statusInserted">        
+        <position height="18" width="77" x="398" y="382"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="16" width="23" x="473" y="409"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="24" name="statusCorrect">        
+        <position height="18" width="74" x="441" y="326"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="16" width="23" x="566" y="356"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="26">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="28">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="29" name="statusWrong"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="32" name="cashCard"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="34">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
