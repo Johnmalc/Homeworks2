@@ -12,7 +12,7 @@ public class CashMachine extends Account {
 		 * tested
 		 */
 		status = Karte.READY;
-		//status = Karte.CARD_INSERTED;
+		// status = Karte.CARD_INSERTED;
 		this.account = accountX;
 	}
 
@@ -154,6 +154,27 @@ public class CashMachine extends Account {
 	 * protokolliert werden.
 	 */
 	public void ejectCashCard() {
+		System.out.println(getStatus());
+
+		if (getStatus() == statusInserted ) {
+//			// nur statuse wurde jetzt geandert
+//			setStatus(statusReady);
+//			System.out.print("Sie haben den status auf");
+//			System.out.print(getStatus());
+//			System.out.println(" gesetzt");
+//
+//			insertCashCard(null);
+//			System.out.println("Sie haben ihre karte ausgemacht!");
+		} else {
+			// nur statuse wurde jetzt geandert
+			setStatus(statusReady);
+			System.out.print("Sie haben den status auf");
+			System.out.print(getStatus());
+			System.out.println(" gesetzt");
+
+			insertCashCard(null);
+			System.out.println("Sie haben ihre karte ausgemacht!");
+		}
 
 	}
 

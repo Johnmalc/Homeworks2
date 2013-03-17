@@ -23,7 +23,7 @@ public class Main {
 
 		CashCard card1 = new CashCard();
 		card1.setAccountNumber(123159147);
-		card1.setPin(134);
+		card1.setPin(1234);
 		int card1Pin = card1.getPin();
 
 		/**
@@ -52,6 +52,7 @@ public class Main {
 		 */
 		a.enterPin(card1Pin);
 		a.accountStatement();
+		a.ejectCashCard();
 
 		// acounts.add(account1);
 		// acounts.add(account2);

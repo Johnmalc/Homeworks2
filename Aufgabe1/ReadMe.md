@@ -49,7 +49,7 @@ The task was (in germany):
 > 
 > **public void ejectCashCard()**
 > 
-> Der Geldautomat wird auf den Status READY gesetzt, das Attribute cashCard wird zur Nullreferenz. Das ist nur möglich im Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole protokolliert werden.
+> Der Geldautomat wird auf den Status READY gesetzt, das Attribute cashCard wird zur Nullreferenz. **Das ist nur möglich im Zustand CARD_INSERTED**. Der Status des Automaten soll auf der Konsole protokolliert werden.
 > 
 > (c)
 > 
@@ -65,7 +65,7 @@ The task was (in germany):
 > 
 >  **public void enterPin(int pin)**
 > 
-> Die Methode gleicht die Eingabe des Pins mit dem Pin des gerade verwendeten Accounts ab. Bei korrekter Eingabe wechselt der Zustand des Geldautomaten in PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der Status des Automaten soll auf der Konsole protokolliert werden.
+> Die Methode gleicht die Eingabe des Pins mit dem Pin des gerade verwendeten Accounts ab. Bei korrekter Eingabe wechselt der Zustand des Geldautomaten in PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der Status des Automaten soll auf der Konsole protokolliert werden. < **Erledigt**
 > 
 > Im Zustand PIN_WRONG, ist das Ausführen von weiteren Methoden nicht möglich.< **Erledigt**
 > 
