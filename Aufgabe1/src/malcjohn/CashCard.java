@@ -4,13 +4,8 @@ public class CashCard {
 	public int accountNumber;
 	public int pin;
 
-	public CashCard(int accountNumberX, int pinX) {
-		this.accountNumber = accountNumberX;
-		this.pin = pinX;
-	}
-
 	public CashCard() {
-
+		
 	}
 
 	// Methods
@@ -21,7 +16,12 @@ public class CashCard {
 	public int getAccountNumber() {
 		return accountNumber;
 	}
-	public int getPin () {
+
+	public void setPin(int value) {
+		this.pin = value;
+	}
+
+	public int getPin() {
 		return pin;
 	}
 }

@@ -4,30 +4,57 @@ import java.util.*;
 
 public class Main {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		// Testing one account
 		// List<Account> acounts = new ArrayList<Account>();
 
-		Account account1 = new Account(123159147, 5616.61);
-		Account account2 = new Account(123456789, 5616.67);
+		/*
+		 * Erstellung eines accounts. Und auch eine Karte. Wenn sie bei
+		 * card1.setPin() falsches pin eingeben, dann wie nach der aufgabe,
+		 * kriegen sie scheiss
+		 */
 
+		Account account1 = new Account();
+		account1.setAccountNumber(123159147);
+		account1.setBankDeposit(56000);
+		account1.setOverdraft(35000);
 		account1.setPin(1234);
-		account2.setPin(5678);
 
-		CashCard card1 = new CashCard(123159147, 1234);
-		CashCard card2 = new CashCard(123456789, 5678);
+		CashCard card1 = new CashCard();
+		card1.setAccountNumber(123159147);
+		card1.setPin(134);
+		int card1Pin = card1.getPin();
+
+		/**
+		 * Fur zweiten Account Don't touch
+		 */
+		// Account account2 = new Account();
+		// account2.setAccountNumber(123456789);
+		// account2.setBankDeposit(54444000);
+		// account2.setPin(5678);
+		// CashCard card2 = new CashCard();
+		// card2.setAccountNumber(123159147);
+		// card2.setPin(1234);
 
 		CashMachine a = new CashMachine(account1);
-		a.insertCashCard(card2);
+		/*
+		 * Wenn diese Methode auskommentiert wird, dann informationen angezeigt
+		 * Und pin uberpruft
+		 */
+		a.insertCashCard(card1);
 
-		a.enterPin(1234);
+		/**
+		 * <b>Weitere Moglichkeit zum andern</b> Wenn diese methode enterPin
+		 * kommentiert wird, dann keine karte im Automat und keine Informationen
+		 * angezeigt werden Wenn card inserted,dann werden nur information
+		 * angezeigt. Die Uberprufung wird nicht statfinden.
+		 */
+		a.enterPin(card1Pin);
 		a.accountStatement();
 
 		// acounts.add(account1);
 		// acounts.add(account2);
-
-		account1.setOverdraft(35000);
-		account2.setOverdraft(35000);
 
 		// System.out.println(acounts.add(account1));
 

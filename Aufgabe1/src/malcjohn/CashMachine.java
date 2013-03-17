@@ -1,14 +1,18 @@
 package malcjohn;
 
-public class CashMachine {
+public class CashMachine extends Account {
 	Account account;
 	Karte status;
 	int r = 0;
 
 	public CashMachine(Account accountX) {
-		// hier wenn man auf Card_inserted macht, dann keine Informationen uber
-		// Account
+		/**
+		 * hier wenn man auf Card_inserted macht, dann keine Informationen uber
+		 * Account ?tested? Ja, Nur im Moment Karte.READY; card inse nicht
+		 * tested
+		 */
 		status = Karte.READY;
+		//status = Karte.CARD_INSERTED;
 		this.account = accountX;
 	}
 
@@ -32,6 +36,20 @@ public class CashMachine {
 		return status;
 	}
 
+	/**
+	 * <h2>Setzt den Status des Emums</h2 Kopiert aus dem
+	 * http://www.java-forum.org/java-basics-anfaenger-themen/87727-enum-dann-
+	 * setter -setzen.html
+	 */
+	public void setStatus(Karte status) {
+		if (status != null) {
+			this.status = status;
+		} else {
+			throw new NullPointerException("status darf nicht null sein");
+		}
+	}
+
+	@SuppressWarnings("unused")
 	private Karte statusReady = Karte.READY;
 	private Karte statusInserted = Karte.CARD_INSERTED;
 
@@ -46,13 +64,18 @@ public class CashMachine {
 	 */
 	public void insertCashCard(CashCard cashCard) {
 		if (status.equals(Karte.READY)) {
+			setStatus(Karte.CARD_INSERTED);
 			System.out
-					.println("Sie haben jetzt ihre Karte im Automat. Status ist auf "
-							+ status + " gesetzt.");
+					.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
+			System.out.print(getStatus());
+			System.out.println(" gesetzt");
 
 			int accountZumUberprufen = cashCard.getAccountNumber();
 			int pinZumUberprufen = cashCard.getPin();
-			// System.out.println(pinZumUberprufen);
+
+			// fur testing purposes
+			System.out.println(pinZumUberprufen);
+			System.out.println(accountZumUberprufen);
 
 			/**
 			 * Hier geht es falsch muss bearbeitet werden.
@@ -73,8 +96,11 @@ public class CashMachine {
 
 		} else {
 			setStatus(statusInserted);
-			System.out.println("Ihre karte ist schon im Automat. Status ist"
-					+ statusInserted + " gesetzt.");
+			System.out
+					.print("Ihre karte ist schon im Automat. Status ist auf ");
+			System.out.print(getStatus());
+			System.out.print(" gesetzt");
+			System.out.println("");
 		}
 	}
 
@@ -95,16 +121,29 @@ public class CashMachine {
 	/**
 	 * <h2>Kontoinformationen</h2> Ausgabe der aktuellen Kontoinformationen auf
 	 * der Konsole, nur moglich im Zustand CARD_INSERTED.
+	 * 
+	 * @param FINISHED
 	 */
+
 	public void accountStatement() {
-		if (status.equals(Karte.CARD_INSERTED)) {
-			System.out.println("Your account number is "
-					+ Account.accountNumber + ".");
-			System.out.println("Your pin is " + Account.pin + ".");
-			System.out.println("Your bank deposit is " + Account.bankDeposit
-					+ ".");
+		if (getStatus() != statusWrong) {
+
+			if (status == getStatus()) {
+				System.out.println("Your account number is " + accountNumber
+						+ ".");
+				System.out.println("Your pin is " + pin + ".");
+				System.out.println("Your bank deposit is " + bankDeposit + ".");
+			} else {
+				try {
+					System.out.println("");
+				} finally { // finally = always
+					System.out
+							.println("Sie konnen KEINE Informationnen kriegen, weil sie keine Karte im Automat haben");
+				}
+			}
 		} else {
-			System.out.println("Sie konnen nicht die einformationnen kriegen.");
+			System.out
+					.println("Sie konnen die Informationen nicht kriegen, weil der Pin falsch ist");
 		}
 	}
 
@@ -126,32 +165,33 @@ public class CashMachine {
 	 * soll auf der Konsole protokolliert werden.
 	 * 
 	 * @param pin
+	 * @param FINISHED
 	 */
 	public void enterPin(int pin) {
 		if (account.getPin() == pin) {
 			setStatus(statusCorrect);
+			System.out.println("Sie haben folgenden Pin eingegeben:"
+					+ account.getPin());
 			System.out
-					.println("Sie haben RICHTIGEN pin eingegen. Status wird auf "
-							+ statusCorrect + " gesetzt.");
+					.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
+			System.out.print(getStatus());
+			System.out.println(" gesetzt");
 		} else {
 			setStatus(statusWrong);
+			System.out.println("Sie haben folgenden Pin eingegeben:"
+					+ account.getPin());
 			System.out
-					.println("Sie haben Falschen pin eingegen. Status wird auf "
-							+ statusWrong + " gesetzt.");
-		}
-	}
+					.print("Sie haben Falschen pin eingegen. Status wird auf ");
+			System.out.print(getStatus());
+			System.out.println(" gesetzt");
 
-	/**
-	 * <h2>Setzt den Status des Emums</h2
-	 * 
-	 * http://www.java-forum.org/java-basics-anfaenger-themen/87727-enum-dann-
-	 * setter -setzen.html
-	 */
-	public void setStatus(Karte status) {
-		if (status != null) {
-			this.status = status;
-		} else {
-			throw new NullPointerException("status darf nicht null sein");
+			if (getStatus() == statusWrong) {
+
+				System.out
+						.println("sie konnen keine weitere methodone ausfuhren");
+
+			}
+
 		}
 	}
 }

@@ -1,17 +1,12 @@
 package malcjohn;
 
-public class Account {
+public class Account extends Exception {
 	public static int accountNumber;
 	public static double overdraft;
 	public static double bankDeposit;
 	public static int pin;
 
 	// Constructor for this class
-	public Account(int accountNumberX, double bankDepostiX) {
-		Account.accountNumber = accountNumberX;
-		Account.bankDeposit = bankDepostiX;
-	}
-
 	public Account() {
 
 	}
@@ -22,52 +17,52 @@ public class Account {
 	/**
 	 * Speicherung der Kontonummer
 	 * 
-	 * @param value
+	 * @param value accountNumber
 	 */
 	public void setAccountNumber(int value) {
-		Account.accountNumber = value;
+		this.accountNumber = value;
 	}
 
 	public int getAccountNumber() {
-		return Account.accountNumber;
+		return accountNumber;
 	}
 
 	/**
 	 * Dispokredit des Kontos
 	 * 
-	 * @param value2
+	 * @param value2 overdraft
 	 */
 	public void setOverdraft(double value2) {
-		Account.overdraft = value2;
+		this.overdraft = value2;
 	}
 
 	public double getOverdraft() {
-		return Account.overdraft;
+		return overdraft;
 	}
 
 	/**
 	 * die Hohe des Kontoguthabens
 	 * 
-	 * @param value3
+	 * @param value3 bankDeposit
 	 */
 	public void setBankDeposit(double value3) {
-		Account.bankDeposit = value3;
+		this.bankDeposit = value3;
 	}
 
 	public double getBankDeposit() {
-		return Account.bankDeposit;
+		return bankDeposit;
 	}
 
 	/**
 	 * Set pin for Account class
 	 * 
-	 * @param value4
+	 * @param value4 PIN
 	 */
 	public void setPin(int value4) {
-		Account.pin = value4;
+		this.pin = value4;
 	}
 
 	public int getPin() {
-		return this.pin;
+		return pin;
 	}
 }
