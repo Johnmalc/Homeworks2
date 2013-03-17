@@ -3,6 +3,7 @@ package malcjohn;
 public class CashMachine extends Account {
 	Account account;
 	Karte status;
+	int accountZumUberprufen;
 	int r = 0;
 
 	public CashMachine(Account accountX) {
@@ -69,8 +70,12 @@ public class CashMachine extends Account {
 					.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
+			try {
+				int accountZumUberprufen = cashCard.getAccountNumber();
+			} catch (Exception msg) {
+				System.out.println(msg.getMessage());
+			}
 
-			int accountZumUberprufen = cashCard.getAccountNumber();
 			int pinZumUberprufen = cashCard.getPin();
 
 			// fur testing purposes
@@ -153,18 +158,19 @@ public class CashMachine extends Account {
 	 * Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole
 	 * protokolliert werden.
 	 */
+	// TODO
 	public void ejectCashCard() {
 		System.out.println(getStatus());
 
-		if (getStatus() == statusInserted ) {
-//			// nur statuse wurde jetzt geandert
-//			setStatus(statusReady);
-//			System.out.print("Sie haben den status auf");
-//			System.out.print(getStatus());
-//			System.out.println(" gesetzt");
-//
-//			insertCashCard(null);
-//			System.out.println("Sie haben ihre karte ausgemacht!");
+		if (getStatus() != statusInserted) {
+			// nur statuse wurde jetzt geandert
+			setStatus(statusReady);
+			System.out.print("Sie haben den status auf");
+			System.out.print(getStatus());
+			System.out.println(" gesetzt");
+
+			insertCashCard(null);
+			System.out.println("Sie haben ihre karte ausgemacht!");
 		} else {
 			// nur statuse wurde jetzt geandert
 			setStatus(statusReady);
@@ -205,7 +211,7 @@ public class CashMachine extends Account {
 					.print("Sie haben Falschen pin eingegen. Status wird auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
-
+			// TODO
 			if (getStatus() == statusWrong) {
 
 				System.out

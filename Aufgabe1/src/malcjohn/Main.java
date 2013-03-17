@@ -49,10 +49,11 @@ public class Main {
 		 * kommentiert wird, dann keine karte im Automat und keine Informationen
 		 * angezeigt werden Wenn card inserted,dann werden nur information
 		 * angezeigt. Die Uberprufung wird nicht statfinden.
+		 * Bei a.ejeckCard muss man fehler null inrgendwie behandeln TODO
 		 */
 		a.enterPin(card1Pin);
 		a.accountStatement();
-		a.ejectCashCard();
+		//a.ejectCashCard();
 
 		// acounts.add(account1);
 		// acounts.add(account2);
