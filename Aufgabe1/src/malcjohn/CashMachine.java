@@ -120,7 +120,19 @@ public class CashMachine extends Account {
 	 * 
 	 */
 	public void withdraw(double amount) {
-
+		if(status.equals(statusCorrect)) {
+			setStatus(statusInserted);
+		}
+		if (status.equals(statusInserted)) {
+			if(overdraft > bankDeposit) {
+				System.err.println("Sie konnen das nicht machen");
+			}else {
+				double neues = bankDeposit-amount;
+				System.out.println("Ihres neuen zustand ist " + neues);
+			}
+		}else {
+			System.out.println("Sie konnen abheben nur im Zustand " + statusInserted);
+		}
 	}
 
 	/**
@@ -138,6 +150,7 @@ public class CashMachine extends Account {
 						+ ".");
 				System.out.println("Your pin is " + pin + ".");
 				System.out.println("Your bank deposit is " + bankDeposit + ".");
+				System.out.println("Your credit is " + overdraft + ".");
 			} else {
 				try {
 					System.out.println("");

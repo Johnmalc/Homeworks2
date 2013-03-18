@@ -53,6 +53,7 @@ public class Main {
 		 */
 		a.enterPin(card1Pin);
 		a.accountStatement();
+		a.withdraw(10);
 		//a.ejectCashCard();
 
 		// acounts.add(account1);
