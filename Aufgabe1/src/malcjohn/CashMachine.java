@@ -64,48 +64,52 @@ public class CashMachine extends Account {
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
 	 */
 	public void insertCashCard(CashCard cashCard) {
-		if (status.equals(Karte.READY)) {
-			setStatus(Karte.CARD_INSERTED);
-			System.out
-					.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
-			System.out.print(getStatus());
-			System.out.println(" gesetzt");
-			try {
-				int accountZumUberprufen = cashCard.getAccountNumber();
-			} catch (Exception msg) {
-				System.out.println(msg.getMessage());
+		if (cashCard != null) {
+			if (status.equals(Karte.READY)) {
+				setStatus(Karte.CARD_INSERTED);
+				System.out
+						.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
+				System.out.print(getStatus());
+				System.out.println(" gesetzt");
+				try {
+					int accountZumUberprufen = cashCard.getAccountNumber();
+				} catch (Exception msg) {
+					System.out.println(msg.getMessage());
+				}
+
+				int pinZumUberprufen = cashCard.getPin();
+
+				// fur testing purposes
+				System.out.println(pinZumUberprufen);
+				System.out.println(accountZumUberprufen);
+
+				/**
+				 * Hier geht es falsch muss bearbeitet werden.
+				 */
+
+				// int zea = accounts[0].getAccountNumber();
+				// oder accounts.lenght
+				// for (int b = 0; b < accounts.length; b++) {
+				// if (accountZumUberprufen == account.getAccountNumber()
+				// && account.getPin() == pinZumUberprufen) {
+				// // Zum uberprufung welches nummer man zeigt
+				// // System.out.println(accounts[0].getAccountNumber());
+				// System.out.println("Account nummer und Pin SIND gleich ");
+				// } else {
+				// System.out.println("Account nummer sind und pin NICHT gleich ");
+				// }
+				// }
+
+			} else {
+				setStatus(statusInserted);
+				System.out
+						.print("Ihre karte ist schon im Automat. Status ist auf ");
+				System.out.print(getStatus());
+				System.out.print(" gesetzt");
+				System.out.println("");
 			}
-
-			int pinZumUberprufen = cashCard.getPin();
-
-			// fur testing purposes
-			System.out.println(pinZumUberprufen);
-			System.out.println(accountZumUberprufen);
-
-			/**
-			 * Hier geht es falsch muss bearbeitet werden.
-			 */
-
-			// int zea = accounts[0].getAccountNumber();
-			// oder accounts.lenght
-			// for (int b = 0; b < accounts.length; b++) {
-			// if (accountZumUberprufen == account.getAccountNumber()
-			// && account.getPin() == pinZumUberprufen) {
-			// // Zum uberprufung welches nummer man zeigt
-			// // System.out.println(accounts[0].getAccountNumber());
-			// System.out.println("Account nummer und Pin SIND gleich ");
-			// } else {
-			// System.out.println("Account nummer sind und pin NICHT gleich ");
-			// }
-			// }
-
 		} else {
-			setStatus(statusInserted);
-			System.out
-					.print("Ihre karte ist schon im Automat. Status ist auf ");
-			System.out.print(getStatus());
-			System.out.print(" gesetzt");
-			System.out.println("");
+			System.out.println("Sie haben ihre karte ausgemacht");
 		}
 	}
 
@@ -120,18 +124,19 @@ public class CashMachine extends Account {
 	 * 
 	 */
 	public void withdraw(double amount) {
-		if(status.equals(statusCorrect)) {
+		if (status.equals(statusCorrect)) {
 			setStatus(statusInserted);
 		}
 		if (status.equals(statusInserted)) {
-			if(overdraft > bankDeposit) {
+			if (amount > overdraft) {
 				System.err.println("Sie konnen das nicht machen");
-			}else {
-				double neues = bankDeposit-amount;
+			} else {
+				double neues = bankDeposit - amount;
 				System.out.println("Ihres neuen zustand ist " + neues);
 			}
-		}else {
-			System.out.println("Sie konnen abheben nur im Zustand " + statusInserted);
+		} else {
+			System.out.println("Sie konnen abheben nur im Zustand "
+					+ statusInserted);
 		}
 	}
 
@@ -171,28 +176,27 @@ public class CashMachine extends Account {
 	 * Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole
 	 * protokolliert werden.
 	 */
-	// TODO
 	public void ejectCashCard() {
 		System.out.println(getStatus());
 
 		if (getStatus() != statusInserted) {
 			// nur statuse wurde jetzt geandert
-			setStatus(statusReady);
-			System.out.print("Sie haben den status auf");
-			System.out.print(getStatus());
-			System.out.println(" gesetzt");
-
-			insertCashCard(null);
-			System.out.println("Sie haben ihre karte ausgemacht!");
+			// setStatus(statusReady);
+			// System.out.print("Sie haben den status auf");
+			// System.out.print(getStatus());
+			// System.out.println(" gesetzt");
+			// insertCashCard(null);
+			// System.out.println("Sie haben ihre karte ausgemacht!");
+			System.out.println("Ihre karte ist auf anderen Status gesetzt");
 		} else {
 			// nur statuse wurde jetzt geandert
 			setStatus(statusReady);
-			System.out.print("Sie haben den status auf");
+			System.out.print("Sie haben d status auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
+			System.out.println("Sie haben ihre karte ausgemacht!");
 
 			insertCashCard(null);
-			System.out.println("Sie haben ihre karte ausgemacht!");
 		}
 
 	}
