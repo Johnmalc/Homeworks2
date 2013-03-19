@@ -52,10 +52,10 @@ public class CashMachine extends Account {
 
 	@SuppressWarnings("unused")
 	private Karte statusReady = Karte.READY;
-	private Karte statusInserted = Karte.CARD_INSERTED;
+	private Karte statusCardInserted = Karte.CARD_INSERTED;
 
-	private Karte statusCorrect = Karte.PIN_CORRECT;
-	private Karte statusWrong = Karte.PIN_WRONG;
+	private Karte statusPinCorrect = Karte.PIN_CORRECT;
+	private Karte statusPinWrong = Karte.PIN_WRONG;
 
 	/**
 	 * <h2>Karteneingabe</h2> Nur im Zustand READY konnen die Informationen der
@@ -71,21 +71,39 @@ public class CashMachine extends Account {
 						.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
-				try {
-					int accountZumUberprufen = cashCard.getAccountNumber();
-				} catch (Exception msg) {
-					System.out.println(msg.getMessage());
-				}
+				int accountZumUberprufen = cashCard.getAccountNumber();
 
 				int pinZumUberprufen = cashCard.getPin();
 
 				// fur testing purposes
-				System.out.println(pinZumUberprufen);
-				System.out.println(accountZumUberprufen);
+				System.out.println("Ihren Pin von Karte ist "
+						+ pinZumUberprufen);
+				System.out.println("Ihren Account von Karte ist "
+						+ accountZumUberprufen);
 
 				/**
 				 * Hier geht es falsch muss bearbeitet werden.
 				 */
+				if (accountZumUberprufen != cashCard.getAccountNumber()) {
+					System.out
+							.println("Ihre account Nummer mit dem Karte nummer stimmt nicht uberein");
+					System.out
+							.println("Keine weitere methoden ausfuhrbar > Karte wird ausgeworfen");
+					ejectCashCard();
+				} else {
+					System.out
+							.println("Ihre account Nummer mit dem Karte nummer STIMMT uberein");
+					if (pinZumUberprufen != cashCard.getPin()) {
+						setStatus(statusPinWrong);
+						System.out
+								.println("Ihre Pin Nummer mit dem Pin der Karte stimmt nicht uberein");
+						System.out
+								.println("Keine weitere methoden ausfuhrbar (wegen"
+										+ statusPinWrong
+										+ "> Karte wird ausgeworfen");
+						ejectCashCard();
+					}
+				}
 
 				// int zea = accounts[0].getAccountNumber();
 				// oder accounts.lenght
@@ -101,7 +119,7 @@ public class CashMachine extends Account {
 				// }
 
 			} else {
-				setStatus(statusInserted);
+				setStatus(statusCardInserted);
 				System.out
 						.print("Ihre karte ist schon im Automat. Status ist auf ");
 				System.out.print(getStatus());
@@ -124,10 +142,10 @@ public class CashMachine extends Account {
 	 * 
 	 */
 	public void withdraw(double amount) {
-		if (status.equals(statusCorrect)) {
-			setStatus(statusInserted);
+		if (status.equals(statusPinCorrect)) {
+			setStatus(statusCardInserted);
 		}
-		if (status.equals(statusInserted)) {
+		if (status.equals(statusCardInserted)) {
 			if (amount > overdraft) {
 				System.err.println("Sie konnen das nicht machen");
 			} else {
@@ -136,7 +154,7 @@ public class CashMachine extends Account {
 			}
 		} else {
 			System.out.println("Sie konnen abheben nur im Zustand "
-					+ statusInserted);
+					+ statusCardInserted);
 		}
 	}
 
@@ -148,7 +166,7 @@ public class CashMachine extends Account {
 	 */
 
 	public void accountStatement() {
-		if (getStatus() != statusWrong) {
+		if (getStatus() != statusPinWrong) {
 
 			if (status == getStatus()) {
 				System.out.println("Your account number is " + accountNumber
@@ -177,9 +195,10 @@ public class CashMachine extends Account {
 	 * protokolliert werden.
 	 */
 	public void ejectCashCard() {
-		System.out.println(getStatus());
 
-		if (getStatus() != statusInserted) {
+		System.out.println(getStatus()); // pin wrong
+
+		if (getStatus() != statusCardInserted) {
 			// nur statuse wurde jetzt geandert
 			// setStatus(statusReady);
 			// System.out.print("Sie haben den status auf");
@@ -187,7 +206,8 @@ public class CashMachine extends Account {
 			// System.out.println(" gesetzt");
 			// insertCashCard(null);
 			// System.out.println("Sie haben ihre karte ausgemacht!");
-			System.out.println("Ihre karte ist auf anderen Status gesetzt");
+			// System.out.println("Ihre karte ist auf anderen Status gesetzt");
+
 		} else {
 			// nur statuse wurde jetzt geandert
 			setStatus(statusReady);
@@ -197,6 +217,7 @@ public class CashMachine extends Account {
 			System.out.println("Sie haben ihre karte ausgemacht!");
 
 			insertCashCard(null);
+
 		}
 
 	}
@@ -213,26 +234,27 @@ public class CashMachine extends Account {
 	 */
 	public void enterPin(int pin) {
 		if (account.getPin() == pin) {
-			setStatus(statusCorrect);
-			System.out.println("Sie haben folgenden Pin eingegeben:"
-					+ account.getPin());
+			setStatus(statusPinCorrect);
+			System.out
+					.println("Sie haben folgenden Pin fur ihre karte eingegeben:"
+							+ account.getPin());
 			System.out
 					.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
 		} else {
-			setStatus(statusWrong);
-			System.out.println("Sie haben folgenden Pin eingegeben:"
-					+ account.getPin());
+			setStatus(statusPinWrong);
+			System.out.println("Der Richtige pin lautet:" + account.getPin());
 			System.out
 					.print("Sie haben Falschen pin eingegen. Status wird auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
-			// TODO
-			if (getStatus() == statusWrong) {
+			if (getStatus() == statusPinWrong) {
 
 				System.out
 						.println("sie konnen keine weitere methodone ausfuhren");
+				System.out.println("Ihre karte word ausgeworfen");
+				ejectCashCard();
 
 			}
 

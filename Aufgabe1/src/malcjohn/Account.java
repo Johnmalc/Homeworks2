@@ -17,7 +17,8 @@ public class Account extends Exception {
 	/**
 	 * Speicherung der Kontonummer
 	 * 
-	 * @param value accountNumber
+	 * @param value
+	 *            accountNumber
 	 */
 	public void setAccountNumber(int value) {
 		this.accountNumber = value;
@@ -30,7 +31,8 @@ public class Account extends Exception {
 	/**
 	 * Dispokredit des Kontos
 	 * 
-	 * @param value2 overdraft
+	 * @param value2
+	 *            overdraft
 	 */
 	public void setOverdraft(double value2) {
 		this.overdraft = value2;
@@ -43,7 +45,8 @@ public class Account extends Exception {
 	/**
 	 * die Hohe des Kontoguthabens
 	 * 
-	 * @param value3 bankDeposit
+	 * @param value3
+	 *            bankDeposit
 	 */
 	public void setBankDeposit(double value3) {
 		this.bankDeposit = value3;
@@ -56,10 +59,20 @@ public class Account extends Exception {
 	/**
 	 * Set pin for Account class
 	 * 
-	 * @param value4 PIN
+	 * @param value4
+	 *            PIN
 	 */
 	public void setPin(int value4) {
-		this.pin = value4;
+		int length = String.valueOf(value4).length();
+		if (length == 4) {
+			this.pin = value4;
+		} else {
+			try {
+				System.out.println("Sie mussen nur 4 stellige nummer eingeben");
+			} finally {
+				System.exit(0);
+			}
+		}
 	}
 
 	public int getPin() {

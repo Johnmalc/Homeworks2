@@ -1,10 +1,9 @@
 package malcjohn;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		try {
 			// Testing one account
@@ -15,16 +14,23 @@ public class Main {
 			 * card1.setPin() falsches pin eingeben, dann wie nach der aufgabe,
 			 * kriegen sie scheiss
 			 */
+			Scanner scanYourNumber = new Scanner(System.in);
 
 			Account account1 = new Account();
-			account1.setAccountNumber(123159147);
-			account1.setBankDeposit(56000);
-			account1.setOverdraft(35000);
-			account1.setPin(1234);
+			System.out.println("Geben sie ihren account nummer");
+			account1.setAccountNumber(scanYourNumber.nextInt());
+			System.out.println("Geben sie ihren bank deposit");
+			account1.setBankDeposit(scanYourNumber.nextInt());
+			System.out.println("Geben sie dispo Kredit (overdraft) deposit");
+			account1.setOverdraft(scanYourNumber.nextInt());
+			System.out.println("Geben sie ihres Pin. Es muss 4 stellig sein");
+			account1.setPin(scanYourNumber.nextInt());
 
 			CashCard card1 = new CashCard();
-			card1.setAccountNumber(123159147);
-			card1.setPin(1234);
+			int cardNumber = account1.getAccountNumber();
+			card1.setAccountNumber(cardNumber);
+			System.out.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
+			card1.setPin(scanYourNumber.nextInt());
 			int card1Pin = card1.getPin();
 
 			/**
@@ -110,6 +116,7 @@ public class Main {
 			// CashMachine acc1 = new CashMachine(d);
 			// CashCard a = acc1.getCashCard();
 			// System.out.println(a);
+			scanYourNumber.close();
 
 		} catch (Exception msg) {
 			System.out.println("Fehler, etwas is passiert");
