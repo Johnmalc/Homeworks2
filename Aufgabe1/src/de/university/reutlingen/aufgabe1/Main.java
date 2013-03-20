@@ -1,5 +1,6 @@
 package de.university.reutlingen.aufgabe1;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -24,23 +25,25 @@ public class Main {
 			switch (yourNumber) {
 			case 1:
 				Account account1 = new Account();
+				
 				System.out.println("Geben sie ihren account nummer");
 				account1.setAccountNumber(scanYourNumber.nextInt());
+				
 				System.out.println("Geben sie ihren bank deposit");
 				account1.setBankDeposit(scanYourNumber.nextInt());
-				System.out
-						.println("Geben sie dispo Kredit (overdraft) deposit");
+				
+				System.out.println("Geben sie dispo Kredit (overdraft) deposit");
 				account1.setOverdraft(scanYourNumber.nextInt());
-				System.out
-						.println("Geben sie ihres Pin. Es muss 4 stellig sein");
+				
+				System.out.println("Geben sie ihres Pin. Es muss 4 stellig sein");
 				account1.setPin(scanYourNumber.nextInt());
 				
 				//Erstellungs eines CashCard objects
 				CashCard card1 = new CashCard();
 				int cardNumber = account1.getAccountNumber();
 				card1.setAccountNumber(cardNumber);
-				System.out
-						.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
+				
+				System.out.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
 				card1.setPin(scanYourNumber.nextInt());
 				//Speichert Pin der Karte in card1pin variable
 				int card1Pin = card1.getPin();
@@ -109,7 +112,8 @@ public class Main {
 			default:
 				System.out.println("Nur 1 oder 2 eingeben");
 			}
-
+		}catch (NoSuchElementException msg) {
+			System.out.println("Keinen Element eingesetzt" + msg.getMessage());
 		} catch (IllegalStateException msg) {
 			System.out.println(" Scanner closed" + msg.getMessage());
 		} catch (Error msg) {

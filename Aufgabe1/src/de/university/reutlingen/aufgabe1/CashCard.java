@@ -3,12 +3,13 @@ package de.university.reutlingen.aufgabe1;
 public class CashCard {
 	public int accountNumber;
 	public int pin;
-
+	
+	// construktor
 	public CashCard() {
 		
 	}
 
-	// Methods
+	// Methods for account and pin (both set and get)
 	public void setAccountNumber(int value) {
 		this.accountNumber = value;
 	}

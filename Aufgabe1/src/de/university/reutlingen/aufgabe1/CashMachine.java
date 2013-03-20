@@ -21,13 +21,16 @@ public class CashMachine extends Account {
 	private enum Karte {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
 	}
-
+	/**
+	 * 
+	 * @return status
+	 */
 	public Karte getStatus() {
 		return status;
 	}
 
 	/**
-	 * <h2>Setzt den Status des Emums</h2 Kopiert aus dem
+	 * <h2>Setzt den Status des Emums</h2 Kopiert (Copyright - not mine) aus dem
 	 * http://www.java-forum.org/java-basics-anfaenger-themen/87727-enum-dann-
 	 * setter -setzen.html
 	 */
@@ -41,7 +44,6 @@ public class CashMachine extends Account {
 
 	private Karte statusReady = Karte.READY;
 	private Karte statusCardInserted = Karte.CARD_INSERTED;
-
 	private Karte statusPinCorrect = Karte.PIN_CORRECT;
 	private Karte statusPinWrong = Karte.PIN_WRONG;
 
@@ -52,13 +54,17 @@ public class CashMachine extends Account {
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
 	 */
 	public void insertCashCard(CashCard cashCard) {
+		// gleicht ab, ob ich insertCashCard(null) nicht habe, wenn ja, dann ist die karte ausgemacht
 		if (cashCard != null) {
+			// wenn der status (aus dem Konstruktor ready ist, folge ... Aber wenn nicht dann ist die karte schon im automat
 			if (status.equals(Karte.READY)) {
+				// wenn staus im Konstruktor ready ist, dann setze ihn auf card-inserted
 				setStatus(Karte.CARD_INSERTED);
-				System.out
-						.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
+				// zeige den staus
+				System.out.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
+				// Speicherung der karte nummer und pins zum spaterem Uberprufen
 				int accountZumUberprufen = cashCard.getAccountNumber();
 				int pinZumUberprufen = cashCard.getPin();
 
@@ -67,22 +73,22 @@ public class CashMachine extends Account {
 						+ pinZumUberprufen);
 				System.out.println("Ihren Account von Karte ist "
 						+ accountZumUberprufen);
-
+				// Pruft die Gleichheit: ob der der gespeicherte account UNgleich mit dem eckarte account ist
 				if (accountZumUberprufen != cashCard.getAccountNumber()) {
-					System.out
-							.println("Ihre account Nummer mit dem Karte nummer stimmt nicht uberein");
-					System.out
-							.println("Keine weitere methoden ausfuhrbar > Karte wird ausgeworfen");
+					/* Kann nie falsch sein, TODO ana, nado dodelat
+					 * es kommt hier gar nicht, weill es wird eingegebene account number 
+					 * in die karte nummber ubergeben
+					 * Ganz wichtig: Die karte account number wird immer das gleiche, der als account number eingegeben was
+					 */
+					System.out.println("Ihre account Nummer mit dem Karte nummer stimmt nicht uberein");
+					System.out.println("Keine weitere methoden ausfuhrbar > Karte wird ausgeworfen");
 					ejectCashCard();
 				} else {
-					System.out
-							.println("Ihre account Nummer mit dem Karte nummer STIMMT uberein");
+					System.out.println("Ihre account Nummer mit dem Karte nummer STIMMT uberein");
 					if (pinZumUberprufen != cashCard.getPin()) {
 						setStatus(statusPinWrong);
-						System.out
-								.println("Ihre Pin Nummer mit dem Pin der Karte stimmt nicht uberein");
-						System.out
-								.println("Keine weitere methoden ausfuhrbar (wegen"
+						System.out.println("Ihre Pin Nummer mit dem Pin der Karte stimmt nicht uberein");
+						System.out.println("Keine weitere methoden ausfuhrbar (wegen"
 										+ statusPinWrong
 										+ "> Karte wird ausgeworfen");
 						ejectCashCard();
@@ -103,14 +109,15 @@ public class CashMachine extends Account {
 				// }
 
 			} else {
+				// wenn der status un ready ist, dann ist card inserted
 				setStatus(statusCardInserted);
-				System.out
-						.print("Ihre karte ist schon im Automat. Status ist auf ");
+				System.out.print("Ihre karte ist schon im Automat. Status ist auf ");
 				System.out.print(getStatus());
 				System.out.print(" gesetzt");
 				System.out.println("");
 			}
 		} else {
+			// karte: insertCashCard(null) ist, dann folgt diese 
 			System.out.println("Karte (Automat ist nicht ready) ist bereits ausgemacht");
 		}
 	}
@@ -126,20 +133,22 @@ public class CashMachine extends Account {
 	 * 
 	 */
 	public void withdraw(double amount) {
+		// wenn der Pin correct ist, setze auf card inserted
 		if (status.equals(statusPinCorrect)) {
 			setStatus(statusCardInserted);
 		}
+		// wenn status cardinserted ist, dann prufe ob das was ich aus dem Automat will nicht grosser ist als mein Overdraft
 		if (status.equals(statusCardInserted)) {
 			if (amount > overdraft) {
-				System.err
-						.println("Entweder wollen sie zu viel geld abheben und das konnen sie nicht. ");
-				System.err
-						.println("Oder sie haben schon ihre Karte ausgemacht ");
+				System.err.println("Entweder wollen sie zu viel geld abheben und das konnen sie nicht. ");
+				System.err.println("Oder sie haben schon ihre Karte ausgemacht ");
 			} else {
-				double neues = bankDeposit - amount;
-				System.out.println("Ihres neuen zustand ist " + neues);
+				// wenn amount kleiner ist als overdraft, dann speichere unter neuesBetrag der neue restbetrag
+				double neuesBetrag = bankDeposit - amount;
+				System.out.println("Ihres neuen zustand ist " + neuesBetrag);
 			}
 		} else {
+			// wenn der status nicht card inserted ist , dann fuhre folgendes
 			System.out.println("Sie konnen abheben nur im Zustand "
 					+ statusCardInserted);
 		}
