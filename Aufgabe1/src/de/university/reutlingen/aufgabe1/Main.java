@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 	/**
+	 * TODO
 	 * Zum hinzufugen
 	 * @author 
 	 * @author 
@@ -18,9 +19,9 @@ public class Main {
 			 * kriegen sie nichts
 			 */
 			Scanner scanYourNumber = new Scanner(System.in);
-			System.out
-					.println("An welchen account wollen nutzen (sprich save&read) - 1 oder 2 ");
+			System.out.println("An welchen account wollen nutzen (sprich save&read) - 1 oder 2 ");
 			int yourNumber = scanYourNumber.nextInt();
+			
 			// Wahl eines accounts
 			switch (yourNumber) {
 			case 1:
@@ -40,23 +41,27 @@ public class Main {
 				
 				//Erstellungs eines CashCard objects
 				CashCard card1 = new CashCard();
+				
+				// speichert die gleiche nummer des account in karte. Damit mit ihre immer verbindet.  
 				int cardNumber = account1.getAccountNumber();
 				card1.setAccountNumber(cardNumber);
 				
 				System.out.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
 				card1.setPin(scanYourNumber.nextInt());
+				
 				//Speichert Pin der Karte in card1pin variable
 				int card1Pin = card1.getPin();
+				
 				// In CashMaschine wird objekt1 ubergeben und gespeichert
 				CashMachine a = new CashMachine(account1);
 				/*
-				 * Wenn diese Methode auskommentiert wird, dann informationen
-				 * angezeigt Und pin uberpruft
+				 * Wenn diese Methode kommentiert wird, werden informationen
+				 * angezeigt (und immer mit dem 0 betrag) und pin uberpruft (das muss noch in cashmaschine TODO sein)
 				 */
 				a.insertCashCard(card1);
 
 				/*
-				 * <b>Weitere Moglichkeit zum andern</b> Wenn diese methode
+				 * Weitere Moglichkeit zum andern Wenn diese methode
 				 * enterPin kommentiert wird, dann keine karte im Automat und
 				 * keine Informationen angezeigt werden Wenn card inserted,dann
 				 * werden nur information angezeigt. Die Uberprufung wird nicht
@@ -113,7 +118,7 @@ public class Main {
 				System.out.println("Nur 1 oder 2 eingeben");
 			}
 		}catch (NoSuchElementException msg) {
-			System.out.println("Keinen Element eingesetzt" + msg.getMessage());
+			System.out.println("Keinen Element gesetzt" + msg.getMessage());
 		} catch (IllegalStateException msg) {
 			System.out.println(" Scanner closed" + msg.getMessage());
 		} catch (Error msg) {

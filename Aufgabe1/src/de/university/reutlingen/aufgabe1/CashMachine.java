@@ -219,26 +219,23 @@ public class CashMachine extends Account {
 	 * @param FINISHED
 	 */
 	public void enterPin(int pin) {
+		//TODO nado sdelat: if method was run, then you can do this, BUT if not, you can check the PIN
 		if (account.getPin() == pin) {
 			setStatus(statusPinCorrect);
-			System.out
-					.println("Sie haben folgenden Pin fur ihre karte eingegeben:"
+			System.out.println("Sie haben folgenden Pin fur ihre karte eingegeben:"
 							+ account.getPin());
-			System.out
-					.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
+			System.out.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
 		} else {
 			setStatus(statusPinWrong);
 			System.out.println("Der Richtige pin lautet:" + account.getPin());
-			System.out
-					.print("Sie haben Falschen pin eingegen. Status wird auf ");
+			System.out.print("Sie haben Falschen pin eingegen. Status wird auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
 			if (getStatus() == statusPinWrong) {
 
-				System.out
-						.println("sie konnen keine weitere methodone ausfuhren");
+				System.out.println("sie konnen keine weitere methodone ausfuhren");
 				System.out.println("Ihre karte word ausgeworfen");
 				ejectCashCard();
 
