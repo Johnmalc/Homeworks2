@@ -21,7 +21,7 @@ public class Account extends Exception {
 	 *            accountNumber
 	 */
 	public void setAccountNumber(int value) {
-		this.accountNumber = value;
+		Account.accountNumber = value;
 	}
 
 	public int getAccountNumber() {
@@ -35,7 +35,7 @@ public class Account extends Exception {
 	 *            overdraft
 	 */
 	public void setOverdraft(double value2) {
-		this.overdraft = value2;
+		Account.overdraft = value2;
 	}
 
 	public double getOverdraft() {
@@ -49,7 +49,7 @@ public class Account extends Exception {
 	 *            bankDeposit
 	 */
 	public void setBankDeposit(double value3) {
-		this.bankDeposit = value3;
+		Account.bankDeposit = value3;
 	}
 
 	public double getBankDeposit() {
@@ -65,7 +65,7 @@ public class Account extends Exception {
 	public void setPin(int value4) {
 		int length = String.valueOf(value4).length();
 		if (length == 4) {
-			this.pin = value4;
+			Account.pin = value4;
 		} else {
 			try {
 				System.out.println("Sie mussen nur 4 stellige nummer eingeben");

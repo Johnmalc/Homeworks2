@@ -4,25 +4,18 @@ public class CashMachine extends Account {
 	Account account;
 	Karte status;
 	int accountZumUberprufen;
-	int r = 0;
+	//int r = 0;
+	CashCard cashCard;
 
-	public CashMachine(Account accountX) {
-		/**
-		 * hier wenn man auf Card_inserted macht, dann keine Informationen uber
-		 * Account ?tested? Ja, Nur im Moment Karte.READY; card inse nicht
-		 * tested
-		 */
+	public CashMachine(Account account1) {
 		status = Karte.READY;
 		// status = Karte.CARD_INSERTED;
-		this.account = accountX;
+		this.account = account1;
 	}
 
 	public CashMachine() {
 
 	}
-
-	CashCard cashCard;
-	Account[] accounts = new Account[5];
 
 	/**
 	 * Enumeration
@@ -50,7 +43,6 @@ public class CashMachine extends Account {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private Karte statusReady = Karte.READY;
 	private Karte statusCardInserted = Karte.CARD_INSERTED;
 
@@ -72,7 +64,6 @@ public class CashMachine extends Account {
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
 				int accountZumUberprufen = cashCard.getAccountNumber();
-
 				int pinZumUberprufen = cashCard.getPin();
 
 				// fur testing purposes
@@ -81,9 +72,6 @@ public class CashMachine extends Account {
 				System.out.println("Ihren Account von Karte ist "
 						+ accountZumUberprufen);
 
-				/**
-				 * Hier geht es falsch muss bearbeitet werden.
-				 */
 				if (accountZumUberprufen != cashCard.getAccountNumber()) {
 					System.out
 							.println("Ihre account Nummer mit dem Karte nummer stimmt nicht uberein");
@@ -127,7 +115,7 @@ public class CashMachine extends Account {
 				System.out.println("");
 			}
 		} else {
-			System.out.println("Sie haben ihre karte ausgemacht");
+			System.out.println("Karte ist bereits ausgemacht");
 		}
 	}
 
@@ -147,7 +135,10 @@ public class CashMachine extends Account {
 		}
 		if (status.equals(statusCardInserted)) {
 			if (amount > overdraft) {
-				System.err.println("Sie konnen das nicht machen");
+				System.err
+						.println("Entweder wollen sie zu viel geld abheben und das konnen sie nicht. ");
+				System.err
+						.println("Oder sie haben schon ihre Karte ausgemacht ");
 			} else {
 				double neues = bankDeposit - amount;
 				System.out.println("Ihres neuen zustand ist " + neues);
@@ -196,18 +187,10 @@ public class CashMachine extends Account {
 	 */
 	public void ejectCashCard() {
 
-		System.out.println(getStatus()); // pin wrong
+		// System.out.println(getStatus()); // pin wrong
 
 		if (getStatus() != statusCardInserted) {
-			// nur statuse wurde jetzt geandert
-			// setStatus(statusReady);
-			// System.out.print("Sie haben den status auf");
-			// System.out.print(getStatus());
-			// System.out.println(" gesetzt");
-			// insertCashCard(null);
-			// System.out.println("Sie haben ihre karte ausgemacht!");
-			// System.out.println("Ihre karte ist auf anderen Status gesetzt");
-
+			System.out.println("");
 		} else {
 			// nur statuse wurde jetzt geandert
 			setStatus(statusReady);
@@ -217,9 +200,7 @@ public class CashMachine extends Account {
 			System.out.println("Sie haben ihre karte ausgemacht!");
 
 			insertCashCard(null);
-
 		}
-
 	}
 
 	/**
@@ -257,7 +238,6 @@ public class CashMachine extends Account {
 				ejectCashCard();
 
 			}
-
 		}
 	}
 }

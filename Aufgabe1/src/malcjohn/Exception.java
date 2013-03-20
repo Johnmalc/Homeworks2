@@ -4,7 +4,6 @@ package malcjohn;
  * @author johnmalc
  * @author heiko
  * @author thomas
- * (@author Anastasia)
  * 
  */
 @SuppressWarnings("serial")

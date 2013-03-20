@@ -7,9 +7,9 @@ public class Main {
 		CashCard karte = new CashCard();
 
 		karte.setAccountNumber(20012);
-		automat.aVier.setAccountNumber(20012);
-		automat.aVier.setBankDeposit(5000);
-		automat.aVier.setOverdraft(2000);
+		automat.aSechs.setAccountNumber(20012);
+		automat.aSechs.setBankDeposit(5000);
+		automat.aSechs.setOverdraft(2000);
 
 		automat.insertCashCard(karte);
 		automat.accountStatement();

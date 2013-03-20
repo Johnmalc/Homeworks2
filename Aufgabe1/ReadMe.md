@@ -1,4 +1,4 @@
-This is an ReadMe file for Aufgabe 1. This was done in the group of 3 people.
+This is an ReadMe file for Aufgabe 1. This was done in the group of 3 people (and mainly  me !)
 
 The task was (in germany):
 
@@ -117,6 +117,11 @@ Account muss pin haben !!!! damit pin karte verglichen werden kann
 Eigene Exception klasse schreiben
 
 Need to use static atributes
+
+**Update zu 20.3 ( 7 tage vor abgabe)**
+
+- immer noch nicht zu array gekomment > Mussen irgendwelchen hack ausdenken
+- Kleines menu mit switch. Array !!!!!!!!!!!!!!!!!!!!!!!!!! Liste ware besser
 
 **Update zu 17.3 (9 tage vor der abgabe)**
 
