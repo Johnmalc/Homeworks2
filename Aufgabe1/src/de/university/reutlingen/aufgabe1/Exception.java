@@ -1,12 +1,9 @@
-package malcjohn;
+package de.university.reutlingen.aufgabe1;
 
 /**
  * @author johnmalc
- * @author heiko
- * @author thomas
  * 
  */
-@SuppressWarnings("serial")
 public class Exception extends IllegalStateException {
 	String fehler;
 

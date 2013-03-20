@@ -1,4 +1,4 @@
-package malcjohn;
+package de.university.reutlingen.aufgabe1;
 
 public class CashMachine extends Account {
 	Account account;
@@ -13,16 +13,12 @@ public class CashMachine extends Account {
 		this.account = account1;
 	}
 
-	public CashMachine() {
-
-	}
-
 	/**
 	 * Enumeration
 	 * http://javarevisited.blogspot.cz/2011/08/enum-in-java-example-
 	 * tutorial.html
 	 */
-	public enum Karte {
+	private enum Karte {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
 	}
 
@@ -115,7 +111,7 @@ public class CashMachine extends Account {
 				System.out.println("");
 			}
 		} else {
-			System.out.println("Karte ist bereits ausgemacht");
+			System.out.println("Karte (Automat ist nicht ready) ist bereits ausgemacht");
 		}
 	}
 

@@ -1,9 +1,13 @@
-package malcjohn;
+package de.university.reutlingen.aufgabe1;
 
 import java.util.Scanner;
 
 public class Main {
-
+	/**
+	 * Zum hinzufugen
+	 * @author 
+	 * @author 
+	 */
 	public static void main(String[] args) {
 		try {
 
@@ -16,7 +20,7 @@ public class Main {
 			System.out
 					.println("An welchen account wollen nutzen (sprich save&read) - 1 oder 2 ");
 			int yourNumber = scanYourNumber.nextInt();
-
+			// Wahl eines accounts
 			switch (yourNumber) {
 			case 1:
 				Account account1 = new Account();
@@ -30,15 +34,17 @@ public class Main {
 				System.out
 						.println("Geben sie ihres Pin. Es muss 4 stellig sein");
 				account1.setPin(scanYourNumber.nextInt());
-
+				
+				//Erstellungs eines CashCard objects
 				CashCard card1 = new CashCard();
 				int cardNumber = account1.getAccountNumber();
 				card1.setAccountNumber(cardNumber);
 				System.out
 						.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
 				card1.setPin(scanYourNumber.nextInt());
+				//Speichert Pin der Karte in card1pin variable
 				int card1Pin = card1.getPin();
-
+				// In CashMaschine wird objekt1 ubergeben und gespeichert
 				CashMachine a = new CashMachine(account1);
 				/*
 				 * Wenn diese Methode auskommentiert wird, dann informationen
@@ -53,8 +59,10 @@ public class Main {
 				 * werden nur information angezeigt. Die Uberprufung wird nicht
 				 * statfinden. Sie konnen auch hier die withdraw nicht nutzen Am
 				 * besten testen mit mehr als 1000000 oder 10, sieht man
-				 * ergebniss ?tested? withdraw - ja beides ?tested? statement -
-				 * ja beides ?tested? pin -
+				 * ergebniss 
+				 * ?tested? withdraw - ja beides 
+				 * ?tested? statement -ja beides 
+				 * ?tested? pin - jae
 				 */
 				a.enterPin(card1Pin);
 				a.accountStatement();
@@ -66,7 +74,7 @@ public class Main {
 
 			case 2:
 				/*
-				 * Hier sind schon kommentare weggelassen ! Waren gleich
+				 * Hier sind schon kommentare weggelassen ! Waeren gleich
 				 */
 				Account account2 = new Account();
 				System.out.println("Geben sie ihren account nummer");

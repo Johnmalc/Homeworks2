@@ -1,4 +1,4 @@
-package malcjohn;
+package de.university.reutlingen.aufgabe1;
 
 public class Account extends Exception {
 	public static int accountNumber;
@@ -10,9 +10,6 @@ public class Account extends Exception {
 	public Account() {
 
 	}
-
-	// Methods for AccountNumber, BankDeposit, Overdraft and
-	// Pin Always both, set and get methods.
 
 	/**
 	 * Speicherung der Kontonummer

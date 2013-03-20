@@ -1,4 +1,4 @@
-package malcjohn;
+package de.university.reutlingen.aufgabe1;
 
 public class CashCard {
 	public int accountNumber;
