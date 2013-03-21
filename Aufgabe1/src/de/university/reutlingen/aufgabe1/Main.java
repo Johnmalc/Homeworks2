@@ -56,7 +56,7 @@ public class Main {
 				CashMachine a = new CashMachine(account1);
 				/*
 				 * Wenn diese Methode kommentiert wird, werden informationen
-				 * angezeigt (und immer mit dem 0 betrag) und pin uberpruft (das muss noch in cashmaschine TODO sein)
+				 * angezeigt und pin uberpruft
 				 */
 				a.insertCashCard(card1);
 

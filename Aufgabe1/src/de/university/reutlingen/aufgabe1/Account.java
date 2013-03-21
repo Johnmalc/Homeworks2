@@ -1,10 +1,10 @@
 package de.university.reutlingen.aufgabe1;
 
 public class Account {
-	public int accountNumber;
-	public double overdraft;
-	public double bankDeposit;
-	public int pin;
+	public static int accountNumber;
+	public static double overdraft;
+	public static double bankDeposit;
+	public static int pin;
 
 	// Constructor for this class
 	public Account() {
@@ -18,7 +18,7 @@ public class Account {
 	 *            accountNumber
 	 */
 	public void setAccountNumber(int value) {
-		this.accountNumber = value;
+		Account.accountNumber = value;
 	}
 	/**
 	 * 
@@ -35,7 +35,7 @@ public class Account {
 	 *            overdraft
 	 */
 	public void setOverdraft(double value2) {
-		this.overdraft = value2;
+		Account.overdraft = value2;
 	}
 	/**
 	 * 
@@ -52,7 +52,7 @@ public class Account {
 	 *            bankDeposit
 	 */
 	public void setBankDeposit(double value3) {
-		this.bankDeposit = value3;
+		Account.bankDeposit = value3;
 	}
 	/**
 	 * @return bankDeposit
@@ -74,7 +74,7 @@ public class Account {
 		int length = String.valueOf(value4).length();
 		if (length == 4) {
 			// dann speichere mir das
-			this.pin = value4;
+			Account.pin = value4;
 		} else {
 
 			System.out.println("Sie mussen nur 4 stellige nummer eingeben");

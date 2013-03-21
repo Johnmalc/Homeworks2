@@ -5,11 +5,12 @@ public class CashMachine extends Account {
 	Karte status;
 	int accountZumUberprufen;
 	//int r = 0;
+	boolean warMethodeAusgefuhrt = false;
 	CashCard cashCard;
 
 	public CashMachine(Account account1) {
 		status = Karte.READY;
-		// status = Karte.CARD_INSERTED;
+		//status = Karte.CARD_INSERTED;
 		this.account = account1;
 	}
 
@@ -60,7 +61,10 @@ public class CashMachine extends Account {
 			if (status.equals(Karte.READY)) {
 				// wenn staus im Konstruktor ready ist, dann setze ihn auf card-inserted
 				setStatus(Karte.CARD_INSERTED);
+				// setzet auf true, damit ich spater die methode abfragen kann, ob sie ausgefuhrt wurde (in enterPin)
+				warMethodeAusgefuhrt = true;
 				// zeige den staus
+				System.out.println("----------------------------");
 				System.out.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
@@ -69,10 +73,8 @@ public class CashMachine extends Account {
 				int pinZumUberprufen = cashCard.getPin();
 
 				// fur testing purposes
-				System.out.println("Ihren Pin von Karte ist "
-						+ pinZumUberprufen);
-				System.out.println("Ihren Account von Karte ist "
-						+ accountZumUberprufen);
+				System.out.println("Ihren Pin von Karte ist " + pinZumUberprufen);
+				System.out.println("Ihren Account von Karte ist " + accountZumUberprufen);
 				// Pruft die Gleichheit: ob der der gespeicherte account UNgleich mit dem eckarte account ist
 				if (accountZumUberprufen != cashCard.getAccountNumber()) {
 					/* Kann nie falsch sein, TODO ana, nado dodelat
@@ -84,14 +86,19 @@ public class CashMachine extends Account {
 					System.out.println("Keine weitere methoden ausfuhrbar > Karte wird ausgeworfen");
 					ejectCashCard();
 				} else {
+					// wenn beides accounts ubereinstimmen
+					System.out.println("");
 					System.out.println("Ihre account Nummer mit dem Karte nummer STIMMT uberein");
 					if (pinZumUberprufen != cashCard.getPin()) {
+						// wenn pins falsch sind, mache das und karte auswerfen
 						setStatus(statusPinWrong);
 						System.out.println("Ihre Pin Nummer mit dem Pin der Karte stimmt nicht uberein");
 						System.out.println("Keine weitere methoden ausfuhrbar (wegen"
-										+ statusPinWrong
-										+ "> Karte wird ausgeworfen");
+										+ statusPinWrong + "> Karte wird ausgeworfen");
 						ejectCashCard();
+					}else {
+						// setze den status auf pin correct
+						setStatus(statusPinCorrect);
 					}
 				}
 
@@ -116,6 +123,7 @@ public class CashMachine extends Account {
 				System.out.print(" gesetzt");
 				System.out.println("");
 			}
+			
 		} else {
 			// karte: insertCashCard(null) ist, dann folgt diese 
 			System.out.println("Karte (Automat ist nicht ready) ist bereits ausgemacht");
@@ -140,8 +148,9 @@ public class CashMachine extends Account {
 		// wenn status cardinserted ist, dann prufe ob das was ich aus dem Automat will nicht grosser ist als mein Overdraft
 		if (status.equals(statusCardInserted)) {
 			if (amount > overdraft) {
-				System.err.println("Entweder wollen sie zu viel geld abheben und das konnen sie nicht. ");
-				System.err.println("Oder sie haben schon ihre Karte ausgemacht ");
+				System.out.println("");
+				System.out.println("Entweder wollen sie zu viel geld abheben und das konnen sie nicht. ");
+				System.out.println("Oder sie haben schon ihre Karte ausgemacht ");
 			} else {
 				// wenn amount kleiner ist als overdraft, dann speichere unter neuesBetrag der neue restbetrag
 				double neuesBetrag = bankDeposit - amount;
@@ -150,7 +159,7 @@ public class CashMachine extends Account {
 		} else {
 			// wenn der status nicht card inserted ist , dann fuhre folgendes
 			System.out.println("Sie konnen abheben nur im Zustand "
-					+ statusCardInserted);
+					+ statusCardInserted + " und " + statusPinCorrect);
 		}
 	}
 
@@ -162,25 +171,25 @@ public class CashMachine extends Account {
 	 */
 
 	public void accountStatement() {
+		// wenn der status NICHY pin wrong ist, fuhre aus
 		if (getStatus() != statusPinWrong) {
-
+			// frage der status ab
 			if (status == getStatus()) {
-				System.out.println("Your account number is " + accountNumber
-						+ ".");
+				// wenn der status pin correct ist, zeige die informationen
+				// System.out.println(status); test
+				System.out.println("Your account number is " + accountNumber + ".");
 				System.out.println("Your pin is " + pin + ".");
 				System.out.println("Your bank deposit is " + bankDeposit + ".");
-				System.out.println("Your credit is " + overdraft + ".");
+				System.out.println("Your credit (overdraft) is " + overdraft + ".");
+				System.out.println("");
+
 			} else {
-				try {
-					System.out.println("");
-				} finally { // finally = always
-					System.out
-							.println("Sie konnen KEINE Informationnen kriegen, weil sie keine Karte im Automat haben");
-				}
+				System.out.println("");
+				System.out.println("Sie konnen KEINE Informationnen kriegen, weil sie keine Karte im Automat haben");
+				
 			}
 		} else {
-			System.out
-					.println("Sie konnen die Informationen nicht kriegen, weil der Pin falsch ist");
+			System.out.println("Sie konnen die Informationen nicht kriegen, weil der Pin falsch ist");
 		}
 	}
 
@@ -189,21 +198,21 @@ public class CashMachine extends Account {
 	 * das Attribute cashCard wird zur Nullreferenz. Das ist nur moglich im
 	 * Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole
 	 * protokolliert werden.
+	 * @status FINISHED
 	 */
 	public void ejectCashCard() {
-
 		// System.out.println(getStatus()); // pin wrong
-
+		
 		if (getStatus() != statusCardInserted) {
+			// wenn status nicht cardinserted ist, mach dies
 			System.out.println("");
 		} else {
-			// nur statuse wurde jetzt geandert
+			// wenn status card ready ist dann setze den status karte ready + fuhre die methode mit null aus
 			setStatus(statusReady);
 			System.out.print("Sie haben d status auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
 			System.out.println("Sie haben ihre karte ausgemacht!");
-
 			insertCashCard(null);
 		}
 	}
@@ -216,30 +225,41 @@ public class CashMachine extends Account {
 	 * soll auf der Konsole protokolliert werden.
 	 * 
 	 * @param pin
-	 * @param FINISHED
+	 * @status FINISHED
 	 */
 	public void enterPin(int pin) {
-		//TODO nado sdelat: if method was run, then you can do this, BUT if not, you can check the PIN
-		if (account.getPin() == pin) {
-			setStatus(statusPinCorrect);
-			System.out.println("Sie haben folgenden Pin fur ihre karte eingegeben:"
-							+ account.getPin());
-			System.out.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
-			System.out.print(getStatus());
-			System.out.println(" gesetzt");
-		} else {
-			setStatus(statusPinWrong);
-			System.out.println("Der Richtige pin lautet:" + account.getPin());
-			System.out.print("Sie haben Falschen pin eingegen. Status wird auf ");
-			System.out.print(getStatus());
-			System.out.println(" gesetzt");
-			if (getStatus() == statusPinWrong) {
+		//if method was eject carte has been run, then you can do this, BUT if
+		// not, you can not check the PIN (method will be not executed)
+		if (warMethodeAusgefuhrt = true) {
+			// war die methode eject cart ausgefuht ?
+			if (account.getPin() == pin) {
+				// war der pin correct > setze auf pincorrect
+				setStatus(statusPinCorrect);
+				System.out.println("Sie haben folgenden Pin fur ihre karte eingegeben: "
+								+ account.getPin());
+				System.out.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
+				System.out.print(getStatus());
+				System.out.println(" gesetzt");
+				System.out.println();
 
-				System.out.println("sie konnen keine weitere methodone ausfuhren");
-				System.out.println("Ihre karte word ausgeworfen");
-				ejectCashCard();
-
+			} else {
+				// anderseits ist pin falsch
+				setStatus(statusPinWrong);
+				System.out.println("Der Richtige pin lautet: " + account.getPin());
+				System.out.print("Sie haben Falschen pin eingegen. Status wird auf ");
+				System.out.print(getStatus());
+				System.out.println(" gesetzt");
+				if (getStatus() == statusPinWrong) {
+					// wenn der pin falsch war karte wird ausgemacht, und auf console geschrieben,dass das nicht geht
+					System.out.println("sie konnen keine weitere methodone ausfuhren");
+					System.out.println("Ihre karte wird ausgeworfen");
+					ejectCashCard();
+				}
 			}
+		} else {
+			// methode eject card war nicht ausgefuhr, deswegen kann man diese methode nicht ausfuhren
+			System.out.println("Sie konnen diese methode nicht ausfuhren, weil sie haben die die karte nicht drin");
 		}
-	}
+	}// ende von methode enter Pin
 }
+
