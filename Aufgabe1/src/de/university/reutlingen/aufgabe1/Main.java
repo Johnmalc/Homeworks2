@@ -3,14 +3,20 @@ package de.university.reutlingen.aufgabe1;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * TODO
+ * 
+ * @author
+ * @author
+ */
+
 public class Main {
-	/**
-	 * TODO
-	 * Zum hinzufugen
-	 * @author 
-	 * @author 
-	 */
+
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		// no need to close it; VM will take care 
+		// http://www.coderanch.com/t/590921/java/java/Scanner-Resource-leak
+		Scanner scanYourNumber = new Scanner(System.in);
 		try {
 
 			/*
@@ -18,8 +24,7 @@ public class Main {
 			 * card1.setPin() falsches pin eingeben, dann wie nach der aufgabe,
 			 * kriegen sie nichts
 			 */
-			Scanner scanYourNumber = new Scanner(System.in);
-			System.out.println("An welchen account wollen nutzen (sprich save&read) - 1 oder 2 ");
+			System.out.println("An welchen account wollen nutzen (sprich save&read) - nur 1 eingeben");
 			int yourNumber = scanYourNumber.nextInt();
 			
 			// Wahl eines accounts
@@ -76,51 +81,14 @@ public class Main {
 				a.accountStatement();
 				a.withdraw(10000);
 				a.ejectCashCard();
-
-				scanYourNumber.close();
-				break;
-
-			case 2:
-				/*
-				 * Hier sind schon kommentare weggelassen ! Waeren gleich
-				 */
-				Account account2 = new Account();
-				System.out.println("Geben sie ihren account nummer");
-				account2.setAccountNumber(scanYourNumber.nextInt());
-				System.out.println("Geben sie ihren bank deposit");
-				account2.setBankDeposit(scanYourNumber.nextInt());
-				System.out
-						.println("Geben sie dispo Kredit (overdraft) deposit");
-				account2.setOverdraft(scanYourNumber.nextInt());
-				System.out
-						.println("Geben sie ihres Pin. Es muss 4 stellig sein");
-				account2.setPin(scanYourNumber.nextInt());
-
-				CashCard card2 = new CashCard();
-				int cardNumber2 = account2.getAccountNumber();
-				card2.setAccountNumber(cardNumber2);
-				System.out
-						.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
-				card2.setPin(scanYourNumber.nextInt());
-				int card2Pin = card2.getPin();
-
-				CashMachine b = new CashMachine(account2);
-				b.insertCashCard(card2);
-
-				b.enterPin(card2Pin);
-				b.accountStatement();
-				b.withdraw(10000);
-				b.ejectCashCard();
-
-				scanYourNumber.close();
 				break;
 			default:
-				System.out.println("Nur 1 oder 2 eingeben");
+				System.out.println("Nur 1 eingeben");
 			}
-		}catch (NoSuchElementException msg) {
+		} catch (NoSuchElementException msg) {
 			System.out.println("Keinen Element gesetzt" + msg.getMessage());
 		} catch (IllegalStateException msg) {
-			System.out.println(" Scanner closed" + msg.getMessage());
+			System.out.println(msg.getMessage());
 		} catch (Error msg) {
 			System.err.println(msg.getMessage());
 		}

@@ -1,4 +1,4 @@
-This is an ReadMe file for Aufgabe 1. This was done in the group of 3 people (and mainly  me !)
+This is an ReadMe file for Aufgabe 1. This was done in the group of 2 people. Me and a girl.
 
 The task was (in germany):
 
@@ -118,6 +118,10 @@ Eigene Exception klasse schreiben
 
 Need to use static atributes
 
+**Update zu 21.3 (6 tage vor abgabe)** 
+
+- Done for convictions
+
 **Update zu 20.3 ( 7 tage vor abgabe)**
 
 - immer noch nicht zu array gekomment > Mussen irgendwelchen hack ausdenken
@@ -126,6 +130,23 @@ Need to use static atributes
 **Update zu 17.3 (9 tage vor der abgabe)**
 
 - card ready und inserted tested in main
-- Komments added
+- Comments added
 
 
+**Not mine (teacher's convections)**
+
+- Die Ausführung ist möglich
+- Kommentare vor den Klassen und Methoden
+- Vorgaben aus der Aufgabenstellung einhalten
+- Variablen und Methoden soweit wie möglich einschränken
+- Keine Verwendung von Umlauten bei Variablen, Methoden und Klassen
+- Vernünftige Testklasse erstellt
+1. Klassen am Anfang groß schreiben
+1. Methoden/Variablen am Anfang klein schreiben
+1. Konstanten alles groß schreiben
+1. Passenden Methoden-/Variablennamen wählen
+1. Passende Verwendung von getter- & setter Methoden
+1. Verwendung von package
+1. Package alles klein schreiben
+1. CamelCase verwenden
+1. Dateien in UTF-8 abspeichern

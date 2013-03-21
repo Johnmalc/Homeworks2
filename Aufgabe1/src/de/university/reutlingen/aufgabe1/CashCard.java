@@ -1,4 +1,9 @@
 package de.university.reutlingen.aufgabe1;
+/**
+ * TODO
+ * @author 
+ * @author 
+ */
 
 public class CashCard {
 	public int accountNumber;

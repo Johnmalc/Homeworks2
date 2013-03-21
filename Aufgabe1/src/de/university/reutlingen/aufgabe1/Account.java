@@ -1,5 +1,12 @@
 package de.university.reutlingen.aufgabe1;
 
+/**
+ * TODO
+ * 
+ * @author
+ * @author
+ */
+
 public class Account {
 	public static int accountNumber;
 	public static double overdraft;
@@ -82,6 +89,7 @@ public class Account {
 			// bricht ab jetzt (fehlermeldung is oben geschrieben)
 		}
 	}
+
 	/**
 	 * 
 	 * @return pin

@@ -1,8 +1,9 @@
 package de.university.reutlingen.aufgabe1;
 
 /**
- * @author johnmalc
- * 
+ * TODO
+ * @author 
+ * @author 
  */
 public class Exception extends IllegalStateException {
 	String fehler;

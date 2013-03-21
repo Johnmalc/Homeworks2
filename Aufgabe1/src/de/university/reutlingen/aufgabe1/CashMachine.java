@@ -1,5 +1,10 @@
 package de.university.reutlingen.aufgabe1;
 
+/**
+ * TODO
+ * @author 
+ * @author 
+ */
 public class CashMachine extends Account {
 	Account account;
 	Karte status;
@@ -126,7 +131,8 @@ public class CashMachine extends Account {
 			
 		} else {
 			// karte: insertCashCard(null) ist, dann folgt diese 
-			System.out.println("Karte (Automat ist nicht ready) ist bereits ausgemacht");
+			// Hier keine exceptionwerfen, wil ansonsten scanner closed, will nicht
+			throw new Exception("Karte (Automat ist nicht ready) ist bereits ausgemacht");
 		}
 	}
 
@@ -185,11 +191,11 @@ public class CashMachine extends Account {
 
 			} else {
 				System.out.println("");
-				System.out.println("Sie konnen KEINE Informationnen kriegen, weil sie keine Karte im Automat haben");
+				throw new Exception("Sie konnen KEINE Informationnen kriegen, weil sie keine Karte im Automat haben");
 				
 			}
 		} else {
-			System.out.println("Sie konnen die Informationen nicht kriegen, weil der Pin falsch ist");
+			throw new Exception("Sie konnen die Informationen nicht kriegen, weil der Pin falsch ist");
 		}
 	}
 
@@ -209,7 +215,7 @@ public class CashMachine extends Account {
 		} else {
 			// wenn status card ready ist dann setze den status karte ready + fuhre die methode mit null aus
 			setStatus(statusReady);
-			System.out.print("Sie haben d status auf ");
+			System.out.print("Sie haben der Status (line 217) auf ");
 			System.out.print(getStatus());
 			System.out.println(" gesetzt");
 			System.out.println("Sie haben ihre karte ausgemacht!");
@@ -251,14 +257,14 @@ public class CashMachine extends Account {
 				System.out.println(" gesetzt");
 				if (getStatus() == statusPinWrong) {
 					// wenn der pin falsch war karte wird ausgemacht, und auf console geschrieben,dass das nicht geht
-					System.out.println("sie konnen keine weitere methodone ausfuhren");
+					System.out.println("Sie konnen keine weitere methodone ausfuhren");
 					System.out.println("Ihre karte wird ausgeworfen");
 					ejectCashCard();
 				}
 			}
 		} else {
 			// methode eject card war nicht ausgefuhr, deswegen kann man diese methode nicht ausfuhren
-			System.out.println("Sie konnen diese methode nicht ausfuhren, weil sie haben die die karte nicht drin");
+			throw new Exception("Sie konnen diese methode nicht ausfuhren, weil sie haben die die karte nicht drin");
 		}
 	}// ende von methode enter Pin
 }
