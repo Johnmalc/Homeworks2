@@ -24,16 +24,12 @@ public class Main {
 			 * card1.setPin() falsches pin eingeben, dann wie nach der aufgabe,
 			 * kriegen sie nichts
 			 */
-//			System.out.println("An welchen account wollen nutzen (sprich save&read) - nur 1 eingeben");
-//			int yourNumber = scanYourNumber.nextInt();
+
 			Account[] account1 = new Account[3];
 
 			System.out.println("An welche position wollen sie ihren account spreichern");
 			int positionOfAccount = scanYourNumber.nextInt();
 			
-			// Wahl eines accounts
-//			switch (yourNumber) {
-//			case 1:
 			account1[positionOfAccount] = new Account();
 			account1[positionOfAccount].setAccountPossition(positionOfAccount);
 
@@ -65,11 +61,11 @@ public class Main {
 
 			// In CashMaschine wird objekt1 ubergeben und gespeichert
 			CashMachine a = new CashMachine(account1);
-				/*
-				 * Wenn diese Methode kommentiert wird, werden informationen
-				 * angezeigt und pin uberpruft
-				 */
-				a.insertCashCard(card1);
+			/*
+			 * Wenn diese Methode kommentiert wird, werden informationen
+			 * angezeigt und pin uberpruft
+			 */
+			a.insertCashCard(card1);
 
 				/*
 				 * Weitere Moglichkeit zum andern Wenn diese methode
@@ -83,14 +79,10 @@ public class Main {
 				 * ?tested? statement -ja beides 
 				 * ?tested? pin - jae
 				 */
-				a.enterPin(card1Pin);
-				a.accountStatement();
-				a.withdraw(10000);
-				a.ejectCashCard();
-//				break;
-//			default:
-//				System.out.println("Nur 1 eingeben");
-//			}
+			a.enterPin(card1Pin);
+			a.accountStatement();
+			a.withdraw(10000);
+			a.ejectCashCard();
 		} catch (NoSuchElementException msg) {
 			System.out.println("Keinen Element gesetzt " + msg.getMessage());
 		} catch (IllegalStateException msg) {

@@ -1,152 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.1" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true">  
-  <class id="1" language="java" name="de.university.reutlingen.aufgabe1.Account" project="Aufgabe1" 
-    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/Account.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="164" x="65" y="4"/>    
+  <enumeration id="1" language="java" name="de.university.reutlingen.aufgabe1.State.Karte" project="Aufgabe1" 
+    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/State.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="134" y="401"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="de.university.reutlingen.aufgabe1.CashCard" project="Aufgabe1" 
-    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/CashCard.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="692" y="68"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="3" language="java" name="de.university.reutlingen.aufgabe1.CashMachine.Karte" project="Aufgabe1" 
-    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/CashMachine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="695" x="474" y="382"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </enumeration>  
-  <class id="4" language="java" name="de.university.reutlingen.aufgabe1.CashMachine" project="Aufgabe1" 
-    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/CashMachine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="453" y="142"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="de.university.reutlingen.aufgabe1.Exception" project="Aufgabe1" 
-    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/Exception.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="115" y="388"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="de.university.reutlingen.aufgabe1.Main" project="Aufgabe1" 
+  <class id="2" language="java" name="de.university.reutlingen.aufgabe1.Main" project="Aufgabe1" 
     file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="424" y="-48"/>    
+    <position height="99" width="149" x="716" y="-73"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <generalization id="7">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
+  <class id="3" language="java" name="de.university.reutlingen.aufgabe1.Exception" project="Aufgabe1" 
+    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/Exception.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="340" y="390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="de.university.reutlingen.aufgabe1.Account" project="Aufgabe1" 
+    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/Account.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="640" y="472"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="de.university.reutlingen.aufgabe1.State" project="Aufgabe1" 
+    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/State.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="93" y="4"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="de.university.reutlingen.aufgabe1.CashCard" project="Aufgabe1" 
+    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/CashCard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="908" y="391"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="de.university.reutlingen.aufgabe1.CashMachine" project="Aufgabe1" 
+    file="/Aufgabe1/src/de/university/reutlingen/aufgabe1/CashMachine.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="471" y="87"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
   <association id="8">    
-    <bendpoint x="514" y="330"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="9" name="statusReady">        
-        <position height="18" width="69" x="873" y="342"/>      
-      </attribute>      
-      <multiplicity id="10" minimum="0" maximum="1">        
-        <position height="16" width="23" x="1019" y="359"/>      
-      </multiplicity>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="9" name="cashCard"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="11">    
-    <bendpoint x="690" y="226"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="12" name="status">        
-        <position height="18" width="40" x="726" y="382"/>      
-      </attribute>      
-      <multiplicity id="13" minimum="0" maximum="1">        
-        <position height="16" width="23" x="718" y="350"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="14">    
-    <bendpoint x="458" y="349"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="15" name="statusPinCorrect"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <nesting id="18">    
-    <bendpoint x="709" y="206"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </nesting>  
-  <association id="19">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="20" name="cashCard"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <bendpoint x="680" y="273"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="23" name="statusCardInserted"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="25">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="4"/>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
   </dependency>  
-  <association id="26">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="27" name="statusPinWrong"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="29">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="2"/>  
+  <dependency id="12">    
+    <bendpoint x="746" y="66"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
   </dependency>  
-  <association id="30">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="31" name="account"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+  <association id="13">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="14" name="statusCardInserted"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="33">    
-    <end type="SOURCE" refId="6"/>    
+  <generalization id="16">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <association id="17">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="18" name="statusPinCorrect"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <bendpoint x="229" y="185"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="21" name="statusReady"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="23">    
+    <bendpoint x="725" y="66"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <nesting id="24">    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="26">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="27" name="statusPinWrong"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="30">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="31" name="accountArray"/>      
+      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="33">    
+    <bendpoint x="11" y="204"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="34" name="status"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     accessors="true" visibility="true">    

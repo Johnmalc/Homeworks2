@@ -1,17 +1,18 @@
 package de.university.reutlingen.aufgabe1;
 /**
  * TODO
- * @author 
- * @author 
+ * 
+ * @author
+ * @author
  */
 
 public class CashCard {
 	public int accountNumber;
 	public int pin;
-	
-	// construktor
+
+	// Constructor
 	public CashCard() {
-		
+
 	}
 
 	// Methods for account and pin (both set and get)

@@ -50,7 +50,7 @@ public class Account extends State {
 	 * @return overdraft
 	 */
 	public double getOverdraft() {
-		return Account.overdraft;
+		return overdraft;
 	}
 	/**
 	 * die Hohe des Kontoguthabens
@@ -80,7 +80,7 @@ public class Account extends State {
 		int length = String.valueOf(value4).length();
 		if (length == 4) {
 			// dann speichere mir das
-			this.pin = value4;
+			Account.pin = value4;
 		} else {
 
 			System.out.println("Sie mussen nur 4 stellige nummer eingeben");
@@ -93,7 +93,7 @@ public class Account extends State {
 	 * @return pin
 	 */
 	public int getPin() {
-		return this.pin;
+		return pin;
 	}
 	/**
 	 * 

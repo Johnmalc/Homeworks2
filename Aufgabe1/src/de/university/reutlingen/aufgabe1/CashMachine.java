@@ -6,7 +6,6 @@ package de.university.reutlingen.aufgabe1;
  * @author 
  */
 public class CashMachine extends Account {
-	//Account account;
 	Account[] accountArray;
 	int accountZumUberprufen;
 	boolean warMethodeAusgefuhrt = false;
@@ -16,8 +15,6 @@ public class CashMachine extends Account {
 		status = Karte.READY;
 		//status = Karte.CARD_INSERTED;
 		this.accountArray = account1;
-//		int dieAccountPosition = account1[positionOfAccount].getAccountPosstion();
-//		System.out.println(dieAccountPosition);
 	}
 	
 	/**
@@ -73,19 +70,7 @@ public class CashMachine extends Account {
 						setStatus(statusPinCorrect);
 					}
 				}
-
-				// int zea = accounts[0].getAccountNumber();
-				// oder accounts.lenght
-				// for (int b = 0; b < accounts.length; b++) {
-				// if (accountZumUberprufen == account.getAccountNumber()
-				// && account.getPin() == pinZumUberprufen) {
-				// // Zum uberprufung welches nummer man zeigt
-				// // System.out.println(accounts[0].getAccountNumber());
-				// System.out.println("Account nummer und Pin SIND gleich ");
-				// } else {
-				// System.out.println("Account nummer sind und pin NICHT gleich ");
-				// }
-				// }
+			//	TODO 
 
 			} else {
 				// wenn der status un ready ist, dann ist card inserted
