@@ -7,15 +7,16 @@ package de.university.reutlingen.aufgabe1;
  * @author
  */
 
-public class Account {
+public class Account extends State {
 	public static int accountNumber;
 	public static double overdraft;
 	public static double bankDeposit;
 	public static int pin;
+	public int positionOfAccount;
 
 	// Constructor for this class
 	public Account() {
-
+		
 	}
 
 	/**
@@ -49,9 +50,8 @@ public class Account {
 	 * @return overdraft
 	 */
 	public double getOverdraft() {
-		return overdraft;
+		return Account.overdraft;
 	}
-
 	/**
 	 * die Hohe des Kontoguthabens
 	 * 
@@ -67,7 +67,6 @@ public class Account {
 	public double getBankDeposit() {
 		return bankDeposit;
 	}
-
 	/**
 	 * Set pin for Account class Abgleicht auch ob der eingegebene Pin 4 stellig
 	 * ist Taken from:
@@ -81,7 +80,7 @@ public class Account {
 		int length = String.valueOf(value4).length();
 		if (length == 4) {
 			// dann speichere mir das
-			Account.pin = value4;
+			this.pin = value4;
 		} else {
 
 			System.out.println("Sie mussen nur 4 stellige nummer eingeben");
@@ -89,12 +88,26 @@ public class Account {
 			// bricht ab jetzt (fehlermeldung is oben geschrieben)
 		}
 	}
-
 	/**
 	 * 
 	 * @return pin
 	 */
 	public int getPin() {
-		return pin;
+		return this.pin;
+	}
+	/**
+	 * 
+	 * @param value5
+	 * 			positionOfAccount
+	 */
+	public void setAccountPossition(int value5) {
+		this.positionOfAccount = value5;
+	}
+	/**
+	 * 
+	 * @return positionOfAccount
+	 */
+	public int getAccountPosstion() {
+		return positionOfAccount;
 	}
 }

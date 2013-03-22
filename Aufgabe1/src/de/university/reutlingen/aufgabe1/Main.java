@@ -24,41 +24,47 @@ public class Main {
 			 * card1.setPin() falsches pin eingeben, dann wie nach der aufgabe,
 			 * kriegen sie nichts
 			 */
-			System.out.println("An welchen account wollen nutzen (sprich save&read) - nur 1 eingeben");
-			int yourNumber = scanYourNumber.nextInt();
+//			System.out.println("An welchen account wollen nutzen (sprich save&read) - nur 1 eingeben");
+//			int yourNumber = scanYourNumber.nextInt();
+			Account[] account1 = new Account[3];
+
+			System.out.println("An welche position wollen sie ihren account spreichern");
+			int positionOfAccount = scanYourNumber.nextInt();
 			
 			// Wahl eines accounts
-			switch (yourNumber) {
-			case 1:
-				Account account1 = new Account();
-				
-				System.out.println("Geben sie ihren account nummer");
-				account1.setAccountNumber(scanYourNumber.nextInt());
-				
-				System.out.println("Geben sie ihren bank deposit");
-				account1.setBankDeposit(scanYourNumber.nextInt());
-				
-				System.out.println("Geben sie dispo Kredit (overdraft) deposit");
-				account1.setOverdraft(scanYourNumber.nextInt());
-				
-				System.out.println("Geben sie ihres Pin. Es muss 4 stellig sein");
-				account1.setPin(scanYourNumber.nextInt());
-				
-				//Erstellungs eines CashCard objects
-				CashCard card1 = new CashCard();
-				
-				// speichert die gleiche nummer des account in karte. Damit mit ihre immer verbindet.  
-				int cardNumber = account1.getAccountNumber();
-				card1.setAccountNumber(cardNumber);
-				
-				System.out.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
-				card1.setPin(scanYourNumber.nextInt());
-				
-				//Speichert Pin der Karte in card1pin variable
-				int card1Pin = card1.getPin();
-				
-				// In CashMaschine wird objekt1 ubergeben und gespeichert
-				CashMachine a = new CashMachine(account1);
+//			switch (yourNumber) {
+//			case 1:
+			account1[positionOfAccount] = new Account();
+			account1[positionOfAccount].setAccountPossition(positionOfAccount);
+
+			System.out.println("Geben sie ihren account nummer");
+			account1[positionOfAccount].setAccountNumber(scanYourNumber.nextInt());
+
+			System.out.println("Geben sie ihren bank deposit");
+			account1[positionOfAccount].setBankDeposit(scanYourNumber.nextInt());
+
+			System.out.println("Geben sie dispo Kredit (overdraft) deposit");
+			account1[positionOfAccount].setOverdraft(scanYourNumber.nextInt());
+
+			System.out.println("Geben sie ihres Pin. Es muss 4 stellig sein");
+			account1[positionOfAccount].setPin(scanYourNumber.nextInt());
+
+			// Erstellungs eines CashCard objects
+			CashCard card1 = new CashCard();
+
+			// speichert die gleiche nummer des account in karte. Damit mit ihre
+			// immer verbindet.
+			int cardNumber = account1[positionOfAccount].getAccountNumber();
+			card1.setAccountNumber(cardNumber);
+
+			System.out.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
+			card1.setPin(scanYourNumber.nextInt());
+
+			// Speichert Pin der Karte in card1pin variable
+			int card1Pin = card1.getPin();
+
+			// In CashMaschine wird objekt1 ubergeben und gespeichert
+			CashMachine a = new CashMachine(account1);
 				/*
 				 * Wenn diese Methode kommentiert wird, werden informationen
 				 * angezeigt und pin uberpruft
@@ -81,12 +87,12 @@ public class Main {
 				a.accountStatement();
 				a.withdraw(10000);
 				a.ejectCashCard();
-				break;
-			default:
-				System.out.println("Nur 1 eingeben");
-			}
+//				break;
+//			default:
+//				System.out.println("Nur 1 eingeben");
+//			}
 		} catch (NoSuchElementException msg) {
-			System.out.println("Keinen Element gesetzt" + msg.getMessage());
+			System.out.println("Keinen Element gesetzt " + msg.getMessage());
 		} catch (IllegalStateException msg) {
 			System.out.println(msg.getMessage());
 		} catch (Error msg) {

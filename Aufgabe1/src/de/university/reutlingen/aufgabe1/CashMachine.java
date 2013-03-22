@@ -6,53 +6,20 @@ package de.university.reutlingen.aufgabe1;
  * @author 
  */
 public class CashMachine extends Account {
-	Account account;
-	Karte status;
+	//Account account;
+	Account[] accountArray;
 	int accountZumUberprufen;
-	//int r = 0;
 	boolean warMethodeAusgefuhrt = false;
 	CashCard cashCard;
-
-	public CashMachine(Account account1) {
+	
+	public CashMachine(Account[] account1) {
 		status = Karte.READY;
 		//status = Karte.CARD_INSERTED;
-		this.account = account1;
+		this.accountArray = account1;
+//		int dieAccountPosition = account1[positionOfAccount].getAccountPosstion();
+//		System.out.println(dieAccountPosition);
 	}
-
-	/**
-	 * Enumeration
-	 * http://javarevisited.blogspot.cz/2011/08/enum-in-java-example-
-	 * tutorial.html
-	 */
-	private enum Karte {
-		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
-	}
-	/**
-	 * 
-	 * @return status
-	 */
-	public Karte getStatus() {
-		return status;
-	}
-
-	/**
-	 * <h2>Setzt den Status des Emums</h2 Kopiert (Copyright - not mine) aus dem
-	 * http://www.java-forum.org/java-basics-anfaenger-themen/87727-enum-dann-
-	 * setter -setzen.html
-	 */
-	public void setStatus(Karte status) {
-		if (status != null) {
-			this.status = status;
-		} else {
-			throw new NullPointerException("status darf nicht null sein");
-		}
-	}
-
-	private Karte statusReady = Karte.READY;
-	private Karte statusCardInserted = Karte.CARD_INSERTED;
-	private Karte statusPinCorrect = Karte.PIN_CORRECT;
-	private Karte statusPinWrong = Karte.PIN_WRONG;
-
+	
 	/**
 	 * <h2>Karteneingabe</h2> Nur im Zustand READY konnen die Informationen der
 	 * eingegebenen Cashcard im Attribute cashCard abgespeichert werden. Bei
@@ -69,7 +36,7 @@ public class CashMachine extends Account {
 				// setzet auf true, damit ich spater die methode abfragen kann, ob sie ausgefuhrt wurde (in enterPin)
 				warMethodeAusgefuhrt = true;
 				// zeige den staus
-				System.out.println("----------------------------");
+				System.out.println("----------------------------");				
 				System.out.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
@@ -238,11 +205,11 @@ public class CashMachine extends Account {
 		// not, you can not check the PIN (method will be not executed)
 		if (warMethodeAusgefuhrt = true) {
 			// war die methode eject cart ausgefuht ?
-			if (account.getPin() == pin) {
+			if (getPin() == pin) {
 				// war der pin correct > setze auf pincorrect
 				setStatus(statusPinCorrect);
 				System.out.println("Sie haben folgenden Pin fur ihre karte eingegeben: "
-								+ account.getPin());
+								+ getPin());
 				System.out.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
@@ -251,7 +218,7 @@ public class CashMachine extends Account {
 			} else {
 				// anderseits ist pin falsch
 				setStatus(statusPinWrong);
-				System.out.println("Der Richtige pin lautet: " + account.getPin());
+				System.out.println("Der Richtige pin lautet: " + getPin());
 				System.out.print("Sie haben Falschen pin eingegen. Status wird auf ");
 				System.out.print(getStatus());
 				System.out.println(" gesetzt");
