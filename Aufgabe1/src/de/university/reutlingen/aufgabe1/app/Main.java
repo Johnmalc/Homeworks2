@@ -28,7 +28,7 @@ public class Main {
 			 * Erstellung eines accounts. Und auch eine Karte.
 			 */
 			
-			Account[] account1 = new Account[100];
+			Account[] account1 = new Account[3];
 
 			System.out.println("An welche position wollen sie ihren account spreichern");
 			int positionOfAccount = scanYourNumber.nextInt();
@@ -65,12 +65,12 @@ public class Main {
 			int card1Pin = card1.getPin();
 
 			// In CashMaschine wird objekt1 ubergeben und gespeichert
-			CashMachine a = new CashMachine(account1);
+			CashMachine cashMachine = new CashMachine(account1);
 			/*
 			 * Wenn diese Methode kommentiert wird, werden informationen
 			 * angezeigt und pin uberpruft
 			 */
-			a.insertCashCard(card1);
+			cashMachine.insertCashCard(card1);
 
 				/*
 				 * Weitere Moglichkeit zum andern Wenn diese methode
@@ -84,10 +84,10 @@ public class Main {
 				 * ?tested? statement -ja beides 
 				 * ?tested? pin - jae
 				 */
-			a.enterPin(card1Pin);
-			a.accountStatement();
-			a.withdraw(10000);
-			a.ejectCashCard();
+			cashMachine.enterPin(card1Pin);
+			cashMachine.accountStatement();
+			cashMachine.withdraw(10000);
+			cashMachine.ejectCashCard();
 		} catch (ArrayIndexOutOfBoundsException msg) {
 			System.out.println("Sie wollen position ausserhalb eines Array zugreffen " + msg.getMessage() );
 		} catch (InputMismatchException msg) {
