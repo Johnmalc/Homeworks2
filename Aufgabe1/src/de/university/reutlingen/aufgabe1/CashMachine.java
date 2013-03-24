@@ -12,7 +12,7 @@ public class CashMachine extends Account {
 	CashCard cashCard;
 	
 	public CashMachine(Account[] account1) {
-		status = Karte.READY;
+		status = State.READY;
 		//status = Karte.CARD_INSERTED;
 		this.accountArray = account1;
 	}
@@ -27,9 +27,9 @@ public class CashMachine extends Account {
 		// gleicht ab, ob ich insertCashCard(null) nicht habe, wenn ja, dann ist die karte ausgemacht
 		if (cashCard != null) {
 			// wenn der status (aus dem Konstruktor ready ist, folge ... Aber wenn nicht dann ist die karte schon im automat
-			if (status.equals(Karte.READY)) {
+			if (status.equals(State.READY)) {
 				// wenn staus im Konstruktor ready ist, dann setze ihn auf card-inserted
-				setStatus(Karte.CARD_INSERTED);
+				setStatus(State.CARD_INSERTED);
 				// setzet auf true, damit ich spater die methode abfragen kann, ob sie ausgefuhrt wurde (in enterPin)
 				warMethodeAusgefuhrt = true;
 				// zeige den staus
@@ -91,7 +91,7 @@ public class CashMachine extends Account {
 	/**
 	 * <h2>Abheben</h2> Das Abheben kann nur erfolgen wenn der Geldautomat im
 	 * Zustand CARD_INSERTED ist. Der angegebene Betrag kann vom Konto abgehoben
-	 * werden, solange es den Dispokredit nicht überschreitet.Ausserdem muss das
+	 * werden, solange es den Dispokredit nicht ï¿½berschreitet.Ausserdem muss das
 	 * Kontoguthaben neu berechnet und auf der Konsole ausgegeben werden.
 	 * 
 	 * Beachten Sie, dass Geld nur noch abgehoben werden kann, wenn der Pin

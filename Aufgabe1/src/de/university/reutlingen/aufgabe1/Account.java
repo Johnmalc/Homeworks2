@@ -7,7 +7,7 @@ package de.university.reutlingen.aufgabe1;
  * @author
  */
 
-public class Account extends State {
+public class Account extends Karte {
 	public static int accountNumber;
 	public static double overdraft;
 	public static double bankDeposit;
