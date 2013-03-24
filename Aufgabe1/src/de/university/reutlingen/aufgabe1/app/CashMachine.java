@@ -15,14 +15,14 @@ public class CashMachine extends Account {
 	int accountZumUberprufen;
 	boolean warMethodeAusgefuhrt = false;
 	CashCard cashCard;
-	State status;
+	State state;
 	
 	public CashMachine(Account[] account1) {
-		status = State.READY;
-		//status = State.CARD_INSERTED;
+		state = State.READY;
+		//state = State.CARD_INSERTED;
 		this.accounts = account1;
 	}
-
+	
 	/**
 	 * Enumeration
 	 * http://javarevisited.blogspot.cz/2011/08/enum-in-java-example-
@@ -32,54 +32,54 @@ public class CashMachine extends Account {
 		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG;
 	}
 
-	public State statusReady = State.READY;
-	public State statusCardInserted = State.CARD_INSERTED;
-	public State statusPinCorrect = State.PIN_CORRECT;
-	public State statusPinWrong = State.PIN_WRONG;
+	public State stateReady = State.READY;
+	public State stateCardInserted = State.CARD_INSERTED;
+	public State statePinCorrect = State.PIN_CORRECT;
+	public State statePinWrong = State.PIN_WRONG;
 
 	/**
 	 * 
-	 * @return status
+	 * @return state
 	 */
-	public State getStatus() {
-		return status;
+	public State getState() {
+		return state;
 	}
 
 	/**
-	 * <h2>Setzt den Status des Emums</h2 Kopiert (Copyright - not mine) aus dem
+	 * <h2>Setzt den state des Emums</h2 Kopiert (Copyright - not mine) aus dem
 	 * http://www.java-forum.org/java-basics-anfaenger-themen/87727-enum-dann-
 	 * setter -setzen.html
 	 */
-	public void setStatus(State status) {
-		if (status != null) {
-			this.status = status;
+	public void setState(State state) {
+		if (state != null) {
+			this.state = state;
 		} else {
-			throw new NullPointerException("status darf nicht null sein");
+			throw new NullPointerException("state darf nicht null sein");
 		}
 	}
 	/**
 	 * <h2>Karteneingabe</h2> Nur im Zustand READY konnen die Informationen der
 	 * eingegebenen Cashcard im Attribute cashCard abgespeichert werden. Bei
 	 * erfolgreicher Eingabe wechselt der Zustand von READY auf CARD_INSERTED.
-	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
+	 * Der state des Automaten soll auf der Konsole protokolliert werden.
 	 * @throws AnyException 
 	 * @throws KarteAus 
 	 */
 	public void insertCashCard(CashCard cashCard) throws AnyException, KarteAus {
 		// gleicht ab, ob ich insertCashCard(null) nicht habe, wenn ja, dann ist die karte ausgemacht
 		if (cashCard != null) {
-			// wenn der status (aus dem Konstruktor ready ist, folge ... Aber wenn nicht dann ist die karte schon im automat
-			switch (status) {
+			// wenn der state (aus dem Konstruktor ready ist, folge ... Aber wenn nicht dann ist die karte schon im automat
+			switch (state) {
 			
 			case READY:
 				// wenn staus im Konstruktor ready ist, dann setze ihn auf card-inserted
-				setStatus(State.CARD_INSERTED);
+				setState(State.CARD_INSERTED);
 				// setzet auf true, damit ich spater die methode abfragen kann, ob sie ausgefuhrt wurde (in enterPin)
 				warMethodeAusgefuhrt = true;
 				// zeige den staus
 				System.out.println("----------------------------");				
-				System.out.print("Sie haben jetzt ihre Karte im Automat. Status ist auf ");
-				System.out.print(getStatus());
+				System.out.print("Sie haben jetzt ihre Karte im Automat. state ist auf ");
+				System.out.print(getState());
 				System.out.println(" gesetzt");
 				// Speicherung der karte nummer und pins zum spaterem Uberprufen
 				int accountZumUberprufen = cashCard.getAccountNumber();
@@ -104,23 +104,23 @@ public class CashMachine extends Account {
 					// uberpruft wenn pin richtig/falsch
 					if (pinZumUberprufen != cashCard.getPin()) {
 						// wenn pins falsch sind, mache das und karte auswerfen
-						setStatus(statusPinWrong);
+						setState(statePinWrong);
 						System.out.println("Ihre Pin Nummer mit dem Pin der Karte stimmt nicht uberein");
 						System.out.println("Keine weitere methoden ausfuhrbar (wegen"
-										+ statusPinWrong + " > Karte wird ausgeworfen");
+										+ statePinWrong + " > Karte wird ausgeworfen");
 						ejectCashCard();
 					}else {
-						// setze den status auf pin correct
-						setStatus(statusPinCorrect);
+						// setze den state auf pin correct
+						setState(statePinCorrect);
 					}
 				}
 				break;
 			case CARD_INSERTED:
-				// wenn der status un ready ist, dann ist card inserted
+				// wenn der state un ready ist, dann ist card inserted
 				System.out.println("----------------------------");				
-				setStatus(statusCardInserted);
-				System.out.print("Ihre karte ist schon im Automat. Status war schon auf ");
-				System.out.print(getStatus());
+				setState(stateCardInserted);
+				System.out.print("Ihre karte ist schon im Automat. state war schon auf ");
+				System.out.print(getState());
 				System.out.print(" gesetzt");
 				System.out.println("");
 				break;
@@ -148,11 +148,11 @@ public class CashMachine extends Account {
 	public void withdraw(double amount) {
 		System.out.println("Sie wollen " + amount + " abheben");
 		// wenn der Pin correct ist, setze auf card inserted
-		if (status.equals(statusPinCorrect)) {
-			setStatus(statusCardInserted);
+		if (state.equals(statePinCorrect)) {
+			setState(stateCardInserted);
 		}
-		// wenn status cardinserted ist, dann prufe ob das was ich aus dem Automat will nicht grosser ist als mein Overdraft
-		switch (status) {
+		// wenn state cardinserted ist, dann prufe ob das was ich aus dem Automat will nicht grosser ist als mein Overdraft
+		switch (state) {
 		case CARD_INSERTED:
 			if (amount > overdraft) {
 				System.out.println("Sie wollen zu viel geld abheben und das konnen sie nicht. ");
@@ -163,9 +163,9 @@ public class CashMachine extends Account {
 			}
 			break;
 		default: 
-			// wenn der status nicht card inserted ist , dann fuhre folgendes
+			// wenn der state nicht card inserted ist , dann fuhre folgendes
 			System.out.println("Sie konnen abheben nur im Zustand "
-					+ statusCardInserted + " und " + statusPinCorrect);
+					+ stateCardInserted + " und " + statePinCorrect);
 		}
 	}
 
@@ -179,12 +179,12 @@ public class CashMachine extends Account {
 	 */
 
 	public void accountStatement() throws KeineKarte, PinFalsch {
-		// wenn der status NICHY pin wrong ist, fuhre aus
-		if (getStatus() != statusPinWrong) {
-			// frage der status ab
-			if (status == getStatus()) {
-				// wenn der status pin correct ist, zeige die informationen
-				// System.out.println(status); 
+		// wenn der state NICHY pin wrong ist, fuhre aus
+		if (getState() != statePinWrong) {
+			// frage der state ab
+			if (state == getState()) {
+				// wenn der state pin correct ist, zeige die informationen
+				// System.out.println(state); 
 				System.out.println("Your account number is " + accountNumber + ".");
 				System.out.println("Your pin is " + pin + ".");
 				System.out.println("Your bank deposit is " + bankDeposit + ".");
@@ -201,25 +201,25 @@ public class CashMachine extends Account {
 	}
 
 	/**
-	 * <h2>Kartenauswurf</h2> Der Geldautomat wird auf den Status READY gesetzt,
+	 * <h2>Kartenauswurf</h2> Der Geldautomat wird auf den state READY gesetzt,
 	 * das Attribute cashCard wird zur Nullreferenz. Das ist nur moglich im
-	 * Zustand CARD_INSERTED. Der Status des Automaten soll auf der Konsole
+	 * Zustand CARD_INSERTED. Der state des Automaten soll auf der Konsole
 	 * protokolliert werden.
 	 * @throws KarteAus 
 	 * @throws AnyException 
-	 * @status FINISHED
+	 * @state FINISHED
 	 */
 	public void ejectCashCard() throws KarteAus, AnyException {
-		// System.out.println(getStatus()); // pin wrong
+		// System.out.println(getstate()); // pin wrong
 		
-		if (getStatus() != statusCardInserted) {
-			// wenn status nicht cardinserted ist, mach dies
+		if (getState() != stateCardInserted) {
+			// wenn state nicht cardinserted ist, mach dies
 			System.out.println("");
 		} else {
-			// wenn status card ready ist dann setze den status karte ready + fuhre die methode mit null aus
-			setStatus(statusReady);
-			System.out.print("Sie haben der Status (line 217) auf ");
-			System.out.print(getStatus());
+			// wenn state card ready ist dann setze den state karte ready + fuhre die methode mit null aus
+			setState(stateReady);
+			System.out.print("Sie haben der state (line 217) auf ");
+			System.out.print(getState());
 			System.out.println(" gesetzt");
 			System.out.println("Sie haben ihre karte ausgemacht!");
 			insertCashCard(null);
@@ -227,16 +227,16 @@ public class CashMachine extends Account {
 	}
 
 	/**
-	 * <h2>Setzung des Pins (Abgleichung + status anderung)</h2> Die Methode
+	 * <h2>Setzung des Pins (Abgleichung + state anderung)</h2> Die Methode
 	 * gleicht die Eingabe des Pins mit dem Pin des gerade verwendeten Accounts
 	 * ab. Bei korrekter Eingabe wechselt der Zustand des Geldautomaten in
-	 * PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der Status des Automaten
+	 * PIN_CORRECT. Bei Falscheingabe in PIN_WRONG. Der state des Automaten
 	 * soll auf der Konsole protokolliert werden.
 	 * 
 	 * @param pin
 	 * @throws KeineKarte 
 	 * @throws KarteAus 
-	 * @status FINISHED
+	 * @state FINISHED
 	 */
 	public void enterPin(int pin) throws AnyException, KeineKarte, KarteAus {
 		// if method eject carte has been run, then you can do this, BUT if
@@ -245,22 +245,22 @@ public class CashMachine extends Account {
 			// war die methode eject cart ausgefuht ?
 			if (getPin() == pin) {
 				// war der pin correct > setze auf pincorrect
-				setStatus(statusPinCorrect);
+				setState(statePinCorrect);
 				System.out.println("Sie haben folgenden Pin fur ihre karte eingegeben: "
 								+ getPin());
-				System.out.print("Sie haben RICHTIGEN pin eingegen. Status wird auf ");
-				System.out.print(getStatus());
+				System.out.print("Sie haben RICHTIGEN pin eingegen. state wird auf ");
+				System.out.print(getState());
 				System.out.println(" gesetzt");
 				System.out.println();
 
 			} else {
 				// anderseits ist pin falsch
-				setStatus(statusPinWrong);
+				setState(statePinWrong);
 				System.out.println("Der Richtige pin lautet: " + getPin());
-				System.out.print("Sie haben Falschen pin eingegen. Status wird auf ");
-				System.out.print(getStatus());
+				System.out.print("Sie haben Falschen pin eingegen. state wird auf ");
+				System.out.print(getState());
 				System.out.println(" gesetzt");
-				if (getStatus() == statusPinWrong) {
+				if (getState() == statePinWrong) {
 					// wenn der pin falsch war karte wird ausgemacht, und auf console geschrieben,dass das nicht geht
 					System.out.println("Sie konnen keine weitere methodone ausfuhren");
 					System.out.println("Ihre karte wird ausgeworfen");
