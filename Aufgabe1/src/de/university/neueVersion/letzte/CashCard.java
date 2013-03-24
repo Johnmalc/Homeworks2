@@ -2,7 +2,7 @@ package de.university.neueVersion.letzte;
 /**
  * TODO
  * 
- * @author
+ * @author An
  * @author
  */
 
