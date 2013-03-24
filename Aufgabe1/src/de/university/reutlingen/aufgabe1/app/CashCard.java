@@ -1,4 +1,4 @@
-package de.university.reutlingen.aufgabe1;
+package de.university.reutlingen.aufgabe1.app;
 /**
  * TODO
  * 

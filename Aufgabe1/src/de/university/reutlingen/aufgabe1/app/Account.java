@@ -1,4 +1,4 @@
-package de.university.reutlingen.aufgabe1;
+package de.university.reutlingen.aufgabe1.app;
 
 /**
  * TODO
@@ -7,7 +7,7 @@ package de.university.reutlingen.aufgabe1;
  * @author
  */
 
-public class Account extends Karte {
+public class Account {
 	public static int accountNumber;
 	public static double overdraft;
 	public static double bankDeposit;

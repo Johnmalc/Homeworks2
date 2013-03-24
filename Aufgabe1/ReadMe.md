@@ -77,11 +77,11 @@ The task was (in germany):
 > 
 > Innerhalb der main-Methode einer Testklasse soll der Automat und seine Funktionen überprüft werden. Erstellen Sie hierzu ein CashMachine-Objekt, welches mehrere Konten verwaltet. Überprüfen Sie durch Aufruf der einzelnen Methoden, ob sich der Automat im jeweiligen Zustand korrekt verhält.
 > 
-> **Befindet sich der Geldautomat in einem Zustand in dem eine Methode nicht korrekt ausgeführt werden kann, ist eine Exception zu werfen. Hierfür schreiben und verwenden Sie ihre eigene Exception-Klasse die von der Exception IllegalStateException abgeleitet wird (es handelt sichhier um eine RuntimeException!). Mit Hilfe Ihrer Exception soll ein kleiner Infotext über den Ausfallgrund in der Konsole ausgegeben.**
-> 
+Befindet sich der Geldautomat in einem Zustand in dem eine Methode nicht korrekt ausgeführt werden kann, ist eine Exception zu werfen. Hierfür schreiben und verwenden Sie ihre eigene Exception-Klassen die von  java.lang.Exception ableitet.
+
 > Viel Spass! :-)
 
-
+----------------------------
 Also:
 Hier was alles passiert in der Zeit des Process:
 
