@@ -11,7 +11,7 @@ import de.university.reutlingen.aufgabe1.exceptions.PinFalsch;
  * @author 
  */
 public class CashMachine extends Account {
-	Account[] accountArray;
+	Account[] accounts;
 	int accountZumUberprufen;
 	boolean warMethodeAusgefuhrt = false;
 	CashCard cashCard;
@@ -20,7 +20,7 @@ public class CashMachine extends Account {
 	public CashMachine(Account[] account1) {
 		status = State.READY;
 		//status = State.CARD_INSERTED;
-		this.accountArray = account1;
+		this.accounts = account1;
 	}
 
 	/**
