@@ -17,7 +17,7 @@ public class CashMachine {
 		statePIN = State.PIN_WRONG;
 	}
 
-	/* private Account[] accounts = new Account[] {
+	/** private Account[] accounts = new Account[] {
 			new Account(12345678, -1000.0, 2000, 1234),
 			new Account(23456789, -100.0, 200, 2345),
 			new Account(34567890, -200.0, 300, 3456),
