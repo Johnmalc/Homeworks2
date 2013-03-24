@@ -1,6 +1,6 @@
 package de.university.reutlingen.aufgabe1;
 
-import java.util.NoSuchElementException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -25,7 +25,7 @@ public class Main {
 			 * kriegen sie nichts
 			 */
 
-			Account[] account1 = new Account[3];
+			Account[] account1 = new Account[100];
 
 			System.out.println("An welche position wollen sie ihren account spreichern");
 			int positionOfAccount = scanYourNumber.nextInt();
@@ -42,7 +42,7 @@ public class Main {
 			System.out.println("Geben sie dispo Kredit (overdraft) deposit");
 			account1[positionOfAccount].setOverdraft(scanYourNumber.nextInt());
 
-			System.out.println("Geben sie ihres Pin. Es muss 4 stellig sein");
+			System.out.println("Geben sie ihres Pin ('account erstellung'). Es muss 4 stellig sein");
 			account1[positionOfAccount].setPin(scanYourNumber.nextInt());
 
 			// Erstellungs eines CashCard objects
@@ -53,7 +53,7 @@ public class Main {
 			int cardNumber = account1[positionOfAccount].getAccountNumber();
 			card1.setAccountNumber(cardNumber);
 
-			System.out.println("Geben sie ihres Pin fur die Karte. Es muss 4 stellig sein");
+			System.out.println("Geben sie ihres Pin fur die Karte ('verbindung mit acc.'). Nur 4 Stelle");
 			card1.setPin(scanYourNumber.nextInt());
 
 			// Speichert Pin der Karte in card1pin variable
@@ -83,8 +83,8 @@ public class Main {
 			a.accountStatement();
 			a.withdraw(10000);
 			a.ejectCashCard();
-		} catch (NoSuchElementException msg) {
-			System.out.println("Keinen Element gesetzt " + msg.getMessage());
+		} catch (InputMismatchException msg) {
+			System.out.println("Etwas ist falsch bei der Eingabe: "+ msg.getMessage());
 		} catch (IllegalStateException msg) {
 			System.out.println(msg.getMessage());
 		} catch (Error msg) {

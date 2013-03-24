@@ -27,7 +27,9 @@ public class CashMachine extends Account {
 		// gleicht ab, ob ich insertCashCard(null) nicht habe, wenn ja, dann ist die karte ausgemacht
 		if (cashCard != null) {
 			// wenn der status (aus dem Konstruktor ready ist, folge ... Aber wenn nicht dann ist die karte schon im automat
-			if (status.equals(State.READY)) {
+			switch (status) {
+			
+			case READY:
 				// wenn staus im Konstruktor ready ist, dann setze ihn auf card-inserted
 				setStatus(State.CARD_INSERTED);
 				// setzet auf true, damit ich spater die methode abfragen kann, ob sie ausgefuhrt wurde (in enterPin)
@@ -42,14 +44,13 @@ public class CashMachine extends Account {
 				int pinZumUberprufen = cashCard.getPin();
 
 				// fur testing purposes
-				System.out.println("Ihren Pin von Karte ist " + pinZumUberprufen);
-				System.out.println("Ihren Account von Karte ist " + accountZumUberprufen);
+				System.out.println("Ihren Pin auf der Karte: " + pinZumUberprufen);
+				System.out.println("Ihren Account, der mit account verbindet wird: " + accountZumUberprufen);
 				// Pruft die Gleichheit: ob der der gespeicherte account UNgleich mit dem eckarte account ist
 				if (accountZumUberprufen != cashCard.getAccountNumber()) {
-					/* Kann nie falsch sein, TODO ana, nado dodelat
-					 * es kommt hier gar nicht, weill es wird eingegebene account number 
+					/* Kann nie falsch sein,
+					 * es kommt hier gar nicht, weil es wird eingegebene account number 
 					 * in die karte nummber ubergeben
-					 * Ganz wichtig: Die karte account number wird immer das gleiche, der als account number eingegeben was
 					 */
 					System.out.println("Ihre account Nummer mit dem Karte nummer stimmt nicht uberein");
 					System.out.println("Keine weitere methoden ausfuhrbar > Karte wird ausgeworfen");
@@ -58,27 +59,30 @@ public class CashMachine extends Account {
 					// wenn beides accounts ubereinstimmen
 					System.out.println("");
 					System.out.println("Ihre account Nummer mit dem Karte nummer STIMMT uberein");
+					// uberpruft wenn pin richtig/falsch
 					if (pinZumUberprufen != cashCard.getPin()) {
 						// wenn pins falsch sind, mache das und karte auswerfen
 						setStatus(statusPinWrong);
 						System.out.println("Ihre Pin Nummer mit dem Pin der Karte stimmt nicht uberein");
 						System.out.println("Keine weitere methoden ausfuhrbar (wegen"
-										+ statusPinWrong + "> Karte wird ausgeworfen");
+										+ statusPinWrong + " > Karte wird ausgeworfen");
 						ejectCashCard();
 					}else {
 						// setze den status auf pin correct
 						setStatus(statusPinCorrect);
 					}
 				}
-			//	TODO 
-
-			} else {
+				break;
+			case CARD_INSERTED:
 				// wenn der status un ready ist, dann ist card inserted
 				setStatus(statusCardInserted);
-				System.out.print("Ihre karte ist schon im Automat. Status ist auf ");
+				System.out.print("Ihre karte ist schon im Automat. Status war schon auf ");
 				System.out.print(getStatus());
 				System.out.print(" gesetzt");
 				System.out.println("");
+				break;
+			default:
+				break;
 			}
 			
 		} else {
@@ -99,14 +103,15 @@ public class CashMachine extends Account {
 	 * 
 	 */
 	public void withdraw(double amount) {
+		System.out.println("Sie wollen " + amount + " abheben");
 		// wenn der Pin correct ist, setze auf card inserted
 		if (status.equals(statusPinCorrect)) {
 			setStatus(statusCardInserted);
 		}
 		// wenn status cardinserted ist, dann prufe ob das was ich aus dem Automat will nicht grosser ist als mein Overdraft
-		if (status.equals(statusCardInserted)) {
+		switch (status) {
+		case CARD_INSERTED:
 			if (amount > overdraft) {
-				System.out.println("");
 				System.out.println("Entweder wollen sie zu viel geld abheben und das konnen sie nicht. ");
 				System.out.println("Oder sie haben schon ihre Karte ausgemacht ");
 			} else {
@@ -114,7 +119,8 @@ public class CashMachine extends Account {
 				double neuesBetrag = bankDeposit - amount;
 				System.out.println("Ihres neuen zustand ist " + neuesBetrag);
 			}
-		} else {
+			break;
+		default: 
 			// wenn der status nicht card inserted ist , dann fuhre folgendes
 			System.out.println("Sie konnen abheben nur im Zustand "
 					+ statusCardInserted + " und " + statusPinCorrect);
@@ -134,7 +140,7 @@ public class CashMachine extends Account {
 			// frage der status ab
 			if (status == getStatus()) {
 				// wenn der status pin correct ist, zeige die informationen
-				// System.out.println(status); test
+				// System.out.println(status); 
 				System.out.println("Your account number is " + accountNumber + ".");
 				System.out.println("Your pin is " + pin + ".");
 				System.out.println("Your bank deposit is " + bankDeposit + ".");
