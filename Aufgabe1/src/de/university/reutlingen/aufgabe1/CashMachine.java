@@ -12,8 +12,8 @@ public class CashMachine extends Account {
 	CashCard cashCard;
 	
 	public CashMachine(Account[] account1) {
-		status = State.READY;
-		//status = Karte.CARD_INSERTED;
+		//status = State.READY;
+		status = State.CARD_INSERTED;
 		this.accountArray = account1;
 	}
 	
@@ -75,6 +75,7 @@ public class CashMachine extends Account {
 				break;
 			case CARD_INSERTED:
 				// wenn der status un ready ist, dann ist card inserted
+				System.out.println("----------------------------");				
 				setStatus(statusCardInserted);
 				System.out.print("Ihre karte ist schon im Automat. Status war schon auf ");
 				System.out.print(getStatus());
