@@ -1,10 +1,14 @@
 package de.university.neueVersion.letzte;
 
+import de.university.reutlingen.aufgabe1.exceptions.CardInsertedException;
+
 public class CashMachine {
 
+	Account[] accounts;
+	CashCard cashCard;
 	State state;
 	State statePIN;
-	int zaehler;
+	int zaehler; // fuer Arrays
 
 	CashMachine() {
 		accounts = new Account[100];
@@ -13,7 +17,7 @@ public class CashMachine {
 		statePIN = State.PIN_WRONG;
 	}
 
-	private Account[] accounts = new Account[] {
+	/* private Account[] accounts = new Account[] {
 			new Account(12345678, -1000.0, 2000, 1234),
 			new Account(23456789, -100.0, 200, 2345),
 			new Account(34567890, -200.0, 300, 3456),
@@ -23,11 +27,11 @@ public class CashMachine {
 	private CashCard cashCardA = new CashCard(12345678);
 	private CashCard cashCardB = new CashCard(90874561);
 	private CashCard cashCardC = new CashCard(55487565);
-	private CashCard cashCardD = new CashCard(12000002);
-	private CashCard currentCard = null; // inserted Card
+	private CashCard cashCardD = new CashCard(12000002);*/
+	private CashCard currentCard = null; // inserted Card 
 
-	public void insertCashCard(CashCard cashCardX) throws CardInsertedException// Karteneingabe
-	{
+	public void insertCashCard(CashCard cashCardX) throws CardInsertedException { // Karteneingabe
+	
 		switch (state) {
 		case READY: {
 			currentCard = cashCardX;

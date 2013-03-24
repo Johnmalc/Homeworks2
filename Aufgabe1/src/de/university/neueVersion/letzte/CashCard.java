@@ -8,7 +8,7 @@ package de.university.neueVersion.letzte;
 
 public class CashCard {
 	public int accountNumber;
-	public int pin;
+	public int pin; // BRAUCHEN WIR DEN HIER?
 
 	// Constructor
 	public CashCard() {

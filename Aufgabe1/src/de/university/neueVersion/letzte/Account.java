@@ -12,7 +12,7 @@ public class Account {
 	public static double overdraft;
 	public static double bankDeposit;
 	public static int pin;
-	public int positionOfAccount;
+	public int positionOfAccount;//BRAUCHEN WIR DAS?
 
 	// Constructor for this class
 	public Account() {
@@ -99,6 +99,11 @@ public class Account {
 	 * 
 	 * @param value5
 	 * 			positionOfAccount
+	 */
+	
+	/**
+	 * Ob wir diese Methoden brauchen? Schauen wir noch spaeter. 
+	 * @param value5
 	 */
 	public void setAccountPossition(int value5) {
 		this.positionOfAccount = value5;
