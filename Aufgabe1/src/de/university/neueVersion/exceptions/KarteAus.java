@@ -8,6 +8,7 @@ package de.university.neueVersion.exceptions;
 public class KarteAus extends Exception {
 
 	public KarteAus() {
+		System.out.println("");
 		System.out.println("Karte ist bereits ausgemacht");
 	}
 
