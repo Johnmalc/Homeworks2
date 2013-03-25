@@ -12,20 +12,22 @@ public class Main {
 		CashMachine cashMachine = new CashMachine();
 		
 		CashCard cashCard1 = new CashCard(12345678);
-		CashCard cashCard2 = new CashCard(23456789);
-		
 		cashMachine.insertCashCard(cashCard1);
-		// cashMachine.withdraw(125);
-		// cashMachine.insertCashCard(cashCard);
 		cashMachine.pinEingeben(1234);
-		cashMachine.ejectCashCard(cashCard1);
+		cashMachine.withdraw(125);
+		cashMachine.accountStatement();
+		cashMachine.ejectCashCard();
+		
+		
+		
+		/**CashCard cashCard2 = new CashCard(23456789);
 		cashMachine.insertCashCard(cashCard2);
 		// cashMachine.withdraw(125);
 		// cashMachine.insertCashCard(cashCard);
 		cashMachine.pinEingeben(2345);
 		cashMachine.accountStatement();
 		cashMachine.withdraw(100);
-
+*/
 	}
 
 }
