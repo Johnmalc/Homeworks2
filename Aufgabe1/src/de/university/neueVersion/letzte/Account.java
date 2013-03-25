@@ -13,10 +13,7 @@ public class Account {
 	public double bankDeposit;
 	public int pin;
 
-	// Constructor for this class
-	public Account() {
-
-	}
+	
 
 	/**
 	 * Dieser Konstruktor bittet uns schnelle Erstellung von accounts
@@ -104,9 +101,9 @@ public class Account {
 			this.pin = value4;
 		} else {
 
-			System.out.println("Sie mussen nur 4 stellige nummer eingeben");
+			System.out.println("Sie muessen nur 4 stellige Nummer eingeben");
 			System.exit(0);
-			// bricht ab jetzt (fehlermeldung is oben geschrieben)
+			// bricht ab jetzt 
 		}
 	}
 
