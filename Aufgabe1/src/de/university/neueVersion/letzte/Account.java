@@ -8,11 +8,11 @@ package de.university.neueVersion.letzte;
  */
 
 public class Account {
-	public static int accountNumber;
-	public static double overdraft;
-	public static double bankDeposit;
-	public static int pin;
-	public int positionOfAccount;//BRAUCHEN WIR DAS?
+	public int accountNumber;
+	public double overdraft;
+	public double bankDeposit;
+	public int pin;
+	//public int positionOfAccount;//BRAUCHEN WIR DAS?
 
 	// Constructor for this class
 	public Account() {
@@ -26,7 +26,7 @@ public class Account {
 	 *            accountNumber
 	 */
 	public void setAccountNumber(int value) {
-		Account.accountNumber = value;
+		this.accountNumber = value;
 	}
 	/**
 	 * 
@@ -43,7 +43,7 @@ public class Account {
 	 *            overdraft
 	 */
 	public void setOverdraft(double value2) {
-		Account.overdraft = value2;
+		this.overdraft = value2;
 	}
 	/**
 	 * 
@@ -59,7 +59,7 @@ public class Account {
 	 *            bankDeposit
 	 */
 	public void setBankDeposit(double value3) {
-		Account.bankDeposit = value3;
+		this.bankDeposit = value3;
 	}
 	/**
 	 * @return bankDeposit
@@ -80,7 +80,7 @@ public class Account {
 		int length = String.valueOf(value4).length();
 		if (length == 4) {
 			// dann speichere mir das
-			Account.pin = value4;
+			this.pin = value4;
 		} else {
 
 			System.out.println("Sie mussen nur 4 stellige nummer eingeben");
@@ -105,14 +105,34 @@ public class Account {
 	 * Ob wir diese Methoden brauchen? Schauen wir noch spaeter. 
 	 * @param value5
 	 */
-	public void setAccountPossition(int value5) {
+	/**public void setAccountPossition(int value5) {
 		this.positionOfAccount = value5;
-	}
+	}*/
 	/**
 	 * 
 	 * @return positionOfAccount
 	 */
-	public int getAccountPosstion() {
+	/**
+	 * public int getAccountPosstion() {
 		return positionOfAccount;
+	} */
+	
+	/**
+	 * Dieser Konstruktor bittet uns schnelle Erstellung von accounts
+	 * @param accountNumber
+	 * @param overdraft
+	 * @param bankDeposit
+	 * @param pin
+	 * ?tested?
+	 */
+	
+	public Account(int accountNumber,double overdraft, double bankDeposit,int pin) 
+	{
+		this.accountNumber=accountNumber;
+		this.overdraft=overdraft;
+		this.bankDeposit=bankDeposit;
+		this.pin=pin;
+		
+				
 	}
 }
