@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.university.neueVersion.exceptions;
 
 /**

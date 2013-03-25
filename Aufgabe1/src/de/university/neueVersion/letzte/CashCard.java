@@ -1,4 +1,5 @@
 package de.university.neueVersion.letzte;
+
 /**
  * TODO
  * 
@@ -12,7 +13,7 @@ public class CashCard {
 
 	// Constructor
 	public CashCard(int accountNumber) {
-    this.accountNumber=accountNumber;
+		this.accountNumber = accountNumber;
 	}
 
 	// Methods for account and pin (both set and get)

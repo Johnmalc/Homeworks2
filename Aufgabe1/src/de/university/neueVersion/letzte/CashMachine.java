@@ -1,9 +1,9 @@
 package de.university.neueVersion.letzte;
 
-import de.university.neueVersion.exceptions.CardInsertedException;
 import de.university.neueVersion.exceptions.KarteAus;
+import de.university.neueVersion.exceptions.KarteIn;
+import de.university.neueVersion.exceptions.NichtGenugGeld;
 import de.university.neueVersion.exceptions.PinFalsch;
-import de.university.neueVersion.exceptions.NotEnoughMoneyException;
 
 public class CashMachine {
 
@@ -13,16 +13,16 @@ public class CashMachine {
 	State statePIN;
 	int zaehler; // fuer Arrays
 
-	CashMachine() {
+	public CashMachine() {
 		accounts = new Account[4];
 		zaehler = 0;
 		state = State.READY;
 		statePIN = State.PIN_WRONG;
-	
-	accounts[0]=new Account(12345678, -1000.0, 2000, 1234);;
-	accounts[1]=new Account(23456789, -100.0, 200, 2345);;
-    accounts[2]=new Account(34567890, -200.0, 300, 3456);
-    accounts[3]=new Account(45678901, 0.0, 5000, 4562); 
+		// fur main 
+		accounts[0]=new Account(12345678, -1000.0, 2000, 1234);;
+		accounts[1]=new Account(23456789, -100.0, 200, 2345);;
+	    accounts[2]=new Account(34567890, -200.0, 300, 3456);
+	    accounts[3]=new Account(45678901, 0.0, 5000, 4562); 
 
 	}
 	 /**private CashCard cashCardA = new CashCard(12345678);
@@ -33,20 +33,20 @@ public class CashMachine {
 	*/
 	
 
-	public void insertCashCard(CashCard cashCardX) throws CardInsertedException { // Karteneingabe
+	public void insertCashCard(CashCard cashCardX) throws KarteIn {
 	
 		switch (state) {
 		case READY: {
 			cashCard = cashCardX;
-			System.out.println(cashCard.getAccountNumber());// ZUM Pruefen
-																// Anastasia
+			System.out.println(cashCard.getAccountNumber());
 			//cashCard.setAccountNumber(cashCardX.getAccountNumber()); ZUM Pruefen LOESCHEN
 
 			state = State.CARD_INSERTED;
-			System.out.println(state);	}
+			System.out.println(state);	
+		}
 			break;
 		default:
-			throw new CardInsertedException();
+			throw new KarteIn();
 
 		} // switch Ende
 	}// Karteneingabe Ende
@@ -64,13 +64,12 @@ public class CashMachine {
 			for (int i=0; i<accounts.length; i++) {
 				if ((accounts[i].getAccountNumber())==(cashCard.getAccountNumber())) {
 				//System.out.println(accounts[i].getAccountNumber()+" "+i+" "+cashCard.getAccountNumber() );
-				zaehler=i;
-				i=accounts.length;
-			}
+					zaehler=i;
+					i=accounts.length;
+				}
 			}
 				
-			if (accounts[zaehler].getPin() == pinX) 
-			{
+			if (accounts[zaehler].getPin() == pinX) {
 				statePIN = State.PIN_CORRECT;
 				System.out.println(statePIN);
 																	 
@@ -79,7 +78,6 @@ public class CashMachine {
 				throw new PinFalsch();
 
 			} // end of if-else
-
 		}
 			break;
 		default:
@@ -89,9 +87,7 @@ public class CashMachine {
 
 	} // pinEingeben Ende
 
-	public void withdraw(double amount)
-			throws PinFalsch, KarteAus, NotEnoughMoneyException { // Abheben
-
+	public void withdraw(double amount) throws PinFalsch, KarteAus, NichtGenugGeld {
 		switch (state) {
 		case CARD_INSERTED: {
 			switch (statePIN) {
@@ -101,26 +97,23 @@ public class CashMachine {
 					System.out.println("Ihr Kontoguthaben ist: "
 							+ accounts[zaehler].getBankDeposit());
 				} else {
-					throw new NotEnoughMoneyException();
+					throw new NichtGenugGeld();
 				}
 
 			}
 				break;
 			default:
 				throw new PinFalsch();
-			}
-
 		}
-			break;
+	}
+		break;
 		default:
 			throw new KarteAus();
 
 		} // switch State Ende
 	}// Abheben Ende
 
-	public void accountStatement() throws PinFalsch,
-			KarteAus // Kontoinformationen
-	{
+	public void accountStatement() throws PinFalsch, KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
 			switch (statePIN) {
@@ -141,9 +134,7 @@ public class CashMachine {
 		} // switch
 	} // Kontoinformationen Ende
 
-	public void ejectCashCard(CashCard cashCardX)
-			throws KarteAus // Kartenauswurf
-	{
+	public void ejectCashCard(CashCard cashCardX) throws KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
 			cashCard=null;
