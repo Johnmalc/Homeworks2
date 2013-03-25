@@ -11,8 +11,8 @@ public class CashCard {
 	public int pin; // BRAUCHEN WIR DEN HIER?
 
 	// Constructor
-	public CashCard() {
-
+	public CashCard(int accountNumber) {
+    this.accountNumber=accountNumber;
 	}
 
 	// Methods for account and pin (both set and get)
