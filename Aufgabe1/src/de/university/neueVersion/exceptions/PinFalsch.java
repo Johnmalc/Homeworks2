@@ -11,7 +11,7 @@ public class PinFalsch extends Exception {
 	
 	public PinFalsch() {
 		System.out.println("");
-		System.out.println("Sie konnen die Informationen nicht kriegen, weil der Pin falsch ist");
+		System.out.println(" -= Sie haben entwerder noch keinen PIN eingegeben oder er war falsch. =- ");
 	}
 
 }
