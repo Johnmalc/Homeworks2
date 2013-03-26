@@ -25,7 +25,15 @@ public class CashMachine {
 		accounts[3] = new Account(45678901, 0.0, 5000, 4567);
 
 	}
-
+	/**
+	 * 
+	 * Nur im Zustand READY können die Informationen der eingegebenen Cashcard im Attribute cashCard abgespeichert werden.
+	 * Bei erfolgreicher Eingabe wechselt der Zustand von READY auf CARD_INSERTED. 
+	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
+	 * 
+	 * @param cashCardX
+	 * @throws KarteIn 
+	 */
 	public void insertCashCard(CashCard cashCardX) throws KarteIn {
 
 		switch (state) {
@@ -39,11 +47,16 @@ public class CashMachine {
 			throw new KarteIn();
 
 		} // switch Ende
-	}// Karteneingabe Ende
+	}
 
 	/**
 	 * Die Methode gleicht die Eingabe des Pins mit dem Pin des gerade
 	 * verwendeten Accounts ab.
+	 * Bei korrekter Eingabe wechselt der Zustand des Geldautomaten in PIN_CORRECT. 
+	 * Bei Falscheingabe in PIN_WRONG. 
+	 * Der Status des Automaten soll auf der Konsole protokolliert werden
+	 * Im Zustand PIN_WRONG, ist das Ausführen von weiteren Methoden nicht moglich. 
+	 * Beachten Sie, dass Geld nur noch abgehoben werden kann, wenn der Pin korrekt ist.
 	 * 
 	 * @param pinX
 	 * @throws PinFalsch
@@ -75,8 +88,20 @@ public class CashMachine {
 
 		} // switch Ende
 
-	} // pinEingeben Ende
-
+	}
+	
+	/**
+	 * 
+	 * Das Abheben kann nur erfolgen wenn der Geldautomat im Zustand CARD_INSERTED ist. 
+	 * Der angegebene Betrag kann vom Konto abgehoben werden, solange es den Dispokredit nicht uberschreitet.
+	 * Außerdem muss das Kontoguthaben neu berechnet und auf der Konsole ausgegeben werden.
+	 * 
+	 * @param amount
+	 * @throws PinFalsch
+	 * @throws KarteAus
+	 * @throws NIchtGenugGeld
+	 * 
+	 */
 	public void withdraw(double amount) throws PinFalsch, KarteAus, NichtGenugGeld {
 		switch (state) {
 		case CARD_INSERTED:
@@ -106,8 +131,15 @@ public class CashMachine {
 			throw new KarteAus();
 
 		} // switch State Ende
-	}// Abheben Ende
-
+	}
+	
+	/**
+	 * Ausgabe der aktuellen Kontoinformationen auf der Konsole, nur möglich im Zustand CARD_INSERTED.
+	 * Die Methode accountStatement() kann auch im Zustand PIN_CORRECT ausgefuhrt werden.
+	 * 
+	 * @throws PinFalsch
+	 * @throws KarteAus
+	 */	
 	public void accountStatement() throws PinFalsch, KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
@@ -129,8 +161,18 @@ public class CashMachine {
 			throw new KarteAus();
 
 		} // switch
-	} // Kontoinformationen Ende
-
+	} 
+	
+	/**
+	 * 
+	 * Der Geldautomat wird auf den Status READY gesetzt, das Attribute cashCard wird zur Nullreferenz.
+	 * Das ist nur moglich im Zustand CARD_INSERTED.
+	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
+	 * Die Methode ejectCashCard() kann auch im Zustand PIN_CORRECT ausgefuhrt werden.
+	 * 
+	 * @throws KarteAus
+	 * 
+	 */
 	public void ejectCashCard() throws KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
@@ -142,6 +184,6 @@ public class CashMachine {
 		default:
 			throw new KarteAus();
 		} // Switch State Ende
-	} // Kartenauswurf Ende
+	} 
 
 }
