@@ -8,4 +8,8 @@ Aufgabe1 / src / de / university / neueVersion / **is the new one** and will be 
 
 @johnmalc
 
+The 3th. version is Aufgabe1 / src / de / university / andereVersion /. There you can find other versions, from people. Thanks to them for (sometimes) inspiration.
+
+
+
 
