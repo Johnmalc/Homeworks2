@@ -52,7 +52,7 @@ public class CashMachine {
 	public void pinEingeben(int pinX) throws PinFalsch, KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
-			for (int i = 0; i < accounts.length; i++) {
+			for (int acc : accounts ) {
 				if ((accounts[i].getAccountNumber()) == (cashCard.getAccountNumber())) {
 					zaehler = i;
 					i = accounts.length;
