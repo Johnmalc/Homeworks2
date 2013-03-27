@@ -18,12 +18,11 @@ public class CashMachine {
 		zaehler = 0;
 		state = State.READY;
 		statePIN = State.PIN_WRONG;
-		// fur main
+		// fuer main
 		accounts[0] = new Account(12345678, 0.0, 2000, 1234);
 		accounts[1] = new Account(23456789, -100.0, 200, 2345);
 		accounts[2] = new Account(34567890, -200.0, 300, 3456);
 		accounts[3] = new Account(45678901, 0.0, 5000, 4567);
-
 	}
 	/**
 	 * 
@@ -66,15 +65,17 @@ public class CashMachine {
 	public void pinEingeben(int pinX) throws PinFalsch, KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
-			//TODO wir brauchen hier kommentare > wozu
-			// Maybe the new for loop
-			for (int i = 0; i < accounts.length; i++) {
-			// for (int acc : accounts ) { will not work
-				if ((accounts[i].getAccountNumber()) == (cashCard.getAccountNumber())) {
-					zaehler = i;
-					i = accounts.length;
-				}
-			}
+			//Sucht die passende Konto nach AccountNummer
+		for (Account test : accounts ) {
+					if ((test.getAccountNumber()) == (cashCard.getAccountNumber())) {
+						break;	
+					} //if Ende
+					else{
+						zaehler++;
+					}//else ende
+					
+				} // for Ende
+				
 
 			if (accounts[zaehler].getPin() == pinX) {
 				statePIN = State.PIN_CORRECT;
@@ -186,6 +187,7 @@ public class CashMachine {
 			switch (statePIN) {
 			case PIN_CORRECT:
 				cashCard = null;
+				zaehler=0;
 				state = State.READY;
 				System.out.println("Ihr Karte ist entfenrt!");
 				System.out.println("Automat ist auf Status " + state + " gesetzt.");
