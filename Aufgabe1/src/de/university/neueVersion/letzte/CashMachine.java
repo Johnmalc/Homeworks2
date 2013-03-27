@@ -55,7 +55,7 @@ public class CashMachine {
 	 * Bei korrekter Eingabe wechselt der Zustand des Geldautomaten in PIN_CORRECT. 
 	 * Bei Falscheingabe in PIN_WRONG. 
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden
-	 * Im Zustand PIN_WRONG, ist das Ausführen von weiteren Methoden nicht moglich. 
+	 * Im Zustand PIN_WRONG, ist das Ausfuhren von weiteren Methoden nicht moglich. 
 	 * Beachten Sie, dass Geld nur noch abgehoben werden kann, wenn der Pin korrekt ist.
 	 * 
 	 * @param pinX
@@ -65,6 +65,7 @@ public class CashMachine {
 	public void pinEingeben(int pinX) throws PinFalsch, KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
+			//TODO wir brauchen hier kommentare > wozu
 			for (int acc : accounts ) {
 				if ((accounts[i].getAccountNumber()) == (cashCard.getAccountNumber())) {
 					zaehler = i;
@@ -79,6 +80,8 @@ public class CashMachine {
 						+ " gesetzt.");
 			} // end of if
 			else {
+				// TODO hier muss noch statepin> wrong gewechselt sein
+				statePIN = State.PIN_WRONG;
 				throw new PinFalsch();
 			} // end of if-else
 
@@ -118,6 +121,7 @@ public class CashMachine {
 					System.out.println("Ihr Kontoguthaben ist: "
 							+ accounts[zaehler].getBankDeposit() + " Euro.");
 				} else {
+					// TODO: nicht genug depostit-geld 
 					throw new NichtGenugGeld();
 				}
 
@@ -134,7 +138,7 @@ public class CashMachine {
 	}
 	
 	/**
-	 * Ausgabe der aktuellen Kontoinformationen auf der Konsole, nur möglich im Zustand CARD_INSERTED.
+	 * Ausgabe der aktuellen Kontoinformationen auf der Konsole, nur moglich im Zustand CARD_INSERTED.
 	 * Die Methode accountStatement() kann auch im Zustand PIN_CORRECT ausgefuhrt werden.
 	 * 
 	 * @throws PinFalsch
@@ -142,6 +146,7 @@ public class CashMachine {
 	 */	
 	public void accountStatement() throws PinFalsch, KarteAus {
 		switch (state) {
+			// TODO und was z.B case inserted: case pinCoorect
 		case CARD_INSERTED:
 			switch (statePIN) {
 			case PIN_CORRECT:
@@ -176,11 +181,15 @@ public class CashMachine {
 	public void ejectCashCard() throws KarteAus {
 		switch (state) {
 		case CARD_INSERTED:
-			cashCard = null;
-			state = State.READY;
-			System.out.println("Ihr Karte ist entfenrt!");
-			System.out.println("Automat ist auf Status " + state + " gesetzt.");
+			switch (statePIN) {
+			case PIN_CORRECT:
+				cashCard = null;
+				state = State.READY;
+				System.out.println("Ihr Karte ist entfenrt!");
+				System.out.println("Automat ist auf Status " + state + " gesetzt.");
 			break;
+			}
+		break;
 		default:
 			throw new KarteAus();
 		} // Switch State Ende
