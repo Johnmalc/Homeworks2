@@ -1,24 +1,21 @@
 package de.university.neueVersion.letzte;
 
-import de.university.neueVersion.exceptions.KarteAus;
-import de.university.neueVersion.exceptions.KarteIn;
-import de.university.neueVersion.exceptions.NichtGenugGeld;
-import de.university.neueVersion.exceptions.PinFalsch;
+import de.university.neueVersion.exceptions.*;
+
 
 public class CashMachine {
 
 	Account[] accounts;
 	CashCard cashCard;
 	State state;
-	State statePIN;
 	int zaehler; // fuer Arrays
 
 	public CashMachine() {
 		accounts = new Account[4];
 		zaehler = 0;
 		state = State.READY;
-		statePIN = State.PIN_WRONG;
-		// fuer main
+		
+		// hier wurden die accounts gescpeichert
 		accounts[0] = new Account(12345678, 0.0, 2000, 1234);
 		accounts[1] = new Account(23456789, -100.0, 200, 2345);
 		accounts[2] = new Account(34567890, -200.0, 300, 3456);
@@ -32,19 +29,36 @@ public class CashMachine {
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
 	 * 
 	 * @param cashCardX
+	 * @throws  
 	 * @throws KarteIn 
 	 */
-	public void insertCashCard(CashCard cashCardX) throws KarteIn {
+	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
 
 		switch (state) {
 		case READY:
 			cashCard = cashCardX;
 			state = State.CARD_INSERTED;
+			//Sucht die passende Konto nach AccountNummer
+			for (Account test : accounts ) {
+						if ((test.getAccountNumber()) == (cashCard.getAccountNumber())) {
+							break;	
+						} //if Ende
+						else{
+							zaehler++;
+							if (zaehler>= accounts.length){ 
+								try{ ejectCashCard();} 
+								finally {throw new InvalidCardException();
+							}//finally Ende
+							}//if Ende	
+						}//else ende
+						
+					} // for Ende
+					
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 
 			break;
 		default:
-			throw new KarteIn();
+			throw new CardInsertedException();
 
 		} // switch Ende
 	}
@@ -62,36 +76,26 @@ public class CashMachine {
 	 * @throws PinFalsch
 	 * @throws KarteAus
 	 */
-	public void pinEingeben(int pinX) throws PinFalsch, KarteAus {
+	public void pinEingeben(int pinX) throws PinNotCorectException, CardNotInsertedException, InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
-			//Sucht die passende Konto nach AccountNummer
-		for (Account test : accounts ) {
-					if ((test.getAccountNumber()) == (cashCard.getAccountNumber())) {
-						break;	
-					} //if Ende
-					else{
-						zaehler++;
-					}//else ende
-					
-				} // for Ende
-				
+			
 
 			if (accounts[zaehler].getPin() == pinX) {
-				statePIN = State.PIN_CORRECT;
+				state = State.PIN_CORRECT;
 				System.out.println("Sie haben den richtigen Pin eingegeben.");
-				System.out.println("Automat ist auf Status " + statePIN
+				System.out.println("Automat ist auf Status " + state
 						+ " gesetzt.");
 			} // end of if
 			else {
 				// TODO hier muss noch statepin> wrong gewechselt sein
-				statePIN = State.PIN_WRONG;
-				throw new PinFalsch();
+			throw new PinNotCorectException();
 			} // end of if-else
 
 			break;
 		default:
-			throw new KarteAus();
+			System.out.println("hier");
+			throw new CardNotInsertedException();
 
 		} // switch Ende
 
@@ -109,14 +113,13 @@ public class CashMachine {
 	 * @throws NIchtGenugGeld
 	 * 
 	 */
-	public void withdraw(double amount) throws PinFalsch, KarteAus, NichtGenugGeld {
+	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
 		switch (state) {
-		case CARD_INSERTED:
-			switch (statePIN) {
-			case PIN_CORRECT:
+		case PIN_CORRECT:
+			
 				System.out.println("Ihr Kontoguthaben ist: "
 						+ accounts[zaehler].getBankDeposit() + " Euro.");
-				if (accounts[zaehler].getBankDeposit() > accounts[zaehler]
+				if (accounts[zaehler].getBankDeposit() - amount >= accounts[zaehler]
 						.getOverdraft()) {
 					accounts[zaehler].setBankDeposit(accounts[zaehler]
 							.getBankDeposit() - amount);
@@ -126,17 +129,13 @@ public class CashMachine {
 							+ accounts[zaehler].getBankDeposit() + " Euro.");
 				} else {
 					// TODO: nicht genug depostit-geld 
-					throw new NichtGenugGeld();
+					throw new NotEnoughMoneyException();
 				}
 
-				break;
-			default:
-				throw new PinFalsch();
-			}
-
+				
 			break;
 		default:
-			throw new KarteAus();
+			throw new PinNotCorectException();
 
 		} // switch State Ende
 	}
@@ -148,27 +147,19 @@ public class CashMachine {
 	 * @throws PinFalsch
 	 * @throws KarteAus
 	 */	
-	public void accountStatement() throws PinFalsch, KarteAus {
-		switch (state) {
-			// TODO und was z.B case inserted: case pinCoorect
-		case CARD_INSERTED:
-			switch (statePIN) {
-			case PIN_CORRECT:
-				// automatisch klarer
-				System.out.println("\n" + "Account Statement: " + "\n" 
-						+ "Account Nr.: " + accounts[zaehler].getAccountNumber() + "\n"
-						+ "Bank Deposit: " + accounts[zaehler].getBankDeposit()	+ "\n" 
-						+ "Overdraft: " + accounts[zaehler].getOverdraft());
-				break;
-			default:
-				throw new PinFalsch();
-			}
+	public void accountStatement() throws CardNotInsertedException {
+		if  (state==State.CARD_INSERTED || state==State.PIN_CORRECT )
+		{//prueft ob genug Geld ist
+			System.out.println("\n" + "Account Statement: " + "\n" 
+					+ "Account Nr.: " + accounts[zaehler].getAccountNumber() + "\n"
+					+ "Bank Deposit: " + accounts[zaehler].getBankDeposit()	+ "\n" 
+					+ "Overdraft: " + accounts[zaehler].getOverdraft());
+		}			
+				
+		else{
+			throw new CardNotInsertedException();
 
-			break;
-		default:
-			throw new KarteAus();
-
-		} // switch
+		}
 	} 
 	
 	/**
@@ -181,21 +172,18 @@ public class CashMachine {
 	 * @throws KarteAus
 	 * 
 	 */
-	public void ejectCashCard() throws KarteAus {
-		switch (state) {
-		case CARD_INSERTED:
-			switch (statePIN) {
-			case PIN_CORRECT:
+	public void ejectCashCard() throws CardNotInsertedException {
+		if  (state==State.CARD_INSERTED || state==State.PIN_CORRECT )
+		{
+			
 				cashCard = null;
 				zaehler=0;
 				state = State.READY;
 				System.out.println("Ihr Karte ist entfenrt!");
 				System.out.println("Automat ist auf Status " + state + " gesetzt.");
-				break;
-			}
-			break;
-		default:
-			throw new KarteAus();
-		} // Switch State Ende
+		}			
+				else {
+			throw new CardNotInsertedException();
+		} // If Ende
 	} 
 }
