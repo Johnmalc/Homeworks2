@@ -27,7 +27,8 @@ public class CashMachine {
 	}
 	/**
 	 * 
-	 * Nur im Zustand READY können die Informationen der eingegebenen Cashcard im Attribute cashCard abgespeichert werden.
+	 * Nur im Zustand READY können die Informationen der eingegebenen
+	 * Cashcard im Attribute cashCard abgespeichert werden.
 	 * Bei erfolgreicher Eingabe wechselt der Zustand von READY auf CARD_INSERTED. 
 	 * Der Status des Automaten soll auf der Konsole protokolliert werden.
 	 * 
