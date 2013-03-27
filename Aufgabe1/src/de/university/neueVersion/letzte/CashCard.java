@@ -10,13 +10,12 @@ package de.university.neueVersion.letzte;
 public class CashCard {
 	public int accountNumber;
 	
-
 	// Constructor
 	public CashCard(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
-	// Methods for account  (both set and get)
+	// Methods for account (set and get)
 	public void setAccountNumber(int value) {
 		this.accountNumber = value;
 	}
@@ -24,6 +23,4 @@ public class CashCard {
 	public int getAccountNumber() {
 		return accountNumber;
 	}
-
-	
 }
