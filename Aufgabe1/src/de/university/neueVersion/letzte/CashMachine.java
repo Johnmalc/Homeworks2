@@ -187,12 +187,11 @@ public class CashMachine {
 				state = State.READY;
 				System.out.println("Ihr Karte ist entfenrt!");
 				System.out.println("Automat ist auf Status " + state + " gesetzt.");
-			break;
+				break;
 			}
-		break;
+			break;
 		default:
 			throw new KarteAus();
 		} // Switch State Ende
 	} 
-
 }
