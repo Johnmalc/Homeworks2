@@ -67,7 +67,9 @@ public class CashMachine {
 		switch (state) {
 		case CARD_INSERTED:
 			//TODO wir brauchen hier kommentare > wozu
-			for (int acc : accounts ) {
+			// Maybe the new for loop
+			for (int i = 0; i < accounts.length; i++) {
+			// for (int acc : accounts ) { will not work
 				if ((accounts[i].getAccountNumber()) == (cashCard.getAccountNumber())) {
 					zaehler = i;
 					i = accounts.length;
@@ -151,12 +153,11 @@ public class CashMachine {
 		case CARD_INSERTED:
 			switch (statePIN) {
 			case PIN_CORRECT:
-				System.out.println("\n" + "Account Statement: " + "\n"
-						+ "Account Nr.: "
-						+ accounts[zaehler].getAccountNumber() + "\n"
-						+ "Bank Deposit: " + accounts[zaehler].getBankDeposit()
-						+ "\n" + "Overdraft: "
-						+ accounts[zaehler].getOverdraft());
+				// automatisch klarer
+				System.out.println("\n" + "Account Statement: " + "\n" 
+						+ "Account Nr.: " + accounts[zaehler].getAccountNumber() + "\n"
+						+ "Bank Deposit: " + accounts[zaehler].getBankDeposit()	+ "\n" 
+						+ "Overdraft: " + accounts[zaehler].getOverdraft());
 				break;
 			default:
 				throw new PinFalsch();
