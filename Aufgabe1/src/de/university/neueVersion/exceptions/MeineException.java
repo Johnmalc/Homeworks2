@@ -1,7 +1,7 @@
 package de.university.neueVersion.exceptions;
 
 /**
- * @author johnmalc
+ * @author
  * @anastasiastudent
  * 
  */
