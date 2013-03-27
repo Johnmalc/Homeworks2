@@ -20,16 +20,19 @@ public class Main {
 		
 		/**
 		 * Bitte ausklammen, um Die Exception zu kriegen.
-		 * 
-		 * CashCard cashCard2 = new CashCard(23456789);
-		 * cashMachine.ejectCashCard();
-		 * cashMachine.insertCashCard(cashCard2);
-		 * cashMachine.withdraw(125);
-		 * cashMachine.insertCashCard(cashCard);
-		 * cashMachine.pinEingeben(2345);
-		 * cashMachine.accountStatement();
-		 * cashMachine.withdraw(100);
-        */
+		 * ctrl+shift+c (fur ana-odnovremenno)
+		 */
+		 
+//		CashCard cashCard2 = new CashCard(23456789);
+//		cashMachine.ejectCashCard();
+//		cashMachine.insertCashCard(cashCard2);
+//		cashMachine.withdraw(125);
+//		cashMachine.insertCashCard(cashCard2);
+//
+//		cashMachine.pinEingeben(2345);
+//		cashMachine.accountStatement();
+//		cashMachine.withdraw(100);
+        
 	}
 
 }
