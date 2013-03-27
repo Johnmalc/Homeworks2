@@ -1,5 +1,10 @@
 package de.university.neueVersion.exceptions;
 
+/** 
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
+
 public class NotEnoughMoneyException extends MeineException {
 
 	public NotEnoughMoneyException() {
