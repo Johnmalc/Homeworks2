@@ -1,10 +1,10 @@
 package de.university.neueVersion.exceptions;
 
-/**
- * TODO
- * @author 
- * @author 
+/** 
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
  */
+
 public class CardNotInsertedException extends MeineException {
 
 	public CardNotInsertedException() {

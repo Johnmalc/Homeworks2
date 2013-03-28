@@ -1,5 +1,10 @@
 package de.university.neueVersion.exceptions;
 
+/** 
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
+
 public class CardInsertedException extends MeineException {
 
 	public CardInsertedException() {
