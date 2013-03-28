@@ -8,7 +8,7 @@ public abstract class Shoes {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	private double schueGrosse;
@@ -18,7 +18,7 @@ public abstract class Shoes {
 	}
 
 	public double getSchueGrosse() {
-		return this.schueGrosse;
+		return schueGrosse;
 	}
 
 }
