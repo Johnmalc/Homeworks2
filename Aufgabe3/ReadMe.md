@@ -1,9 +1,10 @@
 Also this time we got a homework in Germany.Don't worry, be happy 
 We could get 10 points and we got: **to add**:
+I thank to guys at [http://stackoverflow.com/questions/2047003/print-arraylist-element](http://stackoverflow.com/questions/2047003/print-arraylist-element) and at [http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html](http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html)  <<<< This is a very good page.
 
 > In einer Warenhaussoftware sollen Produkte verwaltet werden. In der vorliegenden Übungsaufgabe sollen die grundlegenden Typen entwickelt werden.
 > 
-> (a) Schreiben Sie eine generische Klasse Product, die ein Produkt repräsentiert. Ein Product- Objekt besteht aus zwei Attributen. Das erste Attribut ist die Produktbeschreibung, das zweite Argument ist der Produktpreis. Die tatsächliche Klasse für das Attribut Produktbeschreibung soll erst bei der Verwendung der Klasse festgelegt werden, verwenden Sie deshalb eine Typvariable (Stellvertreterbuchstaben). Das zweite Attribut Produktpreis ist vom Datentyp double.
+> (a) Schreiben Sie eine generische Klasse Product, die ein Produkt repräsentiert. Ein Product- Objekt besteht aus zwei Attributen. Das erste Attribut ist die Produktbeschreibung, das zweite Argument ist der Produktpreis. Das zweite Attribut Produktpreis ist vom Datentyp double. **Die tatsächliche Klasse für das Attribut Produktbeschreibung soll erst bei der Verwendung der Klasse festgelegt werden, verwenden Sie deshalb eine Typvariable (Stellvertreterbuchstaben).** 
 > 
 >  Die Klasse Product soll einen Konstruktor besitzen, der Werte für beide Attribute als Argumente übergeben bekommt. Schreiben Sie ein Testprogramm, welches eine Anzahl von Product-Objekten erzeugt (Verwenden Sie die Klasse String als Klasse für die Produktbeschreibung), in einem Array speichert und auf die Standardausgabe ausgibt. 
 >  

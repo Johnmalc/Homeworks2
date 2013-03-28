@@ -1,21 +1,12 @@
-package de.university.reutlingen.aufgabe2;
+package de.university.reutlingen.aufgabe2.a2;
 
 public class ProductDescription {
 	private String produktGruppe;
 	private String beschreibungsText;
 
-	public enum PriceLevel {
-		LOW(9.99), MEDIUM(19.99), HIGH(49.99), EXCLUSIVE(99.99);
-		private double zahl;
-
-		private PriceLevel(double zahlX) {
-			this.zahl = zahlX;
-		}
-
-		@Override
-		public String toString() {
-			return String.valueOf(zahl);
-		}
+	public ProductDescription(String produktGruppeX, String beschreibungsTextX) {
+		this.produktGruppe = produktGruppeX;
+		this.beschreibungsText = beschreibungsTextX;
 	}
 
 	public void setProduktGruppe(String value) {
@@ -36,8 +27,8 @@ public class ProductDescription {
 
 	@Override
 	public String toString() {
-		return "ProductDescription [produktGruppe=" + produktGruppe
-				+ ", beschreibungsText=" + beschreibungsText + "]";
+		return "ProductDescription: " + produktGruppe
+				+ ", beschreibungsText : " + beschreibungsText;
 	}
 
 }
