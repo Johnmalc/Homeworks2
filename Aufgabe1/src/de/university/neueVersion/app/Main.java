@@ -68,8 +68,12 @@ public class Main {
 
 		// Test 5 prueft, ob InvalidCardException funktioniert
 		try {
-			cashMachine.ejectCashCard();
-			cashMachine.insertCashCard(new CashCard(11111111));
+			cashMachine.ejectCashCard(); // Wir entfernen aktuelle gueltige Karte
+			cashMachine.insertCashCard(new CashCard(11111111)); 
+			/** Es wurde kein Konto mit disesem Kontonummer geschpeichert, 
+			 * d.h. es sollte die Fehlermeldung erscheinen, 
+			 * dass es kein Konto existiert, das dieser Karte zugeordnet ist
+			 */
 		} catch (CardNotInsertedException e) {
 			System.out.println("Test5 ist nict bestanden!" + "\n");
 		} catch (CardInsertedException e) {
@@ -77,5 +81,7 @@ public class Main {
 		} catch (InvalidCardException e) {
 			System.out.println("Test5 ist erfolgreich!" + "\n");
 		}
+		
+		
 	}
 }
