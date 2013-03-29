@@ -37,7 +37,7 @@ public class CashMachine {
 	 * @throws InvalidCardException
 	 * @throws CardInsertedException
 	 */
-	@SuppressWarnings("finally")
+	
 	public void insertCashCard(CashCard cashCardX)
 			throws CardInsertedException, InvalidCardException {
 
@@ -52,12 +52,9 @@ public class CashMachine {
 				} else {
 					zaehler++;
 					if (zaehler >= accounts.length) {
-						try {
-							ejectCashCard();
-						} finally {
+						state=State.READY;
 							throw new InvalidCardException();
-						}
-					}
+			  		}
 				}
 			}
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
