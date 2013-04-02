@@ -1,4 +1,4 @@
-package de.reutlingen.university.aufgabe3Shoe;
+package de.reutlingen.university.aufgabe3;
 
 /** 
  * @author Anastasia Baron
