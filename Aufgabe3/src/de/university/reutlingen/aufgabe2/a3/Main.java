@@ -1,14 +1,16 @@
-package de.univeristy.reutlingen.aufgabe2.a3;
+package de.university.reutlingen.aufgabe2.a3;
 
 import java.util.ArrayList;
-import de.univeristy.reutlingen.aufgabe2.a3.ProductDescription.PriceLevel;
+
+import de.university.reutlingen.aufgabe2.a3.ProductDescription.PriceLevel;
 
 
 public class Main {
 
 	public static void main(String[] args) {
 		/*
-		 * this is a hack. Should not do, just for save heaven. Looks horrible
+		 * this is a hack. Should not do, just for save heaven.
+		 * 1 Possibility
 		 * http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
 		 */
 		Produkt<String>[] products = new Produkt[1];
@@ -19,7 +21,10 @@ public class Main {
 		
 		System.out.println("");
 		
-		// Teacher basically wants create arraylist and put there Produkt object
+		/*
+		 * Teacher basically wants create arraylist and put there Product object
+		 * 2 Possibility 
+		 */
 		ArrayList<Produkt<String>> produktLists = new ArrayList<Produkt<String>>();
 		produktLists.add(new Produkt<String>("sdfsd", PriceLevel.MEDIUM));
 

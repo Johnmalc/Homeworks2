@@ -1,6 +1,6 @@
-package de.univeristy.reutlingen.aufgabe2.a3;
+package de.university.reutlingen.aufgabe2.a3;
 
-import de.univeristy.reutlingen.aufgabe2.a3.ProductDescription.PriceLevel;
+import de.university.reutlingen.aufgabe2.a3.ProductDescription.PriceLevel;
 
 public class Produkt<T> {
 	public T produktBeschreibung;
