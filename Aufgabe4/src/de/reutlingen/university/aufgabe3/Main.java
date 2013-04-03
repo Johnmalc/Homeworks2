@@ -5,7 +5,7 @@ package de.reutlingen.university.aufgabe3;
  * @author Dmitry Petrov
  * 
  *         Erstellen Sie in einer main()-Methode von den verschiedenen
- *         Schuharten ein Objekt. Auﬂerdem sind Box- und ShoeBox-Objekte zu
+ *         Schuharten ein Objekt. Ausserdem sind Box- und ShoeBox-Objekte zu
  *         erstellen, in denen Sie die die Schuhpaare aufbewahren und
  *         herausnehmen koennen. Der Inhalt der Box- bzw. ShoeBox-Objekte soll
  *         auf der Konsole ausgegeben werden.

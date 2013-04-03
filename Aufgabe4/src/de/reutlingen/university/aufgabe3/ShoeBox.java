@@ -6,11 +6,11 @@ package de.reutlingen.university.aufgabe3;
  * @author Dmitry Petrov
  * 
  *         Jedes Schuhpaar soll in einer eigenen Schachtel untergebracht werden.
- *         Um die generische Klasse Box wiederverwenden zu können soll eine neue
+ *         Um die generische Klasse Box wiederverwenden zu konnen soll eine neue
  *         Klasse ShoeBox erstellt werden, welche von Box erbt. Um zu
  *         verhindern, dass neben Schuhobjekten auch andere Objekte in ShoeBox
  *         abgelegt werden koennen, ist es erforderlich den generischen
- *         Platzhalter der Klasse entsprechend einzuschränken.
+ *         Platzhalter der Klasse entsprechend einzuschranken.
  * 
  * @param <T>
  */
