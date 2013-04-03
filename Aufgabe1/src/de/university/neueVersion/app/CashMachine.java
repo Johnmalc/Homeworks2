@@ -38,8 +38,7 @@ public class CashMachine {
 	 * @throws CardInsertedException
 	 */
 	
-	public void insertCashCard(CashCard cashCardX)
-			throws CardInsertedException, InvalidCardException {
+	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
 
 		switch (state) {
 		case READY:
@@ -61,7 +60,6 @@ public class CashMachine {
 			break;
 		default:
 			throw new CardInsertedException();
-
 		} // switch Ende
 	}
 
@@ -79,8 +77,7 @@ public class CashMachine {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,
-			CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException,InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
 
@@ -92,12 +89,9 @@ public class CashMachine {
 			else {
 				throw new PinNotCorectException();
 			} // end of if-else
-
 			break;
 		default:
-			System.out.println("hier");
 			throw new CardNotInsertedException();
-
 		} // end switch
 	}
 
@@ -111,12 +105,10 @@ public class CashMachine {
 	 * @param amount
 	 * @throws PinNotCorectException
 	 * @throws NotEnoughMoneyException
-	 * 
 	 */
 	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
 		switch (state) {
 		case PIN_CORRECT:
-
 			System.out.println("Ihr Kontoguthaben ist: " + accounts[zaehler].getBankDeposit() + " Euro.");
 			if (accounts[zaehler].getBankDeposit() - amount >= accounts[zaehler].getOverdraft()) {
 				accounts[zaehler].setBankDeposit(accounts[zaehler].getBankDeposit() - amount);
@@ -125,11 +117,9 @@ public class CashMachine {
 			} else {
 				throw new NotEnoughMoneyException();
 			}
-
 			break;
 		default:
 			throw new PinNotCorectException();
-
 		} // switch State Ende
 	}
 
@@ -166,7 +156,6 @@ public class CashMachine {
 	 */
 	public void ejectCashCard() throws CardNotInsertedException {
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
-
 			cashCard = null;
 			zaehler = 0;
 			state = State.READY;

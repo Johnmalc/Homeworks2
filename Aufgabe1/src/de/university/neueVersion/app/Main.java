@@ -25,6 +25,7 @@ public class Main {
 		
 		// Test 2 um CardInsertedException zu pruefen
 		try {
+			System.out.println("Sie setzen die Karte im Automat");
 			cashMachine.insertCashCard(cashCard1);
 			cashMachine.insertCashCard(cashCard2);
 		} catch (CardInsertedException e) {
