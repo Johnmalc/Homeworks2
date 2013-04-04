@@ -1,8 +1,12 @@
 package de.university.neueVersion.exceptions;
 
+<<<<<<< HEAD
 import de.university.neueVersion.exceptions.MeineException;
 
 /**
+=======
+/** 
+>>>>>>> parent of 997cd71... Vse!
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */

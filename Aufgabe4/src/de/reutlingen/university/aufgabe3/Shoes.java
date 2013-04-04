@@ -17,17 +17,21 @@ public abstract class Shoes {
 	double schuhgroesse;
 
 	// Konstruktor
-	public Shoes(String name, double schuhgroesse) {
+	public Shoes(String name, double schuhgroesseX){
 		this.name = name;
-			this.setSchuhgroesse(schuhgroesse);
+			try {
+				this.setSchuhgroesse(schuhgroesseX);
+			} catch (NichtErlaubtesFormatException e) {
+				e.getMessage();
+			}
 	}
 	// Set-Methode fuer Schuhegroesse erlaubt auch die Halbgroesse.
-	public void setSchuhgroesse(double schuhgroesse){
-		if (schuhgroesse * 2 == (int) (schuhgroesse * 2)) {
+	public void setSchuhgroesse(double schuhgroesseX) throws NichtErlaubtesFormatException{
+		if (schuhgroesseX * 2 == (int)(schuhgroesseX * 2)) {
 			state = State.GROESSE_OK;
-			this.schuhgroesse = schuhgroesse;
-		}else { // TODO
-			System.out.println("Fehler entstanden.");
+			this.schuhgroesse = schuhgroesseX;
+		}else { 
+			throw new NichtErlaubtesFormatException();
 		}
 	}
 
@@ -38,5 +42,4 @@ public abstract class Shoes {
 		}
 		return null;
 	}
-
 }

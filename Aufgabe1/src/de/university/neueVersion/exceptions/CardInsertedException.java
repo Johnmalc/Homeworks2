@@ -1,7 +1,5 @@
 package de.university.neueVersion.exceptions;
 
-import de.university.neueVersion.exceptions.MeineException;
-
 /** 
  * @author Anastasia Baron
  * @author Dmitry Petrov

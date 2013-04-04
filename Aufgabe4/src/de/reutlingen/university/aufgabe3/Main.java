@@ -13,22 +13,22 @@ package de.reutlingen.university.aufgabe3;
  */
 public class Main {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws NichtErlaubtesFormatException{
 
 		/*
 		 * Es wird die Fehlermeldung erscheinen, wenn die Schuhegroesse nicht im
 		 * passenden Format eingegeben wuerde
+		 * Sie mussen entweder ganzen zahlen oder nur mit x.5 eingeben, ansonsten (z.B. mit 3.6)
+		 * Fehler entsteht
 		 */
-		Stiefel stiefel = new Stiefel("Steifel", 36);
+		Stiefel stiefel = new Stiefel("Steifel", 36.2);
 		Sportschuhe sportschuhe = new Sportschuhe("Sportschuhe", 40);
-
-		Box<Sportschuhe> box = new Box<Sportschuhe>();
 
 		/*
 		 * Jetzt duerfen nur die Elemente von der Klasse Spotschuehe hier
 		 * geschpeichert werden
 		 */
-
+		Box<Sportschuhe> box = new Box<Sportschuhe>();
 		box.addShoes(sportschuhe);
 
 		/*
@@ -40,7 +40,5 @@ public class Main {
 
 		System.out.println(box.toString());
 		System.out.println(shoebox.toString());
-
 	}
-
 }
