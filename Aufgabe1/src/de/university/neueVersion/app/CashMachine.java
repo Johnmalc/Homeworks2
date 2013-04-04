@@ -1,11 +1,11 @@
 package de.university.neueVersion.app;
 
+import de.university.neueVersion.exceptions.*;
+
 /** 
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
-
-import de.university.neueVersion.exceptions.*;
 
 public class CashMachine {
 

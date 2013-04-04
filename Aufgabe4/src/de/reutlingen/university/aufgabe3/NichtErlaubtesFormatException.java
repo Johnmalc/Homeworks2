@@ -5,6 +5,7 @@ package de.reutlingen.university.aufgabe3;
  * @author Dmitry Petrov
  */
 
+@SuppressWarnings("serial")
 public class NichtErlaubtesFormatException extends Exception {
 
 	public NichtErlaubtesFormatException() {

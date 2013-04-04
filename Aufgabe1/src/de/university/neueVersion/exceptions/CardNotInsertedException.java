@@ -1,6 +1,8 @@
 package de.university.neueVersion.exceptions;
 
-/** 
+import de.university.neueVersion.exceptions.*;
+
+/**
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
@@ -11,7 +13,5 @@ public class CardNotInsertedException extends MeineException {
 		System.out.println("");
 		System.out.println("Es gibt keine Karte im Automat.");
 	}
-
-
 
 }
