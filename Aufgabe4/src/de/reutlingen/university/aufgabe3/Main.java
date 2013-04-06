@@ -21,7 +21,7 @@ public class Main {
 		 * Sie mussen entweder ganzen zahlen oder nur mit x.5 eingeben, ansonsten (z.B. mit 3.6)
 		 * Fehler entsteht
 		 */
-		Stiefel stiefel = new Stiefel("Steifel", 36.2);
+		Stiefel stiefel = new Stiefel("Steifel", 36);
 		Sportschuhe sportschuhe = new Sportschuhe("Sportschuhe", 40);
 
 		/*
@@ -40,5 +40,11 @@ public class Main {
 
 		System.out.println(box.toString());
 		System.out.println(shoebox.toString());
+		
+		/*
+		 * In diesem Fall wird die Fehlermeldung erscheinen(NichtErlaubtesFormatException), 
+		 * da 36.2  dem passenden Format nicht entspricht
+		 */
+		Stiefel stiefel2 = new Stiefel("Stiefel",36.2);
 	}
 }

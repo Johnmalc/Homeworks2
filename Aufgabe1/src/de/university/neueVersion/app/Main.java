@@ -18,7 +18,7 @@ public class Main {
 		try {
 			cashMachine.accountStatement();
 		} catch (CardNotInsertedException e) {
-			System.out.println("Test1 Erfolgreich" + "\n");
+			System.out.println("Test1 ist erfolgreich" + "\n");
 
 		}
 		
@@ -28,7 +28,7 @@ public class Main {
 			cashMachine.insertCashCard(cashCard1);
 			cashMachine.insertCashCard(cashCard2);
 		} catch (CardInsertedException e) {
-			System.out.println("Test2 Erfolgreich" + "\n");
+			System.out.println("Test2 ist erfolgreich" + "\n");
 
 		} catch (InvalidCardException e) {
 			System.out.println("Test2 ist nicht bestanden.");
@@ -41,12 +41,12 @@ public class Main {
 		try {
 			cashMachine.pinEingeben(1254);
 		} catch (PinNotCorectException e) {
-			System.out.println("Test3 Erfolgreich" + "\n");
+			System.out.println("Test3 ist erfolgreich" + "\n");
 
 		} catch (CardNotInsertedException e) {
-			System.out.println("Test3 nicht bestanden" + "\n");
+			System.out.println("Test3 ist nicht bestanden" + "\n");
 		} catch (InvalidCardException e) {
-			System.out.println("Test3 nicht bestanden" + "\n");
+			System.out.println("Test3 ist nicht bestanden" + "\n");
 		}
 
 		/*
