@@ -9,7 +9,7 @@ package de.reutlingen.university.aufgabe3;
 public class NichtErlaubtesFormatException extends Exception {
 
 	public NichtErlaubtesFormatException() {
-		System.out.println("Es sind halbe Schuhgroessen erlaubt.");
+		System.out.println("Schuhegroesse wurde nicht anerkannt. Es sind halbe Schuhgroessen erlaubt.");
 	}
 
 }
