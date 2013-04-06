@@ -10,6 +10,16 @@ public class Main {
 		 * this is a hack. Should not do, just for save heaven. Looks horrible
 		 * http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
 		 */
+		
+		/**
+		 * Genau das selber, dass in der a1.
+		 * Jetz sehe ich, dass du einfah noch nicht so weit bist, 
+		 * oder dass du deine Version noch nicht veroeffentlicht hast
+		 * 
+		 * Viel Erfolg und Spass! :)
+		 * 
+		 * 
+		 */
 		Produkt<ProductDescription>[] products = new Produkt[1];
 		products[0] = new Produkt<ProductDescription>(new ProductDescription("Sie sind gut. Mochte noch ", "5645.3666 "),56);
 		for (Produkt<ProductDescription> i : products) {
