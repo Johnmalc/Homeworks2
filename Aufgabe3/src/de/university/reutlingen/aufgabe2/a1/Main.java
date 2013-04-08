@@ -23,17 +23,15 @@ public class Main {
 		 *  for (Produkt<String> i : products) {
 		 *  System.out.println(i.getProduktBeschreibung() + i.getProduktPreis());
 		 *  }		
-		 * 
-		 * Und was heisst "Mochte noch"? Was ist das fuer eine Beschreibung? 
-		 * Beschreibung ist kurze Info ueber das Produkt.
-		 * 
-		 *  
-		 * 
+		 *  ich werde daruber mit prof. reden, weil arraylist ist fortgeschritten, dagegen norm. array ist 
+		 *  fur kindergarten. Er gibt uns das, weil alle andere haben keine ahnung was arraylist ist. 
+		 *  ICH kann das schon und( kann das deswegen verbessern).  
 		 */
 		
 		
-		Produkt<String>[] products =  new Produkt[1];
-		products[0] = new Produkt<String>("Sie sind gut. Mochte noch ", 5645.3666);
+		Produkt<String>[] products =  new Produkt[1]; // hier kannst du auch eine warning lesen in eclipse. 
+		// Eclipse sagt type savety, bei array list ist das ohne warning
+		products[0] = new Produkt<String>("Adobe CS6 - Dreamweaver is the best. Will cost you ", 651.33);
 		for (Produkt<String> i : products) {
 			System.out.println(i.getProduktBeschreibung() + i.getProduktPreis());
 		}
@@ -41,7 +39,7 @@ public class Main {
 		System.out.println("");
 		
 		// Teacher basically wants create arraylist and put there Produkt object
-		ArrayList<Produkt<String>> produktList = new ArrayList<Produkt<String>>();
+		ArrayList<Produkt<String>> produktList = new ArrayList<>();
 		produktList.add(new Produkt<String>("Adobe ist besser als Apple. NYSE: ", 564.5146));
 		produktList.add(new Produkt<String>("Microsoft kostet", 564.5146));
 		for (Produkt<String> g : produktList) {

@@ -25,8 +25,8 @@ public class Main {
 		 * Teacher basically wants create arraylist and put there Product object
 		 * 2 Possibility 
 		 */
-		ArrayList<Produkt<String>> produktLists = new ArrayList<Produkt<String>>();
-		produktLists.add(new Produkt<String>("sdfsd", PriceLevel.MEDIUM));
+		ArrayList<Produkt<String>> produktLists = new ArrayList<>();
+		produktLists.add(new Produkt<String>("I have bought Apple for ", PriceLevel.MEDIUM));
 
 		for (Produkt<String> g : produktLists) {
 			System.out.println(g.getProduktBeschreibung()+ " " + g.getProduktPreis());
