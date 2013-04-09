@@ -47,6 +47,7 @@ public class CashMachine {
 			// Sucht die passende Konto nach AccountNummer
 			for (Account test : accounts) {
 				if ((test.getAccountNumber()) == (cashCard.getAccountNumber())) {
+					// wenn account nummer und carten-account nummer entspricht > mach nichts
 					break;
 				} else {
 					zaehler++;

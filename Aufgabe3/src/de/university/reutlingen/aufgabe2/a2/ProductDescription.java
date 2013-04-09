@@ -28,7 +28,7 @@ public class ProductDescription {
 	@Override
 	public String toString() {
 		return "ProductDescription: " + produktGruppe
-				+ ", beschreibungsText : " + beschreibungsText;
+				 + beschreibungsText;
 	}
 
 }

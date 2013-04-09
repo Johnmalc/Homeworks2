@@ -29,7 +29,6 @@ public class Main {
 			cashMachine.insertCashCard(cashCard2);
 		} catch (CardInsertedException e) {
 			System.out.println("Test2 ist erfolgreich" + "\n");
-
 		} catch (InvalidCardException e) {
 			System.out.println("Test2 ist nicht bestanden.");
 		}
@@ -37,12 +36,12 @@ public class Main {
 		/*
 		 * Test 3 um PinNotCorectException zu pruefen; CardNotInsertedException
 		 * sollte in dem Fall nicht aufgetreten werden!
+		 * Wenn pin richtig wird nichts angezeigt
 		 */
 		try {
-			cashMachine.pinEingeben(1254);
+			cashMachine.pinEingeben(1256);
 		} catch (PinNotCorectException e) {
 			System.out.println("Test3 ist erfolgreich" + "\n");
-
 		} catch (CardNotInsertedException e) {
 			System.out.println("Test3 ist nicht bestanden" + "\n");
 		} catch (InvalidCardException e) {
@@ -55,7 +54,7 @@ public class Main {
 		 */
 		try {
 			cashMachine.pinEingeben(1234);
-			cashMachine.withdraw(12000);
+			cashMachine.withdraw(10900);
 		} catch (PinNotCorectException e) {
 			System.out.println("Test4 ist nicht bestanden" + "\n");
 		} catch (CardNotInsertedException e) {
