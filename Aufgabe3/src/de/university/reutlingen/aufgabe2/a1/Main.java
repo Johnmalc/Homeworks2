@@ -32,8 +32,8 @@ public class Main {
 		Produkt<String>[] products =  new Produkt[1]; // hier kannst du auch eine warning lesen in eclipse. 
 		// Eclipse sagt type savety, bei array list ist das ohne warning
 		products[0] = new Produkt<String>("Adobe CS6 - Dreamweaver is the best. Will cost you ", 651.33);
-		products[0] = new Produkt<String>("Microsoft costs ", 651.33);
-		products[0] = new Produkt<String>("Apple will make iTV ", 651.33);
+		products[1] = new Produkt<String>("Microsoft costs ", 651.33);
+		products[2] = new Produkt<String>("Apple will make iTV ", 651.33);
 		for (Produkt<String> i : products) {
 			System.out.println(i.getProduktBeschreibung() + i.getProduktPreis());
 		}
