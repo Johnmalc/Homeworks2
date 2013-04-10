@@ -5,30 +5,29 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		/*
-		 * this is a hack. Should not do, just for save heaven. Looks horrible
-		 * http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
-		 */
-		
+
 		/**
-		 * In der Aufgabe steht, dass die Produkte in einem Array gespeichert werden muessen 
-		 * Es ist keine ArrayList, von mir aus, sondern ganz normale Array,
-		 *  wie du dass zuerst gemacht hast.
-		 *  Lass das so:
-		 *  
-		 *  Produkt<String>[] products =  new Produkt[3];
-		 *  products[0] = new Produkt<String>("Java Editor 7.0 ", 99.99);
-		 *  products[1] = new Produkt<String>("Photoshop CS5 von Adobe ", 523.0);
-		 *  products[2] = new Produkt<String>("Microsoft Office Student and Home 2013 ", 456.99);
-		 *  for (Produkt<String> i : products) {
-		 *  System.out.println(i.getProduktBeschreibung() + i.getProduktPreis());
-		 *  }		
-		 *  ich werde daruber mit prof. reden, weil arraylist ist fortgeschritten, dagegen norm. array ist 
-		 *  fur kindergarten. Er gibt uns das, weil alle andere haben keine ahnung was arraylist ist. 
-		 *  ICH kann das schon und( kann das deswegen verbessern).  
+		 * Schreiben Sie eine generische Klasse Product, die ein Produkt reprasentiert. 
+		 * Ein Product- Objekt besteht aus zwei Attributen. Das erste Attribut ist die 
+		 * Produktbeschreibung, das zweite Argument ist der Produktpreis. Die tatsächliche 
+		 * Klasse fur das Attribut Produktbeschreibung soll erst bei der Verwendung der 
+		 * Klasse festgelegt werden, verwenden Sie deshalb eine Typvariable (Stellvertreterbuchstaben).
+		 * Das zweite Attribut Produktpreis ist vom Datentyp double. Die Klasse Product soll 
+		 * einen Konstruktor besitzen, der Werte für beide Attribute als Argumente ubergeben 
+		 * bekommt Schreiben Sie ein Testprogramm, welches eine Anzahl von Product-Objekten
+		 * erzeugt (Verwenden Sie die Klasse String als Klasse für die Produktbeschreibung),
+		 * in einem Array speichert und auf die Standardausgabe ausgibt. Verwenden Sie zur 
+		 * Ausgabe des Arrays die "neue" for-Schleife von Java (Seit der Version 1.5 kann die
+		 * for-Schleife im Sinne einer foreach-Schleife verwendet werden. Es ist dann keine 
+		 * Laufvariable zur Indizierung in ein Array oder eine 
+		 * Collection notwendig, sondern die Laufvariable nimmt selber den Wert an.)
+		 * 
 		 */
 		
-		
+		/*
+		* this is a hack. Should not do, just for save heaven.
+		* http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
+		*/
 		Produkt<String>[] products =  new Produkt[1]; // hier kannst du auch eine warning lesen in eclipse. 
 		// Eclipse sagt type savety, bei array list ist das ohne warning
 		products[0] = new Produkt<String>("Adobe CS6 - Dreamweaver is the best. Will cost you ", 651.33);
@@ -40,7 +39,7 @@ public class Main {
 		
 		System.out.println("");
 		
-		// Teacher basically wants create arraylist and put there Produkt object
+		// This is better, because uses ArrayLists. 
 		ArrayList<Produkt<String>> produktList = new ArrayList<>();
 		produktList.add(new Produkt<String>("Adobe ist besser als Apple. NYSE: ", 564.5146));
 		produktList.add(new Produkt<String>("Microsoft kostet", 564.5146));
