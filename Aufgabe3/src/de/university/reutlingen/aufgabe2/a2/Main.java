@@ -7,15 +7,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		/*
-		*Schreiben Sie eine Klasse ProductDescription, die eine Produktbeschreibung repräsentiert. Die 
+		*Schreiben Sie eine Klasse ProductDescription, die eine Produktbeschreibung reprasentiert. Die 
 		*Klasse hat 2 Attribute, eine Produktgruppe und einen Beschreibungstext. Beide Attribute 
-		*werden durch die Klasse String repräsentiert. Implementieren Sie alle nötigen Konstruktoren 
+		*werden durch die Klasse String repräsentiert. Implementieren Sie alle notigen Konstruktoren 
 		*und die Methode public String toString() (Der Ergebnis-String soll die Produktgruppe und den
-		*Text enthalten). Verändern Sie das Testprogramm aus Teilaufgabe (a) in der Art, dass an
+		*Text enthalten). Verandern Sie das Testprogramm aus Teilaufgabe (a) in der Art, dass an
 		*Stelle eines String-Objekts ein Objekt der Klasse ProductDescription als Produktbeschreibung 
 		*verwendet wird.
 		*/
-		
 		
 		/*
 		* this is a hack. Should not do, just for save heaven. Looks horrible
