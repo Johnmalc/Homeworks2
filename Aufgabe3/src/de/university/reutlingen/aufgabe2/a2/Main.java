@@ -7,10 +7,20 @@ public class Main {
 
 	public static void main(String[] args) {
 		/*
-		 * this is a hack. Should not do, just for save heaven. Looks horrible
-		 * http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
-		 */
-
+		*Schreiben Sie eine Klasse ProductDescription, die eine Produktbeschreibung repräsentiert. Die 
+		*Klasse hat 2 Attribute, eine Produktgruppe und einen Beschreibungstext. Beide Attribute 
+		*werden durch die Klasse String repräsentiert. Implementieren Sie alle nötigen Konstruktoren 
+		*und die Methode public String toString() (Der Ergebnis-String soll die Produktgruppe und den
+		*Text enthalten). Verändern Sie das Testprogramm aus Teilaufgabe (a) in der Art, dass an
+		*Stelle eines String-Objekts ein Objekt der Klasse ProductDescription als Produktbeschreibung 
+		*verwendet wird.
+		*/
+		
+		
+		/*
+		* this is a hack. Should not do, just for save heaven. Looks horrible
+		* http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
+		*/
 		Produkt<ProductDescription>[] products = new Produkt[4];
 		products[0] = new Produkt<ProductDescription>(new ProductDescription("Adobe kostet auf NYSE ", " Stuck kostet 5.6 - 10 Stucke "),56);
 		products[1] = new Produkt<ProductDescription>(new ProductDescription("Adobe CS6 - Dreamweaver is the best. "," Stuck kostet 65.33 - 10 Stucke"), 651.33); 
@@ -23,7 +33,7 @@ public class Main {
 		
 		System.out.println("");
 		
-		// Teacher basically wants create arraylist and put there Produkt object
+		// This is better, because uses ArrayLists. 
 		ArrayList<Produkt<ProductDescription>> produktLists = new ArrayList<>();
 		ProductDescription pd = new ProductDescription("Adobe ist besser als Apple. NYSE: ", "564.5146");
 		produktLists.add(new Produkt<ProductDescription>(pd,0)); // 0 kommt von double, wird nicht gezeigt.
