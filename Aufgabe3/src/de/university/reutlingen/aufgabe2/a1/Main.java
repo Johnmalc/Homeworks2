@@ -5,22 +5,25 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-
-		/**
-		 * Schreiben Sie eine generische Klasse Product, die ein Produkt reprasentiert. 
-		 * Ein Product- Objekt besteht aus zwei Attributen. Das erste Attribut ist die 
-		 * Produktbeschreibung, das zweite Argument ist der Produktpreis. Die tatsächliche 
-		 * Klasse fur das Attribut Produktbeschreibung soll erst bei der Verwendung der 
-		 * Klasse festgelegt werden, verwenden Sie deshalb eine Typvariable (Stellvertreterbuchstaben).
-		 * Das zweite Attribut Produktpreis ist vom Datentyp double. Die Klasse Product soll 
-		 * einen Konstruktor besitzen, der Werte für beide Attribute als Argumente ubergeben 
-		 * bekommt Schreiben Sie ein Testprogramm, welches eine Anzahl von Product-Objekten
-		 * erzeugt (Verwenden Sie die Klasse String als Klasse für die Produktbeschreibung),
-		 * in einem Array speichert und auf die Standardausgabe ausgibt. Verwenden Sie zur 
-		 * Ausgabe des Arrays die "neue" for-Schleife von Java (Seit der Version 1.5 kann die
-		 * for-Schleife im Sinne einer foreach-Schleife verwendet werden. Es ist dann keine 
-		 * Laufvariable zur Indizierung in ein Array oder eine 
-		 * Collection notwendig, sondern die Laufvariable nimmt selber den Wert an.)
+		/*
+		 * Schreiben Sie eine generische Klasse Product, die ein Produkt
+		 * reprasentiert. Ein Product- Objekt besteht aus zwei Attributen. Das
+		 * erste Attribut ist die Produktbeschreibung, das zweite Argument ist
+		 * der Produktpreis. Die tatsächliche Klasse fur das Attribut
+		 * Produktbeschreibung soll erst bei der Verwendung der Klasse
+		 * festgelegt werden, verwenden Sie deshalb eine Typvariable
+		 * (Stellvertreterbuchstaben). Das zweite Attribut Produktpreis ist vom
+		 * Datentyp double. Die Klasse Product soll einen Konstruktor besitzen,
+		 * der Werte für beide Attribute als Argumente ubergeben bekommt
+		 * Schreiben Sie ein Testprogramm, welches eine Anzahl von
+		 * Product-Objekten erzeugt (Verwenden Sie die Klasse String als Klasse
+		 * für die Produktbeschreibung), in einem Array speichert und auf die
+		 * Standardausgabe ausgibt. Verwenden Sie zur Ausgabe des Arrays die
+		 * "neue" for-Schleife von Java (Seit der Version 1.5 kann die
+		 * for-Schleife im Sinne einer foreach-Schleife verwendet werden. Es ist
+		 * dann keine Laufvariable zur Indizierung in ein Array oder eine
+		 * Collection notwendig, sondern die Laufvariable nimmt selber den Wert
+		 * an.)
 		 * 
 		 */
 		

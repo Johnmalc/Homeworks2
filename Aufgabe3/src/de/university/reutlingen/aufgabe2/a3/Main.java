@@ -8,7 +8,7 @@ import de.university.reutlingen.aufgabe2.a3.ProductDescription.PriceLevel;
 public class Main {
 
 	public static void main(String[] args) {
-		/**
+		/*
 		 * Das Preissystem der Warenhaussoftware soll umgestellt werden. Produktpreise sollen nicht mehr
 		 * beliebig vergeben werden können. Stattdessen gibt es 4 Preisstufen, denen ein Produkt 
 		 * zugeordnet wird. Die Stufen sind LOW (9,99), MEDIUM (19,99), HIGH (49,99) und EXCLUSIVE 
@@ -25,12 +25,12 @@ public class Main {
 		 * 1 Possibility
 		 * http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ105
 		 */
-		Produkt<String>[] products = new Produkt[1];
+		Produkt<String>[] products = new Produkt[3];
 		products[0] = new Produkt<String>("I Hate Apple", PriceLevel.EXCLUSIVE);
 		products[1] = new Produkt<String>("I Hate Apple", PriceLevel.LOW);
 		products[2] = new Produkt<String>("I Hate Apple", PriceLevel.MEDIUM);
 	
-		or (Produkt<String> i : products) {
+		for (Produkt<String> i : products) {
 			System.out.println(i.getProduktBeschreibung() + " "+  i.getProduktPreis());
 		}
 		
