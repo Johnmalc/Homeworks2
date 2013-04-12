@@ -1,4 +1,4 @@
-package de.university.aufgabe2;
+package de.university.reutlingen.newVersion;
 
 public class ProductDescription {
 	private String produktGruppe;
