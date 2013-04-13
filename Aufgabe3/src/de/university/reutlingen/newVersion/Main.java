@@ -30,7 +30,7 @@ public class Main {
 		produktLists.add(new Produkt<String>("I lese WSJ ", PriceLevel.LOW ));
 
 		for (Produkt<String> g : produktLists) {
-			System.out.println(g.getProduktBeschreibung() + " "	+ g.getProduktPreis());
+			System.out.println(g.getProduktBeschreibung() + " "	+ g.getProduktPreis()  + g.toString());
 		}
 
 	}

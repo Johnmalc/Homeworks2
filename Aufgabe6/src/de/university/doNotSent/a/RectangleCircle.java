@@ -1,4 +1,4 @@
-package de.university.doNotSent;
+package de.university.doNotSent.a;
 
 public class RectangleCircle implements Shape {
 

@@ -1,4 +1,4 @@
-package de.university.doNotSent;
+package de.university.doNotSent.a;
 
 public class Rectangle implements Shape {
 	double a;

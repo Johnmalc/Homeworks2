@@ -11,6 +11,7 @@ public class ProductDescription {
 
 	public enum PriceLevel {
 		LOW(9.99), MEDIUM(19.99), HIGH(49.99), EXCLUSIVE(99.99);
+		
 		private double zahl;
 
 		private PriceLevel(double zahlX) {
