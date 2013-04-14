@@ -8,11 +8,12 @@ public class Util {
 
 	}
 	public static double accumulateArea(Shape[] shapes) {
-//		Circle ci = new Circle();
-//		Rectangle ra= new Rectangle();
-//		for (int i = 0; i < shapes.length;i++) {
-//			sum+=ci.area()+ra.area();
-//		}
+		Circle a = new Circle();
+		 for (Shape s : shapes){
+			 if(shapes.equals(a)){
+				 sum+=a.area();
+			 }
+		 }
 		// must be for circle and rectangle
 		return sum;
 
