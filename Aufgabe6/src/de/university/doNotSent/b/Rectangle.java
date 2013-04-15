@@ -13,12 +13,22 @@ public class Rectangle implements Shape {
 	}
 
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * Flache, obsah
+	 * @see de.university.doNotSent.b.Shape#area()
+	 */
 	public double area() {
 		double fi = a * b;
 		return fi;
 	}
 
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * obvod
+	 * @see de.university.doNotSent.b.Shape#circumference()
+	 */
 	public double circumference() {
 		double seiteC = a + a;
 		double seiteD = b + b;

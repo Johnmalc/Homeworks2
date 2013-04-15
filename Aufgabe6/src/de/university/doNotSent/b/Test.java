@@ -10,7 +10,6 @@ public class Test {
 		double circ = rant.circumference();
 		System.out.println(area + " + " + circ);
 
-		System.out.println("");
 		/*
 		 * http://martin.feld.cvut.cz/~pelikano/vyuka/PRI/printf.html
 		 */
@@ -22,16 +21,12 @@ public class Test {
 		
 		// do random numbers
 		Random randomZahle = new Random();
-		double rz = randomZahle.nextDouble();
-		System.out.println(rz);
+		double rz = randomZahle.nextInt(100);
+		System.out.println("number which represents a and b "+ rz);
 
-		Shape[] shape = new Shape[3];
+		Shape[] shape = new Shape[2];
 		shape[0] = new Circle(rz);
 		shape[1] = new Rectangle(rz,rz);
-		
-		for (int i = 0; i<shape.length;i++){
-			System.out.println(i);
-		}
 		
 		System.out.println(Util.accumulateArea(shape));
 		System.out.println(Util.accumulateCircumference(shape));

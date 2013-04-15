@@ -11,12 +11,22 @@ public class Circle implements Shape {
 	}
 
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * obsah
+	 * @see de.university.doNotSent.b.Shape#area()
+	 */
 	public double area() {
 		double fi = Math.PI * Math.pow(r, 2);
 		return fi;
 	}
 
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * obvod
+	 * @see de.university.doNotSent.b.Shape#circumference()
+	 */
 	public double circumference() {
 		double D= 2*r;
 		double C = Math.PI*D;
