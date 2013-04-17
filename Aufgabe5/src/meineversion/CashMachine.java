@@ -1,4 +1,4 @@
-package de.university.aufgabe4.main;
+package meineversion;
 
 import de.university.aufgabe4.exc.*;
 import de.university.aufgabe4.main.State;

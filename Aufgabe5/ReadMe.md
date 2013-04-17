@@ -26,9 +26,9 @@ b) Erweitern Sie Ihre Klasse List<K> um die folgenden Methoden:
 Schreiben Sie eine Testklasse Main und Testen Sie die neuen Methoden der Liste ausführlich.
 
 - Testen Sie die Klasse List insbesondere **unter Verwendung der Klasse Account** (aus Aufgabe 1) als Konkretisierung des Typ-Parameters. 
-- Fügen Sie beim **Test 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der Konsole aus**. 
-- Prüfen Sie vor und nach dem Hinzufügen der Elemente den Rückgabewert der Methode **isEmpty(). **
-- Fügen Sie ein **weiteres Account-Objekt mit Hilfe der Methode insertFirst(...) in die Liste ein**. Überprüfen Sie die Korrektheit indem Sie die Liste erneut auf der Konsole ausgeben.
+- Fugen Sie beim **Test 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der Konsole aus**. 
+- Prufen Sie vor und nach dem Hinzufügen der Elemente den Rückgabewert der Methode **isEmpty().**
+- Fügen Sie ein **weiteres Account-Objekt mit Hilfe der Methode insertFirst(...) in die Liste ein**. Uberprüfen Sie die Korrektheit indem Sie die Liste erneut auf der Konsole ausgeben.
 
 c)Ersetzen Sie das Account-Array in der Klasse CashMachine durch Ihre eigene Klasse List. **Passen Sie ihre Klasse CashMachine entsprechend an.**
 
