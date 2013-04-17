@@ -1,7 +1,8 @@
-package de.university.reutlingen.newVersion;
+package de.university.reutlingen.newversion;
 
 import java.util.ArrayList;
-import de.university.reutlingen.newVersion.ProductDescription.*;
+
+import de.university.reutlingen.newversion.ProductDescription.*;
 
 public class Main {
 

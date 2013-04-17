@@ -1,6 +1,6 @@
-package de.university.reutlingen.newVersion;
+package de.university.reutlingen.newversion;
 
-import de.university.reutlingen.newVersion.ProductDescription.PriceLevel;
+import de.university.reutlingen.newversion.ProductDescription.PriceLevel;
 
 public class Produkt<T> {
 	public T produktBeschreibung;

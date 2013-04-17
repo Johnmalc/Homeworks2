@@ -1,6 +1,6 @@
-package de.university.neueVersion.app;
+package de.university.aufgabe4.main;
 
-import de.university.neueVersion.exceptions.*;
+import de.university.aufgabe4.exc.*;
 
 /** 
  * @author Anastasia Baron

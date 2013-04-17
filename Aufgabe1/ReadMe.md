@@ -1,4 +1,5 @@
 This is an ReadMe file for Aufgabe 1. This was done in the group of 2 people. Me and a girl.
+**We got 11.5 out of 15**, because of wrong package name (no CamelCase), setPin() in class Account and not using private in all classes.
 
 The task was (in germany):
 
@@ -117,6 +118,11 @@ Account muss pin haben !!!! damit pin karte verglichen werden kann
 Eigene Exception klasse schreiben
 
 Need to use static atributes
+
+**Update zu 17.4**
+
+- Corrected all mistakes, because of the grade we got.
+- Also for the future work with that.
 
 **Update zu 21.3 (6 tage vor abgabe)** 
 

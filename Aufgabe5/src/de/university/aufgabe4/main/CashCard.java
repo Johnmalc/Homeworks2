@@ -1,4 +1,4 @@
-package de.university.neueVersion.app;
+package de.university.aufgabe4.main;
 
 /** 
  * @author Anastasia Baron
