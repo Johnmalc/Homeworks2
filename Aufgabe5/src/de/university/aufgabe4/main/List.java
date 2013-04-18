@@ -6,13 +6,15 @@ import java.util.Iterator;
  * @author Dmitry Petrov
  */
 
-public class List<K> implements Iterator<K> {
+public class List<K> {
 	/*
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
 	 * Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
 	private int size;
+	private ListNode end;
 	// private boolean giltEs = false;
 
 	private class ListNode {
@@ -29,11 +31,13 @@ public class List<K> implements Iterator<K> {
 	}
 
 	public List() {
-		head = null; // initialisiert auf 1
+		head = null; // initialisiert auf null
 		size = 0; // grosse ist am anfang 0
 
 	}
-
+	/** 
+	 * Fugt erster element in die liste
+	 */
 	public void insertFirst(K elem) {
 		ListNode newHead = new ListNode();
 		newHead.setData(elem);
@@ -76,20 +80,23 @@ public class List<K> implements Iterator<K> {
 	 * Abfragen eines Elements an einer bestimmten Position. Die Methode liefert
 	 * das Objekt an der Stelle pos zuruck. Falls gilt (pos < 0 || pos >=
 	 * size()) soll ein Objekt der folgenden Runtime-Exception geworfen werden:
-	 * java.lang.IndexOutOfBoundsException
+	 * java.lang.IndexOutOfBoundsException Inspiration to
+	 * http://www.technicalypto.com/2010/01/linked-lists.html
 	 * 
-	 * @param giltEs
+	 * @param ??????
 	 * 
 	 */
 	public K get(int pos) {
 		if (pos < 0 || pos >= size()) {
 			// giltEs = true;
 			throw new IndexOutOfBoundsException();
-		} else {
-			// giltEs = false;
-			// return
 		}
-		return null;
+		ListNode te = head; // Move pointer to front
+		int counter = 0;
+		for (; counter < pos; counter++) {
+			te = te.next;
+		}
+		return (K) te;
 
 	}
 
@@ -99,30 +106,49 @@ public class List<K> implements Iterator<K> {
 	 * (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen
 	 * werden: java.lang.NullPointerException
 	 */
-	public void add(K elem) {
-		if (elem == null) {
+	public void addLast(K elem) {
+		ListNode newEnd = new ListNode(); // Create a new ListItem
+
+		if (elem == null) { // Is the list empty?
 			throw new NullPointerException();
 		} else {
-			// head.setNext(next);
-			// size++;
+			// No, so append new element
+			end.next = newEnd; // Set next variable for old end
+			end = newEnd; // Store new item as end
 		}
 
 	}
-
 	// WICHTIG for Iterator
+	private class myIterator implements Iterator<K> {
 
-	@Override
-	public boolean hasNext() {
-		return false;
+		public myIterator() {
+		}
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public K next() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		/**
+		 * Method to remove the last element retrieved from the linked list You
+		 * don’t want to support this operation so just throw the exception If
+		 * you did support this operation, you would need to include a check
+		 * that next() has been called, and if not, throw IllegalStateException
+		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+		 */
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException(
+					"Remove not supported for LinkedList<>");
+		}
 	}
-
-	@Override
-	public K next() {
-		return null;
-	}
-
-	@Override
-	public void remove() {
-
+	public Iterator<K> iterator() {
+		return new myIterator();
 	}
 }

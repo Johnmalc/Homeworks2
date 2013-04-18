@@ -1,4 +1,6 @@
 package de.university.aufgabe4.main;
+import meineversion.CashCard;
+import meineversion.CashMachine;
 import de.university.aufgabe4.exc.*;
 /** 
  * @author Anastasia Baron
