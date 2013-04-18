@@ -15,36 +15,35 @@ public class TestForList {
 		 * Testen Sie die Klasse List insbesondere unter Verwendung der Klasse
 		 * Account (aus Aufgabe 1) als Konkretisierung des Typ-Parameters
 		 */
-		List<Account> ac = new List<>();
+		List<Account> ac = new List<Account>();
 		/*
 		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
 		 * der Methode isEmpty().
+		 * prints true if empty
+		 * false if it full
 		 */
-		ac.isEmpty();
+		System.out.println(ac.isEmpty());
 		/*
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
-		ac.add(elem);
-		ac.get(pos);
-		ac.insertFirst(elem);
-		ac.isEmpty();
-		ac.next();
-		ac.remove();
+		ac.insertFirst(new Account(54564654, 465, 06541, 0555));
+		// ac.get(0); //nicht funktieniert
+		System.out.println(ac.isEmpty());
 		ac.toString();
-		ac.size();
+		System.out.println(ac.size());
 
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-		ac.add(elem);
-		ac.add(elem);
-
-		// gibt sie wieder zuruck
-		for (int i = 0; i < ac.size(); i++) {
-			System.out.println(ac.get(i));
-		}
+//		ac.add(new Account(54564654, 465, 06541, 0555));
+//		ac.add(new Account(654864, 465, 06541, 0555));
+//
+//		// gibt sie wieder zuruck
+//		for (int i = 0; i < ac.size(); i++) {
+//			System.out.println(ac.get(i) +": "+ac.toString());
+//		}
 		/*
 		 * Fugen Sie ein weiteres Account-Objekt mit Hilfe der Methode
 		 * insertFirst(...) in die Liste ein. Uberprufen Sie die Korrektheit

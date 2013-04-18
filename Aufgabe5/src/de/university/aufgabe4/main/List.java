@@ -1,6 +1,8 @@
 package de.university.aufgabe4.main;
 
 import java.util.Iterator;
+
+import meineversion.Account;
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -32,7 +34,7 @@ public class List<K> {
 
 	public List() {
 		head = null; // initialisiert auf null
-		size = 0; // grosse ist am anfang 0
+		size = 5; // grosse ist am anfang 0
 
 	}
 	/** 
@@ -106,7 +108,7 @@ public class List<K> {
 	 * (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen
 	 * werden: java.lang.NullPointerException
 	 */
-	public void addLast(K elem) {
+	public void add(K elem) {
 		ListNode newEnd = new ListNode(); // Create a new ListItem
 
 		if (elem == null) { // Is the list empty?
