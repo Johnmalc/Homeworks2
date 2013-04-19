@@ -1,6 +1,7 @@
 package de.university.aufgabe4.main;
 
 import java.util.Iterator;
+
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -15,16 +16,25 @@ public class List<K> {
 	private ListNode head;
 	private int size;
 	private ListNode end;
+
 	// private boolean giltEs = false;
 
 	private class ListNode {
 		private ListNode next;
 		private K data;
 
+		public ListNode(K elem) {
+			this.data = elem;
+		}
+
+		public ListNode() {
+
+		}
+
 		private void setData(K data) {
 			this.data = data;
 		}
-		@SuppressWarnings("unused")
+
 		private K getData() {
 			return data;
 		}
@@ -32,6 +42,7 @@ public class List<K> {
 		private void setNext(ListNode next) {
 			this.next = next;
 		}
+
 		private ListNode getNext() {
 			return next;
 		}
@@ -39,9 +50,9 @@ public class List<K> {
 
 	public List() {
 		head = null; // initialisiert auf null
-		size = 0; // grosse ist am anfang 0
 
 	}
+
 	/**
 	 * Fugt erster element in die liste
 	 */
@@ -50,15 +61,9 @@ public class List<K> {
 		newHead.setData(elem);
 		newHead.setNext(head);
 		head = newHead;
+		size++;
 	}
 
-	/**
-	 * Returns true if this list contains no elements.
-	 */
-	public boolean isEmpty() {
-		return head == null;
-
-	}
 	/**
 	 * 
 	 * return string
@@ -67,19 +72,10 @@ public class List<K> {
 		ListNode l = head;
 		StringBuilder sb = new StringBuilder();
 		while (l != null) {
-			sb.append("<" + l.data + ">");
+			sb.append("<" + l.data + ">" + "\n");
 			l = l.next;
 		}
 		return sb.toString();
-
-	}
-
-	/**
-	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
-	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
-	 */
-	public int size() {
-		return this.size;
 
 	}
 
@@ -90,20 +86,17 @@ public class List<K> {
 	 * java.lang.IndexOutOfBoundsException Inspiration to
 	 * http://www.technicalypto.com/2010/01/linked-lists.html
 	 * 
-	 * @param ??????
-	 * 
 	 */
 	public K get(int pos) {
 		if (pos < 0 || pos >= size()) {
 			// giltEs = true;
 			throw new IndexOutOfBoundsException();
 		}
-		ListNode te = head; // Move pointer to front
-		int counter = 0;
-		for (; counter < pos; counter++) {
-			te = te.next;
-		}
-		return (K) te;
+		ListNode iterating = head;
+		for (int i = 0; i < pos && iterating != null; i++, iterating = iterating
+				.getNext())
+			;
+		return iterating.getData();
 
 	}
 
@@ -116,22 +109,19 @@ public class List<K> {
 	 * 5236486/adding-items-to-end-of-linked-list
 	 */
 	public void add(K elem) {
-		ListNode current = head; // Create a new ListItem
-
+		ListNode current = head;
 		if (elem == null) { // Is the list empty?
 			throw new NullPointerException();
 		} else {
 			while (current.getNext() != null) {
 				current = current.getNext();
 			}
-			ListNode toAppend = new ListNode();
-			current.setNext(toAppend);
-			// No, so append new element
-			// end.next = newEnd; // Set next variable for old end
-			// end = newEnd; // Store new item as end
+			current.setNext(new ListNode(elem));
+			size++;
 		}
 
 	}
+
 	// WICHTIG for Iterator
 	private class myIterator implements Iterator<K> {
 
@@ -149,6 +139,7 @@ public class List<K> {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
@@ -162,7 +153,25 @@ public class List<K> {
 					"Remove not supported for LinkedList<>");
 		}
 	}
+
 	public Iterator<K> iterator() {
 		return new myIterator();
+	}
+
+	/**
+	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
+	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
+	 */
+	public int size() {
+		return this.size;
+
+	}
+
+	/**
+	 * Returns true if this list contains no elements.
+	 */
+	public boolean isEmpty() {
+		return head == null;
+
 	}
 }
