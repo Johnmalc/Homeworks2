@@ -1,42 +1,59 @@
-package de.university.aufgabe4.main;
+package andereVersionen;
 
 import java.util.*;
 
 public class List2<K> implements Iterable<K> {
-
-	ListNode head; // Kopf der Liste, repr�sentiert die ganze Liste
-
+	/*
+	 * Kopf der Liste, reprasentiert die ganze Liste
+	 */
+	ListNode head;
+	/**
+	 * Kopf wird auf null gesetzt -> kein Verweis auf ein Object
+	 */
 	public List2() {
-		head = null; // Kopf wird auf null gesetzt -> kein Verweis auf ein
-						// Object
+		head = null;
 	}
-
-	public class ListNode { // Beginn innere Klasse ListNode
+	/**
+	 * Beginn innere Klasse; ListNode ListNode next ist Variable vom Typ
+	 * ListNode, verweist auf die nachste Referenz
+	 */
+	public class ListNode {
 		K data; // Variable vom Typ K
-		ListNode next; // Variable vom Typ ListNode, verweist auf die n�chste
-						// Referenz
-
-		public ListNode(K newData) { // Konstrukto der Klasse ListNode
-			data = newData; // �bergeben vom Typ data
-			next = null; // next wird auf null gesetzt, kein Verweis auf eine
-							// Referenz
+		ListNode next;
+		/**
+		 * Konstrukto der Klasse ListNode ubergeben vom Typ data next wird auf
+		 * null gesetzt, kein Verweis auf eine Referenz
+		 */
+		public ListNode(K newData) {
+			data = newData;
+			next = null;
 		}
-
-		public void setNext(ListNode newNext) { // setter Methode, n�chstes
-												// Element wird �bergeben
+		/**
+		 * setter Methode, nachstes Element wird bergeben
+		 * 
+		 */
+		public void setNext(ListNode newNext) {
 			next = newNext;
 		}
-
-		public ListNode getNext() { // Getter Methode
-			if (next != null) { // Wenn next ungleich null gib next zur�ck
+		/**
+		 * Getter Methode; Wenn next ungleich null gib next zuruck > Ansonsten
+		 * haben wir keinen Verweis auf eine Referenz
+		 * 
+		 * @return
+		 */
+		public ListNode getNext() {
+			if (next != null) {
 				return next;
 			}
-			return null; // Ansonsten haben wir keinen Verweis auf eine Referenz
+			return null;
 		}
 
-		public boolean hasNext() { // Liefert true, wenn es ein
-									// vorhergehendes/nachfolgendes Element
-									// gibt.
+		/**
+		 * Liefert true, wenn es ein vorhergehendes/nachfolgendes Element gibt.
+		 * 
+		 * @return
+		 */
+		public boolean hasNext() {
 			if (next == null) {
 				return false;
 			}
@@ -58,19 +75,23 @@ public class List2<K> implements Iterable<K> {
 		public myIterator() {
 			current = head; // >Konstruktor, Fang am Anfang an
 		}
-
+		/**
+		 * has Next liefert true zuruck, wenn falls weitere Elemente vorhanden
+		 * sind Wenn nicht am Ende der Liste Gib das nachste Element zuruck Wenn
+		 * am Ende lieger false zuruck
+		 */
 		@Override
-		public boolean hasNext() { // has Next liefert true zur�ck, wenn falls
-									// weitere Elemente vorhanden sind
-			if (current != null) { // Wenn nicht am Ende der Liste
-				return current.hasNext(); // Gib das n�chste Element zur�ck
+		public boolean hasNext() {
+			if (current != null) {
+				return current.hasNext();
 			}
-			return false; // Wenn am Ende lieger false zur�ck
+			return false;
 		}
-
+		/**
+		 * Methode next Liefert nachstes Element in der Aufzahlung
+		 */
 		@Override
-		public K next() { // Methode next Liefert n�chstes Element in der
-							// Aufz�hlung
+		public K next() {
 			ListNode temp = current;
 			current = current.getNext();
 			return temp.getData();

@@ -7,7 +7,7 @@ a) Implementieren sie dabei die folgenden Methoden wie in der Vorlesung beschrie
     public String toString() {...}
     public boolean isEmpty() {...}
     public void insertFirst(K elem) {...}
-
+# Fertig #
 
 b) Erweitern Sie Ihre Klasse List<K> um die folgenden Methoden:
 > 
@@ -15,13 +15,15 @@ b) Erweitern Sie Ihre Klasse List<K> um die folgenden Methoden:
 >  public int size() {...}
 >  Die Methode gibt die Anzahl der in der Liste gespeicherten Objekte zurück.
 >  
+  # Fertig #
+>  
 >  **Abfragen eines Elements an einer bestimmten Position:**
 >  public K get(int pos) {...}
->  Die Methode liefert das Objekt an der Stelle pos zurück. Falls gilt (pos < 0 || pos >= size()) soll ein Objekt der folgenden Runtime-Exception geworfen werden: java.lang.IndexOutOfBoundsException
+>  Die Methode liefert das Objekt an der Stelle pos zurück. Falls gilt (pos < 0 || pos >= size()) soll ein Objekt der folgenden Runtime-Exception geworfen werden: *java.lang.IndexOutOfBoundsException*
 > 
    **Hinzufügen eines Elements an einer bestimmten Position:**
 > public void add(K elem) {...}
-> Die Methode hängt das Objekt elem an die bestehende Liste hinten an. Falls gilt (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen werden: java.lang.NullPointerException
+> Die Methode hängt das Objekt elem an die bestehende Liste hinten an. Falls gilt (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen werden: *java.lang.NullPointerException*
 
 Schreiben Sie eine Testklasse Main und Testen Sie die neuen Methoden der Liste ausführlich.
 

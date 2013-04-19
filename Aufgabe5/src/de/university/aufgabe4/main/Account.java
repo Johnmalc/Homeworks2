@@ -86,7 +86,9 @@ public class Account {
 
 	/**
 	 * Taken from: http://stackoverflow.com/questions/1306727/way-to-get-number
-	 * -of-digits-in-an-int
+	 * -of-digits-in-an-int 
+	 * After teachers recommendation I have added an
+	 * (another) Exception. Now he will like it !!!
 	 * 
 	 * @param value4
 	 *            PIN

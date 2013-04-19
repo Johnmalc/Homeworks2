@@ -1,8 +1,6 @@
 package de.university.aufgabe4.main;
 
 import java.util.Iterator;
-
-import meineversion.Account;
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -10,8 +8,8 @@ import meineversion.Account;
 
 public class List<K> {
 	/*
-	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
-	 * Some information was taken from
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists
+	 * .html Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
@@ -26,18 +24,25 @@ public class List<K> {
 		private void setData(K data) {
 			this.data = data;
 		}
+		@SuppressWarnings("unused")
+		private K getData() {
+			return data;
+		}
 
 		private void setNext(ListNode next) {
 			this.next = next;
+		}
+		private ListNode getNext() {
+			return next;
 		}
 	}
 
 	public List() {
 		head = null; // initialisiert auf null
-		size = 5; // grosse ist am anfang 0
+		size = 0; // grosse ist am anfang 0
 
 	}
-	/** 
+	/**
 	 * Fugt erster element in die liste
 	 */
 	public void insertFirst(K elem) {
@@ -107,16 +112,23 @@ public class List<K> {
 	 * das Objekt elem an die bestehende Liste hinten an. Falls gilt
 	 * (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen
 	 * werden: java.lang.NullPointerException
+	 * http://stackoverflow.com/questions/
+	 * 5236486/adding-items-to-end-of-linked-list
 	 */
 	public void add(K elem) {
-		ListNode newEnd = new ListNode(); // Create a new ListItem
+		ListNode current = head; // Create a new ListItem
 
 		if (elem == null) { // Is the list empty?
 			throw new NullPointerException();
 		} else {
+			while (current.getNext() != null) {
+				current = current.getNext();
+			}
+			ListNode toAppend = new ListNode();
+			current.setNext(toAppend);
 			// No, so append new element
-			end.next = newEnd; // Set next variable for old end
-			end = newEnd; // Store new item as end
+			// end.next = newEnd; // Set next variable for old end
+			// end = newEnd; // Store new item as end
 		}
 
 	}
@@ -138,8 +150,8 @@ public class List<K> {
 			return null;
 		}
 		/**
-		 * Method to remove the last element retrieved from the linked list You
-		 * don’t want to support this operation so just throw the exception If
+		 * Method to remove the last element retrieved from the linked list; You
+		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
 		 * Ivor.Hortons.Beginning.Java.Java.7.Edition

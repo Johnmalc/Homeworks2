@@ -1,6 +1,6 @@
 package de.university.aufgabe4.main;
 
-import meineversion.Account;
+import meineversion_OhneListKlasse.Account;
 
 /**
  * @author Anastasia Baron
