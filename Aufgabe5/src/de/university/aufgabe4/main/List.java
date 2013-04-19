@@ -105,8 +105,11 @@ public class List<K> {
 	 * das Objekt elem an die bestehende Liste hinten an. Falls gilt
 	 * (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen
 	 * werden: java.lang.NullPointerException
-	 * http://stackoverflow.com/questions/
-	 * 5236486/adding-items-to-end-of-linked-list
+	 * http://stackoverflow.com/questions/5236486/adding-items-to-end-of-linked-list 
+	 * I would like to thank to Pavel
+	 * Bennett here
+	 * http://www.mycstutorials.com/articles/data_structures/linkedlists
+	 * Thank you very much.
 	 */
 	public void add(K elem) {
 		ListNode current = head;
