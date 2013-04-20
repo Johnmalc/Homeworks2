@@ -9,15 +9,12 @@ import java.util.Iterator;
 
 public class List<K> {
 	/*
-	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists
-	 * .html Some information was taken from
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
+	 * Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
 	private int size;
-	private ListNode end;
-
-	// private boolean giltEs = false;
 
 	private class ListNode {
 		private ListNode next;
@@ -45,6 +42,30 @@ public class List<K> {
 
 		private ListNode getNext() {
 			return next;
+		}
+	}
+
+	/**
+	 * Die Methode ausgeben kann benutzt werden, um die Elemente einer Liste der
+	 * Reihenfolge nach auf dem Bildschirm ausgeben zu lassen... Thanks to
+	 * http://www.hh.schule.de/julius-leber-schule/UlfChrist/verklisten.html
+	 */
+	public void ausgeben() {
+		ListNode aktuellerKnoten = head;
+		// -Die Variable aktuellerKnoten ist eine Art Laufvariable, die zu
+		// Beginn auf kopf zeigen soll...
+
+		while (aktuellerKnoten != null) {
+			// -Jeder Knoten der Liste wird der Reihe nach abgelaufen, bis das
+			// Ende der Liste erreicht ist...
+
+			System.out.println(aktuellerKnoten.data);
+			// -Von jedem erreichten Knoten wird das Element ausgegeben...
+
+			aktuellerKnoten = aktuellerKnoten.next;
+			// -Und dann aktuellerKnoten auf den Nachfolger des aktuellen
+			// Knotens (also einen Knoten weiter in der (also einen Knoten
+			// weiter in der Liste) gesetzt...
 		}
 	}
 
@@ -105,10 +126,10 @@ public class List<K> {
 	 * das Objekt elem an die bestehende Liste hinten an. Falls gilt
 	 * (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen
 	 * werden: java.lang.NullPointerException
-	 * http://stackoverflow.com/questions/5236486/adding-items-to-end-of-linked-list 
-	 * I would like to thank to Pavel
+	 * http://stackoverflow.com/questions/
+	 * 5236486/adding-items-to-end-of-linked-list I would like to thank to Pavel
 	 * Bennett here
-	 * http://www.mycstutorials.com/articles/data_structures/linkedlists
+	 * http://www.mycstutorials.com/articles/data_structures/linkedlists 
 	 * Thank you very much.
 	 */
 	public void add(K elem) {

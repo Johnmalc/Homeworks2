@@ -33,7 +33,14 @@ public class Main {
 		System.out.println(ac.isEmpty());
 		System.out.println(ac.toString());
 		System.out.println(ac.size());
-		System.out.println(ac.get(0)); // nicht funktieniert
+		System.out.println("");
+		System.out.println(ac.get(0)); // oder schon
+	    System.out.println ("----------- Ausgabe der liste: -------------------");
+		ac.ausgeben();
+	    System.out.println ("\n "+ "----------- Ausgabe der 2 liste: -------------------");
+		ac.insertFirst(new Account (54,654,9,333));
+		ac.ausgeben();
+
 		 /*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
