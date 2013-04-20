@@ -1,85 +1,64 @@
 package de.university.aufgabe4.main;
-import meineversion.CashCard;
-import meineversion.CashMachine;
-import de.university.aufgabe4.exc.*;
-/** 
+
+/**
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
 
 public class Main {
-
 	public static void main(String[] args) {
 
-		CashMachine cashMachine = new CashMachine();
-		CashCard cashCard1 = new CashCard(12345678);
-		CashCard cashCard2 = new CashCard(23456789);
-
-		// Test 1 um CardNotInsertedException zu pruefen
-		try {
-			cashMachine.accountStatement();
-		} catch (CardNotInsertedException e) {
-			System.out.println("Test1 ist erfolgreich" + "\n");
-
-		}
+		/*
+		 * Testen Sie die Klasse List insbesondere unter Verwendung der Klasse
+		 * Account (aus Aufgabe 1) als Konkretisierung des Typ-Parameters
+		 */
+		List<Account> ac = new List<Account>();
+		/*
+		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
+		 * der Methode isEmpty(). prints true if empty false if it full
+		 */
+		System.out.println(ac.isEmpty());
+		/*
+		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
+		 */
+		ac.insertFirst(new Account(54564654, 465, 06541, 0555));
+		ac.add(new Account(54564654, 465, 06541, 0555));
+		ac.add(new Account(454, 465, 06541, 554));
+		ac.add(new Account(564654, 465, 06541, 0555));
+		ac.add(new Account(9874, 465, 06541, 0555));
+		ac.add(new Account(5, 465, 06541, 0555));
+		ac.add(new Account(54, 465, 1, 0555));
+		ac.add(new Account(56464644, 465, 0316541, 0555));
 		
-		// Test 2 um CardInsertedException zu pruefen
-		try {
-			System.out.println("Sie setzen die Karte im Automat");
-			cashMachine.insertCashCard(cashCard1);
-			cashMachine.insertCashCard(cashCard2);
-		} catch (CardInsertedException e) {
-			System.out.println("Test2 ist erfolgreich" + "\n");
-		} catch (InvalidCardException e) {
-			System.out.println("Test2 ist nicht bestanden.");
-		}
+		System.out.println(ac.isEmpty());
+		System.out.println(ac.toString());
+		System.out.println(ac.size());
+		System.out.println("");
+		System.out.println(ac.get(0)); // oder schon
+	    System.out.println ("----------- Ausgabe der liste: -------------------");
+		ac.ausgeben();
+	    System.out.println ("\n "+ "----------- Ausgabe der 2 liste: -------------------");
+		ac.insertFirst(new Account (54,654,9,333));
+		ac.ausgeben();
 
-		/*
-		 * Test 3 um PinNotCorectException zu pruefen; CardNotInsertedException
-		 * sollte in dem Fall nicht aufgetreten werden!
-		 * Wenn pin richtig wird nichts angezeigt
+		 /*
+		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
+		 * Konsole aus. Insiration taken from
+		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-		try {
-			cashMachine.pinEingeben(1256);
-		} catch (PinNotCorectException e) {
-			System.out.println("Test3 ist erfolgreich" + "\n");
-		} catch (CardNotInsertedException e) {
-			System.out.println("Test3 ist nicht bestanden" + "\n");
-		} catch (InvalidCardException e) {
-			System.out.println("Test3 ist nicht bestanden" + "\n");
-		}
+		ac.add(new Account(54564654, 465, 06541, 0555));
+		ac.add(new Account(654864, 465, 06541, 0555));
 
+		// gibt sie wieder zuruck
+	//	for (int i = 0; i < ac.size(); i++) {
+		//	System.out.println(ac.get(i) + ": " + ac.toString());
+	//	}
 		/*
-		 * Test 4 um NotEnoughMoneyException zu pruefen; PinNotCorectException
-		 * und CardNotInsertedException sollten hier nicht getroffen werden
+		 * Fugen Sie ein weiteres Account-Objekt mit Hilfe der Methode
+		 * insertFirst(...) in die Liste ein. Uberprufen Sie die Korrektheit
+		 * indem Sie die Liste erneut auf der Konsole ausgeben.
 		 */
-		try {
-			cashMachine.pinEingeben(1234);
-			cashMachine.withdraw(10900);
-		} catch (PinNotCorectException e) {
-			System.out.println("Test4 ist nicht bestanden" + "\n");
-		} catch (CardNotInsertedException e) {
-			System.out.println("Test4 ist nicht bestanden" + "\n");
-		} catch (NotEnoughMoneyException e) {
-			System.out.println("Test4 ist erfolgreich!" + "\n");
-		} catch (InvalidCardException e) {
-			System.out.println("Test4 ist nicht bestanden" + "\n");
-		}
 
-		// Test 5 prueft, ob InvalidCardException funktioniert
-		try {
-			cashMachine.ejectCashCard(); // Wir entfernen aktuelle gueltige Karte
-			cashMachine.insertCashCard(new CashCard(11111111)); 
-			/* Es wurde kein Konto mit disesem Kontonummer geschpeichert, 
-			 * d.h. es sollte die Fehlermeldung erscheinen, 
-			 * dass es kein Konto existiert, das dieser Karte zugeordnet ist
-			 */
-		} catch (CardNotInsertedException e) {
-			System.out.println("Test5 ist nict bestanden!" + "\n");
-		} catch (CardInsertedException e) {
-			System.out.println("Test5 ist nict bestanden!" + "\n");
-		} catch (InvalidCardException e) {
-			System.out.println("Test5 ist erfolgreich!" + "\n");
-		}
 	}
+
 }

@@ -1,4 +1,4 @@
-package meineversion;
+package meineversion_OhneListKlasse;
 
 import de.university.aufgabe4.exc.*;
 import de.university.aufgabe4.main.State;

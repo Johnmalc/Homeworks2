@@ -1,4 +1,4 @@
-package meineversion;
+package meineversion_OhneListKlasse;
 
 /** 
  * @author Anastasia Baron

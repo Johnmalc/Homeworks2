@@ -1,4 +1,4 @@
-package meineversion;
+package meineversion_OhneListKlasse;
 
 import de.university.aufgabe4.exc.*;
 
@@ -104,11 +104,13 @@ public class Account {
 	}
 
 	/**
-	 * 
 	 * @return pin
 	 */
 	public int getPin() {
 		return pin;
 	}
-
+	public String toString() {
+		return "" + accountNumber + ": " + overdraft + ": " + bankDeposit
+				+ ": " + pin;
+	}
 }

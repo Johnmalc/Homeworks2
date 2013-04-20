@@ -1,30 +1,29 @@
 package de.university.aufgabe4.main;
 
 import de.university.aufgabe4.exc.*;
-import de.university.aufgabe4.main.State;
+
 
 /** 
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
 
-public class CashMachine {
+public class CashMachine<K> {
 
-	Account[] accounts;
+	List<Account> accounts;
 	private CashCard cashCard;
 	private State state;
 	private int zaehler; // fuer Arrays
 
-	public CashMachine() {
-		accounts = new Account[4];
+	public CashMachine(List<Account> accountsX) {
+		this.accounts = accountsX;
 		zaehler = 0;
 		state = State.READY;
 
-		// hier wurden die accounts gespeichert
-		accounts[0] = new Account(12345678, 0.0, 2000, 1234);
-		accounts[1] = new Account(23456789, -100.0, 200, 2345);
-		accounts[2] = new Account(34567890, -200.0, 300, 3456);
-		accounts[3] = new Account(45678901, 0.0, 5000, 4567);
+	}
+
+	public CashMachine() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -40,19 +39,22 @@ public class CashMachine {
 	 */
 	
 	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
-
 		switch (state) {
 		case READY:
 			cashCard = cashCardX;
 			state = State.CARD_INSERTED;
-			// Sucht die passende Konto nach AccountNummer
-			for (Account test : accounts) {
-				if ((test.getAccountNumber()) == (cashCard.getAccountNumber())) {
+			/*
+			 *  Sucht die passende Konto nach AccountNummer
+			 *  muss man andern wegen Iterable > alte for loop
+			 */
+			for (int i =0 ; i<accounts.size();i++) {
+				if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
 					// wenn account nummer und carten-account nummer entspricht > mach nichts
+					this.zaehler = i;
 					break;
 				} else {
 					zaehler++;
-					if (zaehler >= accounts.length) {
+					if (zaehler >= accounts.size()) {
 						state=State.READY;
 							throw new InvalidCardException();
 			  		}
@@ -79,21 +81,21 @@ public class CashMachine {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException,InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,
+			CardNotInsertedException, InvalidCardException {
 		switch (state) {
-		case CARD_INSERTED:
+			case CARD_INSERTED :
 
-			if (accounts[zaehler].getPin() == pinX) {
-				state = State.PIN_CORRECT;
-				System.out.println("Sie haben den richtigen Pin eingegeben.");
-				System.out.println("Automat ist auf Status " + state + " gesetzt.");
-			}
-			else {
-				throw new PinNotCorectException();
-			} // end of if-else
-			break;
-		default:
-			throw new CardNotInsertedException();
+				if (accounts.get(zaehler).getPin() == pinX) {
+					state = State.PIN_CORRECT;
+					System.out.println("Sie haben den richtigen Pin eingegeben.");
+					System.out.println("Automat ist auf Status " + state + " gesetzt.");
+				} else {
+					throw new PinNotCorectException();
+				} // end of if-else
+				break;
+			default :
+				throw new CardNotInsertedException();
 		} // end switch
 	}
 
@@ -111,11 +113,11 @@ public class CashMachine {
 	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
 		switch (state) {
 		case PIN_CORRECT:
-			System.out.println("Ihr Kontoguthaben ist: " + accounts[zaehler].getBankDeposit() + " Euro.");
-			if (accounts[zaehler].getBankDeposit() - amount >= accounts[zaehler].getOverdraft()) {
-				accounts[zaehler].setBankDeposit(accounts[zaehler].getBankDeposit() - amount);
+			System.out.println("Ihr Kontoguthaben ist: " + accounts.get(zaehler).getBankDeposit() + " Euro.");
+			if (accounts.get(zaehler).getBankDeposit() - amount >= accounts.get(zaehler).getOverdraft()) {
+				accounts.get(zaehler).setBankDeposit(accounts.get(zaehler).getBankDeposit() - amount);
 				System.out.println("Sie haben erfolgreich " + amount + " Euro abgehoben.");
-				System.out.println("Ihr Kontoguthaben ist: " + accounts[zaehler].getBankDeposit() + " Euro.");
+				System.out.println("Ihr Kontoguthaben ist: " + accounts.get(zaehler).getBankDeposit() + " Euro.");
 			} else {
 				throw new NotEnoughMoneyException();
 			}
@@ -137,9 +139,9 @@ public class CashMachine {
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
 			System.out.println("\n" + 
 					"Account Statement: " + "\n" + 
-					"Account Nr.: " + accounts[zaehler].getAccountNumber() + "\n" + 
-					"Bank Deposit: " + accounts[zaehler].getBankDeposit() + "\n" + 
-					"Overdraft: " + accounts[zaehler].getOverdraft());
+					"Account Nr.: " + accounts.get(zaehler).getAccountNumber() + "\n" + 
+					"Bank Deposit: " + accounts.get(zaehler).getBankDeposit() + "\n" + 
+					"Overdraft: " + accounts.get(zaehler).getOverdraft());
 		} else {
 			throw new CardNotInsertedException();
 		}

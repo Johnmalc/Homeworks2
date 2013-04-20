@@ -2,7 +2,6 @@ package de.university.aufgabe4.main;
 
 import java.util.Iterator;
 
-import meineversion.Account;
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -10,34 +9,72 @@ import meineversion.Account;
 
 public class List<K> {
 	/*
-	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
 	 * Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
 	private int size;
-	private ListNode end;
-	// private boolean giltEs = false;
 
 	private class ListNode {
 		private ListNode next;
 		private K data;
 
+		public ListNode(K elem) {
+			this.data = elem;
+		}
+
+		public ListNode() {
+
+		}
+
 		private void setData(K data) {
 			this.data = data;
+		}
+
+		private K getData() {
+			return data;
 		}
 
 		private void setNext(ListNode next) {
 			this.next = next;
 		}
+
+		private ListNode getNext() {
+			return next;
+		}
+	}
+
+	/**
+	 * Die Methode ausgeben kann benutzt werden, um die Elemente einer Liste der
+	 * Reihenfolge nach auf dem Bildschirm ausgeben zu lassen... Thanks to
+	 * http://www.hh.schule.de/julius-leber-schule/UlfChrist/verklisten.html
+	 */
+	public void ausgeben() {
+		ListNode aktuellerKnoten = head;
+		// -Die Variable aktuellerKnoten ist eine Art Laufvariable, die zu
+		// Beginn auf kopf zeigen soll...
+
+		while (aktuellerKnoten != null) {
+			// -Jeder Knoten der Liste wird der Reihe nach abgelaufen, bis das
+			// Ende der Liste erreicht ist...
+
+			System.out.println(aktuellerKnoten.data);
+			// -Von jedem erreichten Knoten wird das Element ausgegeben...
+
+			aktuellerKnoten = aktuellerKnoten.next;
+			// -Und dann aktuellerKnoten auf den Nachfolger des aktuellen
+			// Knotens (also einen Knoten weiter in der (also einen Knoten
+			// weiter in der Liste) gesetzt...
+		}
 	}
 
 	public List() {
 		head = null; // initialisiert auf null
-		size = 5; // grosse ist am anfang 0
 
 	}
-	/** 
+
+	/**
 	 * Fugt erster element in die liste
 	 */
 	public void insertFirst(K elem) {
@@ -45,15 +82,9 @@ public class List<K> {
 		newHead.setData(elem);
 		newHead.setNext(head);
 		head = newHead;
+		size++;
 	}
 
-	/**
-	 * Returns true if this list contains no elements.
-	 */
-	public boolean isEmpty() {
-		return head == null;
-
-	}
 	/**
 	 * 
 	 * return string
@@ -62,19 +93,10 @@ public class List<K> {
 		ListNode l = head;
 		StringBuilder sb = new StringBuilder();
 		while (l != null) {
-			sb.append("<" + l.data + ">");
+			sb.append("<" + l.data + ">" + "\n");
 			l = l.next;
 		}
 		return sb.toString();
-
-	}
-
-	/**
-	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
-	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
-	 */
-	public int size() {
-		return this.size;
 
 	}
 
@@ -85,20 +107,17 @@ public class List<K> {
 	 * java.lang.IndexOutOfBoundsException Inspiration to
 	 * http://www.technicalypto.com/2010/01/linked-lists.html
 	 * 
-	 * @param ??????
-	 * 
 	 */
 	public K get(int pos) {
 		if (pos < 0 || pos >= size()) {
 			// giltEs = true;
 			throw new IndexOutOfBoundsException();
 		}
-		ListNode te = head; // Move pointer to front
-		int counter = 0;
-		for (; counter < pos; counter++) {
-			te = te.next;
-		}
-		return (K) te;
+		ListNode iterating = head;
+		for (int i = 0; i < pos && iterating != null; i++, iterating = iterating
+				.getNext())
+			;
+		return iterating.getData();
 
 	}
 
@@ -107,19 +126,26 @@ public class List<K> {
 	 * das Objekt elem an die bestehende Liste hinten an. Falls gilt
 	 * (elem==null) soll ein Objekt der folgenden Runtime-Exception geworfen
 	 * werden: java.lang.NullPointerException
+	 * http://stackoverflow.com/questions/
+	 * 5236486/adding-items-to-end-of-linked-list I would like to thank to Pavel
+	 * Bennett here
+	 * http://www.mycstutorials.com/articles/data_structures/linkedlists 
+	 * Thank you very much.
 	 */
 	public void add(K elem) {
-		ListNode newEnd = new ListNode(); // Create a new ListItem
-
+		ListNode current = head;
 		if (elem == null) { // Is the list empty?
 			throw new NullPointerException();
 		} else {
-			// No, so append new element
-			end.next = newEnd; // Set next variable for old end
-			end = newEnd; // Store new item as end
+			while (current.getNext() != null) {
+				current = current.getNext();
+			}
+			current.setNext(new ListNode(elem));
+			size++;
 		}
 
 	}
+
 	// WICHTIG for Iterator
 	private class myIterator implements Iterator<K> {
 
@@ -137,9 +163,10 @@ public class List<K> {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
 		/**
-		 * Method to remove the last element retrieved from the linked list You
-		 * don’t want to support this operation so just throw the exception If
+		 * Method to remove the last element retrieved from the linked list; You
+		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
 		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
@@ -150,7 +177,25 @@ public class List<K> {
 					"Remove not supported for LinkedList<>");
 		}
 	}
+
 	public Iterator<K> iterator() {
 		return new myIterator();
+	}
+
+	/**
+	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
+	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
+	 */
+	public int size() {
+		return this.size;
+
+	}
+
+	/**
+	 * Returns true if this list contains no elements.
+	 */
+	public boolean isEmpty() {
+		return head == null;
+
 	}
 }
