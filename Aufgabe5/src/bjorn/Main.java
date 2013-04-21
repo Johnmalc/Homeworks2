@@ -1,5 +1,9 @@
 package bjorn;
 
+/**
+ * @author Normal
+ * 
+ */
 public class Main {
 
 	/**
@@ -22,11 +26,20 @@ public class Main {
 
 		try {
 			System.out.println(speicher.get(0));
-		} catch (IndexOutOfBoundsException e) {
+		}
+
+		catch (IndexOutOfBoundsException e) {
 			System.out.println(e.getMessage());
 		}
 
-		// speicher.add("LETZTES ELEMENT");
+		try {
+			speicher.add("SIEBEN");
+		}
+
+		catch (NullPointerException e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+
 		System.out.println("--------------------------------");
 		System.out.println("");
 		System.out.println(speicher);
