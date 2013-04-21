@@ -14,7 +14,8 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
-	private int size;
+	private int anzahl;
+	private int position;
 
 	private class ListNode {
 		private ListNode next;
@@ -30,10 +31,6 @@ public class List<K> {
 
 		private void setData(K data) {
 			this.data = data;
-		}
-
-		private K getData() {
-			return data;
 		}
 
 		private void setNext(ListNode next) {
@@ -82,7 +79,6 @@ public class List<K> {
 		newHead.setData(elem);
 		newHead.setNext(head);
 		head = newHead;
-		size++;
 	}
 
 	/**
@@ -109,16 +105,22 @@ public class List<K> {
 	 * 
 	 */
 	public K get(int pos) {
+		ListNode posta = head;
+		ListNode tak = head;
 		if (pos < 0 || pos >= size()) {
 			// giltEs = true;
 			throw new IndexOutOfBoundsException();
-		}
-		ListNode iterating = head;
-		for (int i = 0; i < pos && iterating != null; i++, iterating = iterating
-				.getNext())
-			;
-		return iterating.getData();
+		} else {
+			while (posta != null) {
+				if (position == pos) {
+					tak = posta;
+				}
+				position++;
+				posta = posta.next;
 
+			}
+			return tak.data;
+		}
 	}
 
 	/**
@@ -141,7 +143,6 @@ public class List<K> {
 				current = current.getNext();
 			}
 			current.setNext(new ListNode(elem));
-			size++;
 		}
 
 	}
@@ -187,7 +188,12 @@ public class List<K> {
 	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
 	 */
 	public int size() {
-		return this.size;
+		ListNode zahl = head;
+		while (zahl != null) {
+			anzahl++;
+			zahl = zahl.next;
+		}
+		return anzahl;
 
 	}
 

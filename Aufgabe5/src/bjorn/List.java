@@ -8,11 +8,8 @@ public class List<K> {
 
 	private ListNode head;
 	private ListNode temp;
-	private ListNode newTail;
-
 	private int anzahl = 0;
 	private int position = 0;
-	private int anzahlZwei = 0;
 
 	private class ListNode {
 		private ListNode next;
@@ -50,7 +47,7 @@ public class List<K> {
 		newHead.setData(elem);
 		newHead.setNext(head); // Bei erst erstellung ist das naechste element
 		head = newHead; // somit null also Listenende, da die Referenz
-		anzahlZwei++; // head oben in der Klasse nicht initialisiert
+						// head oben in der Klasse nicht initialisiert
 						// wurde!
 						// bei der naechsten erstellung verweist next
 						// nun nicht mehr auf null(da nun das letzt
@@ -104,24 +101,43 @@ public class List<K> {
 		}
 	}
 
-	// public void add(K elem) {
-	// ListNode a = head;
-	//
-	// // Funktioniert noch nicht
-	// while (a != null) {
-	//
-	// if (a == null) {
-	//
-	// ListNode newE = new ListNode();
-	// newE.setData(elem);
-	// a.next.setNext(newE);
-	//
-	// }
-	//
-	// a = a.next;
-	//
-	// }
-	//
-	// }
+	public void add(K elem) throws NullPointerException {
+
+		if (elem == null) {
+			throw new NullPointerException(
+					"Das zu uebergebende Objekt wurde nicht initialisiert!");
+		}
+
+		else {
+			ListNode a = head;
+
+			// Funktioniert jetzt ;)
+			while (a != null) {
+				if (a.next == null) {
+					ListNode vorgaenger = new ListNode();
+					vorgaenger = a; // Letzter Knoten wird zwischen gespeichert
+									// um ein ueberschreiben zu vermeiden
+
+					ListNode newE = new ListNode();
+					newE.setData(elem);
+
+					a = newE; // Der neue Knoten nimmt den platz des
+								// ursruenglich letzten Kontens ein
+					vorgaenger.setNext(a); // Dem urspruenglich letzten Knoten
+											// wird der neue Knoten als
+											// Nachfolger zugewiesen. Somit
+											// rutscht der Urspruenglich letzte
+											// Knoten in der Liste um eins nach
+											// vorne und ist nun vorletzter.
+											// Der neue Knoten uebernimmt den
+											// Platz des letzten Knotesns!
+				}
+
+				a = a.next;
+
+			}
+		}
+
+	}
 
 }
