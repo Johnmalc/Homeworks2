@@ -9,7 +9,7 @@
  * 
  * 
  */
-package de.university.aufgabe4.main.copy;
+package de.university.aufgabe4.anastasia.main;
 
 import de.university.aufgabe4.main.*;
 

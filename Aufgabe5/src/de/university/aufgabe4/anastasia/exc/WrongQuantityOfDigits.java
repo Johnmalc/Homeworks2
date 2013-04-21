@@ -1,4 +1,4 @@
-package de.university.aufgabe4.exc.copy;
+package de.university.aufgabe4.anastasia.exc;
 
 public class WrongQuantityOfDigits extends Exception {
 
