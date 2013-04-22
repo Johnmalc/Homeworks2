@@ -1,4 +1,4 @@
-Exercise 4
+# **Exercise 4** #
 
 Programmieren Sie die Klasse List<K> aus der Vorlesung.
 
@@ -15,7 +15,7 @@ b) Erweitern Sie Ihre Klasse List<K> um die folgenden Methoden:
 >  public int size() {...}
 >  Die Methode gibt die Anzahl der in der Liste gespeicherten Objekte zurück.
 >  
-  # Fertig #
+# Fertig #
 >  
 >  **Abfragen eines Elements an einer bestimmten Position:**
 >  public K get(int pos) {...}
@@ -35,7 +35,7 @@ Schreiben Sie eine Testklasse Main und Testen Sie die neuen Methoden der Liste a
 - Prufen Sie vor und nach dem Hinzufügen der Elemente den Rückgabewert der Methode **isEmpty().**
 ## OK ##
 - Fügen Sie ein **weiteres Account-Objekt mit Hilfe der Methode insertFirst(...) in die Liste ein**. Uberprüfen Sie die Korrektheit indem Sie die Liste erneut auf der Konsole ausgeben.
-## ok ##
+## OK ##
 c)Ersetzen Sie das Account-Array in der Klasse CashMachine durch Ihre eigene Klasse List. **Passen Sie ihre Klasse CashMachine entsprechend an.**
-
+## OK ##
 d) Implementieren Sie die Methode java.util.Iterator<K> iterator() {...} unter Verwendung einer geeigneten (inneren) Klasse wie in der Vorlesung besprochen. **Testen Sie Ihren Iterator ausführlich!**

@@ -1,8 +1,6 @@
 package de.university.aufgabe4.main;
 
 import de.university.aufgabe4.exc.*;
-
-
 /** 
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -13,17 +11,16 @@ public class CashMachine<K> {
 	List<Account> accounts;
 	private CashCard cashCard;
 	private State state;
-	private int zaehler; // fuer Arrays
-
-	public CashMachine(List<Account> accountsX) {
-		this.accounts = accountsX;
-		zaehler = 0;
-		state = State.READY;
-
-	}
+	private int zaehler;
 
 	public CashMachine() {
-		// TODO Auto-generated constructor stub
+		zaehler = 0;
+		state = State.READY;
+		// neu accounty erstellt.
+		accounts = new List<Account>();
+		accounts.insertFirst(new Account(45678901, 0.0, 5000, 4567));
+		accounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
+		accounts.add(new Account(34567890, -200.0, 300, 3456));
 	}
 
 	/**
@@ -37,7 +34,6 @@ public class CashMachine<K> {
 	 * @throws InvalidCardException
 	 * @throws CardInsertedException
 	 */
-	
 	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
 		switch (state) {
 		case READY:

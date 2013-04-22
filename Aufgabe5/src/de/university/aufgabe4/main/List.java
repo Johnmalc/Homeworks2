@@ -15,12 +15,12 @@ public class List<K> {
 	 */
 	private ListNode head;
 	private int anzahl;
-	private int position;
 
 	private class ListNode {
 		private ListNode next;
 		private K data;
-
+		
+		// for add method only
 		public ListNode(K elem) {
 			this.data = elem;
 		}
@@ -40,35 +40,10 @@ public class List<K> {
 		private ListNode getNext() {
 			return next;
 		}
-	}
-
-	/**
-	 * Die Methode ausgeben kann benutzt werden, um die Elemente einer Liste der
-	 * Reihenfolge nach auf dem Bildschirm ausgeben zu lassen... Thanks to
-	 * http://www.hh.schule.de/julius-leber-schule/UlfChrist/verklisten.html
-	 */
-	public void ausgeben() {
-		ListNode aktuellerKnoten = head;
-		// -Die Variable aktuellerKnoten ist eine Art Laufvariable, die zu
-		// Beginn auf kopf zeigen soll...
-
-		while (aktuellerKnoten != null) {
-			// -Jeder Knoten der Liste wird der Reihe nach abgelaufen, bis das
-			// Ende der Liste erreicht ist...
-
-			System.out.println(aktuellerKnoten.data);
-			// -Von jedem erreichten Knoten wird das Element ausgegeben...
-
-			aktuellerKnoten = aktuellerKnoten.next;
-			// -Und dann aktuellerKnoten auf den Nachfolger des aktuellen
-			// Knotens (also einen Knoten weiter in der (also einen Knoten
-			// weiter in der Liste) gesetzt...
-		}
-	}
+	} // ende von private ListNode class
 
 	public List() {
-		head = null; // initialisiert auf null
-
+		head = null;
 	}
 
 	/**
@@ -82,18 +57,20 @@ public class List<K> {
 	}
 
 	/**
+	 * @return alle elemente in der liste
+	 * Bischne bearbeitet
 	 * 
-	 * return string
 	 */
 	public String toString() {
 		ListNode l = head;
 		StringBuilder sb = new StringBuilder();
+		int i = 0;
 		while (l != null) {
-			sb.append("<" + l.data + ">" + "\n");
+			sb.append(i + " "+ l.data + ">" + "\n");
+			i++;
 			l = l.next;
 		}
 		return sb.toString();
-
 	}
 
 	/**
@@ -104,24 +81,15 @@ public class List<K> {
 	 * http://www.technicalypto.com/2010/01/linked-lists.html
 	 * 
 	 */
-	
-	
 	public K get(int pos) {
-		ListNode posta = head;
-		ListNode tak = head;
+		ListNode var = head;
 		if (pos < 0 || pos >= size()) {
-			// giltEs = true;
 			throw new IndexOutOfBoundsException();
 		} else {
-			while (posta != null) {
-				if (position == pos) {
-					tak = posta;
-				}
-				position++;
-				posta = posta.next;
-
+			for (int i = 1; i < pos; i++) {
+				var = var.next;
 			}
-			return tak.data;
+			return var.data;
 		}
 	}
 
@@ -146,7 +114,6 @@ public class List<K> {
 			}
 			current.setNext(new ListNode(elem));
 		}
-
 	}
 
 	// WICHTIG for Iterator
@@ -157,13 +124,11 @@ public class List<K> {
 
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
 			return false;
 		}
 
 		@Override
 		public K next() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
@@ -196,7 +161,6 @@ public class List<K> {
 			zahl = zahl.next;
 		}
 		return anzahl;
-
 	}
 
 	/**
@@ -204,6 +168,5 @@ public class List<K> {
 	 */
 	public boolean isEmpty() {
 		return head == null;
-
 	}
 }

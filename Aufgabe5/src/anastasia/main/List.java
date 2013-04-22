@@ -166,7 +166,7 @@ public class List<K> {
 
 
 // WICHTIG for Iterator
-/**
+/*
  * private class myIterator implements Iterator<K> {
  * 
  * public myIterator() { }

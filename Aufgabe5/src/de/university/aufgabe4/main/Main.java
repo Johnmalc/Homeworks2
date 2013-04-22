@@ -15,50 +15,46 @@ public class Main {
 		List<Account> ac = new List<Account>();
 		/*
 		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
-		 * der Methode isEmpty(). prints true if empty false if it full
+		 * der Methode isEmpty(). prints true if empty - false if it full
 		 */
 		System.out.println(ac.isEmpty());
 		/*
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
-		ac.insertFirst(new Account(54564654, 465, 06541, 0555));
+		ac.insertFirst(new Account(999954, 465, 06541, 0555));
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(454, 465, 06541, 554));
-		ac.add(new Account(564654, 465, 06541, 0555));
-		ac.add(new Account(9874, 465, 06541, 0555));
-		ac.add(new Account(5, 465, 06541, 0555));
-		ac.add(new Account(54, 465, 1, 0555));
-		ac.add(new Account(56464644, 465, 0316541, 0555));
 		System.out.println(ac.toString());
 
 		System.out.println(ac.isEmpty());
 		System.out.println(ac.size());
 		System.out.println("");
 		System.out.println(ac.get(0)); // oder schon
-	    System.out.println ("----------- Ausgabe der liste: -------------------");
-		ac.ausgeben();
-	    System.out.println ("\n "+ "----------- Ausgabe der 2 liste: -------------------");
-		ac.insertFirst(new Account (54,654,9,333));
-		ac.ausgeben();
-
-		 /*
+		System.out.println("----------- Ausgabe der liste: -----------");
+		
+		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(654864, 465, 06541, 0555));
+		System.out.println(ac.toString());
 
-		// gibt sie wieder zuruck
-	//	for (int i = 0; i < ac.size(); i++) {
-		//	System.out.println(ac.get(i) + ": " + ac.toString());
-	//	}
 		/*
 		 * Fugen Sie ein weiteres Account-Objekt mit Hilfe der Methode
 		 * insertFirst(...) in die Liste ein. Uberprufen Sie die Korrektheit
 		 * indem Sie die Liste erneut auf der Konsole ausgeben.
 		 */
-
+		System.out.println("\n " + "----------- Ausgabe der 2 liste: -------");
+		ac.insertFirst(new Account(54, 654, 9, 333));
+		System.out.println(ac.toString());
+		
+		System.out.println("\n " + "----------- Ausgabe der Cashmaschine acocunts : -------");
+		CashMachine<Account> a = new CashMachine<Account>();
+		a.accounts.add(new Account(54564654, 465, 06541, 0555));
+		System.out.println(a.accounts.toString());
+		
 	}
 
 }
