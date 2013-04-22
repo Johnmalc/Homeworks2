@@ -29,9 +29,9 @@ public class Main {
 		ac.add(new Account(5, 465, 06541, 0555));
 		ac.add(new Account(54, 465, 1, 0555));
 		ac.add(new Account(56464644, 465, 0316541, 0555));
-		
-		System.out.println(ac.isEmpty());
 		System.out.println(ac.toString());
+
+		System.out.println(ac.isEmpty());
 		System.out.println(ac.size());
 		System.out.println("");
 		System.out.println(ac.get(0)); // oder schon
