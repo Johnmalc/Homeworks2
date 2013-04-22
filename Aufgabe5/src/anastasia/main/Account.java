@@ -1,6 +1,6 @@
-package de.university.aufgabe4.anastasia.main;
+package anastasia.main;
 
-import de.university.aufgabe4.exc.*;
+import anastasia.exc.*;
 
 /**
  * @author Anastasia Baron

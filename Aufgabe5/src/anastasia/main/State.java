@@ -1,4 +1,4 @@
-package de.university.aufgabe4.anastasia.main;
+package anastasia.main;
 
 /** 
  * @author Anastasia Baron
