@@ -104,6 +104,8 @@ public class List<K> {
 	 * http://www.technicalypto.com/2010/01/linked-lists.html
 	 * 
 	 */
+	
+	
 	public K get(int pos) {
 		ListNode posta = head;
 		ListNode tak = head;

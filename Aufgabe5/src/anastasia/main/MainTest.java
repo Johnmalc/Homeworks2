@@ -9,9 +9,9 @@
  * 
  * 
  */
-package de.university.aufgabe4.anastasia.main;
+package anastasia.main;
 
-import de.university.aufgabe4.main.*;
+//import de.university.aufgabe4.main.*;
 
 
 /**
@@ -26,7 +26,7 @@ public class MainTest { //Die neue Testklasse Main zum Test der neuen Methoden d
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		List listAccounts = new List();
+		List<Account> listAccounts = new List <Account> ();
 			System.out.println(listAccounts.isEmpty());//List ist leer. Muss true gezeigt werden
 			listAccounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
 			listAccounts.add(new Account(34567890, -200.0, 300, 3456));
