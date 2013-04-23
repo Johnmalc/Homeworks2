@@ -2,8 +2,6 @@ package de.university.aufgabe4.main;
 
 import java.util.Iterator;
 
-import andereVersionen.List2.ListNode;
-
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -120,16 +118,15 @@ public class List<K> {
 			throw new NullPointerException();
 		} else {
 			ListNode newElem = new ListNode();
-			newElem.setData(elem);
-			newElem.setNext(null);
-			if (size() == 0) {
-				head = newElem;
+			newElem.setData(elem); // speichere daten
+			newElem.setNext(null); // setze aktuales element auf keine neue referenz  
+			if (size() == 0) { 
+				head = newElem; // wenn grosse = 0, dann setze aktuelles element auf head
 			} else {
-				while (i < size()) {// System.out.println(l.data);
+				while (i < size()) {
 					be = be.next;
 					i++;
 				}
-				// System.out.println(l.data);
 				be.setNext(newElem);
 			}
 		}
@@ -151,35 +148,39 @@ public class List<K> {
 //	}
 
 	// WICHTIG for Iterator
-//	class myIterator implements Iterator<K> {
-//		ListNode current;
-//
-//		@Override
-//		public boolean hasNext() {
-//			if (current != null) {
-//				return current.hasNextListNode();
-//			}
-//			return false;
-//		}
-//		
-//		@Override
-//		public K next() {
-//			ListNode pos = current;
-//			current = current.next;
-//			return pos.data;
-//		}
-//		/**
-//		 * Method to remove the last element retrieved from the linked list; You
-//		 * don’t want to support this operation so just throw the exception. If
-//		 * you did support this operation, you would need to include a check
-//		 * that next() has been called, and if not, throw IllegalStateException
-//		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
-//		 */
-//		@Override
-//		public void remove() {
-//			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
-//		}
-//	}
+	private class myIterator implements Iterator<K> {
+		ListNode current;
+
+		public myIterator(){
+			
+		}
+			
+		@Override
+		public boolean hasNext() {
+			if (current != null) {
+				return current.hasNextListNode();
+			}
+			return false;
+		}
+		
+		@Override
+		public K next() {
+			ListNode pos = current;
+			current = current.next;
+			return pos.data;
+		}
+		/**
+		 * Method to remove the last element retrieved from the linked list; You
+		 * don’t want to support this operation so just throw the exception. If
+		 * you did support this operation, you would need to include a check
+		 * that next() has been called, and if not, throw IllegalStateException
+		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+		 */
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
+		}
+	}
 
 	/**
 	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
