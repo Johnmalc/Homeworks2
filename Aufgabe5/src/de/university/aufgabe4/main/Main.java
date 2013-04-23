@@ -1,5 +1,9 @@
 package de.university.aufgabe4.main;
 
+import java.util.Iterator;
+
+import andereVersionen.List.myIterator;
+
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -31,7 +35,8 @@ public class Main {
 		System.out.println("");
 		System.out.println(ac.get(0)); // oder schon
 		System.out.println("----------- Ausgabe der liste: -----------");
-		
+		System.out.println(ac.size());
+
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
@@ -52,9 +57,8 @@ public class Main {
 		
 		System.out.println("\n " + "----------- Ausgabe der Cashmaschine acocunts : -------");
 		CashMachine<Account> a = new CashMachine<Account>();
-		a.accounts.add(new Account(54564654, 465, 06541, 0555));
 		System.out.println(a.accounts.toString());
-		
+	
 	}
 
 }

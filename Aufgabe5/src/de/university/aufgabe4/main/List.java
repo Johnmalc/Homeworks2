@@ -2,6 +2,8 @@ package de.university.aufgabe4.main;
 
 import java.util.Iterator;
 
+import andereVersionen.List2.ListNode;
+
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -14,36 +16,43 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
-	private int anzahl;
-
+	private ListNode end;
+	
 	private class ListNode {
-		private ListNode next;
-		private K data;
+		ListNode next;
+		K data;
 		
 		// for add method only
-		public ListNode(K elem) {
+		private ListNode(K elem) {
 			this.data = elem;
 		}
 
-		public ListNode() {
+		private ListNode() {
 
 		}
-
-		private void setData(K data) {
-			this.data = data;
-		}
-
-		private void setNext(ListNode next) {
+		private ListNode(K elem, ListNode next) {
+			this.data = elem;
 			this.next = next;
 		}
-
-		private ListNode getNext() {
-			return next;
+		private void setData(K dataX) {
+			this.data = dataX;
 		}
+
+		private void setNext(ListNode nextX) {
+			this.next = nextX;
+		}
+		public boolean hasNextListNode() {
+			if (next == null) {
+				return false;
+			}
+			return true;
+		}
+
 	} // ende von private ListNode class
 
 	public List() {
 		head = null;
+		end = null;
 	}
 
 	/**
@@ -64,9 +73,9 @@ public class List<K> {
 	public String toString() {
 		ListNode l = head;
 		StringBuilder sb = new StringBuilder();
-		int i = 0;
+		int i = 1;
 		while (l != null) {
-			sb.append(i + " "+ l.data + ">" + "\n");
+			sb.append(i + " "+ l.data + "\n");
 			i++;
 			l = l.next;
 		}
@@ -105,33 +114,60 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
-		ListNode current = head;
-		if (elem == null) { // Is the list empty?
+		if (elem == null) {
 			throw new NullPointerException();
-		} else {
-			while (current.getNext() != null) {
-				current = current.getNext();
-			}
-			current.setNext(new ListNode(elem));
 		}
-	}
+		else {
+			ListNode newElem = new ListNode();
+			newElem.setData(elem);
+			newElem.setNext(null);
+			if (size() == 0) {
+				head = newElem;
+			} else {
+				ListNode l = head;
+				int i = 1;
+				while (i < size()) {// System.out.println(l.data);
+					l = l.next;
+					i++;
+				}
+				// System.out.println(l.data);
+				l.setNext(newElem);
+			}
+		}
+
+//		ListNode iter = head;
+//		while (iter.next != null) {
+//			iter = iter.next;
+//		}
+//		if (iter.next == null) {
+//			ListNode newEle = new ListNode();
+//			newEle.setData(elem);
+//			newEle.setNext(null);
+//			iter.next = newEle;
+//		}
+//		if (elem == null) {
+//			throw new NullPointerException();
+//		}
+//	}
 
 	// WICHTIG for Iterator
-	private class myIterator implements Iterator<K> {
-
-		public myIterator() {
-		}
+	class myIterator implements Iterator<K> {
+		ListNode current;
 
 		@Override
 		public boolean hasNext() {
+			if (current != null) {
+				return current.hasNextListNode();
+			}
 			return false;
 		}
-
+		
 		@Override
 		public K next() {
-			return null;
+			ListNode pos = current;
+			current = current.next;
+			return pos.data;
 		}
-
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
@@ -141,13 +177,8 @@ public class List<K> {
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException(
-					"Remove not supported for LinkedList<>");
+			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
 		}
-	}
-
-	public Iterator<K> iterator() {
-		return new myIterator();
 	}
 
 	/**
@@ -155,6 +186,7 @@ public class List<K> {
 	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
 	 */
 	public int size() {
+		int anzahl = 0;
 		ListNode zahl = head;
 		while (zahl != null) {
 			anzahl++;

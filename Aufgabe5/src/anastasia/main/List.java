@@ -150,7 +150,7 @@ public class List<K> {
 			} else {
 				ListNode l = head;
 				int i = 1;
-				while (i < (size())) {// System.out.println(l.data);
+				while (i < size()) {// System.out.println(l.data);
 					l = l.next;
 					i++;
 				}

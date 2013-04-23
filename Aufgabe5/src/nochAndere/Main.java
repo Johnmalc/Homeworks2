@@ -21,7 +21,7 @@ public class Main {
 				.println("Welches Element ist an meiner gew�nschten Position?"
 						+ " " + l.get(3));
 
-		Iterator<Integer> i = l.getIterator();
+		Iterator<Object> i = l.getIterator();
 		// Solange mir meine hasNext true liefert wird mir in meiner println die
 		// zahlen ausgegeben.
 		while (i.hasNext() == true) {

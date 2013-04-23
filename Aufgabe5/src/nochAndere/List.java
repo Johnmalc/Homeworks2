@@ -61,11 +61,9 @@ public class List<K> {
 	public void add(K elem) {
 		ListNode l = head;
 		zlr++;
-
 		while (l.next != null) {
 			l = l.next;
 		}
-
 		if (l.next == null) {
 			ListNode newEle = new ListNode();
 			newEle.setData(elem);
@@ -79,7 +77,7 @@ public class List<K> {
 	}
 	// ==========Iterator==========
 
-	public class MyIterator<k> implements Iterator {
+	public class MyIterator<K> implements Iterator<Object> {
 		ListNode aktuelleposi = head;
 
 		public boolean hasNext() {
@@ -101,7 +99,7 @@ public class List<K> {
 	}
 
 	public MyIterator<K> getIterator() {
-		return new MyIterator();
+		return new MyIterator<K>();
 	}
 
 }
