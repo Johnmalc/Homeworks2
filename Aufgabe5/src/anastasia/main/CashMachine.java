@@ -1,6 +1,5 @@
 package anastasia.main;
 
-//import de.university.aufgabe4.main.*;
 import anastasia.exc.*;
 
 
@@ -17,8 +16,6 @@ public class CashMachine {
 	private int index; // fuer Arrays
 
 	public CashMachine() {
-		//accounts = new Account[4];
-		//zaehler = 0;
 		state = State.READY;
 		
 		accounts = new List<Account>();

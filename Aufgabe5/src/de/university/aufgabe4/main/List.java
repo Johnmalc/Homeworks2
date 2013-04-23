@@ -2,6 +2,8 @@ package de.university.aufgabe4.main;
 
 import java.util.Iterator;
 
+import andereVersionen.List2.ListNode;
+
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -14,61 +16,43 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
-	private int anzahl;
-	private int position;
-
+	private ListNode end;
+	
 	private class ListNode {
-		private ListNode next;
-		private K data;
-
-		public ListNode(K elem) {
+		ListNode next;
+		K data;
+		
+		// for add method only
+		private ListNode(K elem) {
 			this.data = elem;
 		}
 
-		public ListNode() {
+		private ListNode() {
 
 		}
-
-		private void setData(K data) {
-			this.data = data;
-		}
-
-		private void setNext(ListNode next) {
+		private ListNode(K elem, ListNode next) {
+			this.data = elem;
 			this.next = next;
 		}
-
-		private ListNode getNext() {
-			return next;
+		private void setData(K dataX) {
+			this.data = dataX;
 		}
-	}
 
-	/**
-	 * Die Methode ausgeben kann benutzt werden, um die Elemente einer Liste der
-	 * Reihenfolge nach auf dem Bildschirm ausgeben zu lassen... Thanks to
-	 * http://www.hh.schule.de/julius-leber-schule/UlfChrist/verklisten.html
-	 */
-	public void ausgeben() {
-		ListNode aktuellerKnoten = head;
-		// -Die Variable aktuellerKnoten ist eine Art Laufvariable, die zu
-		// Beginn auf kopf zeigen soll...
-
-		while (aktuellerKnoten != null) {
-			// -Jeder Knoten der Liste wird der Reihe nach abgelaufen, bis das
-			// Ende der Liste erreicht ist...
-
-			System.out.println(aktuellerKnoten.data);
-			// -Von jedem erreichten Knoten wird das Element ausgegeben...
-
-			aktuellerKnoten = aktuellerKnoten.next;
-			// -Und dann aktuellerKnoten auf den Nachfolger des aktuellen
-			// Knotens (also einen Knoten weiter in der (also einen Knoten
-			// weiter in der Liste) gesetzt...
+		private void setNext(ListNode nextX) {
+			this.next = nextX;
 		}
-	}
+		public boolean hasNextListNode() {
+			if (next == null) {
+				return false;
+			}
+			return true;
+		}
+
+	} // ende von private ListNode class
 
 	public List() {
-		head = null; // initialisiert auf null
-
+		head = null;
+		end = null;
 	}
 
 	/**
@@ -82,18 +66,20 @@ public class List<K> {
 	}
 
 	/**
+	 * @return alle elemente in der liste
+	 * Bischne bearbeitet
 	 * 
-	 * return string
 	 */
 	public String toString() {
 		ListNode l = head;
 		StringBuilder sb = new StringBuilder();
+		int i = 1;
 		while (l != null) {
-			sb.append("<" + l.data + ">" + "\n");
+			sb.append(i + " "+ l.data + "\n");
+			i++;
 			l = l.next;
 		}
 		return sb.toString();
-
 	}
 
 	/**
@@ -104,24 +90,15 @@ public class List<K> {
 	 * http://www.technicalypto.com/2010/01/linked-lists.html
 	 * 
 	 */
-	
-	
 	public K get(int pos) {
-		ListNode posta = head;
-		ListNode tak = head;
+		ListNode var = head;
 		if (pos < 0 || pos >= size()) {
-			// giltEs = true;
 			throw new IndexOutOfBoundsException();
 		} else {
-			while (posta != null) {
-				if (position == pos) {
-					tak = posta;
-				}
-				position++;
-				posta = posta.next;
-
+			for (int i = 1; i < pos; i++) {
+				var = var.next;
 			}
-			return tak.data;
+			return var.data;
 		}
 	}
 
@@ -137,36 +114,60 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
-		ListNode current = head;
-		if (elem == null) { // Is the list empty?
+		if (elem == null) {
 			throw new NullPointerException();
-		} else {
-			while (current.getNext() != null) {
-				current = current.getNext();
+		}
+		else {
+			ListNode newElem = new ListNode();
+			newElem.setData(elem);
+			newElem.setNext(null);
+			if (size() == 0) {
+				head = newElem;
+			} else {
+				ListNode l = head;
+				int i = 1;
+				while (i < size()) {// System.out.println(l.data);
+					l = l.next;
+					i++;
+				}
+				// System.out.println(l.data);
+				l.setNext(newElem);
 			}
-			current.setNext(new ListNode(elem));
 		}
 
-	}
+//		ListNode iter = head;
+//		while (iter.next != null) {
+//			iter = iter.next;
+//		}
+//		if (iter.next == null) {
+//			ListNode newEle = new ListNode();
+//			newEle.setData(elem);
+//			newEle.setNext(null);
+//			iter.next = newEle;
+//		}
+//		if (elem == null) {
+//			throw new NullPointerException();
+//		}
+//	}
 
 	// WICHTIG for Iterator
-	private class myIterator implements Iterator<K> {
-
-		public myIterator() {
-		}
+	class myIterator implements Iterator<K> {
+		ListNode current;
 
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
+			if (current != null) {
+				return current.hasNextListNode();
+			}
 			return false;
 		}
-
+		
 		@Override
 		public K next() {
-			// TODO Auto-generated method stub
-			return null;
+			ListNode pos = current;
+			current = current.next;
+			return pos.data;
 		}
-
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
@@ -176,13 +177,8 @@ public class List<K> {
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException(
-					"Remove not supported for LinkedList<>");
+			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
 		}
-	}
-
-	public Iterator<K> iterator() {
-		return new myIterator();
 	}
 
 	/**
@@ -190,13 +186,13 @@ public class List<K> {
 	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
 	 */
 	public int size() {
+		int anzahl = 0;
 		ListNode zahl = head;
 		while (zahl != null) {
 			anzahl++;
 			zahl = zahl.next;
 		}
 		return anzahl;
-
 	}
 
 	/**
@@ -204,6 +200,5 @@ public class List<K> {
 	 */
 	public boolean isEmpty() {
 		return head == null;
-
 	}
 }
