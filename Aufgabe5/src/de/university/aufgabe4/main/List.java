@@ -116,8 +116,7 @@ public class List<K> {
 	public void add(K elem) {
 		if (elem == null) {
 			throw new NullPointerException();
-		}
-		else {
+		} else {
 			ListNode newElem = new ListNode();
 			newElem.setData(elem);
 			newElem.setNext(null);
@@ -134,6 +133,7 @@ public class List<K> {
 				l.setNext(newElem);
 			}
 		}
+	}
 
 //		ListNode iter = head;
 //		while (iter.next != null) {
@@ -151,35 +151,35 @@ public class List<K> {
 //	}
 
 	// WICHTIG for Iterator
-	class myIterator implements Iterator<K> {
-		ListNode current;
-
-		@Override
-		public boolean hasNext() {
-			if (current != null) {
-				return current.hasNextListNode();
-			}
-			return false;
-		}
-		
-		@Override
-		public K next() {
-			ListNode pos = current;
-			current = current.next;
-			return pos.data;
-		}
-		/**
-		 * Method to remove the last element retrieved from the linked list; You
-		 * don’t want to support this operation so just throw the exception. If
-		 * you did support this operation, you would need to include a check
-		 * that next() has been called, and if not, throw IllegalStateException
-		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
-		 */
-		@Override
-		public void remove() {
-			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
-		}
-	}
+//	class myIterator implements Iterator<K> {
+//		ListNode current;
+//
+//		@Override
+//		public boolean hasNext() {
+//			if (current != null) {
+//				return current.hasNextListNode();
+//			}
+//			return false;
+//		}
+//		
+//		@Override
+//		public K next() {
+//			ListNode pos = current;
+//			current = current.next;
+//			return pos.data;
+//		}
+//		/**
+//		 * Method to remove the last element retrieved from the linked list; You
+//		 * don’t want to support this operation so just throw the exception. If
+//		 * you did support this operation, you would need to include a check
+//		 * that next() has been called, and if not, throw IllegalStateException
+//		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+//		 */
+//		@Override
+//		public void remove() {
+//			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
+//		}
+//	}
 
 	/**
 	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
