@@ -114,6 +114,8 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
+		ListNode be = head;
+		int i = 1;
 		if (elem == null) {
 			throw new NullPointerException();
 		} else {
@@ -123,14 +125,12 @@ public class List<K> {
 			if (size() == 0) {
 				head = newElem;
 			} else {
-				ListNode l = head;
-				int i = 1;
 				while (i < size()) {// System.out.println(l.data);
-					l = l.next;
+					be = be.next;
 					i++;
 				}
 				// System.out.println(l.data);
-				l.setNext(newElem);
+				be.setNext(newElem);
 			}
 		}
 	}

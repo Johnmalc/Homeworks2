@@ -21,7 +21,7 @@ public class Main {
 		/*
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
-		//ac.insertFirst(new Account(999954, 465, 06541, 0555));
+		ac.insertFirst(new Account(999954, 465, 06541, 0555)); // funktioniert auch mit dem 
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(454, 465, 06541, 554));
 		System.out.println(ac.toString());
