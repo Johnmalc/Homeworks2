@@ -1,5 +1,7 @@
 package de.university.aufgabe4.main;
 
+import de.university.aufgabe4.main.List.*;
+
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -54,7 +56,17 @@ public class Main {
 		System.out.println("\n " + "----------- Ausgabe der Cashmaschine acocunts : -------");
 		CashMachine<Account> a = new CashMachine<Account>();
 		System.out.println(a.accounts.toString());
-	
+		
+		List<Integer> s = new List<Integer>();
+		s.add(5);
+		s.add(6);
+
+	    while(str.hasNext() != true ){
+	    	System.out.println(str.next());
+	    }
+
+		
+		
 	}
 
 }

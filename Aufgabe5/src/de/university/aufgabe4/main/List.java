@@ -14,8 +14,6 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
-	private ListNode end;
-	
 	private class ListNode {
 		ListNode next;
 		K data;
@@ -28,10 +26,6 @@ public class List<K> {
 		private ListNode() {
 
 		}
-		private ListNode(K elem, ListNode next) {
-			this.data = elem;
-			this.next = next;
-		}
 		private void setData(K dataX) {
 			this.data = dataX;
 		}
@@ -39,7 +33,8 @@ public class List<K> {
 		private void setNext(ListNode nextX) {
 			this.next = nextX;
 		}
-		public boolean hasNextListNode() {
+		// for iterator
+		private boolean hasNextListNode() {
 			if (next == null) {
 				return false;
 			}
@@ -50,7 +45,6 @@ public class List<K> {
 
 	public List() {
 		head = null;
-		end = null;
 	}
 
 	/**
@@ -148,13 +142,13 @@ public class List<K> {
 //	}
 
 	// WICHTIG for Iterator
-	private class myIterator implements Iterator<K> {
+	public class myIterator implements Iterator<Object>{
 		ListNode current;
 
-		public myIterator(){
-			
+		public myIterator() {
+
 		}
-			
+
 		@Override
 		public boolean hasNext() {
 			if (current != null) {
@@ -162,12 +156,16 @@ public class List<K> {
 			}
 			return false;
 		}
-		
+
 		@Override
 		public K next() {
 			ListNode pos = current;
 			current = current.next;
-			return pos.data;
+			return (K) pos.data;
+		}
+		
+		public myIterator getIterator() {
+			return new myIterator();
 		}
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
@@ -179,7 +177,7 @@ public class List<K> {
 		@Override
 		public void remove() {
 			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
-		}
+		}	
 	}
 
 	/**
