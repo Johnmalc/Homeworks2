@@ -33,14 +33,14 @@ public class List<K> {
 		private void setNext(ListNode nextX) {
 			this.next = nextX;
 		}
-		// for iterator
-		private boolean hasNextListNode() {
-			if (next == null) {
-				return false;
-			}
-			return true;
+		// for interator
+		public K getData() {
+			return data;
 		}
 
+		public ListNode getNext() {
+			return next;
+		}
 	} // ende von private ListNode class
 
 	public List() {
@@ -141,38 +141,35 @@ public class List<K> {
 //		}
 //	}
 
-	// WICHTIG for Iterator
-	public class myIterator implements Iterator<Object>{
+	public Iterator<K> getIterator() {
+		return new myIterator();
+	}
+	public class myIterator implements Iterator<K>{
 		ListNode current;
 
 		public myIterator() {
-
+			current = head;
 		}
-
-		@Override
 		public boolean hasNext() {
 			if (current != null) {
-				return current.hasNextListNode();
-			}
-			return false;
+				return true;
+			} else
+				return false;
 		}
-
 		@Override
 		public K next() {
-			ListNode pos = current;
-			current = current.next;
-			return (K) pos.data;
+			ListNode temp = current;
+			current = current.getNext();
+			return temp.getData();
 		}
 		
-		public myIterator getIterator() {
-			return new myIterator();
-		}
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
 		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+		 * Not supported
 		 */
 		@Override
 		public void remove() {

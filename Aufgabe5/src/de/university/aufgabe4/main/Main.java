@@ -1,6 +1,6 @@
 package de.university.aufgabe4.main;
 
-import de.university.aufgabe4.main.List.*;
+import java.util.Iterator;
 
 /**
  * @author Anastasia Baron
@@ -56,16 +56,15 @@ public class Main {
 		System.out.println("\n " + "----------- Ausgabe der Cashmaschine acocunts : -------");
 		CashMachine<Account> a = new CashMachine<Account>();
 		System.out.println(a.accounts.toString());
-		
-		List<Integer> s = new List<Integer>();
-		s.add(5);
-		s.add(6);
+	
+		System.out.println("\n " + "----------- Ausgabe der Iterator: -------");
 
-	    while(str.hasNext() != true ){
-	    	System.out.println(str.next());
-	    }
-
-		
+		Iterator<Account> s = ac.getIterator();
+		int p = 0;
+		while (s.hasNext() == true ) { // gleicht ab
+			p++;
+			System.out.println(p + " " + s.next());
+		}
 		
 	}
 
