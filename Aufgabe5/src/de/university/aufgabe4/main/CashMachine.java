@@ -19,6 +19,10 @@ public class CashMachine<K> {
 		state = State.READY;
 		// neu accounty erstellt.
 		accounts = new List<Account>();
+<<<<<<< HEAD
+=======
+		accounts.insertFirst(new Account(12345678, 0.0, 5000, 0555));
+>>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
 		accounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
 		accounts.add(new Account(34567890, -200.0, 300, 3456));
 		accounts.insertFirst(new Account(12345678, 0.0, 5000, 4567));
@@ -51,7 +55,11 @@ public class CashMachine<K> {
 					 *  speichere index, damit man weiter mit dem richtigen 
 					 *  (passenden) Account arbeiten kann
 					 */
+<<<<<<< HEAD
 					this.index = i;
+=======
+					this.zaehler = i;
+>>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
 					break;
 				} else {
 					index++;
