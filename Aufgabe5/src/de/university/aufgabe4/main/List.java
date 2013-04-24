@@ -106,22 +106,30 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
+
+			if (elem == null) {
+
 		if (elem == null) {
+
 			throw new NullPointerException();
 		} else {
 			ListNode newElem = new ListNode();
 			newElem.setData(elem); // speichere daten
 			newElem.setNext(null); // setze aktuales element auf keine neue referenz  
 			if (size() == 0) { 
-				head = newElem; // wenn die Liste noch leer ist, setze aktuelles element als erstes (head)
+
+				head = newElem; // wenn die Loiste noch leer ist, setze aktuelles element als erstes (head)
 			} else {
-				ListNode k = head;
+				ListNode l = head;
 				int i = 1;
 				while (i < size()) {
-					k = k.next;
+					l = l.next;
 					i++;
 				}
-				k.setNext(newElem);
+				l.setNext(newElem);
+
+				head = newElem; // wenn die Liste noch leer ist, setze aktuelles element als erstes (head)
+			} 
 			}
 		}
 	}
