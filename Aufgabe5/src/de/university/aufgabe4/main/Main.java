@@ -25,15 +25,15 @@ public class Main {
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
 		 // funktioniert auch mit dem 
-<<<<<<< HEAD
+
 		ac.add(new Account(2345678, 465, 06541, 0265));
 		ac.add(new Account(3456789, 465, 06541, 5554));
 		ac.insertFirst(new Account(123456, 465, 06541, 6595));
-=======
+
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(454, 465, 06541, 554));
 		ac.insertFirst(new Account(12345678, 465, 06541, 0555)); // funktioniert auch mit dem 
->>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
+
 		
 		System.out.println(ac.toString());
 
@@ -42,30 +42,30 @@ public class Main {
 		
 		System.out.println(ac.get(0)); // gibt ertes Element aus der Liste
 		
-<<<<<<< HEAD
+
 		
 	
 		
 		System.out.println("");
 		System.out.println("----------- Ausgabe der liste: -----------");
 		
-=======
+
 		System.out.println("");
 		System.out.println("----------- Ausgabe der liste: -----------");
->>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
+
 
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-<<<<<<< HEAD
+
 		ac.add(new Account(45678912, 2358, 06541, 2555));
 		ac.add(new Account(56789472, 2589, 06541, 1455));
-=======
+
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(654864, 465, 06541, 0555));
->>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
+
 		System.out.println(ac.size());
 		System.out.println(ac.toString());
 
@@ -90,9 +90,7 @@ public class Main {
 			p++;
 			System.out.println(p + " " + s.next());
 		}
-<<<<<<< HEAD
-=======
-	
+
 		
 		System.out.println("------------------------------------------------------");
 
@@ -166,7 +164,7 @@ public class Main {
 		} catch (InvalidCardException e) {
 			System.out.println("Test5 ist erfolgreich!" + "\n");
 		}
->>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
+
 	}
 
 }
