@@ -10,7 +10,6 @@ public class Queue<K> {
 		private ListNode(K data, ListNode next) {
 			this.next = next;
 			this.data = data;
-
 		}
 
 		private K getData() {
