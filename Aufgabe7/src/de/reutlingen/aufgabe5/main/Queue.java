@@ -3,6 +3,7 @@ package de.reutlingen.aufgabe5.main;
 import java.util.*;
 
 public class Queue<K> {
+	// ListNode aus der Aufgabe 4 (relax) copy&paste
 	private class ListNode {
 		ListNode next;
 		K data;
@@ -20,7 +21,7 @@ public class Queue<K> {
 			return next;
 		}
 	}
-
+	// man setzt fur anfang und ende beides auf null
 	private ListNode front = null;
 	private ListNode back = null;
 
@@ -29,16 +30,14 @@ public class Queue<K> {
 	}
 
 	/**
-	 * Wozu ist das ?
-	 * Was soll return sein
-	 * Provizorisch
+	 * Wozu ist das ? Was soll return sein Provizorisch
 	 */
 	public String toString() {
 		return " " + getIterator();
 	}
 
 	/**
-	 * Methode zum Einfügen eines Elements in die Queue The enqueue method needs
+	 * Methode zum Einfugen eines Elements in die Queue The enqueue method needs
 	 * to check first whether or not the list is empty.
 	 * 
 	 * @param element
@@ -76,7 +75,7 @@ public class Queue<K> {
 	}
 
 	/**
-	 * Gibt die Anzahl der in der Liste gespeicherten Elemente zurück
+	 * Gibt die Anzahl der in der Liste gespeicherten Elemente zuruck
 	 * 
 	 * @return count
 	 */
@@ -92,8 +91,13 @@ public class Queue<K> {
 		// count++;
 		// } // war diese, habe in neue geschrieben
 		// return count;
+		// zum delete
 	}
-
+	/**
+	 * Copy&paste aus der Aufgabe 4. War Freiwillig
+	 * 
+	 * @return myIterator object
+	 */
 	public Iterator<K> getIterator() {
 		return new myIterator();
 	}
@@ -128,8 +132,7 @@ public class Queue<K> {
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException(
-					"Remove not supported for LinkedList");
+			throw new UnsupportedOperationException("Remove not supported for LinkedList");
 		}
 	}
 
