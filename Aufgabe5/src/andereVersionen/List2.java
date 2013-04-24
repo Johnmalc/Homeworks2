@@ -77,7 +77,8 @@ public class List2<K> implements Iterable<K> {
 		}
 		/**
 		 * has Next liefert true zuruck, wenn falls weitere Elemente vorhanden
-		 * sind Wenn nicht am Ende der Liste Gib das nachste Element zuruck Wenn
+		 * sind 
+		 * Wenn nicht am Ende der Liste Gib das nachste Element zuruck Wenn
 		 * am Ende lieger false zuruck
 		 */
 		@Override

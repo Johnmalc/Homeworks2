@@ -26,7 +26,11 @@ public class Account {
 		this.accountNumber = accountNumber;
 		this.overdraft = overdraft;
 		this.bankDeposit = bankDeposit;
-		this.pin = pin;
+		try {
+			setPin(pin);
+		} catch (WrongQuantityOfDigits e) {
+			
+		}
 
 	}
 

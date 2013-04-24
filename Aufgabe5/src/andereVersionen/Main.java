@@ -1,5 +1,7 @@
 package andereVersionen;
 
+import java.util.Iterator;
+
 public class Main {
 
 	public static void main(String[] args) throws NullPointerException {
@@ -21,7 +23,7 @@ public class Main {
 
 			System.out.println();
 			System.out.println("size aufruf:");
-			System.out.println(test.size()); // R�ckgabe 2, da 2 Accounts
+			System.out.println(test.size()); // Ruckgabe 2, da 2 Accounts
 			System.out.println();
 
 			System.out.println("get(1) aufruf:");
@@ -43,6 +45,11 @@ public class Main {
 			System.out.println();
 			System.out.println("Erneuter size Aufruf");
 			System.out.println(test.size());
+			
+			Iterator<Account> s = test.iterator();
+			while (s.hasNext() == true ) {
+				System.out.println(s.next());
+			}
 
 		} catch (NullPointerException exc) {
 

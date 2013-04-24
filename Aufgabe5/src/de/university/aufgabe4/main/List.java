@@ -14,21 +14,18 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
-	private int anzahl;
-	private int position;
-
 	private class ListNode {
-		private ListNode next;
-		private K data;
-
-		public ListNode(K elem) {
+		ListNode next;
+		K data;
+		
+		// for add method only
+		private ListNode(K elem) {
 			this.data = elem;
 		}
 
-		public ListNode() {
+		private ListNode() {
 
 		}
-
 		private void setData(K data) {
 			this.data = data;
 		}
@@ -36,39 +33,18 @@ public class List<K> {
 		private void setNext(ListNode next) {
 			this.next = next;
 		}
+		// for interator
+		public K getData() {
+			return data;
+		}
 
-		private ListNode getNext() {
+		public ListNode getNext() {
 			return next;
 		}
-	}
-
-	/**
-	 * Die Methode ausgeben kann benutzt werden, um die Elemente einer Liste der
-	 * Reihenfolge nach auf dem Bildschirm ausgeben zu lassen... Thanks to
-	 * http://www.hh.schule.de/julius-leber-schule/UlfChrist/verklisten.html
-	 */
-	public void ausgeben() {
-		ListNode aktuellerKnoten = head;
-		// -Die Variable aktuellerKnoten ist eine Art Laufvariable, die zu
-		// Beginn auf kopf zeigen soll...
-
-		while (aktuellerKnoten != null) {
-			// -Jeder Knoten der Liste wird der Reihe nach abgelaufen, bis das
-			// Ende der Liste erreicht ist...
-
-			System.out.println(aktuellerKnoten.data);
-			// -Von jedem erreichten Knoten wird das Element ausgegeben...
-
-			aktuellerKnoten = aktuellerKnoten.next;
-			// -Und dann aktuellerKnoten auf den Nachfolger des aktuellen
-			// Knotens (also einen Knoten weiter in der (also einen Knoten
-			// weiter in der Liste) gesetzt...
-		}
-	}
+	} // ende von private ListNode class
 
 	public List() {
-		head = null; // initialisiert auf null
-
+		head = null;
 	}
 
 	/**
@@ -82,18 +58,20 @@ public class List<K> {
 	}
 
 	/**
+	 * @return alle elemente in der liste
+	 * Bischne bearbeitet
 	 * 
-	 * return string
 	 */
 	public String toString() {
 		ListNode l = head;
 		StringBuilder sb = new StringBuilder();
+		int i = 1;
 		while (l != null) {
-			sb.append("<" + l.data + ">" + "\n");
+			sb.append(i + " "+ l.data + "\n");
+			i++;
 			l = l.next;
 		}
 		return sb.toString();
-
 	}
 
 	/**
@@ -105,21 +83,14 @@ public class List<K> {
 	 * 
 	 */
 	public K get(int pos) {
-		ListNode posta = head;
-		ListNode tak = head;
+		ListNode var = head;
 		if (pos < 0 || pos >= size()) {
-			// giltEs = true;
 			throw new IndexOutOfBoundsException();
 		} else {
-			while (posta != null) {
-				if (position == pos) {
-					tak = posta;
-				}
-				position++;
-				posta = posta.next;
-
+			for (int i = 1; i < pos; i++) {
+				var = var.next;
 			}
-			return tak.data;
+			return var.data;
 		}
 	}
 
@@ -135,52 +106,76 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
-		ListNode current = head;
-		if (elem == null) { // Is the list empty?
+<<<<<<< HEAD
+			if (elem == null) {
+=======
+		if (elem == null) {
+>>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
 			throw new NullPointerException();
 		} else {
-			while (current.getNext() != null) {
-				current = current.getNext();
+			ListNode newElem = new ListNode();
+			newElem.setData(elem); // speichere daten
+			newElem.setNext(null); // setze aktuales element auf keine neue referenz  
+			if (size() == 0) { 
+<<<<<<< HEAD
+				head = newElem; // wenn die Loiste noch leer ist, setze aktuelles element als erstes (head)
+			} else {
+				ListNode l = head;
+				int i = 1;
+				while (i < size()) {
+					l = l.next;
+					i++;
+				}
+				l.setNext(newElem);
+=======
+				head = newElem; // wenn die Liste noch leer ist, setze aktuelles element als erstes (head)
+			} else {
+				ListNode k = head;
+				int i = 1;
+				while (i < size()) {
+					k = k.next;
+					i++;
+				}
+				k.setNext(newElem);
+>>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
 			}
-			current.setNext(new ListNode(elem));
 		}
-
 	}
 
-	// WICHTIG for Iterator
-	private class myIterator implements Iterator<K> {
+	public Iterator<K> getIterator() {
+		return new myIterator();
+	}
+	public class myIterator implements Iterator<K>{
+		ListNode current;
 
 		public myIterator() {
+			current = head;
 		}
-
-		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
-			return false;
+			if (current != null) {
+				return true;
+			} else
+				return false;
 		}
-
 		@Override
 		public K next() {
-			// TODO Auto-generated method stub
-			return null;
+			ListNode temp = current;
+			current = current.getNext();
+			return temp.getData();
 		}
-
+		
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
 		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+		 * Not supported
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException(
-					"Remove not supported for LinkedList<>");
-		}
-	}
-
-	public Iterator<K> iterator() {
-		return new myIterator();
+			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
+		}	
 	}
 
 	/**
@@ -188,13 +183,13 @@ public class List<K> {
 	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
 	 */
 	public int size() {
+		int anzahl = 0;
 		ListNode zahl = head;
 		while (zahl != null) {
 			anzahl++;
 			zahl = zahl.next;
 		}
 		return anzahl;
-
 	}
 
 	/**
@@ -202,6 +197,5 @@ public class List<K> {
 	 */
 	public boolean isEmpty() {
 		return head == null;
-
 	}
 }

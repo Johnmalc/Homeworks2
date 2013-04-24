@@ -1,6 +1,8 @@
-Also this time we got a homework in Germany.Don't worry, be happy 
+Also this time we got a homework in Germany. Don't worry, be happy 
 We could get 10 points and we got: **to add**:
 I thank to guys at [http://stackoverflow.com/questions/2047003/print-arraylist-element](http://stackoverflow.com/questions/2047003/print-arraylist-element) and at [http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html](http://www.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html)  <<<< This is a very good page.
+
+**I got (written for the group but myself) 9.5/10. The mistake was in the package.**
 
 > In einer Warenhaussoftware sollen Produkte verwaltet werden. In der vorliegenden Übungsaufgabe sollen die grundlegenden Typen entwickelt werden.
 > 

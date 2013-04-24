@@ -1,31 +1,29 @@
-package de.university.aufgabe4.main;
+package anastasia.main;
 
-import de.university.aufgabe4.exc.*;
+import anastasia.exc.*;
+
 
 /** 
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
 
-public class CashMachine<K> {
+public class CashMachine {
 
-	List<Account> accounts;
+	List <Account> accounts;
 	private CashCard cashCard;
 	private State state;
-	private int index; //Nr des Accounts in der Liste
+	private int index; // fuer Arrays
 
 	public CashMachine() {
-		index = 0;
 		state = State.READY;
-		// neu accounty erstellt.
+		
 		accounts = new List<Account>();
-<<<<<<< HEAD
-=======
-		accounts.insertFirst(new Account(12345678, 0.0, 5000, 0555));
->>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
 		accounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
 		accounts.add(new Account(34567890, -200.0, 300, 3456));
-		accounts.insertFirst(new Account(12345678, 0.0, 5000, 4567));
+		accounts.insertFirst(new Account(45678901, 0.0, 5000, 4567));
+		
+			
 	}
 
 	/**
@@ -39,36 +37,27 @@ public class CashMachine<K> {
 	 * @throws InvalidCardException
 	 * @throws CardInsertedException
 	 */
+	
 	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
 		switch (state) {
 		case READY:
+			
 			cashCard = cashCardX;
 			state = State.CARD_INSERTED;
-			/*
-			 *  Sucht die passende Konto nach AccountNummer
-			 *  muss man andern wegen Iterable > alte for loop
-			 */
-			for (int i =0 ; i<accounts.size();i++) {
-				if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
-					/*
-					 *  wenn account nummer und carten-account nummer entspricht > 
-					 *  speichere index, damit man weiter mit dem richtigen 
-					 *  (passenden) Account arbeiten kann
-					 */
-<<<<<<< HEAD
-					this.index = i;
-=======
-					this.zaehler = i;
->>>>>>> f9c2250a6aaac3ecc2747458d2a5649f3f5eb7d6
+			// Sucht die passende Konto nach AccountNummer
+			int i=0;
+			if (accounts.get(i).getAccountNumber()== cashCard.getAccountNumber()) {
+					// wenn account nummer und carten-account nummer entspricht > mach nichts
+					index=i;
 					break;
 				} else {
-					index++;
-					if (index >= accounts.size()) {
+					i++;
+					if (i >= accounts.size()) {
 						state=State.READY;
 							throw new InvalidCardException();
 			  		}
-				}
-			}
+				}	
+			
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 			break;
 		default:
@@ -90,21 +79,21 @@ public class CashMachine<K> {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,
-			CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException,InvalidCardException {
 		switch (state) {
-			case CARD_INSERTED :
+		case CARD_INSERTED:
 
-				if (accounts.get(index).getPin() == pinX) {
-					state = State.PIN_CORRECT;
-					System.out.println("Sie haben den richtigen Pin eingegeben.");
-					System.out.println("Automat ist auf Status " + state + " gesetzt.");
-				} else {
-					throw new PinNotCorectException();
-				} // end of if-else
-				break;
-			default :
-				throw new CardNotInsertedException();
+			if (accounts.get(index).getPin() == pinX) {
+				state = State.PIN_CORRECT;
+				System.out.println("Sie haben den richtigen Pin eingegeben.");
+				System.out.println("Automat ist auf Status " + state + " gesetzt.");
+			}
+			else {
+				throw new PinNotCorectException();
+			} // end of if-else
+			break;
+		default:
+			throw new CardNotInsertedException();
 		} // end switch
 	}
 

@@ -36,29 +36,6 @@ public class List<K> implements Iterable<K> {
 			return data;
 		}
 	}
-	public class myIterator implements Iterator<K> {
-		public innerData current;
-		public myIterator() {
-			current = head;
-		}
-		@Override
-		public boolean hasNext() {
-			if (current != null) {
-				return current.hasNext();
-			}
-			return false;
-		}
-		@Override
-		public K next() {
-			innerData temp = current;
-			current = current.getNext();
-			return temp.getData();
-		}
-		@Override
-		public void remove() {
-			throw new UnsupportedOperationException();
-		}
-	}
 	public String toString() {
 		if (head != null) {
 			return head.toString();
@@ -108,6 +85,29 @@ public class List<K> implements Iterable<K> {
 	@Override
 	public Iterator<K> iterator() {
 		return new myIterator();
+	}
+	public class myIterator implements Iterator<K> {
+		public innerData current;
+		public myIterator() {
+			current = head;
+		}
+		@Override
+		public boolean hasNext() {
+			if (current != null) {
+				return current.hasNext();
+			}
+			return false;
+		}
+		@Override
+		public K next() {
+			innerData temp = current;
+			current = current.getNext();
+			return temp.getData();
+		}
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
 	}
 
 }
