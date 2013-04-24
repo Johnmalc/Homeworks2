@@ -2,8 +2,6 @@ package de.university.aufgabe4.main;
 
 import java.util.Iterator;
 
-import andereVersionen.List.myIterator;
-
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -25,7 +23,7 @@ public class Main {
 		/*
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
-		ac.insertFirst(new Account(999954, 465, 06541, 0555));
+		ac.insertFirst(new Account(999954, 465, 06541, 0555)); // funktioniert auch mit dem 
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(454, 465, 06541, 554));
 		System.out.println(ac.toString());
@@ -59,6 +57,15 @@ public class Main {
 		CashMachine<Account> a = new CashMachine<Account>();
 		System.out.println(a.accounts.toString());
 	
+		System.out.println("\n " + "----------- Ausgabe der Iterator: -------");
+
+		Iterator<Account> s = ac.getIterator();
+		int p = 0;
+		while (s.hasNext() == true ) { // gleicht ab
+			p++;
+			System.out.println(p + " " + s.next());
+		}
+		
 	}
 
 }

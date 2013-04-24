@@ -2,8 +2,6 @@ package de.university.aufgabe4.main;
 
 import java.util.Iterator;
 
-import andereVersionen.List2.ListNode;
-
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -16,8 +14,6 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
-	private ListNode end;
-	
 	private class ListNode {
 		ListNode next;
 		K data;
@@ -30,10 +26,6 @@ public class List<K> {
 		private ListNode() {
 
 		}
-		private ListNode(K elem, ListNode next) {
-			this.data = elem;
-			this.next = next;
-		}
 		private void setData(K dataX) {
 			this.data = dataX;
 		}
@@ -41,18 +33,18 @@ public class List<K> {
 		private void setNext(ListNode nextX) {
 			this.next = nextX;
 		}
-		public boolean hasNextListNode() {
-			if (next == null) {
-				return false;
-			}
-			return true;
+		// for interator
+		public K getData() {
+			return data;
 		}
 
+		public ListNode getNext() {
+			return next;
+		}
 	} // ende von private ListNode class
 
 	public List() {
 		head = null;
-		end = null;
 	}
 
 	/**
@@ -114,26 +106,25 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
+		ListNode be = head;
+		int i = 1;
 		if (elem == null) {
 			throw new NullPointerException();
-		}
-		else {
+		} else {
 			ListNode newElem = new ListNode();
-			newElem.setData(elem);
-			newElem.setNext(null);
-			if (size() == 0) {
-				head = newElem;
+			newElem.setData(elem); // speichere daten
+			newElem.setNext(null); // setze aktuales element auf keine neue referenz  
+			if (size() == 0) { 
+				head = newElem; // wenn grosse = 0, dann setze aktuelles element auf head
 			} else {
-				ListNode l = head;
-				int i = 1;
-				while (i < size()) {// System.out.println(l.data);
-					l = l.next;
+				while (i < size()) {
+					be = be.next;
 					i++;
 				}
-				// System.out.println(l.data);
-				l.setNext(newElem);
+				be.setNext(newElem);
 			}
 		}
+	}
 
 //		ListNode iter = head;
 //		while (iter.next != null) {
@@ -150,35 +141,40 @@ public class List<K> {
 //		}
 //	}
 
-	// WICHTIG for Iterator
-	class myIterator implements Iterator<K> {
+	public Iterator<K> getIterator() {
+		return new myIterator();
+	}
+	public class myIterator implements Iterator<K>{
 		ListNode current;
 
-		@Override
+		public myIterator() {
+			current = head;
+		}
 		public boolean hasNext() {
 			if (current != null) {
-				return current.hasNextListNode();
-			}
-			return false;
+				return true;
+			} else
+				return false;
 		}
-		
 		@Override
 		public K next() {
-			ListNode pos = current;
-			current = current.next;
-			return pos.data;
+			ListNode temp = current;
+			current = current.getNext();
+			return temp.getData();
 		}
+		
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
 		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+		 * Not supported
 		 */
 		@Override
 		public void remove() {
 			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
-		}
+		}	
 	}
 
 	/**
