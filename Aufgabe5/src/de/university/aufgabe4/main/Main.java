@@ -23,25 +23,33 @@ public class Main {
 		/*
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
-		ac.insertFirst(new Account(999954, 465, 06541, 0555)); // funktioniert auch mit dem 
-		ac.add(new Account(54564654, 465, 06541, 0555));
-		ac.add(new Account(454, 465, 06541, 554));
+		 // funktioniert auch mit dem 
+		ac.add(new Account(2345678, 465, 06541, 0265));
+		ac.add(new Account(3456789, 465, 06541, 5554));
+		ac.insertFirst(new Account(123456, 465, 06541, 6595));
+		
 		System.out.println(ac.toString());
 
 		System.out.println(ac.isEmpty());
 		System.out.println(ac.size());
+		
+		System.out.println(ac.get(0)); // gibt ertes Element aus der Liste
+		
+		
+	
+		
 		System.out.println("");
-		System.out.println(ac.get(0)); // oder schon
 		System.out.println("----------- Ausgabe der liste: -----------");
-		System.out.println(ac.size());
+		
 
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-		ac.add(new Account(54564654, 465, 06541, 0555));
-		ac.add(new Account(654864, 465, 06541, 0555));
+		ac.add(new Account(45678912, 2358, 06541, 2555));
+		ac.add(new Account(56789472, 2589, 06541, 1455));
+		System.out.println(ac.size());
 		System.out.println(ac.toString());
 
 		/*
@@ -49,8 +57,8 @@ public class Main {
 		 * insertFirst(...) in die Liste ein. Uberprufen Sie die Korrektheit
 		 * indem Sie die Liste erneut auf der Konsole ausgeben.
 		 */
-		System.out.println("\n " + "----------- Ausgabe der 2 liste: -------");
-		ac.insertFirst(new Account(54, 654, 9, 333));
+		System.out.println("\n " + "----------- Ausgabe 2 der liste: -------");
+		ac.insertFirst(new Account(1112586, 654, 9, 3363));
 		System.out.println(ac.toString());
 		
 		System.out.println("\n " + "----------- Ausgabe der Cashmaschine acocunts : -------");
@@ -65,7 +73,6 @@ public class Main {
 			p++;
 			System.out.println(p + " " + s.next());
 		}
-		
 	}
 
 }

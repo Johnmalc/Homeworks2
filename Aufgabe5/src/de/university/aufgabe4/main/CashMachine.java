@@ -12,16 +12,16 @@ public class CashMachine<K> {
 	List<Account> accounts;
 	private CashCard cashCard;
 	private State state;
-	private int zaehler;
+	private int index; //Nr des Accounts in der Liste
 
 	public CashMachine() {
-		zaehler = 0;
+		index = 0;
 		state = State.READY;
 		// neu accounty erstellt.
 		accounts = new List<Account>();
-		accounts.insertFirst(new Account(45678901, 0.0, 5000, 4567));
 		accounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
 		accounts.add(new Account(34567890, -200.0, 300, 3456));
+		accounts.insertFirst(new Account(12345678, 0.0, 5000, 4567));
 	}
 
 	/**
@@ -46,12 +46,16 @@ public class CashMachine<K> {
 			 */
 			for (int i =0 ; i<accounts.size();i++) {
 				if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
-					// wenn account nummer und carten-account nummer entspricht > mach nichts
-					this.zaehler = i;
+					/*
+					 *  wenn account nummer und carten-account nummer entspricht > 
+					 *  speichere index, damit man weiter mit dem richtigen 
+					 *  (passenden) Account arbeiten kann
+					 */
+					this.index = i;
 					break;
 				} else {
-					zaehler++;
-					if (zaehler >= accounts.size()) {
+					index++;
+					if (index >= accounts.size()) {
 						state=State.READY;
 							throw new InvalidCardException();
 			  		}
@@ -83,7 +87,7 @@ public class CashMachine<K> {
 		switch (state) {
 			case CARD_INSERTED :
 
-				if (accounts.get(zaehler).getPin() == pinX) {
+				if (accounts.get(index).getPin() == pinX) {
 					state = State.PIN_CORRECT;
 					System.out.println("Sie haben den richtigen Pin eingegeben.");
 					System.out.println("Automat ist auf Status " + state + " gesetzt.");
@@ -110,11 +114,11 @@ public class CashMachine<K> {
 	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
 		switch (state) {
 		case PIN_CORRECT:
-			System.out.println("Ihr Kontoguthaben ist: " + accounts.get(zaehler).getBankDeposit() + " Euro.");
-			if (accounts.get(zaehler).getBankDeposit() - amount >= accounts.get(zaehler).getOverdraft()) {
-				accounts.get(zaehler).setBankDeposit(accounts.get(zaehler).getBankDeposit() - amount);
+			System.out.println("Ihr Kontoguthaben ist: " + accounts.get(index).getBankDeposit() + " Euro.");
+			if (accounts.get(index).getBankDeposit() - amount >= accounts.get(index).getOverdraft()) {
+				accounts.get(index).setBankDeposit(accounts.get(index).getBankDeposit() - amount);
 				System.out.println("Sie haben erfolgreich " + amount + " Euro abgehoben.");
-				System.out.println("Ihr Kontoguthaben ist: " + accounts.get(zaehler).getBankDeposit() + " Euro.");
+				System.out.println("Ihr Kontoguthaben ist: " + accounts.get(index).getBankDeposit() + " Euro.");
 			} else {
 				throw new NotEnoughMoneyException();
 			}
@@ -136,9 +140,9 @@ public class CashMachine<K> {
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
 			System.out.println("\n" + 
 					"Account Statement: " + "\n" + 
-					"Account Nr.: " + accounts.get(zaehler).getAccountNumber() + "\n" + 
-					"Bank Deposit: " + accounts.get(zaehler).getBankDeposit() + "\n" + 
-					"Overdraft: " + accounts.get(zaehler).getOverdraft());
+					"Account Nr.: " + accounts.get(index).getAccountNumber() + "\n" + 
+					"Bank Deposit: " + accounts.get(index).getBankDeposit() + "\n" + 
+					"Overdraft: " + accounts.get(index).getOverdraft());
 		} else {
 			throw new CardNotInsertedException();
 		}
@@ -158,7 +162,7 @@ public class CashMachine<K> {
 	public void ejectCashCard() throws CardNotInsertedException {
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
 			cashCard = null;
-			zaehler = 0;
+			index = 0;
 			state = State.READY;
 			System.out.println("Ihr Karte ist entfenrt!");
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
