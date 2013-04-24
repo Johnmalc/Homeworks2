@@ -12,21 +12,16 @@ public class Queue<K> {
 			this.data = data;
 
 		}
-		private void setData(K data) {
-			this.data = data;
-		}
 
-		private void setNext(ListNode next) {
-			this.next = next;
-		}
-		public K getData() {
+		private K getData() {
 			return data;
 		}
 
-		public ListNode getNext() {
+		private ListNode getNext() {
 			return next;
 		}
 	}
+
 	private ListNode front = null;
 	private ListNode back = null;
 
@@ -35,10 +30,12 @@ public class Queue<K> {
 	}
 
 	/**
-	 * 
+	 * Wozu ist das ?
+	 * Was soll return sein
+	 * Provizorisch
 	 */
 	public String toString() {
-		return "Queue []";
+		return " " + getIterator();
 	}
 
 	/**
@@ -48,6 +45,7 @@ public class Queue<K> {
 	 * @param element
 	 */
 	public void push(K item) {
+		// speichere neues element in ListNode
 		ListNode newNode = new ListNode(item, null);
 		if (isEmpty()) {
 			front = newNode;
@@ -56,6 +54,7 @@ public class Queue<K> {
 		}
 		back = newNode;
 	}
+
 	/**
 	 * Methode zum herausnehmen eines Elements aus der Warteschlange
 	 * 
@@ -65,14 +64,14 @@ public class Queue<K> {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
-			K item = front.data;
-			if (back == front) {
-				back = null;
-			}
-			front = front.next;
-			return item;
+		K item = front.data;
+		if (back == front) {
+			back = null;
+		}
+		front = front.next;
+		return item;
 	}
-	
+
 	public boolean isEmpty() {
 		return front == null;
 	}
@@ -80,7 +79,7 @@ public class Queue<K> {
 	/**
 	 * Gibt die Anzahl der in der Liste gespeicherten Elemente zurück
 	 * 
-	 * @return
+	 * @return count
 	 */
 	public int size() {
 		ListNode node = front;
@@ -90,48 +89,49 @@ public class Queue<K> {
 			node = node.next;
 		}
 		return count;
-		// for (node = front; node != null; node = node.next) {
+		// for (ListNode node = front; node != null; node = node.next) {
 		// count++;
-		// }
+		// } // war diese, habe in neue geschrieben
 		// return count;
 	}
+
 	public Iterator<K> getIterator() {
 		return new myIterator();
 	}
-	public class myIterator implements Iterator<K>{
+
+	public class myIterator implements Iterator<K> {
 		ListNode current;
 
 		public myIterator() {
 			current = front;
 		}
+
 		public boolean hasNext() {
 			if (current != null) {
 				return true;
 			} else
 				return false;
 		}
+
 		@Override
 		public K next() {
 			ListNode temp = current;
 			current = current.getNext();
 			return temp.getData();
 		}
-		
+
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
-		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
-		 * Not supported
+		 * Ivor.Hortons.Beginning.Java.Java.7.Edition Not supported
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
-		}	
+			throw new UnsupportedOperationException(
+					"Remove not supported for LinkedList");
+		}
 	}
-
-	
-	
 
 }
