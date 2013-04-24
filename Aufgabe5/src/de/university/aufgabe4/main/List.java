@@ -26,12 +26,12 @@ public class List<K> {
 		private ListNode() {
 
 		}
-		private void setData(K dataX) {
-			this.data = dataX;
+		private void setData(K data) {
+			this.data = data;
 		}
 
-		private void setNext(ListNode nextX) {
-			this.next = nextX;
+		private void setNext(ListNode next) {
+			this.next = next;
 		}
 		// for interator
 		public K getData() {
