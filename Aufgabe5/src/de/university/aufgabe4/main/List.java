@@ -106,8 +106,6 @@ public class List<K> {
 	 * Thank you very much.
 	 */
 	public void add(K elem) {
-		ListNode be = head;
-		int i = 1;
 		if (elem == null) {
 			throw new NullPointerException();
 		} else {
@@ -115,31 +113,18 @@ public class List<K> {
 			newElem.setData(elem); // speichere daten
 			newElem.setNext(null); // setze aktuales element auf keine neue referenz  
 			if (size() == 0) { 
-				head = newElem; // wenn grosse = 0, dann setze aktuelles element auf head
+				head = newElem; // wenn die Liste noch leer ist, setze aktuelles element als erstes (head)
 			} else {
+				ListNode k = head;
+				int i = 1;
 				while (i < size()) {
-					be = be.next;
+					k = k.next;
 					i++;
 				}
-				be.setNext(newElem);
+				k.setNext(newElem);
 			}
 		}
 	}
-
-//		ListNode iter = head;
-//		while (iter.next != null) {
-//			iter = iter.next;
-//		}
-//		if (iter.next == null) {
-//			ListNode newEle = new ListNode();
-//			newEle.setData(elem);
-//			newEle.setNext(null);
-//			iter.next = newEle;
-//		}
-//		if (elem == null) {
-//			throw new NullPointerException();
-//		}
-//	}
 
 	public Iterator<K> getIterator() {
 		return new myIterator();

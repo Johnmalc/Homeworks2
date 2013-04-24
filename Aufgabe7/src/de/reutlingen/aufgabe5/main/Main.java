@@ -18,9 +18,7 @@ public class Main {
 
 		// Iterator prints all the elements of queue
 		Iterator<String> it = str.getIterator();
-		int p = 0;
 		while (it.hasNext()) {
-			p++;
 			System.out.println("Queue Next Value : " + it.next());
 		}
 		System.out.println("----Entfernt (und & print) elemente von pull--");
@@ -30,9 +28,7 @@ public class Main {
 		System.out.println(str.pull());
 
 		System.out.println("----------Nachdem sie alle entfernt werden---");
-		int d = 0;
 		while (it.hasNext()) {
-			d++;
 			System.out.println("Queue Next Value : " + it.next());
 		}
 		System.out.println("Ist die queue frei: ? " + str.isEmpty());

@@ -24,17 +24,20 @@ public class Main {
 		/*
 		 * Testen Sie die neuen Methoden der Liste ausfuhrlich
 		 */
-		ac.insertFirst(new Account(12345678, 465, 06541, 0555)); // funktioniert auch mit dem 
+		 // funktioniert auch mit dem 
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(454, 465, 06541, 554));
+		ac.insertFirst(new Account(12345678, 465, 06541, 0555)); // funktioniert auch mit dem 
+		
 		System.out.println(ac.toString());
 
 		System.out.println(ac.isEmpty());
 		System.out.println(ac.size());
+		
+		System.out.println(ac.get(0)); // gibt ertes Element aus der Liste
+		
 		System.out.println("");
-		System.out.println(ac.get(0)); // oder schon
 		System.out.println("----------- Ausgabe der liste: -----------");
-		System.out.println(ac.size());
 
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
@@ -43,6 +46,7 @@ public class Main {
 		 */
 		ac.add(new Account(54564654, 465, 06541, 0555));
 		ac.add(new Account(654864, 465, 06541, 0555));
+		System.out.println(ac.size());
 		System.out.println(ac.toString());
 
 		/*

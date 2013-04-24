@@ -46,7 +46,11 @@ public class CashMachine<K> {
 			 */
 			for (int i =0 ; i<accounts.size();i++) {
 				if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
-					// wenn account nummer und carten-account nummer entspricht > mach nichts
+					/*
+					 *  wenn account nummer und carten-account nummer entspricht > 
+					 *  speichere index, damit man weiter mit dem richtigen 
+					 *  (passenden) Account arbeiten kann
+					 */
 					this.zaehler = i;
 					break;
 				} else {
