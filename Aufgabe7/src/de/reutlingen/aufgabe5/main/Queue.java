@@ -1,82 +1,78 @@
 package de.reutlingen.aufgabe5.main;
 
-import java.util.Iterator;
+import java.util.*;
 
 public class Queue<K> {
 	private class ListNode {
-		public ListNode next;
+		ListNode next;
 		K data;
 
-		// for add method only
-		private ListNode(K elem, ListNode next) {
-			this.data = elem;
+		private ListNode(K data, ListNode next) {
+			this.next = next;
+			this.data = data;
+
+		}
+		private void setData(K data) {
+			this.data = data;
+		}
+
+		private void setNext(ListNode next) {
 			this.next = next;
 		}
-
-		private ListNode() {
-
-		}
-
-		public String toString() {
-			return next + " : " + data;
+		public K getData() {
+			return data;
 		}
 
 		public ListNode getNext() {
 			return next;
 		}
-
-		public K getData() {
-			return data;
-		}
 	}
-
-	private ListNode front;
-	private ListNode back;
+	private ListNode front = null;
+	private ListNode back = null;
 
 	public Queue() {
-		front = null;
+
 	}
 
 	/**
 	 * 
 	 */
 	public String toString() {
-		return "Queue [] " + front;
+		return "Queue []";
 	}
 
 	/**
 	 * Methode zum Einfügen eines Elements in die Queue The enqueue method needs
-	 * to check first whether or not the list is empty. In that case a new node
-	 * is created and the front and back are the same. If the list is not empty,
-	 * a new node is added at the back of the old list, and this becomes the
-	 * back of the new list.
+	 * to check first whether or not the list is empty.
 	 * 
 	 * @param element
 	 */
-	public void push(K element) {
-		if (front == null) {
-			front = back = new ListNode(element, null);
+	public void push(K item) {
+		ListNode newNode = new ListNode(item, null);
+		if (isEmpty()) {
+			front = newNode;
 		} else {
-			back = back.next = new ListNode(element, null);
+			back.next = newNode;
 		}
+		back = newNode;
 	}
-
 	/**
 	 * Methode zum herausnehmen eines Elements aus der Warteschlange
 	 * 
 	 * @return
 	 */
 	public K pull() {
-		if (front == null) {
-			System.out.println("error");
-		} else {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
 			K item = front.data;
+			if (back == front) {
+				back = null;
+			}
 			front = front.next;
 			return item;
-		}
-		return null;
 	}
-
+	
 	public boolean isEmpty() {
 		return front == null;
 	}
@@ -87,47 +83,55 @@ public class Queue<K> {
 	 * @return
 	 */
 	public int size() {
-		return 0;
-
+		ListNode node = front;
+		int count = 0;
+		while (node != null) {
+			count++;
+			node = node.next;
+		}
+		return count;
+		// for (node = front; node != null; node = node.next) {
+		// count++;
+		// }
+		// return count;
 	}
-
 	public Iterator<K> getIterator() {
 		return new myIterator();
 	}
-
-	public class myIterator implements Iterator<K> {
+	public class myIterator implements Iterator<K>{
 		ListNode current;
 
 		public myIterator() {
 			current = front;
 		}
-
 		public boolean hasNext() {
 			if (current != null) {
 				return true;
 			} else
 				return false;
 		}
-
 		@Override
 		public K next() {
 			ListNode temp = current;
 			current = current.getNext();
 			return temp.getData();
 		}
-
+		
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
-		 * Ivor.Hortons.Beginning.Java.Java.7.Edition Not supported
+		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
+		 * Not supported
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException(
-					"Remove not supported for LinkedList<>");
-		}
+			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
+		}	
 	}
+
+	
+	
 
 }
