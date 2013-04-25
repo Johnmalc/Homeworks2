@@ -110,8 +110,8 @@ public class List<K> {
 			throw new NullPointerException();
 		} else {
 			ListNode newElem = new ListNode();
-			newElem.setData(elem); // speichere daten
-			// setze aktuales element auf keine neue referenz
+			newElem.setData(elem); // speichert daten
+			// setzt aktuales element auf keine neue referenz
 			newElem.setNext(null);
 			if (size() == 0) {
 				/*
@@ -131,7 +131,36 @@ public class List<K> {
 		}
 	}
 
-	public Iterator<K> getIterator() {
+	
+
+	/**
+	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
+	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
+	 */
+	public int size() {
+		int anzahl = 0;
+		ListNode zahl = head;
+		while (zahl != null) {
+			anzahl++;
+			zahl = zahl.next;
+		}
+		return anzahl;
+	}
+
+	/**
+	 * Returns true if this list contains no elements.
+	 */
+	public boolean isEmpty() {
+		return head == null;
+	}
+	
+	/*
+	 * Implementieren Sie die Methode java.util.Iterator<K> iterator() {...} 
+	 * unter Verwendung einer geeigneten (inneren) Klasse wie in der Vorlesung 
+	 * besprochen. 
+	 */
+	
+	public Iterator<K> iterator() {
 		return new myIterator();
 	}
 	public class myIterator implements Iterator<K>{
@@ -165,26 +194,5 @@ public class List<K> {
 		public void remove() {
 			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
 		}	
-	}
-
-	/**
-	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
-	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
-	 */
-	public int size() {
-		int anzahl = 0;
-		ListNode zahl = head;
-		while (zahl != null) {
-			anzahl++;
-			zahl = zahl.next;
-		}
-		return anzahl;
-	}
-
-	/**
-	 * Returns true if this list contains no elements.
-	 */
-	public boolean isEmpty() {
-		return head == null;
 	}
 }
