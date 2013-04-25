@@ -1,7 +1,6 @@
 package de.university.aufgabe4.main;
 
 import java.util.Iterator;
-import de.university.aufgabe4.exc.*;
 
 /**
  * @author Anastasia Baron
@@ -20,20 +19,21 @@ public class Main {
 		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
 		 * der Methode isEmpty(). Gibt true wenn leer - false wenn besetzt
 		 */
-		System.out.println(ac.isEmpty()); //Gibt true zurueck, wenn die Liste leer ist
+		System.out.println(ac.isEmpty()); 
 		
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-
-		ac.add(new Account(23456789, 465, 06541, 5465));//Element der Klasse Account in die Liste einfuegen
+		
+		//Element der Klasse Account in die Liste einfuegen
+		ac.add(new Account(23456789, 465, 06541, 5465));
 		ac.add(new Account(32846519, 4965, 8576, 3122));
 		System.out.println("");
 		System.out.println("----------- Ausgabe der liste: -----------");
 		System.out.println(ac.toString());
-		System.out.println("------------------------------------------------------");
+		System.out.println("------------------------------------------");
 		
 		/*
 		 * Fugen Sie ein weiteres Account-Objekt mit Hilfe der Methode
@@ -54,14 +54,15 @@ public class Main {
 
 		Iterator<Account> s = ac.iterator();
 		int p = 0;
-			while (s.hasNext() == true ) { // Schaut nach Existenz des nächsten Elements 
+		// Schaut nach Existenz des nächsten Elements
+		while (s.hasNext() == true) {
 			p++;
 			System.out.println(p + " " + s.next());
 		}
-				
-		System.out.println("------------------------------------------------------");
-		System.out.println(" " + s.hasNext() ); // Gibt true zurueck, wenn es weitere Elemente in der Liste gibt
-		
+
+		System.out.println("---------------------------------------");
+		System.out.println("Gibt es weitere elemente in der liste?:  " + s.hasNext());
+
 	}
 
 }
