@@ -117,7 +117,7 @@ public class List<K> {
 			newElem.setNext(null);
 			if (size() == 0) {
 				/*
-				 * wenn die Loiste noch leer ist,setze aktuelles element als
+				 * wenn die Liste noch leer ist,setze aktuelles element als
 				 * erstes (head)
 				 */
 				head = newElem;

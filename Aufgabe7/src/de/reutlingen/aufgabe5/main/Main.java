@@ -11,7 +11,7 @@ public class Main {
 		str.push("Zweites Element");
 		str.push("Drittes Element");
 		System.out.println(str.isEmpty()); // richtig = false
-		//System.out.println(str.toString()); // was soll die machen ?
+		System.out.println(str.toString()); // was soll die machen ?
 		System.out.println(str.size()); // funktieonier
 
 		System.out.println("--------Print elents------");

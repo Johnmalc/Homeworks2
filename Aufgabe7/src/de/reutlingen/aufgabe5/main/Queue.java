@@ -23,31 +23,26 @@ public class Queue<K> {
 	}
 	// man setzt fur anfang und ende beides auf null
 	private ListNode front = null;
-	private ListNode back = null;//von mir aus brauchen wir nur eins von beiden: entweder front oder back. Schau skript von der Vorlesung an
-
+	private ListNode back = null;
+	
 	public Queue() {
 
 	}
-
-	public String toStringListNode() {
-		ListNode l = front;
-		StringBuilder sb = new StringBuilder();
-		int i = 1;
-		while (l != null) {
-			sb.append(" < " +  l.data.toString()+"> ");
-			i++;
-			l = l.next;
-		}
-		
-		return  sb.toString();
-		}
 	/**
-	 * Wozu ist das ? Was soll return sein Provizorisch
+	 * 
+	 * @return string
 	 */
 	public String toString() {
-		return " " + getIterator();
+		ListNode k = front;
+		StringBuilder sb = new StringBuilder();
+		int i = 1;
+		while (k != null) {
+			sb.append(" < " + k.data.toString() + "> ");
+			i++;
+			k = k.next;
+		}
+		return sb.toString();
 	}
-
 	/**
 	 * Methode zum Einfugen eines Elements in die Queue The enqueue method needs
 	 * to check first whether or not the list is empty.
@@ -99,11 +94,6 @@ public class Queue<K> {
 			node = node.next;
 		}
 		return count;
-		// for (ListNode node = front; node != null; node = node.next) {
-		// count++;
-		// } // war diese, habe in neue geschrieben
-		// return count;
-		// zum delete
 	}
 	/**
 	 * Copy&paste aus der Aufgabe 4. War Freiwillig
@@ -144,7 +134,8 @@ public class Queue<K> {
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException("Remove not supported for LinkedList");
+			throw new UnsupportedOperationException(
+					"Remove not supported for LinkedList");
 		}
 	}
 
