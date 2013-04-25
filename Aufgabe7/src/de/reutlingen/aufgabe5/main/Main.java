@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {//TO DO Exception
 		Queue<String> str = new Queue<String>();
 		System.out.println(str.isEmpty()); // richtig = true
 		str.push("Erstes Element");
@@ -33,6 +33,18 @@ public class Main {
 		}
 		System.out.println("Ist die queue frei: ? " + str.isEmpty());
 
+		// Verwendung meiner Testklasse
+		AnastasiaQueue<String> s =new AnastasiaQueue <String>();
+		System.out.println(s.isEmpty());
+		s.push("Erstes Element");
+		s.push("Zweites Element");
+		s.push("Drittes Element");
+		System.out.println(s.toStringListNode());
+		System.out.println(s.isEmpty());
+		System.out.println(s.pull());
+		System.out.println(s.pull());
+		System.out.println(s.pull());
+		System.out.println(s.isEmpty());
 	}
 
 }
