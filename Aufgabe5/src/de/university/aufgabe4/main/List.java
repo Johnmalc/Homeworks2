@@ -14,10 +14,11 @@ public class List<K> {
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
+
 	private class ListNode {
 		ListNode next;
 		K data;
-		
+
 		// for add method only
 		private ListNode(K elem) {
 			this.data = elem;
@@ -26,6 +27,7 @@ public class List<K> {
 		private ListNode() {
 
 		}
+
 		private void setData(K data) {
 			this.data = data;
 		}
@@ -33,6 +35,7 @@ public class List<K> {
 		private void setNext(ListNode next) {
 			this.next = next;
 		}
+
 		// for interator
 		public K getData() {
 			return data;
@@ -58,8 +61,7 @@ public class List<K> {
 	}
 
 	/**
-	 * @return alle elemente in der liste
-	 * Bischne bearbeitet
+	 * @return alle elemente in der liste Bischne bearbeitet
 	 * 
 	 */
 	public String toString() {
@@ -67,7 +69,7 @@ public class List<K> {
 		StringBuilder sb = new StringBuilder();
 		int i = 1;
 		while (l != null) {
-			sb.append(i + " "+ l.data + "\n");
+			sb.append(i + " " + l.data + "\n");
 			i++;
 			l = l.next;
 		}
@@ -102,8 +104,8 @@ public class List<K> {
 	 * http://stackoverflow.com/questions/
 	 * 5236486/adding-items-to-end-of-linked-list I would like to thank to Pavel
 	 * Bennett here
-	 * http://www.mycstutorials.com/articles/data_structures/linkedlists 
-	 * Thank you very much.
+	 * http://www.mycstutorials.com/articles/data_structures/linkedlists Thank
+	 * you very much.
 	 */
 	public void add(K elem) {
 		if (elem == null) {
@@ -131,8 +133,6 @@ public class List<K> {
 		}
 	}
 
-	
-
 	/**
 	 * Abfragen der Anzahl der Elemente in der Liste: Die Methode gibt die
 	 * Anzahl der in der Liste gespeicherten Objekte zuruck.
@@ -153,46 +153,49 @@ public class List<K> {
 	public boolean isEmpty() {
 		return head == null;
 	}
-	
+
 	/*
-	 * Implementieren Sie die Methode java.util.Iterator<K> iterator() {...} 
-	 * unter Verwendung einer geeigneten (inneren) Klasse wie in der Vorlesung 
-	 * besprochen. 
+	 * Implementieren Sie die Methode java.util.Iterator<K> iterator() {...}
+	 * unter Verwendung einer geeigneten (inneren) Klasse wie in der Vorlesung
+	 * besprochen.
 	 */
-	
+
 	public Iterator<K> iterator() {
 		return new myIterator();
 	}
-	public class myIterator implements Iterator<K>{
+
+	public class myIterator implements Iterator<K> {
 		ListNode current;
 
 		public myIterator() {
 			current = head;
 		}
+
 		public boolean hasNext() {
 			if (current != null) {
 				return true;
 			} else
 				return false;
 		}
+
 		@Override
 		public K next() {
 			ListNode temp = current;
 			current = current.getNext();
 			return temp.getData();
 		}
-		
+
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
 		 * don’t want to support this operation so just throw the exception. If
 		 * you did support this operation, you would need to include a check
 		 * that next() has been called, and if not, throw IllegalStateException
-		 * Ivor.Hortons.Beginning.Java.Java.7.Edition
-		 * Not supported
+		 * Ivor.Hortons.Beginning.Java.Java.7.Edition Not supported
 		 */
 		@Override
 		public void remove() {
-			throw new UnsupportedOperationException("Remove not supported for LinkedList<>");
-		}	
+			throw new UnsupportedOperationException(
+					"Remove not supported for LinkedList<>");
+		}
 	}
 }
