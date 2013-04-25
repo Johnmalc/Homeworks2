@@ -23,12 +23,24 @@ public class Queue<K> {
 	}
 	// man setzt fur anfang und ende beides auf null
 	private ListNode front = null;
-	private ListNode back = null;
+	private ListNode back = null;//von mir aus brauchen wir nur eins von beiden: entweder front oder back. Schau skript von der Vorlesung an
 
 	public Queue() {
 
 	}
 
+	public String toStringListNode() {
+		ListNode l = front;
+		StringBuilder sb = new StringBuilder();
+		int i = 1;
+		while (l != null) {
+			sb.append(" < " +  l.data.toString()+"> ");
+			i++;
+			l = l.next;
+		}
+		
+		return  sb.toString();
+		}
 	/**
 	 * Wozu ist das ? Was soll return sein Provizorisch
 	 */
