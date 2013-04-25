@@ -17,14 +17,12 @@ public class CashMachine<K> {
 	public CashMachine() {
 		index = 0;
 		state = State.READY;
+		
 		// neu accounty erstellt.
 		accounts = new List<Account>();
-
-		accounts.insertFirst(new Account(12345678, 0.0, 5000, 0555));
-
-		accounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
-		accounts.add(new Account(34567890, -200.0, 300, 3456));
-		accounts.insertFirst(new Account(12345678, 0.0, 5000, 4567));
+		accounts.add(new Account(23456789, -100.0, 200, 1234)); //Verwendung der Klasse Account
+		accounts.add(new Account(34567890, -200.0, 300, 1234));
+		accounts.insertFirst(new Account(12345678, 0.0, 5000, 1234));
 	}
 
 	/**
@@ -54,11 +52,7 @@ public class CashMachine<K> {
 					 *  speichere index, damit man weiter mit dem richtigen 
 					 *  (passenden) Account arbeiten kann
 					 */
-
 					this.index = i;
-
-					//this.zaehler = i;
-
 					break;
 				} else {
 					index++;
@@ -89,21 +83,19 @@ public class CashMachine<K> {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,
-			CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException, InvalidCardException {
 		switch (state) {
-			case CARD_INSERTED :
-
-				if (accounts.get(index).getPin() == pinX) {
-					state = State.PIN_CORRECT;
-					System.out.println("Sie haben den richtigen Pin eingegeben.");
-					System.out.println("Automat ist auf Status " + state + " gesetzt.");
-				} else {
-					throw new PinNotCorectException();
-				} // end of if-else
-				break;
-			default :
-				throw new CardNotInsertedException();
+		case CARD_INSERTED:
+			if (accounts.get(index).getPin() == pinX) {
+				state = State.PIN_CORRECT;
+				System.out.println("Sie haben den richtigen Pin eingegeben.");
+				System.out.println("Automat ist auf Status " + state + " gesetzt.");
+			} else {
+				throw new PinNotCorectException();
+			} // end of if-else
+			break;
+		default:
+			throw new CardNotInsertedException();
 		} // end switch
 	}
 

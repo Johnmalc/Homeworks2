@@ -26,14 +26,9 @@ public class Main {
 		 */
 		 // funktioniert auch mit dem 
 
-		ac.add(new Account(2345678, 465, 06541, 0265));
-		ac.add(new Account(3456789, 465, 06541, 5554));
-		ac.insertFirst(new Account(123456, 465, 06541, 6595));
-
-		ac.add(new Account(54564654, 465, 06541, 0555));
-		ac.add(new Account(454, 465, 06541, 554));
-		ac.insertFirst(new Account(12345678, 465, 06541, 0555)); // funktioniert auch mit dem 
-
+		ac.add(new Account(23456789, 465, 06541, 5465));
+		ac.add(new Account(2846519, 4965, 8576, 3122));
+		ac.insertFirst(new Account(5697846, 465, 06541, 2135));
 		
 		System.out.println(ac.toString());
 
@@ -41,18 +36,9 @@ public class Main {
 		System.out.println(ac.size());
 		
 		System.out.println(ac.get(0)); // gibt ertes Element aus der Liste
-		
-
-		
-	
-		
-		System.out.println("");
-		System.out.println("----------- Ausgabe der liste: -----------");
-		
 
 		System.out.println("");
 		System.out.println("----------- Ausgabe der liste: -----------");
-
 
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
@@ -60,11 +46,8 @@ public class Main {
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
 
-		ac.add(new Account(45678912, 2358, 06541, 2555));
-		ac.add(new Account(56789472, 2589, 06541, 1455));
-
-		ac.add(new Account(54564654, 465, 06541, 0555));
-		ac.add(new Account(654864, 465, 06541, 0555));
+		ac.add(new Account(23455469, 2358, 06541, 9846));
+		ac.add(new Account(26789, 465, 06541, 1254));
 
 		System.out.println(ac.size());
 		System.out.println(ac.toString());
@@ -74,13 +57,9 @@ public class Main {
 		 * insertFirst(...) in die Liste ein. Uberprufen Sie die Korrektheit
 		 * indem Sie die Liste erneut auf der Konsole ausgeben.
 		 */
-		System.out.println("\n " + "----------- Ausgabe 2 der liste: -------");
-		ac.insertFirst(new Account(1112586, 654, 9, 3363));
+		System.out.println("\n " + "---Ausgabe 2 der liste, nachdem insertFirst: -------");
+		ac.insertFirst(new Account(2344469, 654, 9, 1234));
 		System.out.println(ac.toString());
-		
-		System.out.println("\n " + "----------- Ausgabe der Cashmaschine acocunts : -------");
-		CashMachine<Account> a = new CashMachine<Account>();
-		System.out.println(a.accounts.toString());
 	
 		System.out.println("\n " + "----------- Ausgabe der Iterator: -------");
 
@@ -94,7 +73,7 @@ public class Main {
 		
 		System.out.println("------------------------------------------------------");
 
-		CashMachine cashMachine = new CashMachine();
+		CashMachine<Account> cashMachine = new CashMachine<Account>();
 		CashCard cashCard1 = new CashCard(12345678);
 		CashCard cashCard2 = new CashCard(23456789);
 
@@ -123,7 +102,7 @@ public class Main {
 		 * Wenn pin richtig wird nichts angezeigt
 		 */
 		try {
-			cashMachine.pinEingeben(1256);
+			cashMachine.pinEingeben(1286);
 		} catch (PinNotCorectException e) {
 			System.out.println("Test3 ist erfolgreich" + "\n");
 		} catch (CardNotInsertedException e) {
@@ -137,7 +116,7 @@ public class Main {
 		 * und CardNotInsertedException sollten hier nicht getroffen werden
 		 */
 		try {
-			cashMachine.pinEingeben(0555);
+			cashMachine.pinEingeben(1234);
 			cashMachine.withdraw(10900);
 		} catch (PinNotCorectException e) {
 			System.out.println("Test4 ist nicht bestanden" + "\n");
