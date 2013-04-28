@@ -35,10 +35,8 @@ public class Queue<K> {
 	public String toString() {
 		ListNode k = front;
 		StringBuilder sb = new StringBuilder();
-		int i = 1;
 		while (k != null) {
 			sb.append(" < " + k.data.toString() + "> ");
-			i++;
 			k = k.next;
 		}
 		return sb.toString();
