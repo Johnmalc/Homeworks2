@@ -109,7 +109,6 @@ public class Account {
 	}
 
 	/**
-	 * 
 	 * @return pin
 	 */
 	public int getPin() {
@@ -118,9 +117,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountNumber=" + accountNumber + ", overdraft="
-				+ overdraft + ", bankDeposit=" + bankDeposit + ", pin=" + pin
-				+ "]";
+		return "Account : accountNumber=" + accountNumber + ", overdraft="
+				+ overdraft + ", bankDeposit=" + bankDeposit + ", pin=" + pin;
 	}
 
 }

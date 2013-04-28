@@ -3,16 +3,16 @@ package de.reutlingen.aufgabe5.main;
 import java.util.Iterator;
 
 public class Main {
-
-	public static void main(String[] args) throws Exception {//TO DO Exception
+									// POZOR take odmazat
+	public static void main(String[] args) throws Exception {// TODO Exception
 		Queue<String> str = new Queue<String>();
 		System.out.println(str.isEmpty()); // richtig = true
 		str.push("Erstes Element");
 		str.push("Zweites Element");
 		str.push("Drittes Element");
 		System.out.println(str.isEmpty()); // richtig = false
-		//System.out.println(str.toString()); // was soll die machen ?
-		System.out.println(str.size()); // funktieonier
+		System.out.println(str.toString()); 
+		System.out.println(str.size());
 
 		System.out.println("--------Print elents------");
 
@@ -32,7 +32,9 @@ public class Main {
 			System.out.println("Queue Next Value : " + it.next());
 		}
 		System.out.println("Ist die queue frei: ? " + str.isEmpty());
-
+		
+		//odmazat potom
+		System.out.println("----------Ana---");
 		// Verwendung meiner Testklasse
 		AnastasiaQueue<String> s =new AnastasiaQueue <String>();
 		System.out.println(s.isEmpty());
