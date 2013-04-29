@@ -63,7 +63,7 @@ public class Main {
 		
 		System.out.println("---------------------------------------");
 		System.out.println("Gibt es weitere elemente in der Liste: " + s.hasNext());
-
+		
 	}
 
 }

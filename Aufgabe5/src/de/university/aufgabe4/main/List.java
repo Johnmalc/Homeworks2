@@ -9,8 +9,8 @@ import java.util.Iterator;
 
 public class List<K> {
 	/*
-	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
-	 * Some information was taken from
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists
+	 * .html Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
@@ -167,22 +167,33 @@ public class List<K> {
 	public class myIterator implements Iterator<K> {
 		ListNode current;
 
-		public myIterator() {
+		public myIterator() { // Konstruktor
 			current = head;
 		}
 
 		public boolean hasNext() {
-			if (current != null) {
-				return true;
-			} else
-				return false;
+			return current != null; // gibt true zurueck, wenn nächstes Element
+									// existiert
 		}
 
+		/*
+		 * Die Methode liefert nächstes Element zurueck.
+		 */
 		@Override
 		public K next() {
-			ListNode temp = current;
-			current = current.getNext();
-			return temp.getData();
+			if (hasNext())// Prueft ob, es nächstes Element gibt(true)
+			{
+				ListNode temp = current;
+				current = current.getNext();
+				return temp.getData();
+			} else
+			/*
+			 * wenn keine weiteren Elemente mehr in der Listevorhanden sind
+			 */
+
+			{
+				return null;
+			}// gibt null zurueck
 		}
 
 		/**
