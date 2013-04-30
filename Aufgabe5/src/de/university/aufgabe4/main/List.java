@@ -9,8 +9,8 @@ import java.util.Iterator;
 
 public class List<K> {
 	/*
-	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists
-	 * .html Some information was taken from
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
+	 * Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
@@ -153,13 +153,7 @@ public class List<K> {
 	public boolean isEmpty() {
 		return head == null;
 	}
-
-	/*
-	 * Implementieren Sie die Methode java.util.Iterator<K> iterator() {...}
-	 * unter Verwendung einer geeigneten (inneren) Klasse wie in der Vorlesung
-	 * besprochen.
-	 */
-
+	
 	public Iterator<K> iterator() {
 		return new myIterator();
 	}
@@ -172,28 +166,24 @@ public class List<K> {
 		}
 
 		public boolean hasNext() {
-			return current != null; // gibt true zurueck, wenn nächstes Element
-									// existiert
+			// gibt true zurueck, wenn nächstes Element existiert
+			return current != null;
 		}
 
-		/*
+		/**
 		 * Die Methode liefert nächstes Element zurueck.
 		 */
 		@Override
 		public K next() {
-			if (hasNext())// Prueft ob, es nächstes Element gibt(true)
-			{
+			// Prueft ob, es nachstes Element gibt(true)
+			if (hasNext()) {
 				ListNode temp = current;
 				current = current.getNext();
 				return temp.getData();
-			} else
-			/*
-			 * wenn keine weiteren Elemente mehr in der Listevorhanden sind
-			 */
-
-			{
+			} else {
+				// wenn keine weiteren Elemente mehr in der Listevorhanden sind
 				return null;
-			}// gibt null zurueck
+			}
 		}
 
 		/**
