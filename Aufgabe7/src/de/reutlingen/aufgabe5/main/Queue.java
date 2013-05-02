@@ -110,17 +110,18 @@ public class Queue<K> {
 		}
 
 		public boolean hasNext() {
-			if (current != null) {
-				return true;
-			} else
-				return false;
+			return current != null;
 		}
 
 		@Override
 		public K next() {
-			ListNode temp = current;
-			current = current.getNext();
-			return temp.getData();
+			if (current != null) {
+				ListNode temp = current;
+				current = current.getNext();
+				return temp.getData();
+			} else {
+				throw new NoSuchElementException();
+			}
 		}
 
 		/**
