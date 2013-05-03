@@ -28,10 +28,9 @@ public class Queue<K> {
 		}
 	}
 
-	// man setzt fur anfang und ende beides auf null
-	private ListNode<K> top;
-
-	// private ListNode back = null;
+	
+	private ListNode<K> erstes;
+    private ListNode<K> letztes;
 
 	public Queue() {
 
@@ -42,7 +41,7 @@ public class Queue<K> {
 	 * @return string
 	 */
 	public String toString() {
-		ListNode <K> k = top;
+		ListNode <K> k = erstes;
 		StringBuilder sb = new StringBuilder();
 		while (k != null) {
 			sb.append(" < " + k.data.toString() + "> ");
@@ -58,7 +57,16 @@ public class Queue<K> {
 	 * @param element
 	 */
 	public void push(K item) {
-		top = new ListNode<K>(item, top);
+		ListNode <K> LN=new ListNode<K>(item, null);
+		if (erstes==null)
+		{
+		erstes=LN;
+		letztes=LN;
+		}
+		else{
+			letztes.next=LN;
+			letztes=LN;	
+		}
 	}
 
 	/**
@@ -70,8 +78,8 @@ public class Queue<K> {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
-		K item = top.data;
-		top = top.next;
+		K item = erstes.data;
+		erstes = erstes.next;
 		return item;
 	}
 
@@ -81,7 +89,7 @@ public class Queue<K> {
 	 * @return
 	 */
 	public boolean isEmpty() {
-		return top == null;
+		return erstes == null;
 	}
 
 	/**
@@ -90,7 +98,7 @@ public class Queue<K> {
 	 * @return count
 	 */
 	public int size() {
-		ListNode<K> node = top;
+		ListNode<K> node = erstes;
 		int count = 0;
 		while (node != null) {
 			count++;
@@ -112,7 +120,7 @@ public class Queue<K> {
 		ListNode<K> current;
 
 		public myIterator() {
-			current = top;
+			current = erstes;
 		}
 
 		public boolean hasNext() {
