@@ -166,12 +166,12 @@ public class List<K> {
 		}
 
 		public boolean hasNext() {
-			// gibt true zurueck, wenn nächstes Element existiert
+			// gibt true zurueck, wenn nachstes Element existiert
 			return current != null;
 		}
 
 		/**
-		 * Die Methode liefert nächstes Element zurueck.
+		 * Die Methode liefert nachstes Element zurueck.
 		 */
 		@Override
 		public K next() {
