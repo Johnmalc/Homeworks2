@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Queue<String> str = new Queue<String>();// Erzeugung einer neuen Queue
-												// für Strings
+												// fuer Strings
 		System.out.println(str.isEmpty()); // richtig = true
 
 		/**

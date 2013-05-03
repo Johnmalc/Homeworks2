@@ -42,7 +42,7 @@ public class Queue<K> {
 	 * @return string
 	 */
 	public String toString() {
-		ListNode k = top;
+		ListNode <K> k = top;
 		StringBuilder sb = new StringBuilder();
 		while (k != null) {
 			sb.append(" < " + k.data.toString() + "> ");
