@@ -3,7 +3,7 @@ package de.reutlingen.aufgabe5.main;
 import java.util.Iterator;
 
 public class Main {
-	// POZOR take odmazat
+	
 	public static void main(String[] args)  {
 		Queue<String> str = new Queue<String>();//Erzeugung einer neuen Queue für Strings
 		System.out.println(str.isEmpty()); // richtig = true
