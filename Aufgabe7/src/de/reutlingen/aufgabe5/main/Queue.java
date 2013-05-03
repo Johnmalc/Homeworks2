@@ -1,5 +1,11 @@
 package de.reutlingen.aufgabe5.main;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ *           
+ */
+
 import java.util.*;
 
 public class Queue<K> {
@@ -8,7 +14,7 @@ public class Queue<K> {
 		ListNode<K> next;
 		K data;
 
-		private ListNode(K data, ListNode <K>next) {
+		private ListNode(K data, ListNode<K> next) {
 			this.next = next;
 			this.data = data;
 		}
@@ -17,17 +23,20 @@ public class Queue<K> {
 			return data;
 		}
 
-		private ListNode <K>getNext() {
+		private ListNode<K> getNext() {
 			return next;
 		}
 	}
+
 	// man setzt fur anfang und ende beides auf null
-	private ListNode <K>top; 
-	//private ListNode back = null;
-	
+	private ListNode<K> top;
+
+	// private ListNode back = null;
+
 	public Queue() {
 
 	}
+
 	/**
 	 * 
 	 * @return string
@@ -41,13 +50,14 @@ public class Queue<K> {
 		}
 		return sb.toString();
 	}
+
 	/**
 	 * Methode zum Einfugen eines Elements in die Queue The enqueue method needs
 	 * to check first whether or not the list is empty.
 	 * 
 	 * @param element
 	 */
-	public void push(K item) { 
+	public void push(K item) {
 		top = new ListNode<K>(item, top);
 	}
 
@@ -64,12 +74,12 @@ public class Queue<K> {
 		top = top.next;
 		return item;
 	}
-	
-/**
- * Gibt true zurueck, wenn die Liste leer ist
- * 
- * @return
- */
+
+	/**
+	 * Gibt true zurueck, wenn die Liste leer ist
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return top == null;
 	}
@@ -80,7 +90,7 @@ public class Queue<K> {
 	 * @return count
 	 */
 	public int size() {
-		ListNode <K> node = top;
+		ListNode<K> node = top;
 		int count = 0;
 		while (node != null) {
 			count++;
@@ -88,6 +98,7 @@ public class Queue<K> {
 		}
 		return count;
 	}
+
 	/**
 	 * Implementierung der Methode java.util.Iterator<K> iterator()
 	 * 

@@ -1,13 +1,20 @@
 package de.reutlingen.aufgabe5.main;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ *           
+ */
+
 import java.util.Iterator;
 
 public class Main {
-	
-	public static void main(String[] args)  {
-		Queue<String> str = new Queue<String>();//Erzeugung einer neuen Queue für Strings
+
+	public static void main(String[] args) {
+		Queue<String> str = new Queue<String>();// Erzeugung einer neuen Queue
+												// für Strings
 		System.out.println(str.isEmpty()); // richtig = true
-		
+
 		/**
 		 * Hinzufuegen der Zeichenketten
 		 * 
