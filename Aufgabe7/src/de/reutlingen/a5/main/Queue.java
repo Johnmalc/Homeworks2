@@ -124,7 +124,7 @@ public class Queue<K> {
 
 		/**
 		 * Method to remove the last element retrieved from the linked list; You
-		 * don’t want to support this operation so just throw the exception.
+		 * dont want to support this operation so just throw the exception.
 		 */
 		@Override
 		public void remove() {
