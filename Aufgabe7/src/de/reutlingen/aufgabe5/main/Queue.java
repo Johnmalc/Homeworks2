@@ -1,14 +1,20 @@
 package de.reutlingen.aufgabe5.main;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ *           
+ */
+
 import java.util.*;
 
 public class Queue<K> {
 	// ListNode aus der Aufgabe 4 (relax) copy&paste
-	private class ListNode {
-		ListNode next;
+	private class ListNode<K> {
+		ListNode<K> next;
 		K data;
 
-		private ListNode(K data, ListNode next) {
+		private ListNode(K data, ListNode<K> next) {
 			this.next = next;
 			this.data = data;
 		}
@@ -17,23 +23,25 @@ public class Queue<K> {
 			return data;
 		}
 
-		private ListNode getNext() {
+		private ListNode<K> getNext() {
 			return next;
 		}
 	}
-	// man setzt fur anfang und ende beides auf null
-	private ListNode front = null;
-	private ListNode back = null;
+
 	
+	private ListNode<K> erstes;
+    private ListNode<K> letztes;
+
 	public Queue() {
 
 	}
+
 	/**
 	 * 
 	 * @return string
 	 */
 	public String toString() {
-		ListNode k = front;
+		ListNode <K> k = erstes;
 		StringBuilder sb = new StringBuilder();
 		while (k != null) {
 			sb.append(" < " + k.data.toString() + "> ");
@@ -41,6 +49,7 @@ public class Queue<K> {
 		}
 		return sb.toString();
 	}
+
 	/**
 	 * Methode zum Einfugen eines Elements in die Queue The enqueue method needs
 	 * to check first whether or not the list is empty.
@@ -48,14 +57,16 @@ public class Queue<K> {
 	 * @param element
 	 */
 	public void push(K item) {
-		// speichere neues element in ListNode
-		ListNode newNode = new ListNode(item, null);
-		if (isEmpty()) {
-			front = newNode;
-		} else {
-			back.next = newNode;
+		ListNode <K> LN=new ListNode<K>(item, null);
+		if (erstes==null)
+		{
+		erstes=LN;
+		letztes=LN;
 		}
-		back = newNode;
+		else{
+			letztes.next=LN;
+			letztes=LN;	
+		}
 	}
 
 	/**
@@ -67,16 +78,18 @@ public class Queue<K> {
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 		}
-		K item = front.data;
-		if (back == front) {
-			back = null;
-		}
-		front = front.next;
+		K item = erstes.data;
+		erstes = erstes.next;
 		return item;
 	}
 
+	/**
+	 * Gibt true zurueck, wenn die Liste leer ist
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
-		return front == null;
+		return erstes == null;
 	}
 
 	/**
@@ -85,7 +98,7 @@ public class Queue<K> {
 	 * @return count
 	 */
 	public int size() {
-		ListNode node = front;
+		ListNode<K> node = erstes;
 		int count = 0;
 		while (node != null) {
 			count++;
@@ -93,20 +106,21 @@ public class Queue<K> {
 		}
 		return count;
 	}
+
 	/**
-	 * Copy&paste aus der Aufgabe 4. War Freiwillig
+	 * Implementierung der Methode java.util.Iterator<K> iterator()
 	 * 
 	 * @return myIterator object
 	 */
-	public Iterator<K> getIterator() {
+	public Iterator<K> iterator() {
 		return new myIterator();
 	}
 
 	public class myIterator implements Iterator<K> {
-		ListNode current;
+		ListNode<K> current;
 
 		public myIterator() {
-			current = front;
+			current = erstes;
 		}
 
 		public boolean hasNext() {
@@ -116,7 +130,7 @@ public class Queue<K> {
 		@Override
 		public K next() {
 			if (current != null) {
-				ListNode temp = current;
+				ListNode<K> temp = current;
 				current = current.getNext();
 				return temp.getData();
 			} else {
