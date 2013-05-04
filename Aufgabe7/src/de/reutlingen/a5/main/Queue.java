@@ -1,0 +1,136 @@
+package de.reutlingen.a5.main;
+
+import java.util.*;
+
+public class Queue<K> {
+	// ListNode aus der Aufgabe 4 (relax) copy&paste
+	private class ListNode<K> {
+		ListNode<K> next;
+		K data;
+
+		private ListNode(K data, ListNode<K> next) {
+			this.next = next;
+			this.data = data;
+		}
+
+		private K getData() {
+			return data;
+		}
+
+		private ListNode<K> getNext() {
+			return next;
+		}
+	}
+	// man setzt fur anfang und ende beides auf null
+	private ListNode<K> front = null;
+	private ListNode<K> back = null;
+	
+	public Queue() {
+
+	}
+	/**
+	 * 
+	 * @return string
+	 */
+	public String toString() {
+		ListNode<K> r = front;
+		StringBuilder sb = new StringBuilder();
+		while (r != null) {
+			sb.append(" < " + r.data.toString() + "> ");
+			r = r.next;
+		}
+		return sb.toString();
+	}
+	/**
+	 * Methode zum Einfugen eines Elements in die Queue The enqueue method needs
+	 * to check first whether or not the list is empty.
+	 * 
+	 * @param element
+	 */
+	public void push(K item) {
+		// speichere neues element in ListNode
+		ListNode<K> newNode = new ListNode<K>(item, null);
+		if (isEmpty()) {
+			front = newNode;
+		} else {
+			back.next = newNode;
+		}
+		back = newNode;
+	}
+
+	/**
+	 * Methode zum herausnehmen eines Elements aus der Warteschlange
+	 * 
+	 * @return
+	 */
+	public K pull() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		K item = front.data;
+		if (back == front) {
+			back = null;
+		}
+		front = front.next;
+		return item;
+	}
+
+	public boolean isEmpty() {
+		return front == null;
+	}
+
+	/**
+	 * Gibt die Anzahl der in der Liste gespeicherten Elemente zuruck
+	 * 
+	 * @return count
+	 */
+	public int size() {
+		ListNode<K> node = front;
+		int count = 0;
+		while (node != null) {
+			count++;
+			node = node.next;
+		}
+		return count;
+	}
+	/**
+	 * @return myIterator object
+	 */
+	public Iterator<K> getIterator() {
+		return new myIterator();
+	}
+
+	public class myIterator implements Iterator<K> {
+		ListNode<K> current;
+
+		public myIterator() {
+			current = front;
+		}
+
+		public boolean hasNext() {
+			return current != null;
+		}
+
+		@Override
+		public K next() {
+			if (current != null) {
+				ListNode<K> temp = current;
+				current = current.getNext();
+				return temp.getData();
+			} else {
+				throw new NoSuchElementException();
+			}
+		}
+
+		/**
+		 * Method to remove the last element retrieved from the linked list; You
+		 * don’t want to support this operation so just throw the exception.
+		 */
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException(
+					"Remove not supported for LinkedList");
+		}
+	}
+
+}

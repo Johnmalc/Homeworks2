@@ -1,36 +1,26 @@
-package de.reutlingen.aufgabe5.main;
-
-/**
- * @author Anastasia Baron
- * @author Dmitry Petrov
- *           
- */
+package de.reutlingen.a5.main;
 
 import java.util.Iterator;
 
 public class Main {
-
-	public static void main(String[] args) {
-		Queue<String> str = new Queue<String>();// Erzeugung einer neuen Queue
-												// fuer Strings
-		System.out.println(str.isEmpty()); // richtig = true
-
-		/**
-		 * Hinzufuegen der Zeichenketten
-		 * 
-		 */
+								
+	public static void main(String[] args){
+		Queue<String> str = new Queue<String>();
+		
+		System.out.println("Queue soll jetzt frei sein = " + str.isEmpty());
+		
 		str.push("Erstes Element");
 		str.push("Zweites Element");
 		str.push("Drittes Element");
+		
+		System.out.println("\nQueue ist jetzt voll (false): " + str.isEmpty());
+		System.out.println("\n" + str.toString());  // Ausgabe aller Elementen der Queue
+		System.out.println("\n" + "Grosse der queue : " + str.size());
 
-		System.out.println(str.isEmpty()); // richtig = false
-		System.out.println(str.toString()); // Ausgabe aller Elementen der Queue
-		System.out.println(str.size());// Anzahl der Elementen in Queue
-
-		System.out.println("--------Print elents------");
+		System.out.println("--------Print elements------");
 
 		// Iterator prints all the elements of queue
-		Iterator<String> it = str.iterator();
+		Iterator<String> it = str.getIterator();
 		while (it.hasNext()) {
 			System.out.println("Queue Next Value : " + it.next());
 		}
@@ -45,7 +35,7 @@ public class Main {
 			System.out.println("Queue Next Value : " + it.next());
 		}
 		System.out.println("Ist die queue frei: ? " + str.isEmpty());
-
+		
 	}
 
 }
