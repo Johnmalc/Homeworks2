@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Queue<K> {
 	// ListNode aus der Aufgabe 4 (relax) copy&paste
+	// http://cs.lmu.edu/~ray/notes/queues/
 	private class ListNode<K> {
 		ListNode<K> next;
 		K data;
@@ -42,8 +43,7 @@ public class Queue<K> {
 		return sb.toString();
 	}
 	/**
-	 * Methode zum Einfugen eines Elements in die Queue The enqueue method needs
-	 * to check first whether or not the list is empty.
+	 * Methode zum Einfugen eines Elements in die Queue
 	 * 
 	 * @param element
 	 */
