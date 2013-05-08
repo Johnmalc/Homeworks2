@@ -1,4 +1,4 @@
-package de.reutlingen.aufgabe5.main;
+package de.reutlingen.aufgabe5.ana.main;
 
 /**
  * @author Anastasia Baron
