@@ -26,9 +26,12 @@ public class FindDups {
 			}
 		}
 
-		// diskrete mathe = bombastic !
+		/**
+		 * loescht alle Elemente in Mende uni, die es in Menge duplikate auch gibt,
+		 * d.h. bleibt nur die Differenz von beiden Mengen
+		 */
 		uni.removeAll(duplikate);
-
+		
 		System.out.println(uni);
 		System.out.println(duplikate);
 
