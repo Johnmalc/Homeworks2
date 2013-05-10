@@ -1,4 +1,5 @@
 # **Exercise 4** #
+## At the end we got 14/15. Very good work. ##
 
 Programmieren Sie die Klasse List<K> aus der Vorlesung.
 

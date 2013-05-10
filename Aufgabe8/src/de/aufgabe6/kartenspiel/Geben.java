@@ -1,11 +1,11 @@
 package de.aufgabe6.kartenspiel;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.*;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class Geben {
 	/*
 	 * Schreiben Sie ein Programm, das ein Kartenspiel mit 52 Karten mit 4
@@ -79,42 +79,30 @@ public class Geben {
 		ls.add("kreuz Dame");
 		ls.add("kreuz Konig");
 		ls.add("kreuz (kick) Ass");
-		Iterator<String> ds = ls.iterator();
-
-		// Ausgabe des Kartenstapels
-		while (ds.hasNext()) {
-			System.out.println(ds.next());
-		}
 
 		// Methode aus der Collections-Klasse mischt den Kartenstapel
 		Collections.shuffle(ls);
 
 		// Zum Einlesen von den Kommandozeilen
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Anzahl von Spielern: ");
-		int anzahlSpieler = sc.nextInt();
-		System.out.print("Anzahl der Karten : ");
-		int anzahlKarten = sc.nextInt();
-
-		// Ausgabe des gemischten Kartenstapels
-		System.out.println(ls);
+		int anzahlSpieler = Integer.parseInt(args[0]);
+		int anzahlKarten = Integer.parseInt(args[1]);
+		System.out.print("Anzahl der Karten : " + anzahlSpieler + "\n");
+		System.out.print("Anzahl von Spielern: " + anzahlKarten + "\n");
 
 		// Schleife zum Erstellen einer Liste fuer jeden Spieler
 		int i = 0;
-		while (i < anzahlSpieler)// wird wiederholt so oft, bis die gewuenschte
-									// Anzahl nicht erzielt wird
-		{
+		while (i < anzahlSpieler) {
+			// wird wiederholt so oft, bis die gewuenschte Anzahl nicht erzielt
+			// wird
+
 			List<String> spieler = new LinkedList<String>(ls.subList(0,
 					anzahlKarten));
-			ls.removeAll(spieler); // loescht die Elemente dieser Liste vom
-									// ganzen Stapel
-			System.out.println(spieler);// gibt die Karte dieses Spilers zurueck
+			ls.removeAll(spieler);
+
+			// loescht die Elemente dieser Liste vom ganzen Stapel
+			System.out.println(spieler);
+			// gibt die Karte dieses Spilers zurueck
 			i++;
 		}
-
-		System.out.println(ls);// gibt die restlichen Karten in dem
-								// Kartenspalten zurueck
-
 	}
-
 }

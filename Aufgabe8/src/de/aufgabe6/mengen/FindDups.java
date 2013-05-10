@@ -1,8 +1,10 @@
 package de.aufgabe6.mengen;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.*;
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class FindDups {
 
 	/*
@@ -15,8 +17,8 @@ public class FindDups {
 	 */
 
 	public static void main(String[] args) {
-		Set<String> duplikate = new HashSet<String>();
-		Set<String> uni = new HashSet<String>();
+		Set<String> duplikate = new TreeSet<String>();
+		Set<String> uni = new TreeSet<String>();
 
 		// for each string in a array args prove if uni cannt add a word,
 		// if so add word to duplikate.
@@ -26,12 +28,12 @@ public class FindDups {
 			}
 		}
 
-		/**
-		 * loescht alle Elemente in Mende uni, die es in Menge duplikate auch gibt,
-		 * d.h. bleibt nur die Differenz von beiden Mengen
+		/*
+		 * loescht alle Elemente in Mende uni, die es in Menge duplikate auch
+		 * gibt, d.h. bleibt nur die Differenz von beiden Mengen
 		 */
 		uni.removeAll(duplikate);
-		
+
 		System.out.println(uni);
 		System.out.println(duplikate);
 
