@@ -24,62 +24,72 @@ public class Geben {
 	public static void main(String[] args) {
 
 		List<String> ls = new LinkedList<String>();
-		ls.add("karo 2");
-		ls.add("karo 3");
-		ls.add("karo 4");
-		ls.add("karo 5");
-		ls.add("karo 6");
-		ls.add("karo 7");
-		ls.add("karo 8");
-		ls.add("karo 9");
-		ls.add("karo 10");
-		ls.add("karo Bube");
-		ls.add("karo Dame");
-		ls.add("karo Konig");
-		ls.add("karo (kick) Ass");
-
-		ls.add("pic 2");
-		ls.add("pic 3");
-		ls.add("pic 4");
-		ls.add("pic 5");
-		ls.add("pic 6");
-		ls.add("pic 7");
-		ls.add("pic 8");
-		ls.add("pic 9");
-		ls.add("pic 10");
-		ls.add("pic Bube");
-		ls.add("pic Dame");
-		ls.add("pic Konig");
-		ls.add("pic (kick) Ass");
-
-		ls.add("herz 2");
-		ls.add("herz 3");
-		ls.add("herz 4");
-		ls.add("herz 5");
-		ls.add("herz 6");
-		ls.add("herz 7");
-		ls.add("herz 8");
-		ls.add("herz 9");
-		ls.add("herz 10");
-		ls.add("herz Bube");
-		ls.add("herz Dame");
-		ls.add("herz Konig");
-		ls.add("herz (kick) Ass");
-
-		ls.add("kreuz 2");
-		ls.add("kreuz 3");
-		ls.add("kreuz 4");
-		ls.add("kreuz 5");
-		ls.add("kreuz 6");
-		ls.add("kreuz 7");
-		ls.add("kreuz 8");
-		ls.add("kreuz 9");
-		ls.add("kreuz 10");
-		ls.add("kreuz Bube");
-		ls.add("kreuz Dame");
-		ls.add("kreuz Konig");
-		ls.add("kreuz (kick) Ass");
-
+//		ls.add("karo 2");
+//		ls.add("karo 3");
+//		ls.add("karo 4");
+//		ls.add("karo 5");
+//		ls.add("karo 6");
+//		ls.add("karo 7");
+//		ls.add("karo 8");
+//		ls.add("karo 9");
+//		ls.add("karo 10");
+//		ls.add("karo Bube");
+//		ls.add("karo Dame");
+//		ls.add("karo Konig");
+//		ls.add("karo (kick) Ass");
+//
+//		ls.add("pic 2");
+//		ls.add("pic 3");
+//		ls.add("pic 4");
+//		ls.add("pic 5");
+//		ls.add("pic 6");
+//		ls.add("pic 7");
+//		ls.add("pic 8");
+//		ls.add("pic 9");
+//		ls.add("pic 10");
+//		ls.add("pic Bube");
+//		ls.add("pic Dame");
+//		ls.add("pic Konig");
+//		ls.add("pic (kick) Ass");
+//
+//		ls.add("herz 2");
+//		ls.add("herz 3");
+//		ls.add("herz 4");
+//		ls.add("herz 5");
+//		ls.add("herz 6");
+//		ls.add("herz 7");
+//		ls.add("herz 8");
+//		ls.add("herz 9");
+//		ls.add("herz 10");
+//		ls.add("herz Bube");
+//		ls.add("herz Dame");
+//		ls.add("herz Konig");
+//		ls.add("herz (kick) Ass");
+//
+//		ls.add("kreuz 2");
+//		ls.add("kreuz 3");
+//		ls.add("kreuz 4");
+//		ls.add("kreuz 5");
+//		ls.add("kreuz 6");
+//		ls.add("kreuz 7");
+//		ls.add("kreuz 8");
+//		ls.add("kreuz 9");
+//		ls.add("kreuz 10");
+//		ls.add("kreuz Bube");
+//		ls.add("kreuz Dame");
+//		ls.add("kreuz Konig");
+//		ls.add("kreuz (kick) Ass");
+		String array[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "Konig", "(kick) Ass"};
+		String sad[] = {"kreuz ", "karo ", "piko ", "herz "};
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < sad.length; i++) {
+			for (int s = 0; s < array.length; s++) {
+				System.out.println((sb.append(array[s].toString() + " " + sad[i].toString())));
+				ls.add(array[s].toString() + " " + sad[i].toString());
+			}
+		}
 		// Methode aus der Collections-Klasse mischt den Kartenstapel
 		Collections.shuffle(ls);
 
