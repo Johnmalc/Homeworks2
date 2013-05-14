@@ -1,13 +1,13 @@
 package de.university.aufgabe4.main;
 
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
 
-public class List<K> {
+public class List<K> implements Iterable<K>{
 	/*
 	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
 	 * Some information was taken from
@@ -182,7 +182,7 @@ public class List<K> {
 				return temp.getData();
 			} else {
 				// wenn keine weiteren Elemente mehr in der Listevorhanden sind
-				return null;
+				throw new NoSuchElementException();
 			}
 		}
 
