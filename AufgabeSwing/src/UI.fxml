@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml">
+  <children>
+    <Button id="button1" layoutX="14.0" layoutY="109.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="572.0" text="Pin Bestatigen" />
+    <Button id="button2" layoutX="14.0" layoutY="155.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="572.0" text="Kontostand" />
+    <Button id="button3" layoutX="14.0" layoutY="292.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="572.0" text="Karte ausgeben" />
+    <TextField id="textField1" layoutX="14.0" layoutY="14.0" prefWidth="572.0" promptText="Kontonummer" />
+    <TextField id="textField2" layoutX="14.0" prefHeight="22.0" prefWidth="572.0" promptText="Pin Eingabe" AnchorPane.bottomAnchor="303.0" />
+    <TextField id="textField3" layoutX="14.0" layoutY="338.0" prefHeight="34.0" prefWidth="572.0" promptText="Informationstext" />
+    <Button id="button4" layoutX="14.0" layoutY="44.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="572.0" text="Karte eingaben" />
+    <Button id="button5" layoutX="14.0" layoutY="251.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="572.0" text="Geldabheben" />
+    <ChoiceBox id="choiceBox1" layoutX="14.0" layoutY="200.0" prefHeight="34.0" prefWidth="572.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ChoiceBox>
+  </children>
+</AnchorPane>

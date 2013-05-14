@@ -80,13 +80,14 @@ public class Geben {
 //		ls.add("kreuz Konig");
 //		ls.add("kreuz (kick) Ass");
 		String array[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "Konig", "(kick) Ass"};
-		String sad[] = {"kreuz ", "karo ", "piko ", "herz "};
+		String sad[] = {"kreuz", "karo", "piko", "herz"};
 		
+		// nur wenn syso benutzt wird
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < sad.length; i++) {
 			for (int s = 0; s < array.length; s++) {
-				System.out.println((sb.append(array[s].toString() + " " + sad[i].toString())));
+				//System.out.println((sb.append(array[s].toString() + " " + sad[i].toString())));
 				ls.add(array[s].toString() + " " + sad[i].toString());
 			}
 		}
