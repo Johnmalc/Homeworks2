@@ -25,15 +25,16 @@ public class Geben {
 
 		List<String> ls = new LinkedList<String>();
 
-		String array[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "Konig", "(kick) Ass"};
-		String sad[] = {"kreuz", "karo", "piko", "herz"};
+		String zeichen[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "Konig", "(kick) Ass"};
+		String arten[] = {"kreuz", "karo", "piko", "herz"};
 		
-		for (int i = 0; i < array.length; i++) {
-			for (int s = 0; s < sad.length; s++) {
-				ls.add(sad[s].toString() + " " + array[i].toString());
+		for (int i = 0; i < zeichen.length; i++) {
+			for (int s = 0; s < arten.length; s++) {
+				ls.add(arten[s].toString() + " " + zeichen[i].toString());
 			}
 		}
-		//System.out.println(ls.toString()); //Ausgabe der Liste
+		
+		// System.out.println(ls.toString()); //Ausgabe der Liste
 		
 		// Methode aus der Collections-Klasse mischt den Kartenstapel
 		Collections.shuffle(ls);
@@ -47,11 +48,9 @@ public class Geben {
 		// Schleife zum Erstellen einer Liste fuer jeden Spieler
 		int i = 0;
 		while (i < anzahlSpieler) {
-			// wird wiederholt so oft, bis die gewuenschte Anzahl nicht erzielt
-			// wird
+			// wird wiederholt so oft, bis die gewuenschte Anzahl nicht erzielt wird
 
-			List<String> spieler = new LinkedList<String>(ls.subList(0,
-					anzahlKarten));
+			List<String> spieler = new LinkedList<String>(ls.subList(0,anzahlKarten));
 			ls.removeAll(spieler);
 
 			// loescht die Elemente dieser Liste vom ganzen Stapel
