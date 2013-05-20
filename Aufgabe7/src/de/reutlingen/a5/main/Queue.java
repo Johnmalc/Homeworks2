@@ -5,11 +5,11 @@ import java.util.*;
 public class Queue<K> {
 	// ListNode aus der Aufgabe 4 (relax) copy&paste
 	// http://cs.lmu.edu/~ray/notes/queues/
-	private class ListNode<K> {
-		ListNode<K> next;
+	private class ListNode {
+		ListNode next;
 		K data;
 
-		private ListNode(K data, ListNode<K> next) {
+		private ListNode(K data, ListNode next) {
 			this.next = next;
 			this.data = data;
 		}
@@ -18,13 +18,13 @@ public class Queue<K> {
 			return data;
 		}
 
-		private ListNode<K> getNext() {
+		private ListNode getNext() {
 			return next;
 		}
 	}
 	// man setzt fur anfang und ende beides auf null
-	private ListNode<K> front = null;
-	private ListNode<K> back = null;
+	private ListNode front = null;
+	private ListNode back = null;
 	
 	public Queue() {
 
@@ -34,7 +34,7 @@ public class Queue<K> {
 	 * @return string
 	 */
 	public String toString() {
-		ListNode<K> r = front;
+		ListNode r = front;
 		StringBuilder sb = new StringBuilder();
 		while (r != null) {
 			sb.append(" < " + r.data.toString() + "> ");
@@ -49,7 +49,7 @@ public class Queue<K> {
 	 */
 	public void push(K item) {
 		// speichere neues element in ListNode
-		ListNode<K> newNode = new ListNode<K>(item, null);
+		ListNode newNode = new ListNode(item, null);
 		if (isEmpty()) {
 			front = newNode;
 		} else {
@@ -85,7 +85,7 @@ public class Queue<K> {
 	 * @return count
 	 */
 	public int size() {
-		ListNode<K> node = front;
+		ListNode node = front;
 		int count = 0;
 		while (node != null) {
 			count++;
@@ -101,7 +101,7 @@ public class Queue<K> {
 	}
 
 	public class myIterator implements Iterator<K> {
-		ListNode<K> current;
+		ListNode current;
 
 		public myIterator() {
 			current = front;
@@ -114,7 +114,7 @@ public class Queue<K> {
 		@Override
 		public K next() {
 			if (current != null) {
-				ListNode<K> temp = current;
+				ListNode temp = current;
 				current = current.getNext();
 				return temp.getData();
 			} else {

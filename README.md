@@ -11,7 +11,7 @@ Homeworks from Relax were:
 3. *Shoes* in in the folder "Aufgabe 4" -- 9/10
 4. *List class for Bank Business* is in the folder "Aufgabe 5" -- 14/15
 5. *Freiwillige Zusatzaufgabe: Formen (Objektorientierung reloaded)* is in the folder "Aufgabe 6" -- optional exercise
-6. *Generic Queue* is in the folder "Aufgabe 7" -- xx/10
+6. *Generic Queue* is in the folder "Aufgabe 7" -- 10/10
 7. *Java Collection Framework* is in the folder "Aufgabe 8" -- xx/10
 
 

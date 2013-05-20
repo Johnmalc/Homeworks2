@@ -42,3 +42,6 @@ Beispiel-Anwendung: Zeitessung einer for-Schleife in Nanosekunden
              System.out.printf("Elapsed time %1$10d ns\n",stop-start);
        }
     }
+
+
+sucvhe nach dem nicht inhalteten wert
