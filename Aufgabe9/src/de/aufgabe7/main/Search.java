@@ -10,20 +10,20 @@ public class Search {
 		int yourNumbers = Integer.parseInt(args[1]);
 
 		List<Integer> ls = new ArrayList<Integer>();
-		for (int n = 0; n <= yourNumbers; n++) {
+		for (int n = 0; n < yourNumbers; n++) {
 			ls.add(n);
 		}
 
 		// decision based on "choseSearch" var.
 		if (choseSearch == 0) { // linear
 			long start = System.nanoTime();
-			System.out.println(Search.linear(ls, yourNumbers + 1));
+			System.out.println(Search.linear(ls, yourNumbers));
 			long stop = System.nanoTime();
 			System.out.printf("Elapsed time %1$1d ns\n", stop - start);
 		} else { // binar
 			Collections.sort(ls);
 			long start = System.nanoTime();
-			System.out.println(Collections.binarySearch(ls, yourNumbers + 1));
+			System.out.println(Collections.binarySearch(ls, yourNumbers));
 			long stop = System.nanoTime();
 			System.out.printf("Elapsed time %1$1d ns\n", stop - start);
 		}
