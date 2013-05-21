@@ -1,5 +1,7 @@
 Homework done by using [http://cs.lmu.edu/~ray/notes/queues/](http://cs.lmu.edu/~ray/notes/queues/). Thank you.
 
+**Grade 10/10.**
+
 > Implementieren Sie eine Queue (Klasse Queue<K>) welche nach dem First-In First-Out Prinzip funktioniert. Die Implementierung soll auf dem Prinzip der Verkettung basieren (analog zur Liste). 
 > 
 > a)Implementieren sie dabei die folgenden Methoden:

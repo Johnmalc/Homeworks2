@@ -1,12 +1,9 @@
-package aufgabe7;
+package de.aufgabe7Ana;
 
 import java.util.*;
 
 public class Search {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		List<Integer> linkedList = new LinkedList<Integer>();
@@ -26,23 +23,17 @@ public class Search {
 			System.out.printf("Elapsed time %1$10d ns\n", stopLinear
 					- startLinear);
 		}
-
-		else if (suchArt == 1) {
+		else {
 			long start = System.nanoTime();
 			Collections.binarySearch(linkedList, n);
 			long stop = System.nanoTime();
 			System.out.printf("Elapsed time %1$10d ns\n", stop - start);
 		}
-
 	}
-
 	public static void lineareSuche(List<Integer> linkedList, Integer key) {
 		for (Integer n : linkedList) {
 			if (n == key) {
 			}
-
 		}
-
 	}
-
 }
