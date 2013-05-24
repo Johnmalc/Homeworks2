@@ -10,7 +10,7 @@ public class Search {
 		int anzahlZif = Integer.parseInt(args[0]);
 		int suchArt = Integer.parseInt(args[1]);
 
-		for (int i = 0; i > anzahlZif; i++) {
+		for (int i = 0; i < anzahlZif; i++) {
 			linkedList.add(i);
 		}
 
