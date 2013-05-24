@@ -6,12 +6,18 @@ public class Search {
 
 	public static void main(String[] args) {
 
-		int choseSearch = Integer.parseInt(args[0]);
-		int yourNumbers = Integer.parseInt(args[1]);
+		int choseSearch = Integer.parseInt(args[0]); // Auswahr der Art der
+														// Suche 0=linear,
+														// 1=binare
+		int yourNumbers = Integer.parseInt(args[1]); // Anzahl der Elementen,
+														// die in der Liste
+														// geschpeichert werden
+														// von 0 bis
+														// yourNumber-1
 
 		List<Integer> ls = new ArrayList<Integer>();
 		for (int n = 0; n < yourNumbers; n++) {
-			ls.add(n);
+			ls.add(n); //fuegt Elemente in die Liste ein
 		}
 
 		// decision based on "choseSearch" var.
