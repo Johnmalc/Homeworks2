@@ -8,7 +8,7 @@ public class Search {
 
 		int choseSearch = Integer.parseInt(args[0]);
 		int yourNumbers = Integer.parseInt(args[1]);
-					
+
 		List<Integer> ls = new ArrayList<Integer>();
 		for (int n = 0; n < yourNumbers; n++) {
 			ls.add(n);
