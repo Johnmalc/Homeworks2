@@ -21,9 +21,10 @@ public class Geben {
 	 * loschen. Inspiratation:
 	 * http://www.tutorialspoint.com/java/util/collections_shuffle.htm
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		List<String> ls = new LinkedList<String>();
+		int anzahlSpieler, anzahlKarten;
 
 		String zeichen[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Bube", "Dame", "Konig", "(kick) Ass"};
 		String arten[] = {"kreuz", "karo", "piko", "herz"};
@@ -38,10 +39,14 @@ public class Geben {
 		
 		// Methode aus der Collections-Klasse mischt den Kartenstapel
 		Collections.shuffle(ls);
-		
-		// Zum Einlesen von den Kommandozeilen
-		int anzahlSpieler = Integer.parseInt(args[0]);
-		int anzahlKarten = Integer.parseInt(args[1]);
+
+		if ((Integer.parseInt(args[0]) * Integer.parseInt(args[1])) <= 52) {
+			// Zum Einlesen von den Kommandozeilen mit exception, the mistake was here
+			anzahlSpieler = Integer.parseInt(args[0]);
+			anzahlKarten = Integer.parseInt(args[1]);
+		} else {
+			throw new Exception();
+		}
 		System.out.print("Anzahl der Karten : " + anzahlSpieler + "\n");
 		System.out.print("Anzahl von Spielern: " + anzahlKarten + "\n");
 
@@ -51,7 +56,7 @@ public class Geben {
 			// wird wiederholt so oft, bis die gewuenschte Anzahl nicht erzielt wird
 
 			List<String> spieler = new LinkedList<String>(ls.subList(0,anzahlKarten));
-			ls.removeAll(spieler);
+			ls.subList(0, anzahlKarten).clear();
 
 			// loescht die Elemente dieser Liste vom ganzen Stapel
 			System.out.println(spieler);

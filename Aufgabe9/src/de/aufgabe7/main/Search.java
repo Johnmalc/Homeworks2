@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Search {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		// Auswahr der Art der Suche 0=linear, 1=binare
 		int choseSearch = Integer.parseInt(args[0]);
 
@@ -25,12 +25,14 @@ public class Search {
 			System.out.println(Search.linear(ls, yourNumbers));
 			long stop = System.nanoTime();
 			System.out.printf("Elapsed time %1$1d ns\n", stop - start);
-		} else { // binar
+		} else if (choseSearch == 1) { // binar
 			Collections.sort(ls);
 			long start = System.nanoTime();
 			System.out.println(Collections.binarySearch(ls, yourNumbers));
 			long stop = System.nanoTime();
 			System.out.printf("Elapsed time %1$1d ns\n", stop - start);
+		} else {
+			throw new Exception();
 		}
 	}
 
