@@ -26,11 +26,13 @@ public class Main {
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-		
+		Account das =  new Account(23456789, 465, 06541, 5465);
+		Account das2 = new Account(32846519, 4965, 8576, 3122);
+		Account das3 = new Account(123456, 465, 06541, 2135);
 		//Element der Klasse Account in die Liste einfuegen
-		ac.put(1, new Account(23456789, 465, 06541, 5465));
-		ac.put(2, new Account(32846519, 4965, 8576, 3122));
-		System.out.println("\n" + "----------- Ausgabe der Liste: -----------");
+		ac.put(das.getAccountNumber(), das);
+		ac.put(das2.getAccountNumber(), das2);
+		System.out.println("\n" + "----------- Ausgabe der Map: -----------");
 		System.out.println(ac.toString());
 		
 		/*
@@ -38,14 +40,14 @@ public class Main {
 		 * insertFirst(...) in die Liste ein. Uberprufen Sie die Korrektheit
 		 * indem Sie die Liste erneut auf der Konsole ausgeben.
 		 */
-		ac.put(3, new Account(123456, 465, 06541, 2135));
+		ac.put(das3.getAccountNumber(), das3);
 
 		// Gibt false zurueck, wenn die Liste nicht leer ist
-		System.out.println("Ist die Liste leer : " + ac.isEmpty());
+		System.out.println("Ist die Map leer : " + ac.isEmpty());
 
 		// Gibt die Anzahl der Elementen in der Liste zurueck
-		System.out.println("Grosse der Liste : " + ac.size());
-		System.out.println("\n" + "----------- Ausgabe der 2 Liste: -----------");
+		System.out.println("Grosse der Maps : " + ac.size());
+		System.out.println("\n" + "----------- Ausgabe der 2 Map: -----------");
 		System.out.println(ac.toString());
 		System.out.println("----------- Ausgabe des ersten Elements ------------");
 
@@ -53,7 +55,7 @@ public class Main {
 
 		System.out.println("\n" + "----------- Ausgabe der Iterator: -------");
 
-		Iterator<Integer, Account> s = ac.keyIterator();
+		Iterator<Integer> s = ac.keyIterator();
 		int p = 0;
 		// Schaut nach Existenz des nächsten Elements
 		while (s.hasNext() == true) {
