@@ -1,7 +1,6 @@
 package de.aufgabe8.main;
 
 import java.util.*;
-
 import de.aufgabe8.exc.*;
 
 /** 
@@ -11,11 +10,10 @@ import de.aufgabe8.exc.*;
 
 public class CashMachine<K> {
 
-	//List<Account> accounts;
+	Map<Integer, Account> map;
 	private CashCard cashCard;
 	private State state;
 	private int index; //Nr des Accounts in der Liste
-	Map<Integer, Account> map;
 
 
 	public CashMachine() {
@@ -28,15 +26,11 @@ public class CashMachine<K> {
 		Account act1 = new Account(23456789, -100.0, 200, 1234);
 		Account act2 = new Account(34567890, -200.0, 300, 1234);
 		Account act3 = new Account(12345678, 0.0, 5000, 1234);
+		
 		map.put(act1.getAccountNumber(), act1);
 		map.put(act2.getAccountNumber(), act2);
 		map.put(act3.getAccountNumber(), act3);
 		
-		// accounts = new List<Account>();
-		// accounts.add(new Account(23456789, -100.0, 200, 1234)); //Verwendung
-		// der Klasse Account
-		// accounts.add(new Account(34567890, -200.0, 300, 1234));
-		// accounts.insertFirst(new Account(12345678, 0.0, 5000, 1234));
 	}
 
 	/**
@@ -61,6 +55,7 @@ public class CashMachine<K> {
 			 */
 			for (int i =0 ; i<map.size();i++) {
 				if ((map.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
+					// TODO
 					/*
 					 *  wenn account nummer und carten-account nummer entspricht > 
 					 *  speichere index, damit man weiter mit dem richtigen 
