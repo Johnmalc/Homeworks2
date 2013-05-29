@@ -12,8 +12,9 @@ Homeworks from Relax were:
 4. *List class for Bank Business* is in the folder "Aufgabe 5" -- 14/15
 5. *Freiwillige Zusatzaufgabe: Formen (Objektorientierung reloaded)* is in the folder "Aufgabe 6" -- optional exercise
 6. *Generic Queue* is in the folder "Aufgabe 7" -- 10/10
-7. *Java Collection Framework* is in the folder "Aufgabe 8" -- xx/10
-
+7. *Java Collection Framework* is in the folder "Aufgabe 8" -- 9/10
+8. *Binäre vs. Lineare Suche* is in the folder "Aufgabe 9" -- xx/15
+9. *Maps* is in the folder "Aufgabe 10" -- xx/10
 
 We had to have at least 75 out of cca. 110 to pass the final exam.
 
