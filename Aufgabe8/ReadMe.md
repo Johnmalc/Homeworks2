@@ -1,4 +1,7 @@
 # **Aufgabe 6** #
+
+We got 9 out of 10, because of there were no exception for cmd arguments (fixed).
+
 Die Klassen des Java Collection Framework bieten eine Vielzahl an nützlichen Funktionalitäten. Die folgenden kleinen Übungsaufgaben sollen Sie mit dem Framework vertraut machen.
 
 a) Schreiben Sie ein Programm, das die eingegebenen Kommandozeilenargumente (String args[]) daraufhin überprüft, ob sie mehrfach oder einfach vorkommen. Dabei soll das Programm zwei Mengen (Set<T>) bestimmen, wobei die eine der Menge der Duplikate und die andere der Menge der Unikate entspricht. Das Programm soll am Ende die Menge der Duplikate und die Menge der Unikate ausgeben.

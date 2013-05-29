@@ -14,6 +14,8 @@ public class FindDups {
 	 * die eine der Menge der Duplikate und die andere der Menge der Unikate
 	 * entspricht. Das Programm soll am Ende die Menge der Duplikate und die
 	 * Menge der Unikate ausgeben.
+	 * 
+	 * Man sollte List nutzen, nicht set, ware besser. Kein Abzug
 	 */
 
 	public static void main(String[] args) {
@@ -32,8 +34,8 @@ public class FindDups {
 		 * loescht alle Elemente in Mende uni, die es in Menge duplikate auch
 		 * gibt, d.h. bleibt nur die Differenz von beiden Mengen
 		 */
-		uni.removeAll(duplikate);
-
+		uni.removeAll(duplikate);		
+		
 		System.out.println(uni);
 		System.out.println(duplikate);
 
