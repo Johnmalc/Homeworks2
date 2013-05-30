@@ -2,6 +2,7 @@ package de.aufgabe8.main;
 
 import java.util.*;
 import java.util.Map.Entry;
+
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
@@ -19,17 +20,17 @@ public class Main {
 		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
 		 * der Methode isEmpty(). Gibt true wenn leer - false wenn besetzt
 		 */
-		System.out.println("Ist die Set leer : " + ac.isEmpty()); 
-		
+		System.out.println("Ist die Set leer : " + ac.isEmpty());
+
 		/*
 		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
 		 * Konsole aus. Insiration taken from
 		 * http://www.java-examples.com/get-elements-linkedlist-java-example
 		 */
-		Account das =  new Account(23456789, 465, 06541, 5465);
+		Account das = new Account(23456789, 465, 06541, 5465);
 		Account das2 = new Account(32846519, 4965, 8576, 3122);
 		Account das3 = new Account(123456, 465, 06541, 2135);
-		
+
 		// Element der Klasse Account in die Liste einfuegen
 		ac.put(das.getAccountNumber(), das);
 		ac.put(das2.getAccountNumber(), das2);
