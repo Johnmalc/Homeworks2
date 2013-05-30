@@ -3,7 +3,7 @@ package de.aufgabe8.main;
 import java.util.*;
 import de.aufgabe8.exc.*;
 
-/** 
+/**
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
@@ -13,24 +13,22 @@ public class CashMachine<K> {
 	Map<Integer, Account> map;
 	private CashCard cashCard;
 	private State state;
-	private int index; //Nr des Accounts in der Liste
-
+	private Integer key; //Nr des Accounts in der Liste
 
 	public CashMachine() {
-		index = 0;
+		key = null;
 		state = State.READY;
 
-		// neu accounty erstellt.
 		map = new TreeMap<Integer, Account>();
-
+		// Erstellung der Accounts
 		Account act1 = new Account(23456789, -100.0, 200, 1234);
-		Account act2 = new Account(34567890, -200.0, 300, 1234);
-		Account act3 = new Account(12345678, 0.0, 5000, 1234);
-		
+		Account act2 = new Account(34567890, -200.0, 300, 2345);
+		Account act3 = new Account(12345678, 0.0, 5000, 3456);
+		// Speicherung der erstelleten Accounts in Map
 		map.put(act1.getAccountNumber(), act1);
 		map.put(act2.getAccountNumber(), act2);
 		map.put(act3.getAccountNumber(), act3);
-		
+
 	}
 
 	/**
@@ -44,39 +42,29 @@ public class CashMachine<K> {
 	 * @throws InvalidCardException
 	 * @throws CardInsertedException
 	 */
-	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
+	public void insertCashCard(CashCard cashCardX)
+			throws CardInsertedException, InvalidCardException {
 		switch (state) {
 		case READY:
 			cashCard = cashCardX;
-			state = State.CARD_INSERTED;
+			
 			/*
-			 *  Sucht die passende Konto nach AccountNummer
-			 *  muss man andern wegen Iterable > alte for loop
+			 * Sucht die passende Konto nach AccountNummer
 			 */
-			for (int i =0 ; i<map.size();i++) {
-				if ((map.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
-					// TODO
-					/*
-					 *  wenn account nummer und carten-account nummer entspricht > 
-					 *  speichere index, damit man weiter mit dem richtigen 
-					 *  (passenden) Account arbeiten kann
-					 */
-					this.index = i;
-					break;
-				} else {
-					index++;
-					if (index >= map.size()) {
-						state=State.READY;
-							throw new InvalidCardException();
-			  		}
-				}
-			}
+			if (map.containsKey(cashCardX.getAccountNumber()) == true) {
+				state = State.CARD_INSERTED;
+				key=cashCardX.getAccountNumber();
+			} else
+				throw new InvalidCardException();// Gibt Exception, wenn die
+													// benoenigte Accountnummer
+													// nicht zu finden ist
+
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 			break;
 		default:
 			throw new CardInsertedException();
 		} // switch Ende
-	}
+	}// Methode Ende
 
 	/**
 	 * Die Methode gleicht die Eingabe des Pins mit dem Pin des gerade
@@ -92,13 +80,15 @@ public class CashMachine<K> {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,
+			CardNotInsertedException, InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
-			if (map.get(index).getPin() == pinX) {
+			if (map.get(key).getPin() == pinX) {
 				state = State.PIN_CORRECT;
 				System.out.println("Sie haben den richtigen Pin eingegeben.");
-				System.out.println("Automat ist auf Status " + state + " gesetzt.");
+				System.out.println("Automat ist auf Status " + state
+						+ " gesetzt.");
 			} else {
 				throw new PinNotCorectException();
 			} // end of if-else
@@ -119,13 +109,18 @@ public class CashMachine<K> {
 	 * @throws PinNotCorectException
 	 * @throws NotEnoughMoneyException
 	 */
-	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
+	public void withdraw(double amount) throws PinNotCorectException,
+			NotEnoughMoneyException {
 		switch (state) {
 		case PIN_CORRECT:
-			System.out.println("Ihr Kontoguthaben ist: " + map.get(index).getBankDeposit() + " Euro.");
-			if (map.get(index).getBankDeposit() - amount >= map.get(index).getOverdraft()) {
-				map.get(index).setBankDeposit(map.get(index).getBankDeposit() - amount);
-				System.out.println("Sie haben erfolgreich " + amount + " Euro abgehoben.");
+			System.out.println("Ihr Kontoguthaben ist: "
+					+ map.get(key).getBankDeposit() + " Euro.");
+			if (map.get(key).getBankDeposit() - amount >= map.get(key)
+					.getOverdraft()) {
+				map.get(key).setBankDeposit(
+						map.get(key).getBankDeposit() - amount);
+				System.out.println("Sie haben erfolgreich " + amount
+						+ " Euro abgehoben.");
 			} else {
 				throw new NotEnoughMoneyException();
 			}
@@ -145,11 +140,10 @@ public class CashMachine<K> {
 	public void accountStatement() throws CardNotInsertedException {
 		// prueft ob genug Geld ist
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
-			System.out.println("\n" + 
-					"Account Statement: " + "\n" + 
-					"Account Nr.: " + map.get(index).getAccountNumber() + "\n" + 
-					"Bank Deposit: " + map.get(index).getBankDeposit() + "\n" + 
-					"Overdraft: " + map.get(index).getOverdraft());
+			System.out.println("\n" + "Account Statement: " + "\n"
+					+ "Account Nr.: " + map.get(key).getAccountNumber()
+					+ "\n" + "Bank Deposit: " + map.get(key).getBankDeposit()
+					+ "\n" + "Overdraft: " + map.get(key).getOverdraft());
 		} else {
 			throw new CardNotInsertedException();
 		}
@@ -169,7 +163,7 @@ public class CashMachine<K> {
 	public void ejectCashCard() throws CardNotInsertedException {
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
 			cashCard = null;
-			index = 0;
+			key = 0;
 			state = State.READY;
 			System.out.println("Ihr Karte ist entfenrt!");
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
