@@ -1,13 +1,13 @@
 package de.aufgabe8.main;
 
-/** 
+/**
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
 
 public class CashCard {
 	private int accountNumber;
-	
+
 	// Constructor
 	public CashCard(int accountNumber) {
 		this.accountNumber = accountNumber;
