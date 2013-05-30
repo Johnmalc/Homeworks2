@@ -7,7 +7,6 @@ import de.aufgabe8.exc.*;
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
-
 public class CashMachine<K> {
 
 	Map<Integer, Account> map;
@@ -19,7 +18,7 @@ public class CashMachine<K> {
 		key = null;
 		state = State.READY;
 
-		map = new TreeMap<Integer, Account>();
+		map = new HashMap<Integer, Account>();
 		// Erstellung der Accounts
 		Account act1 = new Account(23456789, -100.0, 200, 1234);
 		Account act2 = new Account(34567890, -200.0, 300, 2345);
@@ -28,7 +27,6 @@ public class CashMachine<K> {
 		map.put(act1.getAccountNumber(), act1);
 		map.put(act2.getAccountNumber(), act2);
 		map.put(act3.getAccountNumber(), act3);
-
 	}
 
 	/**
@@ -42,29 +40,29 @@ public class CashMachine<K> {
 	 * @throws InvalidCardException
 	 * @throws CardInsertedException
 	 */
-	public void insertCashCard(CashCard cashCardX)
-			throws CardInsertedException, InvalidCardException {
+	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
 		switch (state) {
 		case READY:
 			cashCard = cashCardX;
-			
 			/*
 			 * Sucht die passende Konto nach AccountNummer
 			 */
-			if (map.containsKey(cashCardX.getAccountNumber()) == true) {
+			if (map.containsKey(cashCard.getAccountNumber()) == true) {
 				state = State.CARD_INSERTED;
-				key=cashCardX.getAccountNumber();
-			} else
-				throw new InvalidCardException();// Gibt Exception, wenn die
-													// benoenigte Accountnummer
-													// nicht zu finden ist
-
+				key = cashCard.getAccountNumber();
+			} else {
+				/*
+				 * Gibt Exception, wenn die benoenigte Accountnummer nicht zu
+				 * finden ist
+				 */
+				throw new InvalidCardException();
+			}
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 			break;
 		default:
 			throw new CardInsertedException();
-		} // switch Ende
-	}// Methode Ende
+		}
+	}
 
 	/**
 	 * Die Methode gleicht die Eingabe des Pins mit dem Pin des gerade
@@ -80,8 +78,7 @@ public class CashMachine<K> {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,
-			CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException, CardNotInsertedException, InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
 			if (map.get(key).getPin() == pinX) {
@@ -109,8 +106,7 @@ public class CashMachine<K> {
 	 * @throws PinNotCorectException
 	 * @throws NotEnoughMoneyException
 	 */
-	public void withdraw(double amount) throws PinNotCorectException,
-			NotEnoughMoneyException {
+	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
 		switch (state) {
 		case PIN_CORRECT:
 			System.out.println("Ihr Kontoguthaben ist: "
@@ -162,10 +158,9 @@ public class CashMachine<K> {
 	 */
 	public void ejectCashCard() throws CardNotInsertedException {
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
-			cashCard = null;
 			key = 0;
 			state = State.READY;
-			System.out.println("Ihr Karte ist entfenrt!");
+			System.out.println("Ihre Karte ist entfernt!");
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 		} else {
 			throw new CardNotInsertedException();

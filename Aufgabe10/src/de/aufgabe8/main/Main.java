@@ -11,22 +11,14 @@ import java.util.Map.Entry;
 public class Main {
 	public static void main(String[] args) {
 
-		/*
-		 * Testen Sie die Klasse List insbesondere unter Verwendung der Klasse
-		 * Account (aus Aufgabe 1) als Konkretisierung des Typ-Parameters
-		 */
-		TreeMap<Integer, Account> ac = new TreeMap<Integer, Account>();
+		HashMap<Integer, Account> ac = new HashMap<Integer, Account>();
 		/*
 		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
 		 * der Methode isEmpty(). Gibt true wenn leer - false wenn besetzt
 		 */
 		System.out.println("Ist die Set leer : " + ac.isEmpty());
 
-		/*
-		 * 2 Account-Objekte der Liste hinzu und geben Sie die Liste auf der
-		 * Konsole aus. Insiration taken from
-		 * http://www.java-examples.com/get-elements-linkedlist-java-example
-		 */
+		// erstellung account objekten, die danach in map kommen
 		Account das = new Account(23456789, 465, 06541, 5465);
 		Account das2 = new Account(32846519, 4965, 8576, 3122);
 		Account das3 = new Account(123456, 465, 06541, 2135);
