@@ -18,7 +18,7 @@ public class Messung {
 		if (anzahlElement >= 1) {
 			HashMap<Integer, String> map = new HashMap<Integer, String>();
 			for (int i = 0; i < anzahlElement; i++) {
-				map.put(i, "Wort" + "i");
+				map.put(i, "Wort " + i);
 			}
 			long startM = System.nanoTime();
 			map.containsValue(anzahlElement);
