@@ -38,10 +38,30 @@ public class Main {
 		System.out.println("Grosse der Maps : " + ac.size());
 
 		System.out.println("\n" + "----------- Ausgabe der Iterator: -------");
+
 		/*
-		 * http://stackoverflow.com/questions/46898/how-do-i-iterate-over-each-entry
-		 * -in-a-map
+		 * Iterator fur Schluessel-Werte
 		 */
+		Iterator<Integer> iter = (Iterator<Integer>) ac.keySet().iterator();
+		while (iter.hasNext() == true) {
+
+			System.out.println(" " + iter.next());
+		}
+
+		/*
+		 * Iterator fur Werte
+		 */
+		Iterator<Account> iter2 = (Iterator<Account>) ac.values().iterator();
+		while (iter2.hasNext() == true) {
+
+			System.out.println(" " + iter2.next());
+		}
+
+		/*
+		 * Ausgabe mit der Hilfe des Interfaces Entry
+		 */
+		System.out.println("\n"
+				+ "----------- Ausgabe der Schlüssel-Wert-Paar: -------");
 		for (Entry<Integer, Account> entry : ac.entrySet()) {
 			System.out.println(entry.getKey() + "/" + entry.getValue());
 		}
