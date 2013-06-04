@@ -1,6 +1,6 @@
 # Homeworks2 #
 
-These are my homeworks - done with 1 girl. They are from 2 semester of CS class in Hochschule Reutlingen. High five to Mr. Schmollinger - our Professor. 
+These are my homeworks - done with 1 girl. Homeworks have been done in the 2.semester of CS class at the Reutlingen University. High five to Mr. Schmollinger - our Professor. 
 
 **MIT Licence**
 
@@ -10,11 +10,13 @@ Homeworks from Relax were:
 2. *Produkte* is in the folder "Aufgabe 3" -- 9.5/10
 3. *Shoes* in in the folder "Aufgabe 4" -- 9/10
 4. *List class for Bank Business* is in the folder "Aufgabe 5" -- 14/15
-5. *Freiwillige Zusatzaufgabe: Formen (Objektorientierung reloaded)* is in the folder "Aufgabe 6" -- optional exercise
+5. *Freiwillige Zusatzaufgabe: Formen (Objektorientierung reloaded)* is in the folder "Aufgabe 6" -- optional exercise, doesn't count as part of exercises
 6. *Generic Queue* is in the folder "Aufgabe 7" -- 10/10
 7. *Java Collection Framework* is in the folder "Aufgabe 8" -- 9/10
-8. *Binäre vs. Lineare Suche* is in the folder "Aufgabe 9" -- xx/15
+8. *Binare vs. Lineare Suche* is in the folder "Aufgabe 9" -- xx/15
 9. *Maps* is in the folder "Aufgabe 10" -- xx/10
+10. *Uberwachung des Lagerbestandes (Observer)* is in the folder "Aufgabe 11" -- xx/15
+11. *Verzeichnisbaume (Composite)* is in the folder "Aufgabe 12" -- xx/10
 
 We had to have at least 75 out of cca. 110 to pass the final exam.
 
