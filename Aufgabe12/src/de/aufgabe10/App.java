@@ -1,13 +1,13 @@
 package de.aufgabe10;
 
-public class Main {
+public class App {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Directory di = new Directory();
+		
 	}
 
 }
