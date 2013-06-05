@@ -12,7 +12,7 @@ public class CashMachine<K> {
 	Map<Integer, Account> map;
 	private CashCard cashCard;
 	private State state;
-	private Integer key; //Nr des Accounts in der Liste
+	private Integer key; //Nr des Accounts in der Map
 
 	public CashMachine() {
 		key = null;
