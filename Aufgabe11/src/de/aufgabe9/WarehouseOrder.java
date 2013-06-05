@@ -11,8 +11,8 @@ public class WarehouseOrder implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
+		if (((Produkt) o).getHolding() < ((Produkt) o).getMinHolding()) {
+			System.out.println("Sie mussen bald mehr einkaufen");
+		}
 	}
-
 }

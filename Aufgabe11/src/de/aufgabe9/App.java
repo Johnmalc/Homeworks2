@@ -20,8 +20,8 @@ public class App {
 		pr.addObserver(wo);
 		pr.addObserver(wd);
 
-		pr.removeProducts(3);
-		System.out.println(pr.hasChanged());
+		pr.removeProducts(1);
+		pr.removeProducts(11);
 	}
 
 }

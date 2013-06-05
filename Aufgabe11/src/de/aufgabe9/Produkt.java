@@ -88,17 +88,21 @@ public class Produkt extends Observable {
 	 * @param amount
 	 */
 	public void removeProducts(int amount) {
+		if (holding < 0) {
+			throw new RuntimeException("kann null nicht sein");
+		}
 		System.out.println("delete von " + amount + " produkten");
 		int sd = getHolding() - amount;
 		this.holding = sd;
 		setChanged();
+		// System.out.println(hasChanged()); wird true sein
 		notifyObservers(amount);
 
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 * TODO
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
