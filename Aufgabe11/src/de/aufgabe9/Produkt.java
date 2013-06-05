@@ -87,6 +87,13 @@ public class Produkt extends Observable {
 	 * @param amount
 	 */
 	public void removeProducts(int amount) {
+		if (this.holding >= amount) {
+			this.holding = holding - amount;
+			setChanged();
+			notifyObservers(this.holding);
+		} else
+			throw new RuntimeException(
+					"Unmoeglich! Sie haben nicht genung Ressourcen!");
 
 	}
 }
