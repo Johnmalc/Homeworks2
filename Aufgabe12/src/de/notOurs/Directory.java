@@ -37,7 +37,7 @@ public class Directory implements Entry {
 
 		for (int i = 0; i < list.length; i++) {
 			if (list[i] == null) {
-				continue; // �berspringt bis zur naechsten Stelle}
+				continue; // uberspringt bis zur naechsten Stelle}
 			} else
 				list[i].print();
 		}

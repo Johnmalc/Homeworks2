@@ -74,7 +74,7 @@ public class Product extends Observable {
 
 		else {
 			throw new RuntimeException(
-					"Sie d�rfen nicht mehr Abbuchen als im Lager vorhanden ist. Bestellen Sie bitte zuerst neu!!!");
+					"Sie durfen nicht mehr Abbuchen als im Lager vorhanden ist. Bestellen Sie bitte zuerst neu!!!");
 		}
 	}
 }

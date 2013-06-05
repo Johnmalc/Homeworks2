@@ -21,7 +21,7 @@ public class Directory implements Entry {
 
 	public void print() {
 		System.out.println(name + "----> Enth�lt " + numberOfEntries()
-				+ " Eintr�ge:");
+				+ " Eintrage:");
 		for (Entry e : al) {
 			e.print();
 		}

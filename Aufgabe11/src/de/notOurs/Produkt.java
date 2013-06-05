@@ -50,7 +50,7 @@ public class Produkt extends Observable {
 		if (Lagerbestand <= 0)
 			throw new RuntimeException("Lagerbestand darf nicht negativ sein");
 		Lagerbestand = Lagerbestand - amount;
-		setChanged(); // Signal f�r Beobachter
+		setChanged(); // Signal fur Beobachter
 		notifyObservers(Lagerbestand);
 	}
 
