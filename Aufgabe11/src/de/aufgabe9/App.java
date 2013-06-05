@@ -13,8 +13,15 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		Produkt pr = new Produkt(12654, "Produkt Nr1", 15, 5);
-		
-		
+		System.out.println(pr.toString());
+		WarehouseDisplay wd = new WarehouseDisplay();
+		WarehouseOrder wo = new WarehouseOrder();
+
+		pr.addObserver(wo);
+		pr.addObserver(wd);
+
+		pr.removeProducts(3);
+		System.out.println(pr.hasChanged());
 	}
 
 }
