@@ -20,7 +20,7 @@ public class Directory implements Entry {
 	}
 
 	public void print() {
-		System.out.println(name + "----> Enth�lt " + numberOfEntries()
+		System.out.println(name + "----> Enthult " + numberOfEntries()
 				+ " Eintrage:");
 		for (Entry e : al) {
 			e.print();
