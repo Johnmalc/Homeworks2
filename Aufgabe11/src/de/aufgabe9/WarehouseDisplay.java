@@ -7,8 +7,7 @@ public class WarehouseDisplay implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("der aktuelle Lagerbestand ist " + arg);
 	}
 	/**
 	 * welche den aktuellen Lagerbestand eines Produktes auf der Konsole
