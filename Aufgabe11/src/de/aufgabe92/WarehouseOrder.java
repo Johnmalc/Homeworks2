@@ -11,11 +11,16 @@ public class WarehouseOrder implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
+<<<<<<< HEAD:Aufgabe11/src/de/aufgabe92/WarehouseOrder.java
 		if (((Produkt) o).minHolding >= (Integer) arg) {
 			System.out.println("-= Bestell-Warnung =-");
 			System.out.println("Eine Bestellung ist zu machen.");
 		}
 
+=======
+		if (((Produkt) o).getHolding() < ((Produkt) o).getMinHolding()) {
+			System.out.println("Sie mussen bald mehr einkaufen");
+		}
+>>>>>>> aufgabe:Aufgabe11/src/de/aufgabe9/WarehouseOrder.java
 	}
-
 }

@@ -16,6 +16,7 @@ public class App {
 
 		p.setBestandserhoehung(10);
 		System.out.println(p.getLagerbestand());
+		System.out.println(p.hasChanged());
 
 		try {
 			p.removeProducts(500);

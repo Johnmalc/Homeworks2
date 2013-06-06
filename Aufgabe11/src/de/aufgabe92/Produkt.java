@@ -79,6 +79,7 @@ public class Produkt extends Observable {
 	 */
 	public void setMinHolding(int minHolding) {
 		this.minHolding = minHolding;
+
 	}
 
 	/**
@@ -87,6 +88,7 @@ public class Produkt extends Observable {
 	 * @param amount
 	 */
 	public void removeProducts(int amount) {
+<<<<<<< HEAD:Aufgabe11/src/de/aufgabe92/Produkt.java
 		if (this.holding >= amount) {
 			this.holding = holding - amount;
 			setChanged();
@@ -94,6 +96,29 @@ public class Produkt extends Observable {
 		} else
 			throw new RuntimeException(
 					"Unmoeglich! Sie haben nicht genung Ressourcen!");
+=======
+		if (holding < 0) {
+			throw new RuntimeException("kann null nicht sein");
+		}
+		System.out.println("delete von " + amount + " produkten");
+		int sd = getHolding() - amount;
+		this.holding = sd;
+		setChanged();
+		// System.out.println(hasChanged()); wird true sein
+		notifyObservers(amount);
 
+	}
+>>>>>>> aufgabe:Aufgabe11/src/de/aufgabe9/Produkt.java
+
+	/*
+	 * (non-Javadoc)
+	 * TODO
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Produkt [pNr=" + pNr + ", "
+				+ (pDescr != null ? "pDescr=" + pDescr + ", " : "")
+				+ "holding=" + holding + ", minHolding=" + minHolding + "]";
 	}
 }
