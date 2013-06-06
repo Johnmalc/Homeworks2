@@ -1,4 +1,4 @@
-package de.aufgabe9;
+package de.aufgabe.d;
 
 public class App {
 
@@ -13,25 +13,11 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		Produkt pr = new Produkt(12654, "Produkt Nr1", 15, 5);
-<<<<<<< HEAD:Aufgabe11/src/de/aufgabe92/App.java
-		WarehouseDisplay wd = new WarehouseDisplay();
-		WarehouseOrder wo = new WarehouseOrder();
-		pr.addObserver(wd);
-		pr.addObserver(wo);
-
-		pr.removeProducts(10);
-
-=======
-		System.out.println(pr.toString());
 		WarehouseDisplay wd = new WarehouseDisplay();
 		WarehouseOrder wo = new WarehouseOrder();
 
-		pr.addObserver(wo);
 		pr.addObserver(wd);
-
-		pr.removeProducts(1);
-		pr.removeProducts(11);
->>>>>>> aufgabe:Aufgabe11/src/de/aufgabe9/App.java
+		pr.addObserver(wo);
+		pr.removeProducts(13);
 	}
-
 }

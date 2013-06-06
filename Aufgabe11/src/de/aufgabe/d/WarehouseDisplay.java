@@ -1,4 +1,4 @@
-package de.aufgabe9;
+package de.aufgabe.d;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -11,10 +11,7 @@ public class WarehouseDisplay implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-<<<<<<< HEAD:Aufgabe11/src/de/aufgabe92/WarehouseDisplay.java
-		System.out.println("der aktuelle Lagerbestand ist " + arg);
-=======
-		System.out.println("Neues anzahl von Produkten ->" + ((Produkt) o).getHolding());
->>>>>>> aufgabe:Aufgabe11/src/de/aufgabe9/WarehouseDisplay.java
+		System.out.println("Neues anzahl von Produkten ->"
+				+ ((Produkt) o).getHolding());
 	}
 }

@@ -1,4 +1,4 @@
-package de.aufgabe9;
+package de.aufgabe.ana;
 
 public class App {
 
