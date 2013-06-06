@@ -88,6 +88,15 @@ public class Produkt extends Observable {
 	 * @param amount
 	 */
 	public void removeProducts(int amount) {
+<<<<<<< HEAD:Aufgabe11/src/de/aufgabe92/Produkt.java
+		if (this.holding >= amount) {
+			this.holding = holding - amount;
+			setChanged();
+			notifyObservers(this.holding);
+		} else
+			throw new RuntimeException(
+					"Unmoeglich! Sie haben nicht genung Ressourcen!");
+=======
 		if (holding < 0) {
 			throw new RuntimeException("kann null nicht sein");
 		}
@@ -99,6 +108,7 @@ public class Produkt extends Observable {
 		notifyObservers(amount);
 
 	}
+>>>>>>> aufgabe:Aufgabe11/src/de/aufgabe9/Produkt.java
 
 	/*
 	 * (non-Javadoc)
