@@ -1,22 +1,23 @@
 package de.aufgabe10;
 
 public class File implements Entry {
-	String neco;
+	/*
+	 * Leaf = listek 
+	 */
+	String name;
 
 	public File(String string) {
-		this.neco = string;
+		this.name = string;
 	}
 
 	@Override
 	public void prinVerschachtelteStruktur() {
-		// TODO Auto-generated method stub
-
+		System.out.println("..." + this.name);
 	}
 
 	@Override
 	public int numberOfEntries() {
-		// TODO Auto-generated method stub
-		return 0;
+		return name.length();
 	}
 
 }

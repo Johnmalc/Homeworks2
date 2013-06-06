@@ -1,6 +1,9 @@
 package de.aufgabe10;
 
 public interface Entry {
+	/*
+	 * Component
+	 */
 	/**
 	 * Mittels einer Methode print soll die verschachtelte Struktur auf der
 	 * Konsole ausgegeben werden.

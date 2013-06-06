@@ -1,22 +1,38 @@
 package de.aufgabe10;
 
-public class Directory implements Entry {
-	String neco;
+import java.util.*;
 
+public class Directory implements Entry {
+	/*
+	 * Component = manager
+	 */
+	String name;
+	public String getname() {
+		return name;
+	}
+
+	public void setname(String name) {
+		this.name = name;
+	}
 	public Directory(String string) {
-		this.neco = string;
+		this.name = string;
+	}
+	List<Entry> b = new LinkedList<Entry>();
+	public void add(Entry en) {
+		b.add(en);
 	}
 
 	@Override
 	public void prinVerschachtelteStruktur() {
-		// TODO Auto-generated method stub
-
+		System.out.println(name);
+		for (Entry re : b) {
+			re.prinVerschachtelteStruktur();
+		}
 	}
 
 	@Override
 	public int numberOfEntries() {
-		// TODO Auto-generated method stub
-		return 0;
+		return b.size();
 	}
 
 }
