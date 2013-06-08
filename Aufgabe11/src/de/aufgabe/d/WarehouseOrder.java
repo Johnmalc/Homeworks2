@@ -12,7 +12,7 @@ public class WarehouseOrder implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if (((Produkt) o).getHolding() < ((Produkt) o).getMinHolding()) {
-			System.out.println("Sie mussen bald mehr einkaufen !!!!!!!!!!!");
+			System.out.println("Sie muessen bald neubestellen!!!!!!!!!!!");
 		}
 	}
 }
