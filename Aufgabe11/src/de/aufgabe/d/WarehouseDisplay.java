@@ -11,7 +11,7 @@ public class WarehouseDisplay implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("Neues anzahl von Produkten ->"
+		System.out.println("Neues anzahl von Produkten -> "
 				+ ((Produkt) o).getHolding());
 	}
 }

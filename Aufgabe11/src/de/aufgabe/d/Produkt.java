@@ -88,10 +88,10 @@ public class Produkt extends Observable {
 	 * @param amount
 	 */
 	public void removeProducts(int amount) {
-		if (holding < 0) {
-			throw new RuntimeException("Lagerbestand kann null nicht sein");
+		if (this.holding < amount) {
+			throw new RuntimeException("Es ist zu wenig Lagerbestand vorhanden");
 		}
-		System.out.println("delete von " + amount + " produkten");
+		System.out.println("Der Lagerbestand ist um " + amount + " Produkten reduziert.");
 		this.holding = getHolding() - amount;
 		setChanged();
 		notifyObservers(amount);
