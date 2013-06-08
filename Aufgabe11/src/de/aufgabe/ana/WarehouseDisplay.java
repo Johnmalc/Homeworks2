@@ -1,4 +1,4 @@
-package de.aufgabe9;
+package de.aufgabe.ana;
 
 import java.util.Observable;
 import java.util.Observer;

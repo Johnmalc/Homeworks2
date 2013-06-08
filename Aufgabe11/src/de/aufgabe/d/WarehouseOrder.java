@@ -1,4 +1,4 @@
-package de.aufgabe9;
+package de.aufgabe.d;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -11,11 +11,8 @@ public class WarehouseOrder implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		if (((Produkt) o).minHolding >= (Integer) arg) {
-			System.out.println("-= Bestell-Warnung =-");
-			System.out.println("Eine Bestellung ist zu machen.");
+		if (((Produkt) o).getHolding() < ((Produkt) o).getMinHolding()) {
+			System.out.println("Sie mussen bald mehr einkaufen !!!!!!!!!!!");
 		}
-
 	}
-
 }
