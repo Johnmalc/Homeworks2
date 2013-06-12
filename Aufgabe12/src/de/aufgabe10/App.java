@@ -1,5 +1,7 @@
 package de.aufgabe10;
-
+/**
+ * Dmitrij Petrov Anastasia Baron
+ */
 public class App {
 
 	/**
@@ -10,7 +12,7 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		Directory di = new Directory("C: User"); // verzeichniss
-		
+
 		Entry fi = new File("index.html"); // datei
 		Entry fo = new File("index.html"); // datei
 

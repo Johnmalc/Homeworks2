@@ -1,5 +1,8 @@
 package de.aufgabe10;
 
+/**
+ * Dmitrij Petrov Anastasia Baron
+ */
 public interface Entry {
 	/*
 	 * Component

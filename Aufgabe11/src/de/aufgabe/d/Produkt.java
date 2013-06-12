@@ -1,6 +1,10 @@
 package de.aufgabe.d;
 
 import java.util.Observable;
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 
 public class Produkt extends Observable {
 	int pNr;
@@ -91,7 +95,8 @@ public class Produkt extends Observable {
 		if (this.holding < amount) {
 			throw new RuntimeException("Es ist zu wenig Lagerbestand vorhanden");
 		}
-		System.out.println("Der Lagerbestand ist um " + amount + " Produkten reduziert.");
+		System.out.println("Der Lagerbestand ist um " + amount
+				+ " Produkten reduziert.");
 		this.holding = getHolding() - amount;
 		setChanged();
 		notifyObservers(amount);
@@ -100,7 +105,7 @@ public class Produkt extends Observable {
 
 	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

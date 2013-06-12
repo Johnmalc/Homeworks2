@@ -1,7 +1,9 @@
 package de.aufgabe10;
 
 import java.util.*;
-
+/**
+ * Dmitrij Petrov Anastasia Baron
+ */
 public class Directory implements Entry {
 	/*
 	 * Component = manager
