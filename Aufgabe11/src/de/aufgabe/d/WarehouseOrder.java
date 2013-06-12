@@ -3,6 +3,10 @@ package de.aufgabe.d;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class WarehouseOrder implements Observer {
 	/**
 	 * welche bei einer Lagerbestandsveranderung pruft. Ob der

@@ -1,5 +1,8 @@
 package de.aufgabe.d;
-
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class App {
 
 	/**

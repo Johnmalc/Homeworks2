@@ -2,7 +2,10 @@ package de.aufgabe.d;
 
 import java.util.Observable;
 import java.util.Observer;
-
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 /**
  * welche den aktuellen Lagerbestand eines Produktes auf der Konsole ausgibt,
  * sobald sich der Lagerbestand andert
