@@ -29,6 +29,8 @@ public class App {
 		dp.add(fp);
 		dp.add(fr);
 
+		di.add(dp);
+		
 		di.prinVerschachtelteStruktur();
 		System.out.println(di.getname() + "  " + di.numberOfEntries());
 
