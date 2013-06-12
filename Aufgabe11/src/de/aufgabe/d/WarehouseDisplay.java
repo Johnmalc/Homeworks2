@@ -8,7 +8,7 @@ import java.util.Observer;
  */
 /**
  * welche den aktuellen Lagerbestand eines Produktes auf der Konsole ausgibt,
- * sobald sich der Lagerbestand andert
+ * sobald sich der Lagerbestand aendert
  */
 public class WarehouseDisplay implements Observer {
 

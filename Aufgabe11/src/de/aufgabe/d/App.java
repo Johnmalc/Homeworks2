@@ -21,6 +21,6 @@ public class App {
 
 		pr.addObserver(wd);
 		pr.addObserver(wo);
-		pr.removeProducts(13);
+		pr.removeProducts(10);
 	}
 }
