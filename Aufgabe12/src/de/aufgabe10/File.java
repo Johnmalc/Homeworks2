@@ -1,8 +1,8 @@
 package de.aufgabe10;
-
-import java.util.LinkedList;
-import java.util.List;
-
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class File implements Entry {
 	/*
 	 * Leaf = listek
@@ -12,7 +12,6 @@ public class File implements Entry {
 	public File(String string) {
 		this.name = string;
 	}
-
 
 	@Override
 	public void prinVerschachtelteStruktur() {
