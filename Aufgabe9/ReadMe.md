@@ -1,5 +1,7 @@
 **Aufgabe 9**
 
+We got 15 out of 15.  
+
 Die Klasse java.util.Collections enthält eine Methode, die binäre Suche (Methode binarySearch()) auf Listen realisiert. Binäre Suche ist eine effizientes Verfahren zur Suche von Elementen in sortierten Listen.
 
 Methodensignatur:
