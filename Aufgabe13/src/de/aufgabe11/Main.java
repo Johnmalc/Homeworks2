@@ -10,13 +10,17 @@ import java.awt.event.*;
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
+ * zetcode.com/tutorials/javaswingtutorial/swingevents
+ * 
  */
 
-public class Main {
+public class Main implements ActionListener {
 	public static void main(String[] args) {
 
-		JFrame frame = new JFrame();
-		JTextField txtKontoNummer = new JTextField();
+		LinkedList<Account> ac = new LinkedList<Account>();
+
+		JFrame frame;
+		JTextField txtKontoNummer;
 		JTextField txtPinEingabe;
 		JButton btnNewButton_1;
 		JButton btnNewButton_2;
@@ -24,22 +28,35 @@ public class Main {
 		JButton btnNewButton_3;
 		JButton btnNewButton_4;
 		JTextArea txtrInformationstext;
-		
-		frame.setPreferredSize(new Dimension(400, 300));
 
-		//frame.setSize(300, 250); // TODO size ob windows
-		// frame.setBounds(260, 200, 500, 400);
+		frame = new JFrame();
+		frame.setPreferredSize(new Dimension(400, 300)); // size of the windows
+		/*
+		 * where the window will be displayed
+		 */
+		frame.setBounds(690, 200, 500, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(9, 1));
+		/*
+		 * 1. Konto nummer - TextField 2. Karte eingeben - Button 3. Pin eingabe
+		 * - TextField 4. Pin bestatigen - Button 5. Kontostand - Button 6.
+		 * Choice - Combobox 7. Geld abheben - Button 8. Karte ausgeben - Button
+		 * 9. info text > potreba vybrat
+		 */
+		txtKontoNummer = new JTextField();
 		txtKontoNummer.setText("Konto Nummer");
 		frame.getContentPane().add(txtKontoNummer);
 		txtKontoNummer.setColumns(10);
 
+		// Account das2 = new Account(32846519, 4965, 8576, 3122);
+		// Account das3 = new Account(123456, 465, 06541, 2135);
+		//
+		// // Element der Klasse Account in die Map einfuegen
+		// ac.put(das2.getAccountNumber(), das2);
+		// ac.put(das3.getAccountNumber(), das3);
+
 		JButton btnNewButton = new JButton("Karte eingeben");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnNewButton.addActionListener(this);
 		frame.getContentPane().add(btnNewButton);
 
 		txtPinEingabe = new JTextField();
@@ -50,6 +67,7 @@ public class Main {
 		btnNewButton_1 = new JButton("Pin bestatigen");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 			}
 		});
 		frame.getContentPane().add(btnNewButton_1);
@@ -58,8 +76,8 @@ public class Main {
 		frame.getContentPane().add(btnNewButton_2);
 
 		comboBox = new JComboBox<String>();
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "50", "100",
-				"200", "500", "1000" }));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "50",
+				"100", "200", "500", "1000" }));
 		frame.getContentPane().add(comboBox);
 
 		btnNewButton_3 = new JButton("Geld abheben");
@@ -76,22 +94,11 @@ public class Main {
 		frame.pack();
 		frame.setVisible(true);
 
-		HashMap<Integer, Account> ac = new HashMap<Integer, Account>();
 		/*
 		 * Prufen Sie vor und nach dem Hinzufugen der Elemente den Ruckgabewert
 		 * der Methode isEmpty(). Gibt true wenn leer - false wenn besetzt
 		 */
 		System.out.println("Ist die Set leer : " + ac.isEmpty());
-
-		// erstellung account objekten, die danach in map kommen
-		Account das = new Account(23456789, 465, 06541, 5465);
-		Account das2 = new Account(32846519, 4965, 8576, 3122);
-		Account das3 = new Account(123456, 465, 06541, 2135);
-
-		// Element der Klasse Account in die Map einfuegen
-		ac.put(das.getAccountNumber(), das);
-		ac.put(das2.getAccountNumber(), das2);
-		ac.put(das3.getAccountNumber(), das3);
 
 		System.out.println("\n" + "----------- Ausgabe der Map: -----------");
 		System.out.println(ac.toString());
@@ -102,13 +109,33 @@ public class Main {
 		// Gibt die Anzahl der Elementen in die Map zurueck
 		System.out.println("Grosse der Maps : " + ac.size());
 
-		/*
-		 * Ausgabe mit der Hilfe des Interfaces Entry
-		 */
-		System.out.println("\n"
-				+ "-----Ausgabe der Schlussel-Wert-Paar (Iterator): ----");
-		for (Entry<Integer, Account> entry : ac.entrySet()) {
-			System.out.println(entry.getKey() + "/" + entry.getValue());
-		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Scanner scan = new Scanner(System.in);
+		final int account = scan.nextInt();
+		final int depo = scan.nextInt();
+		final int over = scan.nextInt();
+		final int pin = scan.nextInt();
+		Account as = new Account(account, over, depo, pin);
+		// ac.add(as.getAccountNumber(), as);
+		// if (as.getAccountNumber() == .getAccountNumber()) {
+		JDialog di = new JDialog();
+		di.setPreferredSize(new Dimension(100, 150));
+		JLabel text = new JLabel("Is richtig");
+		di.add(text);
+		di.pack();
+		di.toFront();
+		// } else {
+		// JDialog di = new JDialog();
+		// di.setPreferredSize(new Dimension(100, 150));
+		// JLabel text = new JLabel("Is falsch ");
+		// di.add(text);
+		// di.pack();
+		// di.toFront();
+		// }
+		// }
+
 	}
 }
