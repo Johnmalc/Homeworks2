@@ -13,10 +13,11 @@ Homeworks from Relax were:
 5. *Freiwillige Zusatzaufgabe: Formen (Objektorientierung reloaded)* is in the folder "Aufgabe 6" -- optional exercise, doesn't count as part of exercises
 6. *Generic Queue* is in the folder "Aufgabe 7" -- 10/10
 7. *Java Collection Framework* is in the folder "Aufgabe 8" -- 9/10
-8. *Binare vs. Lineare Suche* is in the folder "Aufgabe 9" -- xx/15
+8. *Binare vs. Lineare Suche* is in the folder "Aufgabe 9" -- 15/15
 9. *Maps* is in the folder "Aufgabe 10" -- xx/10
 10. *Uberwachung des Lagerbestandes (Observer)* is in the folder "Aufgabe 11" -- xx/15
 11. *Verzeichnisbaume (Composite)* is in the folder "Aufgabe 12" -- xx/10
+12. *GUI Geldautomat (Swing)* (not my decision- proffessorts one) in the folder "Aufgabe 13" -- xx/15
 
 We had to have at least 75 out of cca. 110 to pass the final exam.
 

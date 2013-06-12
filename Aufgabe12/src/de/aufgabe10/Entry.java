@@ -1,7 +1,8 @@
 package de.aufgabe10;
 
 /**
- * Dmitrij Petrov Anastasia Baron
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
  */
 public interface Entry {
 	/*

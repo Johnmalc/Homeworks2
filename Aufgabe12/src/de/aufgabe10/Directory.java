@@ -3,11 +3,12 @@ package de.aufgabe10;
 import java.util.*;
 
 /**
- * Dmitrij Petrov Anastasia Baron
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
  */
 public class Directory implements Entry {
 	/*
-	 * Component = manager
+	 * Composite = manager
 	 */
 	String name;
 
@@ -39,12 +40,7 @@ public class Directory implements Entry {
 
 	@Override
 	public int numberOfEntries() {
-		int sum = 1; // ausgewaehltes Verzeichnis wird mitgezaehlt und muss
-
-		for (int i = 0; i < doc.size(); i++) {
-			sum += doc.get(i).numberOfEntries();
-		}
-		return sum;
+		return doc.size();
 	}
 
 }
