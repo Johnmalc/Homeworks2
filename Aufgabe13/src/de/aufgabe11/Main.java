@@ -1,8 +1,6 @@
 package de.aufgabe11;
 
 import java.util.*;
-import java.util.Map.Entry;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,11 +8,11 @@ import java.awt.event.*;
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov
- * zetcode.com/tutorials/javaswingtutorial/swingevents
- * 
+ * http://zetcode.com/tutorials/javaswingtutorial/swingevents/
+ * We hate Swing
  */
 
-public class Main implements ActionListener {
+public class Main {
 	public static void main(String[] args) {
 
 		LinkedList<Account> ac = new LinkedList<Account>();
@@ -38,15 +36,20 @@ public class Main implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(9, 1));
 		/*
-		 * 1. Konto nummer - TextField 2. Karte eingeben - Button 3. Pin eingabe
-		 * - TextField 4. Pin bestatigen - Button 5. Kontostand - Button 6.
-		 * Choice - Combobox 7. Geld abheben - Button 8. Karte ausgeben - Button
+		 * 1. Konto nummer - TextField 
+		 * 2. Karte eingeben - Button 
+		 * 3. Pin eingabe - TextField 
+		 * 4. Pin bestatigen - Button 
+		 * 5. Kontostand - Button 
+		 * 6. Choice - Combobox 
+		 * 7. Geld abheben - Button 
+		 * 8. Karte ausgeben - Button
 		 * 9. info text > potreba vybrat
 		 */
 		txtKontoNummer = new JTextField();
 		txtKontoNummer.setText("Konto Nummer");
-		frame.getContentPane().add(txtKontoNummer);
 		txtKontoNummer.setColumns(10);
+		frame.getContentPane().add(txtKontoNummer);
 
 		// Account das2 = new Account(32846519, 4965, 8576, 3122);
 		// Account das3 = new Account(123456, 465, 06541, 2135);
@@ -56,9 +59,22 @@ public class Main implements ActionListener {
 		// ac.put(das3.getAccountNumber(), das3);
 
 		JButton btnNewButton = new JButton("Karte eingeben");
-		btnNewButton.addActionListener(this);
 		frame.getContentPane().add(btnNewButton);
-
+		/*
+		 * http://openbook.galileodesign.de/javainsel5/javainsel15_006.htm#Rxx747java150060400053E1F024100
+		 */
+		btnNewButton.addActionListener( new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		// TODO prove if pin from Account == pin from Scanner
+				JDialog diaBu = new JDialog();
+				JLabel sj = new JLabel("Richtig", SwingConstants.CENTER);
+				diaBu.add(sj);
+				diaBu.setSize(200, 250);
+				diaBu.setLocationRelativeTo(null);
+				diaBu.setVisible(true);
+			}
+		});
+		
 		txtPinEingabe = new JTextField();
 		txtPinEingabe.setText("Pin eingabe");
 		frame.getContentPane().add(txtPinEingabe);
@@ -67,7 +83,12 @@ public class Main implements ActionListener {
 		btnNewButton_1 = new JButton("Pin bestatigen");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				JDialog diaBu = new JDialog();
+				JLabel sj = new JLabel("Richtig", SwingConstants.CENTER);
+				diaBu.add(sj);
+				diaBu.setSize(200, 250);
+				diaBu.setLocationRelativeTo(null);
+				diaBu.setVisible(true);
 			}
 		});
 		frame.getContentPane().add(btnNewButton_1);
@@ -108,34 +129,6 @@ public class Main implements ActionListener {
 
 		// Gibt die Anzahl der Elementen in die Map zurueck
 		System.out.println("Grosse der Maps : " + ac.size());
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Scanner scan = new Scanner(System.in);
-		final int account = scan.nextInt();
-		final int depo = scan.nextInt();
-		final int over = scan.nextInt();
-		final int pin = scan.nextInt();
-		Account as = new Account(account, over, depo, pin);
-		// ac.add(as.getAccountNumber(), as);
-		// if (as.getAccountNumber() == .getAccountNumber()) {
-		JDialog di = new JDialog();
-		di.setPreferredSize(new Dimension(100, 150));
-		JLabel text = new JLabel("Is richtig");
-		di.add(text);
-		di.pack();
-		di.toFront();
-		// } else {
-		// JDialog di = new JDialog();
-		// di.setPreferredSize(new Dimension(100, 150));
-		// JLabel text = new JLabel("Is falsch ");
-		// di.add(text);
-		// di.pack();
-		// di.toFront();
-		// }
-		// }
 
 	}
 }
