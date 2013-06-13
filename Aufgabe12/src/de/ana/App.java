@@ -1,5 +1,9 @@
 package de.ana;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class App {
 
 	/**
@@ -27,10 +31,10 @@ public class App {
 		privat.add(sommer);
 
 		documente.print(); // Ausgabe der verschachtelten Struktur
-		System.out.println(documente.numberOfEntries());// die Anzahl der Eintraege
+		System.out.println(documente.numberOfEntries());// die Anzahl der
+														// Eintraege
 														// in dem jeweiligen
 														// Teilbaum
 		System.out.println(fileUrlaub.numberOfEntries());
 	}
-
 }

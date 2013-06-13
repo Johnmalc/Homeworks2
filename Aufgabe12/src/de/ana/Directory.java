@@ -1,8 +1,11 @@
 package de.ana;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
+/**
+ * @author Anastasia Baron
+ * @author Dmitry Petrov
+ */
 public class Directory implements Entry {
 
 	public Directory(String name) {
@@ -37,18 +40,14 @@ public class Directory implements Entry {
 			if (eintrag instanceof Directory)
 				sum += ((Directory) eintrag).eintraege.size();
 		}
-
 		return sum;
 	}
 
 	public void add(Entry entry) {
-
 		eintraege.add(entry);
-
 	}
 
 	public void remove(Entry entry) {
 		eintraege.remove(entry);
 	}
 }
-
