@@ -1,5 +1,6 @@
 package de.aufgabe11;
 
+import java.util.*;
 import de.aufgabe11.exc.*;
 /** 
  * @author Anastasia Baron
@@ -18,10 +19,10 @@ public class CashMachine<K> {
 		state = State.READY;
 		
 		// neu accounty erstellt.
-		accounts = new List<Account>();
+		accounts = new LinkedList<Account>();
 		accounts.add(new Account(23456789, -100.0, 200, 1234)); //Verwendung der Klasse Account
 		accounts.add(new Account(34567890, -200.0, 300, 1234));
-		accounts.insertFirst(new Account(12345678, 0.0, 5000, 1234));
+		accounts.add(new Account(12345678, 0.0, 5000, 1234));
 	}
 
 	/**
