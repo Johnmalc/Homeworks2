@@ -16,7 +16,7 @@ public class Account {
 
 	// Constructor for this class
 	public Account() {
-		
+
 	}
 
 	/**
@@ -82,7 +82,6 @@ public class Account {
 			// dann speichere mir das
 			Account.pin = value4;
 		} else {
-
 			System.out.println("Sie mussen nur 4 stellige nummer eingeben");
 			System.exit(0);
 			// bricht ab jetzt (fehlermeldung is oben geschrieben)
@@ -98,7 +97,7 @@ public class Account {
 	/**
 	 * 
 	 * @param value5
-	 * 			positionOfAccount
+	 *            positionOfAccount
 	 */
 	public void setAccountPossition(int value5) {
 		this.positionOfAccount = value5;

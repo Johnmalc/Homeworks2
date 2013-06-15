@@ -17,13 +17,10 @@ public class CashMachine {
 
 	public CashMachine() {
 		state = State.READY;
-		
 		accounts = new List<Account>();
 		accounts.add(new Account(23456789, -100.0, 200, 2345)); //Verwendung der Klasse Account
 		accounts.add(new Account(34567890, -200.0, 300, 3456));
-		accounts.insertFirst(new Account(45678901, 0.0, 5000, 4567));
-		
-			
+		accounts.insertFirst(new Account(45678901, 0.0, 5000, 4567));		
 	}
 
 	/**
