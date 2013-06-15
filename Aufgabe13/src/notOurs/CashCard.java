@@ -1,24 +1,16 @@
+package notOurs;
 
 public class CashCard {
 
-  int accountNumber;
+	int accountNumber;
 
-public CashCard(int nummer)
-{
-	accountNumber= nummer;
-	
-}
-	
-public int getAccountNumber()
-{
-	return accountNumber;
-}
-	
-	
-	
-	
-	
-	
-	
-	
+	public CashCard(int nummer) {
+		accountNumber = nummer;
+
+	}
+
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+
 }

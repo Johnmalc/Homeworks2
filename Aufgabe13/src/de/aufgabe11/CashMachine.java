@@ -40,7 +40,6 @@ public class CashMachine<K> {
 		switch (state) {
 		case READY:
 			cashCard = cashCardX;
-			state = State.CARD_INSERTED;
 			/*
 			 *  Sucht die passende Konto nach AccountNummer
 			 *  muss man andern wegen Iterable > alte for loop
@@ -53,6 +52,7 @@ public class CashMachine<K> {
 					 *  (passenden) Account arbeiten kann
 					 */
 					this.index = i;
+					state = State.CARD_INSERTED;
 					break;
 				} else {
 					index++;
@@ -83,7 +83,7 @@ public class CashMachine<K> {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException,InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
 			if (accounts.get(index).getPin() == pinX) {
