@@ -3,9 +3,7 @@ package de.aufgabe11;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
 import de.aufgabe11.exc.*;
 
 /*
@@ -14,7 +12,8 @@ import de.aufgabe11.exc.*;
  * http://stackoverflow.com/questions/10379527/trying-to-get-input-from-jtextfield-and-use-in-another-method
  * http://openbook.galileodesign.de/javainsel5/javainsel15_006.htm#Rxx747java150060400053E1F024100
  * 
- * We hate Swing. Yes, really. Who the fuck created it?
+ * We hate Swing. Yes, really. Who the fuck created it? In the future I will try to rewrite that in JavaFX. 
+ * It will be in this package.
  */
 public class Gui extends Vars {
 
