@@ -7,16 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import sun.applet.Main;
 
 import de.aufgabe11.exc.*;
 
@@ -28,26 +22,12 @@ import de.aufgabe11.exc.*;
  * 
  * We hate Swing. Yes, really. Who the fuck created it?
  */
-public class Gui {
-
-	/*
-	 * List of Account = for iterators in the bottom CashMashine for its own
-	 * class
-	 */
-	LinkedList<Account> linkedList = new LinkedList<Account>();
-	CashMachine<Account> cashMaAccountList = new CashMachine<Account>();
+public class Gui extends Vars {
 
 	JFrame frame;
-	final JTextField txtKontoNummer = new JTextField();
-	final JTextField txtPinEingabe = new JTextField();
-	final JButton btnNewButton_1 = new JButton("Pin bestatigen");
-	final JButton btnNewButton_2;
-	final JComboBox<Integer> comboBox;
-	final JButton btnNewButton_3 = new JButton("Geld abheben");
-	final JButton btnNewButton_4 = new JButton("Karte ausgeben");
-	final JLabel txtrInformationstext;
-	
-	public Gui() {
+
+	public Gui(){
+
 		frame = new JFrame("Unsere Swing Programma");
 		frame.setPreferredSize(new Dimension(400, 300)); // size of the windows
 
@@ -61,15 +41,10 @@ public class Gui {
 		txtKontoNummer.setColumns(10);
 		frame.getContentPane().add(txtKontoNummer);
 
-		/* --------------------------------- Jedem ------------------- */
-
-		final JButton btnNewButton = new JButton("Karte eingeben");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Asks for the input, which comes from JTetxField, parses to
-				 * int and saves under karteNummer. This then is saved & goes
-				 * into the similar object
+				 * Konto Eingabe
 				 */
 				int karteNummer = 0;
 				try {
@@ -111,29 +86,21 @@ public class Gui {
 					diaBu.setVisible(true);
 				}
 			}
-		});
-		// button zeug ende
+		});		
 		frame.getContentPane().add(btnNewButton);
 
-		/* -------------------- dalsi ------------- */
 
 		txtPinEingabe.setText("Pin eingabe");
-		frame.getContentPane().add(txtPinEingabe);
 		txtPinEingabe.setColumns(10);
+		frame.getContentPane().add(txtPinEingabe);
 
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Asks for the input, which comes from JTetxField, parses to
-				 * int and saves under karteNummer. This then is saved & goes
-				 * into the similar object
+				 * Pin Eingabe
 				 */
-				int pinNummer = 0;
-				try {
-					pinNummer = Integer.parseInt(txtPinEingabe.getText());
-				} catch (InputMismatchException r) {
+				int pinNummer = Integer.parseInt(txtPinEingabe.getText());
 
-				}
 				try {
 					cashMaAccountList.pinEingeben(pinNummer);
 					JDialog diaBu = new JDialog();
@@ -175,32 +142,40 @@ public class Gui {
 				}
 			}
 		});
-		frame.getContentPane().add(btnNewButton_1); // button 2 zeug zu ende
-		btnNewButton_2 = new JButton("Kontostand");
+		frame.getContentPane().add(btnNewButton_1);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				/*
+				 * Kontostand
+				 */
+				try {
+					cashMaAccountList.accountStatement();
+				} catch (CardNotInsertedException e) {
+
+				}
+			}
+		});
 		frame.getContentPane().add(btnNewButton_2);
-
-		comboBox = new JComboBox<Integer>();
-		comboBox.setModel(new DefaultComboBoxModel<Integer>(new Integer[] { 50,
-				100, 200, 500, 1000 }));
-
+		
 		comboBox.setEnabled(true);
 		frame.getContentPane().add(comboBox);
 
+		btnNewButton_3.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				//TODO geld abheben
+			}
+		});
 		frame.getContentPane().add(btnNewButton_3);
-
+		
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Asks for the input, which comes from JTetxField, parses to
-				 * int and saves under karteNummer. This then is saved & goes
-				 * into the similar object
+				 * Karte ausnehmen
 				 */
 				try {
 					cashMaAccountList.ejectCashCard();
-					JDialog diaBu = new JDialog();
-					JLabel sj = new JLabel("Test4 ist erfolgreich. Karte raus",
-							SwingConstants.CENTER);
-					diaBu.add(sj);
+					diaBu.add(test4);
 					diaBu.pack();
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
@@ -209,37 +184,21 @@ public class Gui {
 					btnNewButton_2.setEnabled(true);
 					txtKontoNummer.setEditable(true);
 					txtPinEingabe.setEditable(true);
-					
+
 				} catch (CardNotInsertedException e1) {
 					JDialog diaBu = new JDialog();
-					JLabel sj = new JLabel(
-							"Test4 nicht bestanden. Keine Karte",
-							SwingConstants.CENTER);
-					diaBu.add(sj);
+					diaBu.add(test4No);
 					diaBu.pack();
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
 				}
 			}
 		});
-		frame.getContentPane().add(btnNewButton_4); // button 2 zeug zu ende
-
-		txtrInformationstext = new JLabel();
-		txtrInformationstext.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		txtrInformationstext.setText("Informationstext");
-		frame.getContentPane().add(txtrInformationstext);
-
+		frame.getContentPane().add(btnNewButton_4);
+		
+		infoPanel.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		frame.getContentPane().add(infoPanel);
 		frame.pack();
 		frame.setVisible(true);
-
-	}
-
-	// TODO
-	public void setTextInformation(String text) {
-		txtrInformationstext.setText(text);
-	}
-
-	public String getTextInformation() {
-		return txtrInformationstext.getText();
 	}
 }
