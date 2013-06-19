@@ -56,6 +56,9 @@ public class Gui extends Vars {
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
 				}
+				catch (NumberFormatException NFE) {
+					System.out.println(" fehler nur zahlen ");
+				}
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
@@ -89,6 +92,9 @@ public class Gui extends Vars {
 					diaBu.pack();
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
+				}
+				catch (NumberFormatException NFE) {
+					System.out.println(" fehler nur zahlen ");
 				}
 			}
 		});
