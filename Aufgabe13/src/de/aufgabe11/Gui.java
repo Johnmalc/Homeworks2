@@ -45,6 +45,7 @@ public class Gui extends Vars {
 					cashMaAccountList.insertCashCard(kontoNummerObject);
 					txtKontoNummer.setEditable(false);
 					btnNewButton.setEnabled(false);
+					infoPanel.setText(" Karte eingegeben");
 				} catch (CardInsertedException CAI) {
 					diaBu.add(test2No);
 					diaBu.pack();
@@ -55,9 +56,8 @@ public class Gui extends Vars {
 					diaBu.pack();
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
-				}
-				catch (NumberFormatException NFE) {
-					System.out.println(" fehler nur zahlen ");
+				} catch (NumberFormatException NFE) {
+					infoPanel.setText(" fehler nur zahlen ");
 				}
 			}
 		});
@@ -77,6 +77,7 @@ public class Gui extends Vars {
 					cashMaAccountList.pinEingeben(pinNummer);
 					txtPinEingabe.setEditable(false);
 					btnNewButton_1.setEnabled(false);
+					infoPanel.setText(" Pin numer eingegeben");
 				} catch (PinNotCorectException PNC) {
 					diaBu.add(test3No);
 					diaBu.pack();
@@ -92,8 +93,7 @@ public class Gui extends Vars {
 					diaBu.pack();
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
-				}
-				catch (NumberFormatException NFE) {
+				} catch (NumberFormatException NFE) {
 					System.out.println(" fehler nur zahlen ");
 				}
 			}
@@ -122,6 +122,7 @@ public class Gui extends Vars {
 				int zahl = (int) comboBox.getSelectedItem();
 				try {
 					cashMaAccountList.withdraw(zahl);
+//TODO					infoPanel.setText(" neue kontostand ist ");
 				} catch (PinNotCorectException e1) {
 					diaBu.add(test3No);
 					diaBu.pack();
