@@ -22,13 +22,10 @@ public class Gui extends Vars {
 	public Gui() {
 
 		frame = new JFrame("Unser Swing Bank Program");
-		frame.setPreferredSize(new Dimension(400, 300)); // size of the windows
-
-		// where the window will be displayed
-		frame.setBounds(390, 100, 400, 100);
-
+		frame.setPreferredSize(new Dimension(500, 350)); // size of the windows
+		frame.setBounds(250,0,200,550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(9, 1));
+		frame.getContentPane().setLayout(new GridLayout(0, 1));
 
 		txtKontoNummer.setText("Konto Nummer");
 		txtKontoNummer.setColumns(10);
@@ -113,31 +110,87 @@ public class Gui extends Vars {
 		});
 		frame.getContentPane().add(btnNewButton_2);
 
-		comboBox.setEnabled(true);
-		frame.getContentPane().add(comboBox);
+		ButtonGroup bgroup = new ButtonGroup();
+		bgroup.add(freier);
+		bgroup.add(auswahl);
 
-		btnNewButton_3.addActionListener(new ActionListener() {
+		JPanel radioPanel = new JPanel();
+		radioPanel.setLayout(new GridLayout(1,1));
+		radioPanel.setBorder(BorderFactory.createTitledBorder(
+				BorderFactory.createEtchedBorder(),
+				"No = auswahl; Yes =  freier "));
+		radioPanel.add(freier);
+		radioPanel.add(auswahl);	
+		frame.getContentPane().add(radioPanel);
 
-			public void actionPerformed(ActionEvent e) {
-				int zahl = (int) comboBox.getSelectedItem();
-				try {
-					cashMaAccountList.withdraw(zahl);
-//TODO					infoPanel.setText(" neue kontostand ist ");
-				} catch (PinNotCorectException e1) {
-					diaBu.add(test3No);
-					diaBu.pack();
-					diaBu.setLocationRelativeTo(null);
-					diaBu.setVisible(true);
-				} catch (NotEnoughMoneyException e1) {
-					diaBu.add(test1No);
-					diaBu.pack();
-					diaBu.setLocationRelativeTo(null);
-					diaBu.setVisible(true);
+		
+		if (auswahl.isSelected()) {
+			auswahl.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+//					final int zahl = (int) comboBox.getSelectedItem();
+//				
+					comboBox.setEnabled(true);
+					frame.getContentPane().add(comboBox);
+					System.out.println("kkkkkkkkkkkk");
+
+//
+//					btnNewButton_3.addActionListener(new ActionListener() {
+//						public void actionPerformed(ActionEvent e) {
+//							try {
+//								cashMaAccountList.withdraw(zahl);
+//							} catch (PinNotCorectException e1) {
+//								diaBu.add(test3No);
+//								diaBu.pack();
+//								diaBu.setLocationRelativeTo(null);
+//								diaBu.setVisible(true);
+//							} catch (NotEnoughMoneyException e1) {
+//								diaBu.add(test1No);
+//								diaBu.pack();
+//								diaBu.setLocationRelativeTo(null);
+//								diaBu.setVisible(true);
+//							}
+//						}
+//					});
+//					frame.getContentPane().add(btnNewButton_3);
 				}
-			}
-		});
-		frame.getContentPane().add(btnNewButton_3);
+			});
+			frame.getContentPane().add(freier);
+		} 
+		
+		if (freier.isSelected()) { //(freier.isSelected() == true) 
+			freier.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					System.out.println("dsfffffffffff");
+					eingabeBeitrags.setText("Eingabe beitrags");
+					eingabeBeitrags.setEnabled(true);
+					eingabeBeitrags.setColumns(10);
+					final int freierBeitrag = Integer.parseInt(eingabeBeitrags.getText());
+					frame.getContentPane().add(eingabeBeitrags);
 
+//					btnNewButton_3.addActionListener(new ActionListener() {
+//						public void actionPerformed(ActionEvent e) {
+//							try {
+//								cashMaAccountList.withdraw(freierBeitrag);
+//							} catch (PinNotCorectException e1) {
+//								diaBu.add(test3No);
+//								diaBu.pack();
+//								diaBu.setLocationRelativeTo(null);
+//								diaBu.setVisible(true);
+//							} catch (NotEnoughMoneyException e1) {
+//								diaBu.add(test1No);
+//								diaBu.pack();
+//								diaBu.setLocationRelativeTo(null);
+//								diaBu.setVisible(true);
+//							}
+//						}
+//					});
+//					frame.getContentPane().add(btnNewButton_3);
+				}
+			});
+			frame.getContentPane().add(freier);
+		}
+		
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/*

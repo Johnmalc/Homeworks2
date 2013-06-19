@@ -1,12 +1,11 @@
 package de.aufgabe11;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.*;
-
 
 public abstract class Vars {
 	final JTextField txtKontoNummer = new JTextField();
 	final JTextField txtPinEingabe = new JTextField();
+	final JTextField eingabeBeitrags = new JTextField();
 	final JButton btnNewButton = new JButton("Karte eingeben");
 	final JButton btnNewButton_1 = new JButton("Pin bestatigen");
 	final JButton btnNewButton_2 = new JButton("Kontostand");
@@ -21,6 +20,8 @@ public abstract class Vars {
 	final JLabel test2No = new JLabel("Test2 ist nicht bestanden. falsch", SwingConstants.CENTER);	
 	final JLabel test1No = new JLabel("Test1 ist nicht bestanden. Wenig geld auf dem Konto", SwingConstants.CENTER);
 	final JDialog diaBu = new JDialog();
+	JRadioButton auswahl = new JRadioButton("Yes");
+	JRadioButton freier = new JRadioButton("No");
 
 	final JComboBox<Integer> comboBox = new JComboBox<Integer>(
 			new DefaultComboBoxModel<Integer>(new Integer[] { 50, 100, 200,
