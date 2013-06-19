@@ -7,7 +7,7 @@ import de.aufgabe11.exc.*;
  * @author Dmitry Petrov
  */
 
-public class CashMachine<K> {
+public class CashMachine<K>{
 
 	List<Account> accounts;
 	private CashCard cashCard;
@@ -38,35 +38,35 @@ public class CashMachine<K> {
 	 */
 	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
 		switch (state) {
-		case READY:
-			cashCard = cashCardX;
-			state = State.CARD_INSERTED;
-			/*
-			 *  Sucht die passende Konto nach AccountNummer
-			 *  muss man andern wegen Iterable > alte for loop
-			 */
-			for (int i =0 ; i<accounts.size();i++) {
-				if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
-					/*
-					 *  wenn account nummer und carten-account nummer entspricht > 
-					 *  speichere index, damit man weiter mit dem richtigen 
-					 *  (passenden) Account arbeiten kann
-					 */
-					this.index = i;
-					break;
-				} else {
-					index++;
-					if (index >= accounts.size()) {
-						state=State.READY;
+			case READY :
+				cashCard = cashCardX;
+				/*
+				 * Sucht die passende Konto nach AccountNummer muss man andern
+				 * wegen Iterable > alte for loop
+				 */
+				for (int i = 0; i < accounts.size(); i++) {
+					if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
+						/*
+						 * wenn account nummer und carten-account nummer
+						 * entspricht > speichere index, damit man weiter mit
+						 * dem richtigen (passenden) Account arbeiten kann
+						 */
+						this.index = i;
+						state = State.CARD_INSERTED;
+						break;
+					} else {
+						index++;
+						if (index >= accounts.size()) {
+							state = State.READY;
 							throw new InvalidCardException();
-			  		}
+						}
+					}
 				}
-			}
-			System.out.println("Automat ist auf Status " + state + " gesetzt.");
-			break;
-		default:
-			throw new CardInsertedException();
-		} // switch Ende
+				System.out.println("Automat ist auf Status " + " gesetzt.");
+				break;
+			default :
+				throw new CardInsertedException();
+		} // switch Ende state
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class CashMachine<K> {
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException, InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException,InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
 			if (accounts.get(index).getPin() == pinX) {
@@ -163,10 +163,10 @@ public class CashMachine<K> {
 			cashCard = null;
 			index = 0;
 			state = State.READY;
-			System.out.println("Ihr Karte ist entfenrt!");
+		    System.out.println("Ihr Karte ist entfernt!");
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 		} else {
 			throw new CardNotInsertedException();
-		} // If Ende
+		} 
 	}
 }

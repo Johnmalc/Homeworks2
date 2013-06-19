@@ -47,7 +47,7 @@ public class CashMachine<K> {
 			/*
 			 * Sucht die passende Konto nach AccountNummer
 			 */
-			if (map.containsKey(cashCard.getAccountNumber()) == true) {
+			if (map.get(cashCard.getAccountNumber()) != null) {
 				state = State.CARD_INSERTED;
 				key = cashCard.getAccountNumber();
 			} else {
