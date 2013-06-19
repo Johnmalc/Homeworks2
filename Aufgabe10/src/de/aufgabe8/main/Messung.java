@@ -21,7 +21,7 @@ public class Messung {
 				map.put(i, "Wort " + i);
 			}
 			long startM = System.nanoTime();
-			map.containsValue(anzahlElement);
+			map.get(anzahlElement);
 			long stopM = System.nanoTime();
 			System.out.printf("Elapsed time %1$10d ns\n", stopM - startM);
 		} else {
