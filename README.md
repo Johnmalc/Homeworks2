@@ -1,6 +1,6 @@
 # Homeworks2 #
 
-These are my homeworks - done with 1 girl. Homeworks have been done in the 2.semester of CS class at the Reutlingen University. High five to Mr. Schmollinger - our Professor. 
+These are my homeworks - done with 1 girl. Homeworks have been done in the 2.semester of CS class at the Reutlingen University (Summer 2013). High five to Mr. Schmollinger - our Professor. 
 
 **MIT Licence**
 
@@ -14,12 +14,12 @@ Homeworks from Relax were:
 6. *Generic Queue* is in the folder "Aufgabe 7" -- 10/10
 7. *Java Collection Framework* is in the folder "Aufgabe 8" -- 9/10
 8. *Binare vs. Lineare Suche* is in the folder "Aufgabe 9" -- 15/15
-9. *Maps* is in the folder "Aufgabe 10" -- xx/10
+9. *Maps* is in the folder "Aufgabe 10" -- 5.5/10
 10. *Uberwachung des Lagerbestandes (Observer)* is in the folder "Aufgabe 11" -- xx/15
 11. *Verzeichnisbaume (Composite)* is in the folder "Aufgabe 12" -- xx/10
 12. *GUI Geldautomat (Swing)* (not my decision- proffessorts one) in the folder "Aufgabe 13" -- xx/15
 
-We had to have at least 75 out of cca. 110 to pass the final exam.
+We had to have at least cca. 70% out of 135 points to pass the final exam.
 
 **Not mine (teacher's convections)**
 

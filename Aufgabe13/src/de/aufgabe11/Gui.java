@@ -1,8 +1,7 @@
 package de.aufgabe11;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 import de.aufgabe11.exc.*;
 
@@ -11,9 +10,9 @@ import de.aufgabe11.exc.*;
  * http://zetcode.com/tutorials/javaswingtutorial/swingevents/
  * http://stackoverflow.com/questions/10379527/trying-to-get-input-from-jtextfield-and-use-in-another-method
  * http://openbook.galileodesign.de/javainsel5/javainsel15_006.htm#Rxx747java150060400053E1F024100
+ * http://stackoverflow.com/questions/7628121/how-can-i-refresh-or-reload-the-jframe
  * 
  * We hate Swing. Yes, really. Who the fuck created it? In the future I will try to rewrite that in JavaFX. 
- * It will be in this package.
  */
 public class Gui extends Vars {
 
@@ -22,13 +21,10 @@ public class Gui extends Vars {
 	public Gui() {
 
 		frame = new JFrame("Unser Swing Bank Program");
-		frame.setPreferredSize(new Dimension(400, 300)); // size of the windows
-
-		// where the window will be displayed
-		frame.setBounds(390, 100, 400, 100);
-
+		frame.setPreferredSize(new Dimension(500, 350)); // size of the windows
+		frame.setBounds(250, 0, 200, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(9, 1));
+		frame.getContentPane().setLayout(new GridLayout(0, 1));
 
 		txtKontoNummer.setText("Konto Nummer");
 		txtKontoNummer.setColumns(10);
@@ -113,16 +109,34 @@ public class Gui extends Vars {
 		});
 		frame.getContentPane().add(btnNewButton_2);
 
-		comboBox.setEnabled(true);
-		frame.getContentPane().add(comboBox);
+		ButtonGroup bgroup = new ButtonGroup();
+		bgroup.add(freier);
+		bgroup.add(auswahl);
 
+		JPanel radioPanel = new JPanel();
+		radioPanel.setLayout(new GridLayout(1, 1));
+		radioPanel.setBorder(BorderFactory.createTitledBorder(
+				BorderFactory.createEtchedBorder(),
+				"No = freier; Yes =  auswahl "));
+		radioPanel.add(freier);
+		radioPanel.add(auswahl);
+		frame.getContentPane().add(radioPanel);
+
+		auswahl.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				comboBox.setEnabled(true);
+				comboBox.setVisible(true);
+				frame.getContentPane().add(comboBox);
+				System.out.println(freier.isSelected());
+				SwingUtilities.updateComponentTreeUI(frame); // very nice idea
+			}
+		});
+		frame.getContentPane().add(auswahl);
 		btnNewButton_3.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-				int zahl = (int) comboBox.getSelectedItem();
 				try {
+					int zahl = (int) comboBox.getSelectedItem();
 					cashMaAccountList.withdraw(zahl);
-//TODO					infoPanel.setText(" neue kontostand ist ");
 				} catch (PinNotCorectException e1) {
 					diaBu.add(test3No);
 					diaBu.pack();
@@ -135,8 +149,42 @@ public class Gui extends Vars {
 					diaBu.setVisible(true);
 				}
 			}
-		});
-		frame.getContentPane().add(btnNewButton_3);
+		} );
+//TODO udelat pouze rozhodnuti zda jedno nebo druhe
+		
+//		freier.addItemListener(new ItemListener() {
+//			public void itemStateChanged(ItemEvent arg0) {
+//				System.out.println(freier.isSelected());
+//				eingabeBeitrags.setText("Eingabe beitrags");
+//				eingabeBeitrags.setEnabled(true);
+//				eingabeBeitrags.setEditable(true);
+//				eingabeBeitrags.setColumns(10);
+//				frame.getContentPane().add(eingabeBeitrags);
+//				SwingUtilities.updateComponentTreeUI(frame); // very nice idea
+//			}
+//		});
+//		frame.getContentPane().add(freier);
+//		btnNewButton_3.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				final int freierBeitrag = Integer.parseInt(eingabeBeitrags
+//						.getText());
+//				try {
+//					cashMaAccountList.withdraw(freierBeitrag);
+//				} catch (PinNotCorectException e1) {
+//					diaBu.add(test3No);
+//					diaBu.pack();
+//					diaBu.setLocationRelativeTo(null);
+//					diaBu.setVisible(true);
+//				} catch (NotEnoughMoneyException e1) {
+//					diaBu.add(test1No);
+//					diaBu.pack();
+//					diaBu.setLocationRelativeTo(null);
+//					diaBu.setVisible(true);
+//				}
+//			}
+//		});
+//		frame.getContentPane().add(btnNewButton_3);
+
 
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
