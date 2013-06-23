@@ -1,4 +1,4 @@
-package de.aufgabe11;
+package de.aufgabe11.d.main;
 
 import javax.swing.*;
 

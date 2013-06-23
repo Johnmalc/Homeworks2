@@ -1,4 +1,4 @@
-package de.aufgabe.ana.exc;
+package de.aufgabe11.ana.exc;
 
 public class WrongQuantityOfDigits extends Exception {
 

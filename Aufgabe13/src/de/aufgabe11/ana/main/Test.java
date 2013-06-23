@@ -1,4 +1,4 @@
-package de.aufgabe.ana.main;
+package de.aufgabe11.ana.main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -8,13 +8,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import de.aufgabe.ana.exc.*;
+import de.aufgabe11.ana.exc.*;
 
 public class Test {
 
 	private JFrame frame = new JFrame("Geldautomat");
 	private JPanel pane = new JPanel(new BorderLayout());// "Haupt"-Panel
-
 	/*
 	 * "Sub"-Panel, fuer Kontonummereingabe
 	 */
@@ -40,13 +39,13 @@ public class Test {
 	private JLabel labelInfo = new JLabel("Info");
 	// Elemenete fuer Betragauswahl und geldabheben
 	Double betragAuswahl[] = { 50., 100., 150., 200. };
-	private JComboBox betragWahl = new JComboBox(betragAuswahl);
+	private JComboBox<Double> betragWahl = new JComboBox<Double>(betragAuswahl);
 	private JButton geldAbheben = new JButton("Geldabheben");
 	// Button fuer Karteasugabe
 	private JButton karteAus = new JButton("Karte Ausgeben");
 
 	// Element von CashMachine
-	CashMachine cashMachine = new CashMachine();
+	CashMachine<Account> cashMachine = new CashMachine<Account>();
 
 	// Methode, die den Text von Exception in Feld "labelInfo" schreibt
 	private void InfoSchreiben(Exception e) {
@@ -55,7 +54,6 @@ public class Test {
 
 	//Konstruktor
 	public Test() throws CardInsertedException, InvalidCardException {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pane.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
 
 		// Karte einfuegen
@@ -83,7 +81,6 @@ public class Test {
 					InfoSchreiben(e1);
 				}// end of Try/Catch
 			}
-
 		});
 
 		// PIN-Ueberpruefung
@@ -105,9 +102,7 @@ public class Test {
 				} catch (CardNotInsertedException e1) {
 					InfoSchreiben(e1);
 				}
-
 			}
-
 		});
 
 		// Kontostand
@@ -121,9 +116,7 @@ public class Test {
 					InfoSchreiben(e1);
 					System.out.println("yes");
 				}
-
 			}
-
 		});
 
 		// Geldabheben
@@ -148,9 +141,7 @@ public class Test {
 				} catch (PinNotCorectException e1) {
 					InfoSchreiben(e1);
 				}
-
 			}
-
 		});
 
 		// Karte ausgeben
@@ -172,7 +163,6 @@ public class Test {
 					InfoSchreiben(e1);
 				}
 			}
-
 		});
 		labelInfo.setHorizontalAlignment(JLabel.CENTER);
 
@@ -201,6 +191,5 @@ public class Test {
 		// Display the window.
 		frame.pack();
 		frame.setVisible(true);
-
 	}
 }

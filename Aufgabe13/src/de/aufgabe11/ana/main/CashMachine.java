@@ -1,8 +1,7 @@
-package de.aufgabe.ana.main;
+package de.aufgabe11.ana.main;
 
 import java.util.*;
-
-import de.aufgabe.ana.exc.*;
+import de.aufgabe11.ana.exc.*;
 
 /**
  * @author Anastasia Baron
@@ -135,28 +134,12 @@ public class CashMachine<K> {
 	}
 
 	/**
-	 * Ausgabe der aktuellen Kontoinformationen auf der Konsole, nur moglich im
-	 * Zustand CARD_INSERTED. Die Methode accountStatement() kann auch im
-	 * Zustand PIN_CORRECT ausgefuhrt werden.
-	 * 
-	 * @throws CardNotInsertedException
+	 * Methode zur Ausgabe von Konto Informationen mit hilfe von String Builder
+	 * @return toString account information
 	 */
-	public void accountStatement() throws CardNotInsertedException {
-
-		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
-			System.out.println("\n" + "Account Statement: " + "\n"
-					+ "Account Nr.: " + map.get(key).getAccountNumber() + "\n"
-					+ "Bank Deposit: " + map.get(key).getBankDeposit() + "\n"
-					+ "Overdraft: " + map.get(key).getOverdraft());
-		} else {
-			throw new CardNotInsertedException("Zuerst Karte eingeben!");
-		}
-	}
-
 	public String accountStatementToString() throws CardNotInsertedException {
 		StringBuilder sb = new StringBuilder();
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
-
 			sb.append("<HTML><BODY>Account Statement: " + "<BR> Account Nr.: "
 					+ map.get(key).getAccountNumber() + "<BR>Bank Deposit: "
 					+ map.get(key).getBankDeposit() + "<BR> Overdraft: "
