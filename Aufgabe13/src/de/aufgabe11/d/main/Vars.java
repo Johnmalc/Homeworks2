@@ -22,6 +22,7 @@ public abstract class Vars {
 	final JDialog diaBu = new JDialog();
 	JRadioButton auswahl = new JRadioButton("Yes");
 	JRadioButton freier = new JRadioButton("No");
+	JFrame frame = new JFrame("Unser Swing Bank Program");
 
 	final JComboBox<Integer> comboBox = new JComboBox<Integer>(
 			new DefaultComboBoxModel<Integer>(new Integer[] { 50, 100, 200,
