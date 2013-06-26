@@ -17,13 +17,9 @@ import de.aufgabe11.d.exc.*;
  */
 public class Gui extends Vars {
 
-	JFrame frame;
-
 	public Gui() {
 
-		frame = new JFrame("Unser Swing Bank Program");
-		frame.setPreferredSize(new Dimension(500, 350)); // size of the windows
-		frame.setBounds(250, 0, 200, 550);
+		frame.setMinimumSize(new Dimension(600, 350)); // size of the windows
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(0, 1));
 
@@ -33,9 +29,6 @@ public class Gui extends Vars {
 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Konto Eingabe
-				 */
 				try {
 					int karteNummer = Integer.parseInt(txtKontoNummer.getText());
 					CashCard kontoNummerObject = new CashCard(karteNummer);
@@ -66,9 +59,6 @@ public class Gui extends Vars {
 
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Pin Eingabe
-				 */
 				try {
 					int pinNummer = Integer.parseInt(txtPinEingabe.getText());
 					cashMaAccountList.pinEingeben(pinNummer);
@@ -98,9 +88,6 @@ public class Gui extends Vars {
 		frame.getContentPane().add(btnNewButton_1);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*
-				 * Kontostand
-				 */
 				try {
 					cashMaAccountList.accountStatement();
 				} catch (CardNotInsertedException e) {
@@ -115,77 +102,91 @@ public class Gui extends Vars {
 		bgroup.add(auswahl);
 
 		JPanel radioPanel = new JPanel();
-		radioPanel.setLayout(new GridLayout(1, 1));
+		radioPanel.setLayout(new GridLayout());
+		radioPanel.add(freier);
+		radioPanel.add(auswahl);
 		radioPanel.setBorder(BorderFactory.createTitledBorder(
 				BorderFactory.createEtchedBorder(),
 				"No = freier; Yes =  auswahl "));
-		radioPanel.add(freier);
-		radioPanel.add(auswahl);
-		frame.getContentPane().add(radioPanel);
-
-		auswahl.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				comboBox.setEnabled(true);
-				comboBox.setVisible(true);
-				frame.getContentPane().add(comboBox);
-				System.out.println(freier.isSelected());
-				SwingUtilities.updateComponentTreeUI(frame); // very nice idea
-			}
-		});
-		frame.getContentPane().add(auswahl);
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					int zahl = (int) comboBox.getSelectedItem();
-					cashMaAccountList.withdraw(zahl);
-				} catch (PinNotCorectException e1) {
-					diaBu.add(test3No);
-					diaBu.pack();
-					diaBu.setLocationRelativeTo(null);
-					diaBu.setVisible(true);
-				} catch (NotEnoughMoneyException e1) {
-					diaBu.add(test1No);
-					diaBu.pack();
-					diaBu.setLocationRelativeTo(null);
-					diaBu.setVisible(true);
-				}
-			}
-		} );
-//TODO udelat pouze rozhodnuti zda jedno nebo druhe
+		frame.add(radioPanel);
+		SwingUtilities.updateComponentTreeUI(frame);
 		
-//		freier.addItemListener(new ItemListener() {
-//			public void itemStateChanged(ItemEvent arg0) {
-//				System.out.println(freier.isSelected());
-//				eingabeBeitrags.setText("Eingabe beitrags");
-//				eingabeBeitrags.setEnabled(true);
-//				eingabeBeitrags.setEditable(true);
-//				eingabeBeitrags.setColumns(10);
-//				frame.getContentPane().add(eingabeBeitrags);
-//				SwingUtilities.updateComponentTreeUI(frame); // very nice idea
-//			}
-//		});
-//		frame.getContentPane().add(freier);
-//		btnNewButton_3.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				final int freierBeitrag = Integer.parseInt(eingabeBeitrags
-//						.getText());
-//				try {
-//					cashMaAccountList.withdraw(freierBeitrag);
-//				} catch (PinNotCorectException e1) {
-//					diaBu.add(test3No);
-//					diaBu.pack();
-//					diaBu.setLocationRelativeTo(null);
-//					diaBu.setVisible(true);
-//				} catch (NotEnoughMoneyException e1) {
-//					diaBu.add(test1No);
-//					diaBu.pack();
-//					diaBu.setLocationRelativeTo(null);
-//					diaBu.setVisible(true);
-//				}
-//			}
-//		});
-//		frame.getContentPane().add(btnNewButton_3);
+		auswahl.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					if (auswahl.isSelected() == true) {
 
+
+					eingabeBeitrags.setEditable(false);
+					eingabeBeitrags.setEnabled(false);
+
+					comboBox.setEnabled(true);
+					comboBox.setVisible(true);
+
+					btnNewButton_3.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							try {
+								int zahl = (int) comboBox.getSelectedItem();
+								cashMaAccountList.withdraw(zahl);
+							} catch (PinNotCorectException e1) {
+								diaBu.add(test3No);
+								diaBu.pack();
+								diaBu.setLocationRelativeTo(null);
+								diaBu.setVisible(true);
+							} catch (NotEnoughMoneyException e1) {
+								diaBu.add(test1No);
+								diaBu.pack();
+								diaBu.setLocationRelativeTo(null);
+								diaBu.setVisible(true);
+							}
+						}
+					});
+					frame.getContentPane().add(btnNewButton_3);
+					frame.getContentPane().add(comboBox);
+					System.out.println(freier.isSelected());
+					SwingUtilities.updateComponentTreeUI(frame); // very nice
+				}else {
+					System.out.println("as");
+				}
+				}
+			});
+			SwingUtilities.updateComponentTreeUI(frame);
+
+
+			freier.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent arg0) {
+					comboBox.setEnabled(false);
+					comboBox.setEditable(false);
+
+					btnNewButton_3.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							final int freierBeitrag = Integer
+									.parseInt(eingabeBeitrags.getText());
+							try {
+								cashMaAccountList.withdraw(freierBeitrag);
+							} catch (PinNotCorectException e1) {
+								diaBu.add(test3No);
+								diaBu.pack();
+								diaBu.setLocationRelativeTo(null);
+								diaBu.setVisible(true);
+							} catch (NotEnoughMoneyException e1) {
+								diaBu.add(test1No);
+								diaBu.pack();
+								diaBu.setLocationRelativeTo(null);
+								diaBu.setVisible(true);
+							}
+						}
+					});
+					frame.add(btnNewButton_3);
+					frame.add(eingabeBeitrags);
+
+					eingabeBeitrags.setText("Eingabe beitrags");
+					eingabeBeitrags.setEnabled(true);
+					eingabeBeitrags.setEditable(true);
+					eingabeBeitrags.setColumns(10);
+					SwingUtilities.updateComponentTreeUI(frame); // very nice
+				}
+			});
+		}
 
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -207,6 +208,7 @@ public class Gui extends Vars {
 				}
 			}
 		});
+
 		frame.getContentPane().add(btnNewButton_4);
 
 		infoPanel.setFont(new Font("Monospaced", Font.PLAIN, 13));
