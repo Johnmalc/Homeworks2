@@ -1,7 +1,8 @@
-package de.aufgabe11;
+package de.aufgabe11.d.main;
 
 import java.util.*;
-import de.aufgabe11.exc.*;
+
+import de.aufgabe11.d.exc.*;
 /** 
  * @author Anastasia Baron
  * @author Dmitry Petrov

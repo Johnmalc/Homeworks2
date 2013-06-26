@@ -1,9 +1,10 @@
-package de.aufgabe11;
+package de.aufgabe11.d.main;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import de.aufgabe11.exc.*;
+
+import de.aufgabe11.d.exc.*;
 
 /*
  * Sources used
