@@ -38,6 +38,8 @@ public class Test {
 	// Info
 	private JLabel labelInfo = new JLabel("Info");
 	// Elemenete fuer Betragauswahl und geldabheben
+	private JRadioButton JaNein = new JRadioButton("Betrag frei eingegeben");
+	private JTextField betrag = new JTextField();
 	Double betragAuswahl[] = { 50., 100., 150., 200. };
 	private JComboBox<Double> betragWahl = new JComboBox<Double>(betragAuswahl);
 	private JButton geldAbheben = new JButton("Geldabheben");
@@ -52,7 +54,7 @@ public class Test {
 		Test.this.labelInfo.setText(e.getLocalizedMessage());
 	}
 
-	//Konstruktor
+	// Konstruktor
 	public Test() throws CardInsertedException, InvalidCardException {
 		pane.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
 
@@ -119,17 +121,42 @@ public class Test {
 			}
 		});
 
+		// Betrag frei eingegeben
+		JaNein.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				if (JaNein.isSelected()) {// falls Ja
+					betragWahl.setVisible(false);
+					paneREST.add(betrag, 5);
+				} else {// falls Nein
+					betragWahl.setVisible(true);
+					paneREST.add(betrag, 5);
+					paneREST.remove(betrag);
+				}
+
+			}
+
+		});
+
 		// Geldabheben
 		geldAbheben.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				double betragDouble;
 				try {
-					cashMachine.withdraw((Double) betragWahl.getSelectedItem());
+					if (JaNein.isSelected()) {
+						betragDouble = Double.parseDouble(betrag.getText());
+						//TO DO Exception falls Buchstaben
+						
+					} else {
+						betragDouble=(Double)betragWahl.getSelectedItem();
+					}
+					cashMachine.withdraw(betragDouble);
 					try {
 						Test.this.labelInfo
 								.setText("<HTML><BODY>Sie haben erfolgreich  <BR>"
-										+ betragWahl.getSelectedItem()
-										+ " Euro abgehoben.  <BR>"
+										+ betragDouble
+										+ "0 Euro abgehoben.  <BR>"
 										+ cashMachine
 												.accountStatementToString()
 										+ "</BODY></HTML>");
@@ -141,7 +168,10 @@ public class Test {
 				} catch (PinNotCorectException e1) {
 					InfoSchreiben(e1);
 				}
-			}
+				catch (NumberFormatException e1) {
+					InfoSchreiben(e1);
+					}
+				}
 		});
 
 		// Karte ausgeben
@@ -165,7 +195,7 @@ public class Test {
 			}
 		});
 		labelInfo.setHorizontalAlignment(JLabel.CENTER);
-
+		JaNein.setSelected(false);
 		// Elemente fuer AccountNummer
 		paneKN.add(labelKN);
 		paneKN.add(textFeldKN);
@@ -178,6 +208,7 @@ public class Test {
 		paneREST.add(textFeldPin);
 		paneREST.add(buttonPin);
 		paneREST.add(buttonKS);
+		paneREST.add(JaNein);
 		paneREST.add(betragWahl);
 		paneREST.add(geldAbheben);
 		paneREST.add(karteAus);
