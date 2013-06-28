@@ -3,7 +3,6 @@ package de.aufgabe11.d.main;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import de.aufgabe11.d.exc.*;
 
 /*
@@ -109,16 +108,12 @@ public class Gui extends Vars {
 				BorderFactory.createEtchedBorder(),
 				"No = freier; Yes =  auswahl "));
 		frame.add(radioPanel);
-		SwingUtilities.updateComponentTreeUI(frame);
-		
-		auswahl.addItemListener(new ItemListener() {
+
+		if (auswahl.isSelected() == true) {
+			auswahl.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
-					if (auswahl.isSelected() == true) {
-
-
-					eingabeBeitrags.setEditable(false);
-					eingabeBeitrags.setEnabled(false);
-
+					SwingUtilities.updateComponentTreeUI(frame); // very nice
+					
 					comboBox.setEnabled(true);
 					comboBox.setVisible(true);
 
@@ -140,26 +135,19 @@ public class Gui extends Vars {
 							}
 						}
 					});
-					frame.getContentPane().add(btnNewButton_3);
-					frame.getContentPane().add(comboBox);
-					System.out.println(freier.isSelected());
-					SwingUtilities.updateComponentTreeUI(frame); // very nice
-				}else {
-					System.out.println("as");
-				}
+					// ende von methode geld abheben
+					frame.add(btnNewButton_3);
+					frame.add(comboBox);
 				}
 			});
-			SwingUtilities.updateComponentTreeUI(frame);
-
-
+			//ende von methode von auswahl machen
+		} else { // ende von choice
 			freier.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent arg0) {
-					comboBox.setEnabled(false);
-					comboBox.setEditable(false);
-
+				public void itemStateChanged(ItemEvent e) {
+					SwingUtilities.updateComponentTreeUI(frame);
 					btnNewButton_3.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							final int freierBeitrag = Integer
+							int freierBeitrag = Integer
 									.parseInt(eingabeBeitrags.getText());
 							try {
 								cashMaAccountList.withdraw(freierBeitrag);
@@ -175,18 +163,17 @@ public class Gui extends Vars {
 								diaBu.setVisible(true);
 							}
 						}
-					});
-					frame.add(btnNewButton_3);
-					frame.add(eingabeBeitrags);
-
+					}); // ende methode geld abheben
 					eingabeBeitrags.setText("Eingabe beitrags");
-					eingabeBeitrags.setEnabled(true);
 					eingabeBeitrags.setEditable(true);
 					eingabeBeitrags.setColumns(10);
-					SwingUtilities.updateComponentTreeUI(frame); // very nice
+					frame.add(btnNewButton_3);
+					frame.add(eingabeBeitrags);
 				}
 			});
-		}
+			// ende von mehtode freier auswahl
+		} // ende if - else
+		SwingUtilities.updateComponentTreeUI(frame);
 
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -208,7 +195,6 @@ public class Gui extends Vars {
 				}
 			}
 		});
-
 		frame.getContentPane().add(btnNewButton_4);
 
 		infoPanel.setFont(new Font("Monospaced", Font.PLAIN, 13));
