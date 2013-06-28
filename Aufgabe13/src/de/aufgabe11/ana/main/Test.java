@@ -1,12 +1,14 @@
 package de.aufgabe11.ana.main;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 
 import de.aufgabe11.ana.exc.*;
 
@@ -36,7 +38,7 @@ public class Test {
 	// Elemenete fuer Kontostand
 	private JButton buttonKS = new JButton("Kontostand");
 	// Info
-	private JLabel labelInfo = new JLabel("Info");
+	private JLabel labelInfo = new JLabel("Geben Sie Ihre Kontonummer ein");
 	// Elemenete fuer Betragauswahl und geldabheben
 	private JRadioButton JaNein = new JRadioButton("Betrag frei eingegeben");
 	private JTextField betrag = new JTextField();
@@ -47,65 +49,57 @@ public class Test {
 	private JButton karteAus = new JButton("Karte Ausgeben");
 
 	// Element von CashMachine
-	CashMachine<Account> cashMachine = new CashMachine<Account>();
+	CashMachine<Account> cashMachine;
 
 	// Methode, die den Text von Exception in Feld "labelInfo" schreibt
-	private void InfoSchreiben(Exception e) {
+	public void InfoSchreiben(Exception e) {
 		Test.this.labelInfo.setText(e.getLocalizedMessage());
 	}
 
+	public void addControllers(ActionListener actionListenerKN, ActionListener actionListenerPIN) {
+		buttonKN.addActionListener(actionListenerKN);// Karte einfuegen
+		buttonPin.addActionListener(actionListenerPIN);// PIN-Ueberpruefung
+	}
+public int getTextKN()
+{
+	return Integer.parseInt(textFeldKN.getText());
+	}
+public int getTextPIN()
+{
+	return Integer.parseInt(textFeldPin.getText());
+	}
+
+	public void updateViewKN() {
+		Test.this.paneREST.setVisible(true);
+		Test.this.frame.setMinimumSize(new Dimension(250, 400));
+		Test.this.paneKN.setVisible(false);
+		textFeldKN.setText("");
+		Test.this.labelInfo
+				.setText("<HTML><BODY>Automat ist auf Status<BR> "
+						+ cashMachine.getState()
+						+ "  gesetzt.</BODY></HTML>");
+		// countLabel.setText(prefix+counter.getCounter());
+
+	}
+	public void updateViewPin(){
+		Test.this.labelInfo
+		.setText("<HTML><BODY>Automat ist auf Status <BR>"
+				+ Test.this.cashMachine.getState()
+				+ " gesetzt.</BODY></HTML>");
+		textFeldPin.setText("");
+	}
+
 	// Konstruktor
-	public Test() throws CardInsertedException, InvalidCardException {
+	public Test(CashMachine<Account> cashMachine) throws CardInsertedException,
+			InvalidCardException {
+		this.cashMachine = cashMachine;
 		pane.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
 
-		// Karte einfuegen
-		buttonKN.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		
+		
 
-				try {
-					cashMachine.insertCashCard(new CashCard(Integer
-							.parseInt(Test.this.textFeldKN.getText())));
-					Test.this.paneREST.setVisible(true);
-					Test.this.frame.setMinimumSize(new Dimension(250, 400));
-					Test.this.paneKN.setVisible(false);
-					textFeldKN.setText("");
-
-					Test.this.labelInfo
-							.setText("<HTML><BODY>Automat ist auf Status<BR> "
-									+ cashMachine.getState()
-									+ "  gesetzt.</BODY></HTML>");
-
-				} catch (NumberFormatException e1) {
-					InfoSchreiben(e1);
-				} catch (CardInsertedException e1) {
-					InfoSchreiben(e1);
-				} catch (InvalidCardException e1) {
-					InfoSchreiben(e1);
-				}// end of Try/Catch
-			}
-		});
-
-		// PIN-Ueberpruefung
-		buttonPin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				try {
-					cashMachine.pinEingeben(Integer
-							.parseInt(Test.this.textFeldPin.getText()));
-					Test.this.labelInfo
-							.setText("<HTML><BODY>Automat ist auf Status <BR>"
-									+ cashMachine.getState()
-									+ " gesetzt.</BODY></HTML>");
-					textFeldPin.setText("");
-				} catch (NumberFormatException e1) {
-					InfoSchreiben(e1);
-				} catch (PinNotCorectException e1) {
-					InfoSchreiben(e1);
-				} catch (CardNotInsertedException e1) {
-					InfoSchreiben(e1);
-				}
-			}
-		});
+		
+		
 
 		// Kontostand
 		buttonKS.addActionListener(new ActionListener() {
@@ -126,12 +120,21 @@ public class Test {
 
 			public void actionPerformed(ActionEvent arg0) {
 				if (JaNein.isSelected()) {// falls Ja
-					betragWahl.setVisible(false);
+					paneREST.remove(betragWahl);
+					labelInfo
+							.setText("Nun koenen Sie den Betrag frei eingeben.");
+					// betragWahl.setVisible(false);
 					paneREST.add(betrag, 5);
+					paneREST.updateUI();
+
 				} else {// falls Nein
-					betragWahl.setVisible(true);
-					paneREST.add(betrag, 5);
+					// betragWahl.setVisible(true);
 					paneREST.remove(betrag);
+					labelInfo
+							.setText("Waehlen Sie bitte den gewuenschten Betrag. ");
+					paneREST.add(betragWahl, 5);
+					paneREST.updateUI();
+
 				}
 
 			}
@@ -146,10 +149,10 @@ public class Test {
 				try {
 					if (JaNein.isSelected()) {
 						betragDouble = Double.parseDouble(betrag.getText());
-						//TO DO Exception falls Buchstaben
-						
+						// TO DO Exception falls Buchstaben
+
 					} else {
-						betragDouble=(Double)betragWahl.getSelectedItem();
+						betragDouble = (Double) betragWahl.getSelectedItem();
 					}
 					cashMachine.withdraw(betragDouble);
 					try {
@@ -167,11 +170,10 @@ public class Test {
 					InfoSchreiben(e1);
 				} catch (PinNotCorectException e1) {
 					InfoSchreiben(e1);
-				}
-				catch (NumberFormatException e1) {
+				} catch (NumberFormatException e1) {
 					InfoSchreiben(e1);
-					}
 				}
+			}
 		});
 
 		// Karte ausgeben
@@ -215,7 +217,7 @@ public class Test {
 		paneREST.setVisible(false);
 
 		labelInfo.setPreferredSize(new Dimension(200, 100));
-		frame.setPreferredSize(new Dimension(250, 250));
+		frame.setPreferredSize(new Dimension(350, 250));
 		frame.getContentPane().add(pane, BorderLayout.CENTER);
 		frame.getContentPane().add(labelInfo, BorderLayout.SOUTH);
 
