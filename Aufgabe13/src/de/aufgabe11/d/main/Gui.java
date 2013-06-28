@@ -2,9 +2,7 @@ package de.aufgabe11.d.main;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import de.aufgabe11.d.exc.*;
 
 /*
@@ -15,7 +13,7 @@ import de.aufgabe11.d.exc.*;
  * http://stackoverflow.com/questions/7628121/how-can-i-refresh-or-reload-the-jframe
  * http://java-buddy.blogspot.de/2012/06/example-of-using-swing-jradiobutton.html
  * 
- * We hate Swing. Yes, really. Who the fuck created it? In the future I will try to rewrite that in JavaFX. 
+ * We *** Swing. Yes, really. Who the --- created it? I will try to rewrite that in JavaFX. 
  */
 public class Gui extends Vars {
 
@@ -88,6 +86,7 @@ public class Gui extends Vars {
 			}
 		});
 		frame.getContentPane().add(btnNewButton_1);
+		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -109,7 +108,8 @@ public class Gui extends Vars {
 				BorderFactory.createEtchedBorder(),
 				"No = freier; Yes =  auswahl "));
 		frame.add(radioPanel);
-		/* -------------------------- */
+
+		/* ---------Die Sache mit Radio Buttons ------------ */
 
 		JButton buttonReadRadio = new JButton(" Bestatigen ihre Wahl ");
 		buttonReadRadio.addActionListener(new ActionListener() {
@@ -118,12 +118,12 @@ public class Gui extends Vars {
 			public void actionPerformed(ActionEvent ae) {
 				if (freier.isSelected()) {
 
-					SwingUtilities.updateComponentTreeUI(frame); 
+					SwingUtilities.updateComponentTreeUI(frame);
 					comboBox.setVisible(false);
 					btnNewButton_5.setVisible(false);
 					eingabeBeitrags.setVisible(true);
 					btnNewButton_3.setVisible(true);
-					
+
 					eingabeBeitrags.setText("Eingabe beitrags");
 					eingabeBeitrags.setVisible(true);
 					eingabeBeitrags.setColumns(10);
@@ -185,13 +185,12 @@ public class Gui extends Vars {
 		});
 		frame.add(buttonReadRadio);
 
+		/* ---------Ende von Radio Buttons partial solution ------------ */
+
 		SwingUtilities.updateComponentTreeUI(frame);
 
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * Karte ausnehmen
-				 */
 				try {
 					cashMaAccountList.ejectCashCard();
 					btnNewButton.setEnabled(true);
@@ -213,77 +212,5 @@ public class Gui extends Vars {
 		frame.getContentPane().add(infoPanel);
 		frame.pack();
 		frame.setVisible(true);
-	}
-
-	public void auswahl() {
-		SwingUtilities.updateComponentTreeUI(frame); // very nice
-
-		auswahl.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-
-				comboBox.setVisible(true);
-				btnNewButton_5.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						try {
-							int zahl = (int) comboBox.getSelectedItem();
-							cashMaAccountList.withdraw(zahl);
-						} catch (PinNotCorectException e1) {
-							diaBu.add(test3No);
-							diaBu.pack();
-							diaBu.setLocationRelativeTo(null);
-							diaBu.setVisible(true);
-						} catch (NotEnoughMoneyException e1) {
-							diaBu.add(test1No);
-							diaBu.pack();
-							diaBu.setLocationRelativeTo(null);
-							diaBu.setVisible(true);
-						}
-					}
-				});
-				// ende von methode geld abheben
-				frame.add(btnNewButton_5);
-				frame.add(comboBox);
-			}
-		});
-	}
-
-	public void freier() {
-		SwingUtilities.updateComponentTreeUI(frame);
-
-		freier.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				eingabeBeitrags.setText("Eingabe beitrags");
-				// eingabeBeitrags.setVisible(true);
-				// eingabeBeitrags.setEditable(true);
-				// eingabeBeitrags.setEnabled(true);
-				eingabeBeitrags.setColumns(10);
-
-				btnNewButton_3.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						int freierBeitrag = Integer.parseInt(eingabeBeitrags
-								.getText());
-						try {
-							freier.setSelected(true);
-							cashMaAccountList.withdraw(freierBeitrag);
-						} catch (PinNotCorectException e1) {
-							diaBu.add(test3No);
-							diaBu.pack();
-							diaBu.setLocationRelativeTo(null);
-							diaBu.setVisible(true);
-						} catch (NotEnoughMoneyException e1) {
-							diaBu.add(test1No);
-							diaBu.pack();
-							diaBu.setLocationRelativeTo(null);
-							diaBu.setVisible(true);
-						}
-					}
-				}); // ende methode geld abheben
-				frame.add(eingabeBeitrags);
-				frame.add(btnNewButton_3);
-				// eingabeBeitrags.setVisible(false);
-				// eingabeBeitrags.setEditable(false);
-				// eingabeBeitrags.setEnabled(false);
-			}
-		});
 	}
 }

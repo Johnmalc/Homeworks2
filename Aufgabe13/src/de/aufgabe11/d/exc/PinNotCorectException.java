@@ -5,7 +5,7 @@ package de.aufgabe11.d.exc;
  * @author Dmitry Petrov
  */
 
-public class PinNotCorectException extends MeineException {
+public class PinNotCorectException extends Exception {
 
 	public PinNotCorectException() {
 		System.out.println("");

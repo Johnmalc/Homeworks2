@@ -21,11 +21,12 @@ public abstract class Vars {
 	JLabel test2 = new JLabel("Test2 ist erfolgreich. Sie konnen ihren Pin setzen",SwingConstants.CENTER);
 	JLabel test2No = new JLabel("Test2 ist nicht bestanden. falsch",SwingConstants.CENTER);
 	JLabel test1No = new JLabel("Test1 ist nicht bestanden. Wenig geld auf dem Konto",SwingConstants.CENTER);
+	
 	JDialog diaBu = new JDialog();
 	ButtonGroup bgroup = new ButtonGroup();
 	JPanel radioPanel = new JPanel();
 	JRadioButton auswahl = new JRadioButton("Auswahl");
-	JRadioButton freier = new JRadioButton("Freier" );
+	JRadioButton freier = new JRadioButton("Freier");
 	JFrame frame = new JFrame("Unser Swing Bank Program");
 
 	JComboBox<Integer> comboBox = new JComboBox<Integer>(
