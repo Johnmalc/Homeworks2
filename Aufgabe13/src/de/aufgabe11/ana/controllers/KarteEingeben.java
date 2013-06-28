@@ -1,17 +1,10 @@
 package de.aufgabe11.ana.controllers;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.text.JTextComponent;
-
-import de.aufgabe11.ana.exc.CardInsertedException;
-import de.aufgabe11.ana.exc.InvalidCardException;
-import de.aufgabe11.ana.main.Account;
-import de.aufgabe11.ana.main.CashCard;
-import de.aufgabe11.ana.main.CashMachine;
-import de.aufgabe11.ana.main.Test;
+import de.aufgabe11.ana.exc.*;
+import de.aufgabe11.ana.main.*;
 
 public class KarteEingeben implements ActionListener {
 
@@ -43,7 +36,7 @@ public class KarteEingeben implements ActionListener {
 		try {
 			cashMachine.insertCashCard(new CashCard(test.getTextKN()));
 			test.updateViewKN();
-			
+
 		} catch (NumberFormatException e1) {
 			test.InfoSchreiben(e1);
 		} catch (CardInsertedException e1) {

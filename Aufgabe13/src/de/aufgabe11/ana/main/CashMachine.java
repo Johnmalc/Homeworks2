@@ -172,7 +172,11 @@ public class CashMachine<K> {
 		} // If Ende
 
 	}
-
+	
+	/**
+	 * 
+	 * @return status of the app
+	 */
 	public String getState() {
 		return state.toString();
 	}
