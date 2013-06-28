@@ -2,7 +2,9 @@ package de.aufgabe11.d.main;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
 import de.aufgabe11.d.exc.*;
 
 /*
@@ -11,6 +13,7 @@ import de.aufgabe11.d.exc.*;
  * http://stackoverflow.com/questions/10379527/trying-to-get-input-from-jtextfield-and-use-in-another-method
  * http://openbook.galileodesign.de/javainsel5/javainsel15_006.htm#Rxx747java150060400053E1F024100
  * http://stackoverflow.com/questions/7628121/how-can-i-refresh-or-reload-the-jframe
+ * http://java-buddy.blogspot.de/2012/06/example-of-using-swing-jradiobutton.html
  * 
  * We hate Swing. Yes, really. Who the fuck created it? In the future I will try to rewrite that in JavaFX. 
  */
@@ -80,7 +83,7 @@ public class Gui extends Vars {
 					diaBu.setLocationRelativeTo(null);
 					diaBu.setVisible(true);
 				} catch (NumberFormatException NFE) {
-					System.out.println(" fehler nur zahlen ");
+					System.out.println(" fehler, nur zahlen ");
 				}
 			}
 		});
@@ -96,11 +99,9 @@ public class Gui extends Vars {
 		});
 		frame.getContentPane().add(btnNewButton_2);
 
-		ButtonGroup bgroup = new ButtonGroup();
 		bgroup.add(freier);
 		bgroup.add(auswahl);
 
-		JPanel radioPanel = new JPanel();
 		radioPanel.setLayout(new GridLayout());
 		radioPanel.add(freier);
 		radioPanel.add(auswahl);
@@ -108,16 +109,57 @@ public class Gui extends Vars {
 				BorderFactory.createEtchedBorder(),
 				"No = freier; Yes =  auswahl "));
 		frame.add(radioPanel);
+		/* -------------------------- */
 
-		if (auswahl.isSelected() == true) {
-			auswahl.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent e) {
-					SwingUtilities.updateComponentTreeUI(frame); // very nice
+		JButton buttonReadRadio = new JButton(" Bestatigen ihre Wahl ");
+		buttonReadRadio.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				if (freier.isSelected()) {
+
+					SwingUtilities.updateComponentTreeUI(frame); 
+					comboBox.setVisible(false);
+					btnNewButton_5.setVisible(false);
+					eingabeBeitrags.setVisible(true);
+					btnNewButton_3.setVisible(true);
 					
-					comboBox.setEnabled(true);
-					comboBox.setVisible(true);
+					eingabeBeitrags.setText("Eingabe beitrags");
+					eingabeBeitrags.setVisible(true);
+					eingabeBeitrags.setColumns(10);
 
 					btnNewButton_3.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							int freierBeitrag = Integer
+									.parseInt(eingabeBeitrags.getText());
+							try {
+								freier.setSelected(true);
+								cashMaAccountList.withdraw(freierBeitrag);
+							} catch (PinNotCorectException e1) {
+								diaBu.add(test3No);
+								diaBu.pack();
+								diaBu.setLocationRelativeTo(null);
+								diaBu.setVisible(true);
+							} catch (NotEnoughMoneyException e1) {
+								diaBu.add(test1No);
+								diaBu.pack();
+								diaBu.setLocationRelativeTo(null);
+								diaBu.setVisible(true);
+							}
+						}
+					}); // ende methode geld abheben
+					frame.add(eingabeBeitrags);
+					frame.add(btnNewButton_3);
+				}
+				if (auswahl.isSelected()) {
+
+					SwingUtilities.updateComponentTreeUI(frame);
+					eingabeBeitrags.setVisible(false);
+					btnNewButton_3.setVisible(false);
+					btnNewButton_5.setVisible(true);
+					comboBox.setVisible(true);
+
+					btnNewButton_5.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							try {
 								int zahl = (int) comboBox.getSelectedItem();
@@ -136,43 +178,13 @@ public class Gui extends Vars {
 						}
 					});
 					// ende von methode geld abheben
-					frame.add(btnNewButton_3);
+					frame.add(btnNewButton_5);
 					frame.add(comboBox);
 				}
-			});
-			//ende von methode von auswahl machen
-		} else { // ende von choice
-			freier.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent e) {
-					SwingUtilities.updateComponentTreeUI(frame);
-					btnNewButton_3.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							int freierBeitrag = Integer
-									.parseInt(eingabeBeitrags.getText());
-							try {
-								cashMaAccountList.withdraw(freierBeitrag);
-							} catch (PinNotCorectException e1) {
-								diaBu.add(test3No);
-								diaBu.pack();
-								diaBu.setLocationRelativeTo(null);
-								diaBu.setVisible(true);
-							} catch (NotEnoughMoneyException e1) {
-								diaBu.add(test1No);
-								diaBu.pack();
-								diaBu.setLocationRelativeTo(null);
-								diaBu.setVisible(true);
-							}
-						}
-					}); // ende methode geld abheben
-					eingabeBeitrags.setText("Eingabe beitrags");
-					eingabeBeitrags.setEditable(true);
-					eingabeBeitrags.setColumns(10);
-					frame.add(btnNewButton_3);
-					frame.add(eingabeBeitrags);
-				}
-			});
-			// ende von mehtode freier auswahl
-		} // ende if - else
+			}
+		});
+		frame.add(buttonReadRadio);
+
 		SwingUtilities.updateComponentTreeUI(frame);
 
 		btnNewButton_4.addActionListener(new ActionListener() {
@@ -201,5 +213,77 @@ public class Gui extends Vars {
 		frame.getContentPane().add(infoPanel);
 		frame.pack();
 		frame.setVisible(true);
+	}
+
+	public void auswahl() {
+		SwingUtilities.updateComponentTreeUI(frame); // very nice
+
+		auswahl.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+
+				comboBox.setVisible(true);
+				btnNewButton_5.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							int zahl = (int) comboBox.getSelectedItem();
+							cashMaAccountList.withdraw(zahl);
+						} catch (PinNotCorectException e1) {
+							diaBu.add(test3No);
+							diaBu.pack();
+							diaBu.setLocationRelativeTo(null);
+							diaBu.setVisible(true);
+						} catch (NotEnoughMoneyException e1) {
+							diaBu.add(test1No);
+							diaBu.pack();
+							diaBu.setLocationRelativeTo(null);
+							diaBu.setVisible(true);
+						}
+					}
+				});
+				// ende von methode geld abheben
+				frame.add(btnNewButton_5);
+				frame.add(comboBox);
+			}
+		});
+	}
+
+	public void freier() {
+		SwingUtilities.updateComponentTreeUI(frame);
+
+		freier.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				eingabeBeitrags.setText("Eingabe beitrags");
+				// eingabeBeitrags.setVisible(true);
+				// eingabeBeitrags.setEditable(true);
+				// eingabeBeitrags.setEnabled(true);
+				eingabeBeitrags.setColumns(10);
+
+				btnNewButton_3.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int freierBeitrag = Integer.parseInt(eingabeBeitrags
+								.getText());
+						try {
+							freier.setSelected(true);
+							cashMaAccountList.withdraw(freierBeitrag);
+						} catch (PinNotCorectException e1) {
+							diaBu.add(test3No);
+							diaBu.pack();
+							diaBu.setLocationRelativeTo(null);
+							diaBu.setVisible(true);
+						} catch (NotEnoughMoneyException e1) {
+							diaBu.add(test1No);
+							diaBu.pack();
+							diaBu.setLocationRelativeTo(null);
+							diaBu.setVisible(true);
+						}
+					}
+				}); // ende methode geld abheben
+				frame.add(eingabeBeitrags);
+				frame.add(btnNewButton_3);
+				// eingabeBeitrags.setVisible(false);
+				// eingabeBeitrags.setEditable(false);
+				// eingabeBeitrags.setEnabled(false);
+			}
+		});
 	}
 }
