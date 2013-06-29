@@ -6,27 +6,35 @@ import java.awt.event.ActionListener;
 import de.aufgabe11.ana.exc.CardNotInsertedException;
 import de.aufgabe11.ana.main.Account;
 import de.aufgabe11.ana.main.CashMachine;
-import de.aufgabe11.ana.main.Test;
+import de.aufgabe11.ana.main.View;
 
 public class KontoStand implements ActionListener {
+	// Model
 	private CashMachine<Account> cashMachine;
-	private Test test;
+	// View
+	private View view;
 
+	// Konstruktor
 	public KontoStand(CashMachine<Account> cashMachine) {
 		this.cashMachine = cashMachine;
-		}
-	public void setView(Test test) {
-		this.test = test;
 	}
 
-	
-	
-		public void actionPerformed(ActionEvent e) {
+	public void setView(View view) {
+		this.view = view;
+	}
 
-			try {
-				test.updateViewKS(cashMachine.accountStatementToString());
-			} catch (CardNotInsertedException e1) {
-				test.InfoSchreiben(e1);
-			}
+	// Action
+	public void actionPerformed(ActionEvent e) {
+
+		try {
+			view.updateViewKS(cashMachine.accountStatementToString());// Fuehrt
+																		// die
+																		// benoetigten
+																		// Aenderungen
+																		// in
+																		// View
+		} catch (CardNotInsertedException e1) {
+			view.InfoSchreiben(e1);
 		}
 	}
+}

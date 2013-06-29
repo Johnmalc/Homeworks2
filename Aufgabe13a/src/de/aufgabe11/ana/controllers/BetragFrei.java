@@ -2,24 +2,19 @@ package de.aufgabe11.ana.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import de.aufgabe11.ana.main.*;
-
+/*Controller Logic*/
 public class BetragFrei implements ActionListener {
+	private View view;
 	
-	private Test test;
-	public void setView(Test test) {
-		this.test = test;
+	public void setView(View view) {
+		this.view = view;
 	}
-	
-	// private Counter counter;
-	// private CounterView view;
-
-		public void actionPerformed(ActionEvent arg0) {
-			if (test.getFrei()) {// falls Ja
-			test.updateViewBetragFrei();
+			public void actionPerformed(ActionEvent arg0) {
+			if (view.getFrei()) {// falls Ja
+			view.updateViewBetragFrei();
 
 			} else {// falls Nein
-			test.updateViewBetragNichtFrei();
-			
+			view.updateViewBetragNichtFrei();
 			}
 
 		}

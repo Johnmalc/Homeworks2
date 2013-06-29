@@ -6,24 +6,30 @@ import java.awt.event.ActionListener;
 import de.aufgabe11.ana.exc.CardNotInsertedException;
 import de.aufgabe11.ana.main.Account;
 import de.aufgabe11.ana.main.CashMachine;
-import de.aufgabe11.ana.main.Test;
+import de.aufgabe11.ana.main.View;
 
 public class KarteAusgeben implements ActionListener {
+	// Model
 	private CashMachine<Account> cashMachine;
-	private Test test;
+	// View
+	private View view;
 
-	public KarteAusgeben (CashMachine<Account> cashMachine) {
+	// Konstruktor
+	public KarteAusgeben(CashMachine<Account> cashMachine) {
 		this.cashMachine = cashMachine;
-		}
-	public void setView(Test test) {
-		this.test = test;
 	}
-		public void actionPerformed(ActionEvent e) {
-			try {
-				cashMachine.ejectCashCard();
-				test.updateViewKarteAus();
-			} catch (CardNotInsertedException e1) {
-				test.InfoSchreiben(e1);
-			}
+
+	public void setView(View view) {
+		this.view = view;
+	}
+
+	// Action
+	public void actionPerformed(ActionEvent e) {
+		try {
+			cashMachine.ejectCashCard();//Ausgabe der Karte in CashMachien
+			view.updateViewKarteAus();//Fuehrt die benoetigten Aenderungen in View 
+		} catch (CardNotInsertedException e1) {
+			view.InfoSchreiben(e1);
 		}
 	}
+}

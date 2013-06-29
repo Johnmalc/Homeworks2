@@ -8,46 +8,47 @@ import de.aufgabe11.ana.exc.NotEnoughMoneyException;
 import de.aufgabe11.ana.exc.PinNotCorectException;
 import de.aufgabe11.ana.main.Account;
 import de.aufgabe11.ana.main.CashMachine;
-import de.aufgabe11.ana.main.Test;
+import de.aufgabe11.ana.main.View;
 
 public class GeldAbheben implements ActionListener {
+	// Model
 	private CashMachine<Account> cashMachine;
-	private Test test;
-	double betragDouble;
+	// View
+	private View view;
 
-	// private Counter counter;
-	// private CounterView view;
+	private double betragDouble;
 
+	// Konstruktor
 	public GeldAbheben(CashMachine<Account> cashMachine) {
 		this.cashMachine = cashMachine;
-		// nummer=Integer.parseInt(c.getText());
-		// nummer=Integer.parseInt(test.Textliefern(c));
 	}
 
-	public void setView(Test test) {
-		this.test = test;
+	public void setView(View view) {
+		this.view = view;
 	}
 
+	// Action
 	public void actionPerformed(ActionEvent e) {
 
 		try {
-			if (test.getFrei()) {
-				betragDouble = test.getTextBetrag();
+			if (view.getFrei()) {
+				betragDouble = view.getTextBetrag();
 			} else {
-				betragDouble = test.GetTextBetragWahl();
+				betragDouble = view.GetTextBetragWahl();
 			}
 			try {
 				cashMachine.withdraw(betragDouble);
-				test.updateViewGeldAbheben(betragDouble, cashMachine.accountStatementToString());
+				view.updateViewGeldAbheben(betragDouble,
+						cashMachine.accountStatementToString());
 			} catch (PinNotCorectException e1) {
-				test.InfoSchreiben(e1);
+				view.InfoSchreiben(e1);
 			} catch (NotEnoughMoneyException e1) {
-				test.InfoSchreiben(e1);
+				view.InfoSchreiben(e1);
 			}
-			} catch (NumberFormatException e1) {
-			test.InfoSchreiben(e1);
+		} catch (NumberFormatException e1) {
+			view.InfoSchreiben(e1);
 		} catch (CardNotInsertedException e1) {
-			test.InfoSchreiben(e1);
+			view.InfoSchreiben(e1);
 		}
 
 	}
