@@ -1,15 +1,9 @@
 package de.aufgabe11.ana.main;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
-
+import javax.swing.text.*;
 import de.aufgabe11.ana.exc.*;
 
 public class Test {
@@ -56,17 +50,18 @@ public class Test {
 		Test.this.labelInfo.setText(e.getLocalizedMessage());
 	}
 
-	public void addControllers(ActionListener actionListenerKN, ActionListener actionListenerPIN) {
+	public void addControllers(ActionListener actionListenerKN,
+			ActionListener actionListenerPIN) {
 		buttonKN.addActionListener(actionListenerKN);// Karte einfuegen
 		buttonPin.addActionListener(actionListenerPIN);// PIN-Ueberpruefung
 	}
-public int getTextKN()
-{
-	return Integer.parseInt(textFeldKN.getText());
+
+	public int getTextKN() {
+		return Integer.parseInt(textFeldKN.getText());
 	}
-public int getTextPIN()
-{
-	return Integer.parseInt(textFeldPin.getText());
+
+	public int getTextPIN() {
+		return Integer.parseInt(textFeldPin.getText());
 	}
 
 	public void updateViewKN() {
@@ -74,40 +69,29 @@ public int getTextPIN()
 		Test.this.frame.setMinimumSize(new Dimension(250, 400));
 		Test.this.paneKN.setVisible(false);
 		textFeldKN.setText("");
-		Test.this.labelInfo
-				.setText("<HTML><BODY>Automat ist auf Status<BR> "
-						+ cashMachine.getState()
-						+ "  gesetzt.</BODY></HTML>");
+		Test.this.labelInfo.setText("<HTML><BODY>Automat ist auf Status<BR> "
+				+ cashMachine.getState() + "  gesetzt.</BODY></HTML>");
 		// countLabel.setText(prefix+counter.getCounter());
 
 	}
-	public void updateViewPin(){
-		Test.this.labelInfo
-		.setText("<HTML><BODY>Automat ist auf Status <BR>"
-				+ Test.this.cashMachine.getState()
-				+ " gesetzt.</BODY></HTML>");
+
+	public void updateViewPin() {
+		Test.this.labelInfo.setText("<HTML><BODY>Automat ist auf Status <BR>"
+				+ Test.this.cashMachine.getState() + " gesetzt.</BODY></HTML>");
 		textFeldPin.setText("");
 	}
 
 	// Konstruktor
-	public Test(CashMachine<Account> cashMachine) throws CardInsertedException,
+	public Test(final CashMachine<Account> cashMachine) throws CardInsertedException,
 			InvalidCardException {
 		this.cashMachine = cashMachine;
 		pane.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
 
-		
-		
-
-		
-		
-
 		// Kontostand
 		buttonKS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				try {
-					Test.this.labelInfo.setText(cashMachine
-							.accountStatementToString());
+					Test.this.labelInfo.setText(cashMachine.accountStatementToString());
 				} catch (CardNotInsertedException e1) {
 					InfoSchreiben(e1);
 					System.out.println("yes");
@@ -121,8 +105,7 @@ public int getTextPIN()
 			public void actionPerformed(ActionEvent arg0) {
 				if (JaNein.isSelected()) {// falls Ja
 					paneREST.remove(betragWahl);
-					labelInfo
-							.setText("Nun koenen Sie den Betrag frei eingeben.");
+					labelInfo.setText("Nun koenen Sie den Betrag frei eingeben.");
 					// betragWahl.setVisible(false);
 					paneREST.add(betrag, 5);
 					paneREST.updateUI();
@@ -130,15 +113,12 @@ public int getTextPIN()
 				} else {// falls Nein
 					// betragWahl.setVisible(true);
 					paneREST.remove(betrag);
-					labelInfo
-							.setText("Waehlen Sie bitte den gewuenschten Betrag. ");
+					labelInfo.setText("Waehlen Sie bitte den gewuenschten Betrag. ");
 					paneREST.add(betragWahl, 5);
 					paneREST.updateUI();
 
 				}
-
 			}
-
 		});
 
 		// Geldabheben
@@ -160,8 +140,7 @@ public int getTextPIN()
 								.setText("<HTML><BODY>Sie haben erfolgreich  <BR>"
 										+ betragDouble
 										+ "0 Euro abgehoben.  <BR>"
-										+ cashMachine
-												.accountStatementToString()
+										+ cashMachine.accountStatementToString()
 										+ "</BODY></HTML>");
 					} catch (CardNotInsertedException e1) {
 						InfoSchreiben(e1);

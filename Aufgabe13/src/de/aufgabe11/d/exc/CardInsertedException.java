@@ -5,7 +5,7 @@ package de.aufgabe11.d.exc;
  * @author Dmitry Petrov
  */
 
-public class CardInsertedException extends MeineException {
+public class CardInsertedException extends Exception {
 
 	public CardInsertedException() {
 		System.out.println("");

@@ -3,25 +3,29 @@ package de.aufgabe11.d.main;
 import java.util.*;
 
 import de.aufgabe11.d.exc.*;
-/** 
+
+/**
  * @author Anastasia Baron
  * @author Dmitry Petrov
  */
 
-public class CashMachine<K>{
+public class CashMachine<K> {
+	public enum State {
+		READY, CARD_INSERTED, PIN_CORRECT, PIN_WRONG
+	}
 
 	List<Account> accounts;
 	private CashCard cashCard;
 	private State state;
-	private int index; //Nr des Accounts in der Liste
+	private int index; // Nr des Accounts in der Liste
 
 	public CashMachine() {
 		index = 0;
 		state = State.READY;
-		
+
 		// neu accounty erstellt.
 		accounts = new LinkedList<Account>();
-		accounts.add(new Account(23456789, -100.0, 200, 1234)); //Verwendung der Klasse Account
+		accounts.add(new Account(23456789, -100.0, 200, 1234)); 
 		accounts.add(new Account(34567890, -200.0, 300, 1234));
 		accounts.add(new Account(12345678, 0.0, 5000, 1234));
 	}
@@ -37,36 +41,38 @@ public class CashMachine<K>{
 	 * @throws InvalidCardException
 	 * @throws CardInsertedException
 	 */
-	public void insertCashCard(CashCard cashCardX) throws CardInsertedException, InvalidCardException {
+	public void insertCashCard(CashCard cashCardX)
+			throws CardInsertedException, InvalidCardException {
 		switch (state) {
-			case READY :
-				cashCard = cashCardX;
-				/*
-				 * Sucht die passende Konto nach AccountNummer muss man andern
-				 * wegen Iterable > alte for loop
-				 */
-				for (int i = 0; i < accounts.size(); i++) {
-					if ((accounts.get(i).getAccountNumber()) == (cashCard.getAccountNumber())) {
-						/*
-						 * wenn account nummer und carten-account nummer
-						 * entspricht > speichere index, damit man weiter mit
-						 * dem richtigen (passenden) Account arbeiten kann
-						 */
-						this.index = i;
-						state = State.CARD_INSERTED;
-						break;
-					} else {
-						index++;
-						if (index >= accounts.size()) {
-							state = State.READY;
-							throw new InvalidCardException();
-						}
+		case READY:
+			cashCard = cashCardX;
+			/*
+			 * Sucht die passende Konto nach AccountNummer muss man andern wegen
+			 * Iterable > alte for loop
+			 */
+			for (int i = 0; i < accounts.size(); i++) {
+				if ((accounts.get(i).getAccountNumber()) == (cashCard
+						.getAccountNumber())) {
+					/*
+					 * wenn account nummer und carten-account nummer entspricht
+					 * > speichere index, damit man weiter mit dem richtigen
+					 * (passenden) Account arbeiten kann
+					 */
+					this.index = i;
+					state = State.CARD_INSERTED;
+					break;
+				} else {
+					index++;
+					if (index >= accounts.size()) {
+						state = State.READY;
+						throw new InvalidCardException();
 					}
 				}
-				System.out.println("Automat ist auf Status " + " gesetzt.");
-				break;
-			default :
-				throw new CardInsertedException();
+			}
+			System.out.println("Automat ist auf Status " + " gesetzt.");
+			break;
+		default:
+			throw new CardInsertedException();
 		} // switch Ende state
 	}
 
@@ -84,13 +90,15 @@ public class CashMachine<K>{
 	 * @throws CardNotInsertedException
 	 * @throws InvalidCardException
 	 */
-	public void pinEingeben(int pinX) throws PinNotCorectException,CardNotInsertedException,InvalidCardException {
+	public void pinEingeben(int pinX) throws PinNotCorectException,
+			CardNotInsertedException, InvalidCardException {
 		switch (state) {
 		case CARD_INSERTED:
 			if (accounts.get(index).getPin() == pinX) {
 				state = State.PIN_CORRECT;
 				System.out.println("Sie haben den richtigen Pin eingegeben.");
-				System.out.println("Automat ist auf Status " + state + " gesetzt.");
+				System.out.println("Automat ist auf Status " + state
+						+ " gesetzt.");
 			} else {
 				throw new PinNotCorectException();
 			} // end of if-else
@@ -111,14 +119,20 @@ public class CashMachine<K>{
 	 * @throws PinNotCorectException
 	 * @throws NotEnoughMoneyException
 	 */
-	public void withdraw(double amount) throws PinNotCorectException, NotEnoughMoneyException {
+	public void withdraw(double amount) throws PinNotCorectException,
+			NotEnoughMoneyException {
 		switch (state) {
 		case PIN_CORRECT:
-			System.out.println("Ihr Kontoguthaben ist: " + accounts.get(index).getBankDeposit() + " Euro.");
-			if (accounts.get(index).getBankDeposit() - amount >= accounts.get(index).getOverdraft()) {
-				accounts.get(index).setBankDeposit(accounts.get(index).getBankDeposit() - amount);
-				System.out.println("Sie haben erfolgreich " + amount + " Euro abgehoben.");
-				System.out.println("Ihr Kontoguthaben ist: " + accounts.get(index).getBankDeposit() + " Euro.");
+			System.out.println("Ihr Kontoguthaben ist: "
+					+ accounts.get(index).getBankDeposit() + " Euro.");
+			if (accounts.get(index).getBankDeposit() - amount >= accounts.get(
+					index).getOverdraft()) {
+				accounts.get(index).setBankDeposit(
+						accounts.get(index).getBankDeposit() - amount);
+				System.out.println("Sie haben erfolgreich " + amount
+						+ " Euro abgehoben.");
+				System.out.println("Ihr Kontoguthaben ist: "
+						+ accounts.get(index).getBankDeposit() + " Euro.");
 			} else {
 				throw new NotEnoughMoneyException();
 			}
@@ -138,11 +152,11 @@ public class CashMachine<K>{
 	public void accountStatement() throws CardNotInsertedException {
 		// prueft ob genug Geld ist
 		if (state == State.CARD_INSERTED || state == State.PIN_CORRECT) {
-			System.out.println("\n" + 
-					"Account Statement: " + "\n" + 
-					"Account Nr.: " + accounts.get(index).getAccountNumber() + "\n" + 
-					"Bank Deposit: " + accounts.get(index).getBankDeposit() + "\n" + 
-					"Overdraft: " + accounts.get(index).getOverdraft());
+			System.out.println("\n" + "Account Statement: " + "\n"
+					+ "Account Nr.: " + accounts.get(index).getAccountNumber()
+					+ "\n" + "Bank Deposit: "
+					+ accounts.get(index).getBankDeposit() + "\n"
+					+ "Overdraft: " + accounts.get(index).getOverdraft());
 		} else {
 			throw new CardNotInsertedException();
 		}
@@ -164,10 +178,10 @@ public class CashMachine<K>{
 			cashCard = null;
 			index = 0;
 			state = State.READY;
-		    System.out.println("Ihr Karte ist entfernt!");
+			System.out.println("Ihr Karte ist entfernt!");
 			System.out.println("Automat ist auf Status " + state + " gesetzt.");
 		} else {
 			throw new CardNotInsertedException();
-		} 
+		}
 	}
 }
