@@ -20,12 +20,15 @@ public class PinEingeben implements ActionListener {
 		this.view = view;
 	}
 
-	//Action
+	// Action
 	public void actionPerformed(ActionEvent e) {
-		
+
 		try {
-	cashMachine.pinEingeben(view.getTextPIN());//Eingabe von Pin in Cashmachine 
-			view.updateViewPin();//Fuehrt die benoetigten Aenderungen in View 
+			/*
+			 * Eingabe von Pin in Cashmachine
+			 */
+			cashMachine.pinEingeben(view.getTextPIN());
+			view.updateViewPin();// Fuehrt die benoetigten Aenderungen in View
 		} catch (NumberFormatException e1) {
 			view.InfoSchreiben(e1);
 		} catch (PinNotCorectException e1) {

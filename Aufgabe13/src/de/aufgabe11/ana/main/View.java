@@ -37,14 +37,14 @@ public class View {
 	// Infofeld
 	private JLabel labelInfo = new JLabel("Geben Sie Ihre Kontonummer ein");
 	// Elemenete fuer Betragauswahl und geldabheben
-	private JRadioButton jaNein = new JRadioButton("Betrag frei eingegeben");// Betrag
-																				// frei
-																				// eingeben
-																				// oder
-																				// auswahl
-	private JTextField betrag = new JTextField();// hier soll den gewuenschten
-													// Betrag frei eingegeben
-													// werden
+	private JRadioButton jaNein = new JRadioButton("Betrag frei eingegeben");
+	/*
+	 * Betrag frei eingeben oder
+	 */
+	/*
+	 * hier soll den gewuenschten Betrag frei eingegeben werden auswahl
+	 */
+	private JTextField betrag = new JTextField();
 	Double betragAuswahl[] = { 50., 100., 150., 200. };
 	private JComboBox<Double> betragWahl = new JComboBox<Double>(betragAuswahl);
 	private JButton geldAbheben = new JButton("Geldabheben");
@@ -91,16 +91,16 @@ public class View {
 		return Double.parseDouble(betrag.getText());
 	}
 
-	public double GetTextBetragWahl() {//Liefert den ausgewaelten Betrag
+	public double GetTextBetragWahl() {// Liefert den ausgewaelten Betrag
 										// zurueck
 		return (Double) betragWahl.getSelectedItem();
 	}
 
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View 
-	 * nach Action "Kontonummer eingeben"
+	 * Fuehrt die benoetigten Aenderungen in View nach Action
+	 * "Kontonummer eingeben"
 	 */
-	public void updateViewKN() { 
+	public void updateViewKN() {
 		View.this.paneNachKN.setVisible(true);
 		View.this.frame.setMinimumSize(new Dimension(250, 400));
 		View.this.paneKN.setVisible(false);
@@ -110,26 +110,26 @@ public class View {
 	}
 
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View 
-	 * nach Action "Kontonummer eingeben"
+	 * Fuehrt die benoetigten Aenderungen in View nach Action
+	 * "Kontonummer eingeben"
 	 */
 	public void updateViewPin() {
 		View.this.labelInfo.setText("<HTML><BODY>Automat ist auf Status <BR>"
 				+ View.this.cashMachine.getState() + " gesetzt.</BODY></HTML>");
 		textFeldPin.setText("");
 	}
-	
+
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View 
-	 * nach Action "Kontostand anzeigen"
+	 * Fuehrt die benoetigten Aenderungen in View nach Action
+	 * "Kontostand anzeigen"
 	 */
 	public void updateViewKS(String text) {
 		View.this.labelInfo.setText(text);
 	}
 
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View, 
-	 * wenn es gewuenscht war,den Betrag frei einzugeben
+	 * Fuehrt die benoetigten Aenderungen in View, wenn es gewuenscht war,den
+	 * Betrag frei einzugeben
 	 */
 	public void updateViewBetragFrei() {
 		paneNachKN.remove(betragWahl);
@@ -139,8 +139,8 @@ public class View {
 	}
 
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View, 
-	 * wenn es nicht gewuenscht war, den Betrag frei einzugeben
+	 * Fuehrt die benoetigten Aenderungen in View, wenn es nicht gewuenscht war,
+	 * den Betrag frei einzugeben
 	 */
 	public void updateViewBetragNichtFrei() {
 		paneNachKN.remove(betrag);
@@ -148,10 +148,10 @@ public class View {
 		paneNachKN.add(betragWahl, 5);
 		paneNachKN.updateUI();
 	}
-	
+
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View, 
-	 * nach der Action "Geld abheben"
+	 * Fuehrt die benoetigten Aenderungen in View, nach der Action
+	 * "Geld abheben"
 	 */
 	public void updateViewGeldAbheben(Double betrag, String kontostand) {
 		View.this.labelInfo.setText("<HTML><BODY>Sie haben erfolgreich  <BR>"
@@ -162,8 +162,8 @@ public class View {
 	}
 
 	/*
-	 * Fuehrt die benoetigten Aenderungen in View, 
-	 * nach der Action "Karte asgeben"
+	 * Fuehrt die benoetigten Aenderungen in View, nach der Action
+	 * "Karte asgeben"
 	 */
 	public void updateViewKarteAus() {
 		paneNachKN.setVisible(false);
@@ -190,7 +190,7 @@ public class View {
 		paneNachKN.add(labelPin);
 		paneNachKN.add(textFeldPin);
 		paneNachKN.add(buttonPin);
-		
+
 		paneNachKN.add(buttonKS);
 		paneNachKN.add(jaNein);
 		jaNein.setSelected(false);

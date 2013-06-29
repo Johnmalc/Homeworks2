@@ -27,8 +27,10 @@ public class KontoStand implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		try {
-			view.updateViewKS(cashMachine.accountStatementToString());// Fuehrt
-																// View
+			/*
+			 * Fuehr die benoetigten Aenderungen in View
+			 */
+			view.updateViewKS(cashMachine.accountStatementToString());
 		} catch (CardNotInsertedException e1) {
 			view.InfoSchreiben(e1);
 		}

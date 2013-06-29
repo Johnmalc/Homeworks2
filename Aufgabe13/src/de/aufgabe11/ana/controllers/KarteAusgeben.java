@@ -26,8 +26,9 @@ public class KarteAusgeben implements ActionListener {
 	// Action
 	public void actionPerformed(ActionEvent e) {
 		try {
-			cashMachine.ejectCashCard();//Ausgabe der Karte in CashMachien
-			view.updateViewKarteAus();//Fuehrt die benoetigten Aenderungen in View 
+			cashMachine.ejectCashCard();// Ausgabe der Karte in CashMachien
+			view.updateViewKarteAus();// Fuehrt die benoetigten Aenderungen in
+										// View
 		} catch (CardNotInsertedException e1) {
 			view.InfoSchreiben(e1);
 		}
