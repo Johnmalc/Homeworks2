@@ -6,40 +6,32 @@ import de.aufgabe11.ana.main.*;
 
 public class PinEingeben implements ActionListener {
 
-	// Element von CashMachine
+	// Model
 	private CashMachine<Account> cashMachine = new CashMachine<Account>();
-	private Test test;
+	// View
+	private View view;
 
-	// private Counter counter;
-	// private CounterView view;
-
+	// Konstruktor
 	public PinEingeben(CashMachine<Account> cashMachine) {
 		this.cashMachine = cashMachine;
-		// nummer=Integer.parseInt(c.getText());
-		// nummer=Integer.parseInt(test.Textliefern(c));
 	}
 
-	public void setView(Test test) {
-		this.test = test;
+	public void setView(View view) {
+		this.view = view;
 	}
 
-	public void setNebenKomponenet() {
-
-	}
-
-	public void actionPerformed(ActionEvent e) {// SAMa Action
-		// counter.inc();//CASHMACHINe
-		// view.updateView();//mitTEXTEN
+	//Action
+	public void actionPerformed(ActionEvent e) {
+		
 		try {
-			// cashMachine.pinEingeben(1234);
-			cashMachine.pinEingeben(test.getTextPIN());
-			test.updateViewPin();
+	cashMachine.pinEingeben(view.getTextPIN());//Eingabe von Pin in Cashmachine 
+			view.updateViewPin();//Fuehrt die benoetigten Aenderungen in View 
 		} catch (NumberFormatException e1) {
-			test.InfoSchreiben(e1);
+			view.InfoSchreiben(e1);
 		} catch (PinNotCorectException e1) {
-			test.InfoSchreiben(e1);
+			view.InfoSchreiben(e1);
 		} catch (CardNotInsertedException e1) {
-			test.InfoSchreiben(e1);
+			view.InfoSchreiben(e1);
 		}
 	}
 

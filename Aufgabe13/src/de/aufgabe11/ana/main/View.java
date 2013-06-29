@@ -91,7 +91,7 @@ public class View {
 		return Double.parseDouble(betrag.getText());
 	}
 
-	public double GetTextBetragWahl() {// //Liefert den ausgewaelten Betrag
+	public double GetTextBetragWahl() {//Liefert den ausgewaelten Betrag
 										// zurueck
 		return (Double) betragWahl.getSelectedItem();
 	}

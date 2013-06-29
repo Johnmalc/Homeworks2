@@ -1,50 +1,37 @@
 package de.aufgabe11.ana.controllers;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import de.aufgabe11.ana.exc.*;
 import de.aufgabe11.ana.main.*;
 
 public class KarteEingeben implements ActionListener {
 
-	// Element von CashMachine
-	private CashMachine<Account> cashMachine = new CashMachine<Account>();
-	private Test test;
-	private int nummer;
+	// Model
+	private CashMachine<Account> cashMachine;
+	// View
+	private View view;
 
-	// private Counter counter;
-	// private CounterView view;
-
+	// Konstruktor
 	public KarteEingeben(CashMachine<Account> cashMachine) {
 		this.cashMachine = cashMachine;
-		// nummer=Integer.parseInt(c.getText());
-		// nummer=Integer.parseInt(test.Textliefern(c));
 	}
 
-	public void setView(Test test) {
-		this.test = test;
+	public void setView(View view) {
+		this.view = view;
 	}
 
-	public void setNebenKomponenet() {
-
-	}
-
-	public void actionPerformed(ActionEvent e) {// SAMa Action
-		// counter.inc();//CASHMACHINe
-		// view.updateView();//mitTEXTEN
+	// Action
+	public void actionPerformed(ActionEvent e) {
 		try {
-			cashMachine.insertCashCard(new CashCard(test.getTextKN()));
-			test.updateViewKN();
+			cashMachine.insertCashCard(new CashCard(view.getTextKN()));
+			view.updateViewKN();
 
 		} catch (NumberFormatException e1) {
-			test.InfoSchreiben(e1);
+			view.InfoSchreiben(e1);
 		} catch (CardInsertedException e1) {
-			test.InfoSchreiben(e1);
+			view.InfoSchreiben(e1);
 		} catch (InvalidCardException e1) {
-			test.InfoSchreiben(e1);
-		}// end of Try/Catch
-
+			view.InfoSchreiben(e1);
+		}// end of Catch
 	}
-
 }
