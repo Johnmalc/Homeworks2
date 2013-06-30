@@ -1,4 +1,4 @@
-package de.aufgabe11.ana.main;
+package de.aufgabe11.main;
 
 /**
  * @author Dmitry Petrov
@@ -6,8 +6,10 @@ package de.aufgabe11.ana.main;
  */
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
-import de.aufgabe11.ana.exc.*;
+
+import de.aufgabe11.exc.*;
 
 public class View {
 

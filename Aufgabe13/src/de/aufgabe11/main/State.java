@@ -1,4 +1,4 @@
-package de.aufgabe11.ana.main;
+package de.aufgabe11.main;
 
 /** 
  * @author Anastasia Baron

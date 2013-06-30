@@ -1,7 +1,8 @@
-package de.aufgabe11.ana.controllers;
+package de.aufgabe11.controllers;
 
 import java.awt.event.*;
-import de.aufgabe11.ana.main.*;
+
+import de.aufgabe11.main.*;
 
 /*Controller Logic*/
 public class BetragFrei implements ActionListener {

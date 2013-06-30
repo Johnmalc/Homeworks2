@@ -1,8 +1,9 @@
-package de.aufgabe11.ana.controllers;
+package de.aufgabe11.controllers;
 
 import java.awt.event.*;
-import de.aufgabe11.ana.exc.*;
-import de.aufgabe11.ana.main.*;
+
+import de.aufgabe11.exc.*;
+import de.aufgabe11.main.*;
 
 public class PinEingeben implements ActionListener {
 

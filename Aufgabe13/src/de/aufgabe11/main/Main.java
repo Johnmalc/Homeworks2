@@ -1,7 +1,7 @@
-package de.aufgabe11.ana.main;
+package de.aufgabe11.main;
 
-import de.aufgabe11.ana.controllers.*;
-import de.aufgabe11.ana.exc.*;
+import de.aufgabe11.controllers.*;
+import de.aufgabe11.exc.*;
 
 public class Main {
 
