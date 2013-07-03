@@ -1,6 +1,6 @@
-package de.aufgabe11.main;
+package de.d.main;
 
-import de.aufgabe11.exc.*;
+import de.d.exc.*;
 /**
  * @author Anastasia Baron
  * @author Dmitry Petrov

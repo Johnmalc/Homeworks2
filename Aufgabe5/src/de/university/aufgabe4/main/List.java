@@ -7,7 +7,7 @@ import java.util.*;
  * @author Dmitry Petrov
  */
 
-public class List<K> implements Iterable<K>{
+public class List<K> {
 	/*
 	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
 	 * Some information was taken from

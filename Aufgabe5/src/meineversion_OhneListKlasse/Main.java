@@ -11,10 +11,9 @@ public class Main {
 		g.get(0);
 		System.out.println(g.isEmpty());
 		g.add(new Account(65614654, 6546654, 6554164, 65445));
-		for (int i = 0; i <g.size(); i++) {
+		for (int i = 0; i < g.size(); i++) {
 			g.toString();
-		}	
-		
+		}
 
 	}
 

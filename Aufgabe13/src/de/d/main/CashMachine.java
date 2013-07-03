@@ -1,8 +1,8 @@
-package de.aufgabe11.main;
+package de.d.main;
 
 import java.util.*;
 
-import de.aufgabe11.exc.*;
+import de.d.exc.*;
 
 /**
  * @author Anastasia Baron
