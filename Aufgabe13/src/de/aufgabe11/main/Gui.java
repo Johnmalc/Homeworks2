@@ -1,9 +1,11 @@
-package de.aufgabe11.d.main;
+package de.aufgabe11.main;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
-import de.aufgabe11.d.exc.*;
+
+import de.aufgabe11.exc.*;
 
 /*
  * Sources used
@@ -185,6 +187,11 @@ public class Gui extends Vars {
 		});
 		frame.add(buttonReadRadio);
 
+		// TODO geht besser:geldabgehben.action 
+		// if radiobuttonselected, then ...
+		// ... Heiko
+		
+		
 		/* ---------Ende von Radio Buttons partial solution ------------ */
 
 		SwingUtilities.updateComponentTreeUI(frame);

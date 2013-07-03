@@ -7,7 +7,8 @@ package de.aufgabe11.exc;
 
 public class CardInsertedException extends Exception {
 
-	public CardInsertedException(String message) {
-		super(message);
+	public CardInsertedException() {
+		System.out.println("");
+		System.out.println("Automat ist bereit besetzt.");
 	}
 }

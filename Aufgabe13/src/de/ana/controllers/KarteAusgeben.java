@@ -1,12 +1,12 @@
-package de.aufgabe11.controllers;
+package de.ana.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import de.aufgabe11.exc.CardNotInsertedException;
-import de.aufgabe11.main.Account;
-import de.aufgabe11.main.CashMachine;
-import de.aufgabe11.main.View;
+import de.ana.exc.CardNotInsertedException;
+import de.ana.main.Account;
+import de.ana.main.CashMachine;
+import de.ana.main.View;
 
 public class KarteAusgeben implements ActionListener {
 	// Model

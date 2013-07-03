@@ -1,9 +1,9 @@
-package de.aufgabe11.controllers;
+package de.ana.controllers;
 
 import java.awt.event.*;
 
-import de.aufgabe11.exc.*;
-import de.aufgabe11.main.*;
+import de.ana.exc.*;
+import de.ana.main.*;
 
 public class KarteEingeben implements ActionListener {
 

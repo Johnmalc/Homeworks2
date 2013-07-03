@@ -1,3 +1,6 @@
+# Aufgabe 11 #
+The teacher got "ana" package.
+
 a) Programmieren Sie eine Swing-Oberfläche für die CashMachine (Aufgabe 1)!
 
 Der Benutzer soll über die Oberfläche die Kontonummer eingeben können (das simuliert die Eingabe einer CashCard). Die Überprüfung der Existenz des Kontos erfolgt durch die Betätigung einer Schaltfläche. Ist das Konto vorhanden, soll es möglich sein den PIN einzugeben und zu bestätigen.

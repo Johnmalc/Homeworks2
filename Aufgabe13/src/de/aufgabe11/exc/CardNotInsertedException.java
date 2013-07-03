@@ -7,8 +7,9 @@ package de.aufgabe11.exc;
 
 public class CardNotInsertedException extends Exception {
 
-	public CardNotInsertedException(String message) {
-		super(message);
+	public CardNotInsertedException() {
+		System.out.println("");
+		System.out.println("Es gibt keine Karte im Automat.");
 	}
 
 }

@@ -11,7 +11,7 @@ public class Account {
 	private double overdraft;
 	private double bankDeposit;
 	private int pin;
-	
+
 	/**
 	 * Dieser Konstruktor bittet uns schnelle Erstellung von accounts
 	 * 
@@ -29,9 +29,8 @@ public class Account {
 		try {
 			setPin(pin);
 		} catch (WrongQuantityOfDigits e) {
-			
-		}
 
+		}
 	}
 
 	/**
@@ -88,10 +87,10 @@ public class Account {
 	}
 
 	/**
-	 * Taken from: 
-	 * http://stackoverflow.com/questions/1306727/way-to-get-number-of-digits-in-an-int 
-	 * After teachers recommendation I have added an
-	 * (another) Exception. Now he will like it !!!
+	 * Taken from:
+	 * http://stackoverflow.com/questions/1306727/way-to-get-number-of
+	 * -digits-in-an-int After teachers recommendation I have added an (another)
+	 * Exception. He will like it !!!
 	 * 
 	 * @param value4
 	 *            PIN
@@ -101,7 +100,6 @@ public class Account {
 		// wenn die lange der value4 gleich 4 ist
 		int length = String.valueOf(value4).length();
 		if (length == 4) {
-			// dann speichere mir das
 			this.pin = value4;
 		} else {
 			throw new WrongQuantityOfDigits();

@@ -7,7 +7,8 @@ package de.aufgabe11.exc;
 
 public class PinNotCorectException extends Exception {
 
-	public PinNotCorectException(String message) {
-		super(message);
+	public PinNotCorectException() {
+		System.out.println("");
+		System.out.println("Sie haben falsches PIN eingeben.");
 	}
 }

@@ -7,7 +7,8 @@ package de.aufgabe11.exc;
 
 public class InvalidCardException extends Exception {
 	
-	public InvalidCardException(String message) {
-		super(message);
+	public InvalidCardException() {
+		System.out.println("");
+		System.out.println("Diese Karte ist keinem Konto zugeordnet. ");
 	}
 }
