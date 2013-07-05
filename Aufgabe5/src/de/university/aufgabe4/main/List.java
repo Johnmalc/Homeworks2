@@ -7,10 +7,10 @@ import java.util.*;
  * @author Dmitry Petrov
  */
 
-public class List<K> {
+public class List<K> implements Iterable<K> {
 	/*
-	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html 
-	 * Some information was taken from
+	 * http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists
+	 * .html Some information was taken from
 	 * http://docs.oracle.com/javase/7/docs/api/index.html?java/util/List.html
 	 */
 	private ListNode head;
@@ -153,10 +153,6 @@ public class List<K> {
 	public boolean isEmpty() {
 		return head == null;
 	}
-	
-	public Iterator<K> iterator() {
-		return new myIterator();
-	}
 
 	public class myIterator implements Iterator<K> {
 		ListNode current;
@@ -198,5 +194,10 @@ public class List<K> {
 			throw new UnsupportedOperationException(
 					"Remove not supported for LinkedList<>");
 		}
+	}
+
+	@Override
+	public Iterator<K> iterator() {
+		return new myIterator();
 	}
 }
