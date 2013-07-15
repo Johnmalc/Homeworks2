@@ -1,5 +1,5 @@
 
-In Germnay (we could get 10 points and we got:**to add**):
+In Germnay (we could get 10 points and we got: 9):
 
 > Für die Lagerverwaltung in einem Schuhladen soll ein Programm zur Zuordnung von Schuhen in Schuhschachteln erstellt werden.
 > 

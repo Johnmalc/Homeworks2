@@ -15,9 +15,9 @@ Homeworks from Relax were:
 7. *Java Collection Framework* is in the folder "Aufgabe 8" -- 9/10
 8. *Binare vs. Lineare Suche* is in the folder "Aufgabe 9" -- 15/15
 9. *Maps* is in the folder "Aufgabe 10" -- 5.5/10
-10. *Uberwachung des Lagerbestandes (Observer)* is in the folder "Aufgabe 11" -- xx/15
-11. *Verzeichnisbaume (Composite)* is in the folder "Aufgabe 12" -- xx/10
-12. *GUI Geldautomat (Swing)* (not my decision- proffessorts one) in the folder "Aufgabe 13" -- xx/15
+10. *Uberwachung des Lagerbestandes (Observer)* is in the folder "Aufgabe 11" -- 15/15
+11. *Verzeichnisbaume (Composite)* is in the folder "Aufgabe 12" -- 7/10
+12. *GUI Geldautomat (Swing)* (not my decision - professor's one) in the folder "Aufgabe 13" -- 14/15
 
 We had to have at least cca. 70% out of 135 points to pass the final exam.
 
